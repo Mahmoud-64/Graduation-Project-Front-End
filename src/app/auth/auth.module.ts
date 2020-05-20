@@ -13,9 +13,7 @@ import { AuthComponent } from './auth.component';
     CommonModule
   ],
   exports: [
-    RegisterComponent,
-    LoginComponent,
-    ResetPasswordComponent
+    AuthComponent
   ]
 })
 export class AuthModule { }
