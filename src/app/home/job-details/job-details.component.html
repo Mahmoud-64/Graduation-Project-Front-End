@@ -1,1 +1,9 @@
-<p>job-details works!</p>
+<div>
+    <h5>{{job.title}}</h5>
+    <p>{{job.description}}</p>
+    <p>{{job.seniority}}</p>
+    <ul>
+        <li *ngFor="let req of job.requirements"> {{req.name}}</li>
+    </ul>
+</div>
+

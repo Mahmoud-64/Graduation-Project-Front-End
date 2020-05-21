@@ -1,3 +1,46 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="assets/images/logo.png" width="120" height="50"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-{{title}}
-<app-auth></app-auth>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a routerLink="/" class="nav-link" href="#">
+          <i class="fa fa-home"></i>
+          Home
+          <span class="sr-only">(current)</span>
+          </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
+          Profile
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
+          Edit Profile
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" routerLink="/signup" id="navbarDropdown" role="button">
+          Log Out
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" routerLink="/login" id="navbarDropdown" role="button">
+          Log In
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" routerLink="/signup" id="navbarDropdown" role="button">
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container m-5">
+<router-outlet></router-outlet>
+</div>

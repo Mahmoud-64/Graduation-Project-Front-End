@@ -10,7 +10,13 @@ import { NgModel, NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  user: User;
+  user: User = {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+    contact: '',
+  }
 
   constructor(private userService: UserService) { }
 

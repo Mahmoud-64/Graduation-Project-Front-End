@@ -41,4 +41,11 @@ export class UserService {
     localStorage.removeItem('access_token');
   }
 
+  loggedIn(){
+    if(localStorage.getItem('access_token')){
+      return true;
+    }
+    return false;
+  }
+
 }

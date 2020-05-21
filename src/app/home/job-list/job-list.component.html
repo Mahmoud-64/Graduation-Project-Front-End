@@ -1,1 +1,1 @@
-<p>job-list works!</p>
+<job-item   *ngFor="let job of jobs" [routerLink]="['/home',job.id]" [jobData]="job"></job-item>

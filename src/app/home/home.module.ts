@@ -4,18 +4,16 @@ import { JobListComponent } from './job-list/job-list.component';
 import { JobItemComponent } from './job-item/job-item.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { HomeComponent } from './home.component';
-
+import {HomeRoutingModule} from './home-routing.module'
 
 
 @NgModule({
   declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent],
   imports: [
-    CommonModule
+    CommonModule, HomeRoutingModule
   ],
   exports: [
-    JobListComponent,
-    JobItemComponent,
-    JobDetailsComponent
+    HomeComponent
   ]
 })
 export class HomeModule { }
