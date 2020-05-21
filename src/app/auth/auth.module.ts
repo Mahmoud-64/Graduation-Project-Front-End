@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AuthComponent } from './auth.component';
 
 
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent, ResetPasswordComponent],
+  declarations: [RegisterComponent, LoginComponent, ResetPasswordComponent, AuthComponent],
   imports: [
     CommonModule
   ],
   exports: [
-    RegisterComponent,
-    LoginComponent,
-    ResetPasswordComponent
+    AuthComponent
   ]
 })
 export class AuthModule { }
