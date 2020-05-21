@@ -1,9 +1,14 @@
-<div>
+<div class="bg-info p-3">
     <h5>{{job.title}}</h5>
     <p>{{job.description}}</p>
     <p>{{job.seniority}}</p>
-    <ul>
-        <li *ngFor="let req of job.requirements"> {{req.name}}</li>
-    </ul>
+    <div *ngIf="job.requirements.length > 0">
+        <p >Requirements</p>
+        <ul>
+            <li *ngFor="let req of job.requirements"> {{req.name}}</li>
+        </ul>
+    </div>
+   
+
 </div>
 

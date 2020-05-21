@@ -5,6 +5,8 @@ import { AppListComponent } from './app-list/app-list.component';
 import { AppItemComponent } from './app-item/app-item.component';
 import { AppDetailsComponent } from './app-details/app-details.component';
 import { JobApplicationComponent } from './job-application.component';
+import { JobApplicationRoutingModule } from "./job-application-routing.module";
+
 
 
 
@@ -12,8 +14,8 @@ import { JobApplicationComponent } from './job-application.component';
   declarations: [AppListComponent, AppItemComponent, AppDetailsComponent, JobApplicationComponent],
   imports: [
     CommonModule,
-    AppLevelModule
+    JobApplicationRoutingModule
   ],
-  exports: [AppListComponent, AppItemComponent, AppDetailsComponent, JobApplicationComponent],
+  exports: [ JobApplicationComponent],
 })
 export class JobApplicationModule { }

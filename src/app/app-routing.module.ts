@@ -12,7 +12,9 @@ const routes: Routes = [
       import('./home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'test', component: JobItemComponent
+    path: 'applications', 
+    loadChildren: () =>
+      import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
   },
   { path: 'profile', component: ProfileComponent },
   { path: 'auth', component: AuthComponent }
