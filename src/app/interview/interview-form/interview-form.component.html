@@ -1,1 +1,47 @@
 <p>interview-form works!</p>
+<form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+    <div class="form-group">
+        <label for="application_id">application_id</label>
+        <input type="number" class="form-control" id="application_id" required ngModel name="application_id" />
+    </div>
+
+    <div class="form-group">
+        <label for="emp_id">emp_id</label>
+        <input type="number" class="form-control" id="emp_id" required ngModel name="emp_id" />
+    </div>
+
+    <div class="form-group">
+        <label for="level_id">level_id</label>
+        <input type="number" class="form-control" id="level_id" required ngModel name="level_id" />
+    </div>
+
+    <div class="form-group">
+        <label for="date">date</label>
+        <input type="text" class="form-control" id="date" required ngModel name="date" />
+    </div>
+
+    <div class="form-group">
+        <label for="seeker_review">seeker_review</label>
+        <input type="text" class="form-control" id="seeker_review" required ngModel name="seeker_review" />
+    </div>
+
+    <div class="form-group">
+        <label for="company_review">company_review</label>
+        <input type="text" class="form-control" id="company_review" required ngModel name="company_review" />
+    </div>
+
+    <div class="form-group">
+        <label for="zoom">zoom</label>
+        <input type="text" class="form-control" id="zoom" required ngModel name="zoom" />
+    </div>
+
+
+
+    <!-- <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" required ngModel name="content"></textarea>
+      </div> -->
+    <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
+        Send Post
+    </button>
+</form>

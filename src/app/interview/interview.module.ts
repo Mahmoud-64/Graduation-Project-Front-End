@@ -6,6 +6,7 @@ import { InterviewDetailsComponent } from './interview-details/interview-details
 import { InterviewFormComponent } from './interview-form/interview-form.component';
 import { InterviewComponent } from './interview.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [InterviewListComponent, InterviewItemComponent, InterviewDetailsComponent, InterviewFormComponent, InterviewComponent],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
 
   ],
   exports: [
