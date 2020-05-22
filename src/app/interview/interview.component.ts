@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InterviewListComponent } from './interview-list/interview-list.component'
 
 @Component({
   selector: 'app-interview',

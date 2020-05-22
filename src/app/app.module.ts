@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { JobApplicationModule } from './job-application/job-application.module';
+import { RouterModule } from '@angular/router';
+import { InterviewModule } from './interview/interview.module';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { JobApplicationModule } from './job-application/job-application.module';
     ProfileModule,
     JobApplicationModule,
     AuthModule,
+    InterviewModule,
+    RouterModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHelperInterceptor, multi: true }

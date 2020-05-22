@@ -5,13 +5,16 @@ import { InterviewItemComponent } from './interview-item/interview-item.componen
 import { InterviewDetailsComponent } from './interview-details/interview-details.component';
 import { InterviewFormComponent } from './interview-form/interview-form.component';
 import { InterviewComponent } from './interview.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
 @NgModule({
   declarations: [InterviewListComponent, InterviewItemComponent, InterviewDetailsComponent, InterviewFormComponent, InterviewComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
+
   ],
   exports: [
     InterviewListComponent,
