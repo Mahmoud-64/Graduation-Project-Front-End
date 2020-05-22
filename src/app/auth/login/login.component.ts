@@ -11,11 +11,8 @@ import { NgModel, NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   user: User = {
-    name: '',
     email: '',
-    password: '',
-    password_confirmation: '',
-    contact: '',
+    password: ''
   }
 
   constructor(private userService: UserService) { }
@@ -24,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
+    this.userService.login(this.user).subscribe(users=>this.user=users);
     console.log(f.value);
 
   }

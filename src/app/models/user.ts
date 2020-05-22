@@ -1,7 +1,8 @@
 export interface User {
-    name: String,
+    name?: String,
     email: String,
     password: String,
-    password_confirmation: String,
-    contact: String,
+    password_confirmation?: String,
+    contact?: String,
+    [key: string]: any
 }

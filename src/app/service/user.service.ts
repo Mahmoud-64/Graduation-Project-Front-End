@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,30 +15,20 @@ export class UserService {
     return this.http.get("/api/users");
   }
 
-  register(){
+  register(user: User): Observable<any>{
       _token: String;
-      return this.http.post("/api/register",JSON.stringify({
-      name:"twins216",
-      email:"twins216@gmail.com",
-      password:"12345678",
-      password_confirmation:"12345678"
-    })).pipe(tap(ev => console.log(ev)));
+      return this.http.post("/api/register",JSON.stringify(user)).pipe(tap(ev => console.log(ev)));
   }
 
-  login(){
-    return this.http.post("/api/login",{
-      name:"twins214",
-      email:"twins214@gmail.com",
-      password:"12345678",
-      password_confirmation:"12345678",
-      device_name: "fffff"
-    }, {responseType: 'text'}).pipe(tap(ev => {
-      const _token = JSON.parse(ev).access_token;
+  login(user: User): Observable<any>{
+    user.device_name="anything";
+    return this.http.post("/api/login",JSON.stringify(user)).pipe(tap(ev => {
+      const _token = ev.access_token;
       localStorage.setItem('access_token', _token);
     }));
   }
   logout(){
-    return this.http.get('/api/LogoutUser');
+    this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
   }
 
