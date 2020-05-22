@@ -34,10 +34,10 @@ export class UserService {
     }, {responseType: 'text'}).pipe(tap(ev => {
       const _token = JSON.parse(ev).access_token;
       localStorage.setItem('access_token', _token);
-      console.log("==============",_token);
     }));
   }
   logout(){
+    return this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
   }
 
@@ -46,6 +46,10 @@ export class UserService {
       return true;
     }
     return false;
+  }
+
+  getLoggedInUser(){
+    return this.http.get('/api/LoggedInUser');
   }
 
 }

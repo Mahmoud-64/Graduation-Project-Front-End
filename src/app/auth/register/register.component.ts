@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.userService.login().subscribe(users=>this.users=users);
+    // this.userService.login().subscribe(users=>this.user=JSON.parse(users));
   }
 
   onSubmit(f: NgForm) {
