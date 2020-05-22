@@ -1,0 +1,32 @@
+#sidebar-wrapper {
+    width: 200px;
+  }
+  
+ 
+  
+  #sidebar-wrapper .list-group {
+    width: 180px;
+  }
+  
+  
+  
+  /* #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+   */
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+      width: 50px;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 20%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  
