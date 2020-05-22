@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApplicationService {
-  private getAllapplicationsUrl = "http://127.0.0.1:8001/api/applications";
-  private getSingleapplicationUrl = "http://127.0.0.1:8001/api/applications/";
+  private getAllapplicationsUrl = "/api/applications";
+  private getSingleapplicationUrl = "/api/applications/";
   constructor(private http:HttpClient) { }
 
   getAllApplications() {

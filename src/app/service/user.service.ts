@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { User } from '../models/user';
 
@@ -9,7 +9,11 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  public subject;
+
+  constructor(private http: HttpClient) {
+    this.subject = new Subject;
+  }
 
   getUsers(){
     return this.http.get("/api/users");
@@ -25,11 +29,13 @@ export class UserService {
     return this.http.post("/api/login",JSON.stringify(user)).pipe(tap(ev => {
       const _token = ev.access_token;
       localStorage.setItem('access_token', _token);
+      this.subject.next(true);
     }));
   }
   logout(){
     this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
+    this.subject.next(false);
   }
 
   loggedIn(){
@@ -42,5 +48,6 @@ export class UserService {
   getLoggedInUser(){
     return this.http.get('/api/LoggedInUser');
   }
+
 
 }

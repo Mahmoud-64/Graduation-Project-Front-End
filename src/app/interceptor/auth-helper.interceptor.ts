@@ -39,9 +39,7 @@ export class AuthHelperInterceptor implements HttpInterceptor {
   constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("interceptor",request.url);
     const _token = localStorage.getItem('access_token');
-    console.log("interceptor",_token);
     if(_token){
       request = request.clone({
         setHeaders: {
