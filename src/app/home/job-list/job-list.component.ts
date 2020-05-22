@@ -7,23 +7,20 @@ import { JobsService } from '../services/jobs.service'
 })
 export class JobListComponent implements OnInit {
 
-  jobs = [] ;
+  jobs = [];
   constructor(private jobService: JobsService) { }
 
   ngOnInit(): void {
     this.jobService.getAllJobs().subscribe(
-      result =>{
+      result => {
         console.log("succes");
-        
-        
         this.jobs = result.data
         console.log(this.jobs);
       },
       error => {
         console.log("error");
-        
         console.log(error);
-        
+
       }
     )
   }

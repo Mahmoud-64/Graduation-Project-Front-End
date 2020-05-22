@@ -1,1 +1,2 @@
-<p>app-list works!</p>
+<app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]" [applicationData]="application"
+></app-item>
