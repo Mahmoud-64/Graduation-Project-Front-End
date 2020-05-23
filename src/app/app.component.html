@@ -11,37 +11,36 @@
           <i class="fa fa-home"></i>
           Home
           <span class="sr-only">(current)</span>
-          </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
-          Profile
         </a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="loggedIn===true">
+        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
+          {{userName}}
+        </a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="loggedIn===true">
         <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
           Edit Profile
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" routerLink="/auth" id="navbarDropdown" role="button">
+      <li class="nav-item dropdown" *ngIf="loggedIn===true">
+        <a class="nav-link" routerLink="/logout" id="navbarDropdown" role="button">
           Log Out
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" routerLink="/auth" id="navbarDropdown" role="button">
+      <li class="nav-item dropdown" *ngIf="loggedIn===false">
+        <a class="nav-link" routerLink="/login" id="navbarDropdown" role="button">
           Log In
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" routerLink="/auth" id="navbarDropdown" role="button">
+      <li class="nav-item dropdown" *ngIf="loggedIn===false">
+        <a class="nav-link" routerLink="/signup" id="navbarDropdown" role="button">
           Register
         </a>
       </li>
     </ul>
   </div>
 </nav>
-<div class="container mt-3">
-  <h1 class="text-center">{{title}}</h1>
+<div class="container m-5">
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
