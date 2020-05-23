@@ -5,7 +5,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto mr-5">
       <li class="nav-item active">
         <a routerLink="/" class="nav-link" href="#">
           <i class="fa fa-home"></i>
@@ -13,15 +13,18 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="loggedIn===true">
-        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
-          {{userName}}
-        </a>
-      </li>
-      <li class="nav-item dropdown" *ngIf="loggedIn===true">
-        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
-          Edit Profile
-        </a>
+      <li class="nav-item dropdown" *ngIf="loggedIn===true" ngbDropdown>
+        <span ngbDropdownToggle class="nav-link">{{userName}}</span>
+
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a ngbDropdownItem routerLink="/profile" id="navbarDropdown" role="button">
+              {{userName}}
+            </a>
+            <a ngbDropdownItem routerLink="/profile" id="navbarDropdown" role="button">
+              Edit Profile
+            </a>
+          <button ngbDropdownItem>Reset Password</button>
+        </div>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
         <a class="nav-link" routerLink="/logout" id="navbarDropdown" role="button">
