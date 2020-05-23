@@ -14,12 +14,12 @@
         </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
-        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
+        <a class="nav-link" routerLink="/profile/{{profileId}}" id="navbarDropdown" role="button">
           {{userName}}
         </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
-        <a class="nav-link" routerLink="/profile" id="navbarDropdown" role="button">
+        <a class="nav-link" routerLink="/profile/edit/{{profileId}}" id="navbarDropdown" role="button">
           Edit Profile
         </a>
       </li>
