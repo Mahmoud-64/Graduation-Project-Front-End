@@ -9,7 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppDetailsComponent implements OnInit {
 
-  application;
+  application = {
+    "seeker":"",
+    "job":{"title":"","description":""},
+    "status":{"name":"","description":""}
+  };
   constructor(
     private applicationService: ApplicationService,
     private route: ActivatedRoute

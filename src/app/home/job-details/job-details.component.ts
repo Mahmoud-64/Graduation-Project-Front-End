@@ -9,7 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobDetailsComponent implements OnInit {
 
-  job ;
+  job = {
+    "id":"",
+    "title": "",
+    "description":"",
+    "seniority":"",
+    "requirements" : ""
+  } ;
   constructor(
     private jobService:JobsService,
     private route: ActivatedRoute
@@ -31,6 +37,21 @@ export class JobDetailsComponent implements OnInit {
       )
     });
     
+  }
+  applyJob()
+  {
+    console.log(this.job.id);
+    this.jobService.applyJob(this.job.id).subscribe(
+      result => {
+        console.log(result);
+        
+      },
+      error => {
+        console.log(error);
+        
+      }
+    )
+    console.log("aftersend");
   }
 
 }
