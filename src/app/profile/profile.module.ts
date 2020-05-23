@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProfileRoutingModule } from "./profile-routing/profile-routing.module";
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ProfileComponent } from './profile.component';
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, ContactItemComponent, ContactListComponent, ContactFormComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ProfileRoutingModule
   ],
   exports: [
     ProfileDetailsComponent, ProfileFormComponent, ProfileComponent

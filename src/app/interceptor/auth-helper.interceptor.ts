@@ -14,7 +14,7 @@
 
 //   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 //     console.log("interceptor",request.url);
-    
+
 //     request = request.clone({
 //       setHeaders: {
 //         'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export class AuthHelperInterceptor implements HttpInterceptor {
         'Content-Type': 'application/json',
       }
     });
-    
+
     return next.handle(request);
   }
 }

@@ -11,12 +11,15 @@ export class AppComponent implements OnInit {
   title = 'Graduation-Project-Front-End';
   loggedIn = false;
   userName: String;
-
+  profileId: String;
   constructor(public userService: UserService) { }
   ngOnInit() {
     this.loggedIn = this.userService.loggedIn();
     if (this.loggedIn) {
-      this.userService.getLoggedInUser().subscribe(user => this.userName = user['name']);
+      this.userService.getLoggedInUser().subscribe(user => {
+        this.userName = user['name'];
+        this.profileId = user['id'];
+      });
     }
     this.userService.subject.subscribe({
       next: (val) => {
