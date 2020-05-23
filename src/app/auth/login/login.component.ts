@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
 import { NgModel, NgForm } from '@angular/forms';
@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/');
     });
     console.log(f.value);
-
   }
 
 }

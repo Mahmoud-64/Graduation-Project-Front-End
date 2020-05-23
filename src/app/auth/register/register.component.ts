@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
     password_confirmation: '',
-    contact: '',
+    phone: '',
   }
   constructor(private userService: UserService) { }
 

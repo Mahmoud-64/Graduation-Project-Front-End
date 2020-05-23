@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { JobItemComponent } from './home/job-item/job-item.component'
 import { InterviewFormComponent } from './interview/interview-form/interview-form.component';
 import { InterviewComponent } from './interview/interview.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'signup', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'resetpassword', component: ResetPasswordComponent },
 
   {
     path: 'interview', component: InterviewComponent,

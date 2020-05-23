@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, pipe } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { User } from '../models/user';
 
@@ -9,7 +9,12 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  public subject;
+  public user_id: Number;
+
+  constructor(private http: HttpClient) {
+    this.subject = new Subject;
+  }
 
   getUsers(){
     return this.http.get("/api/users");
@@ -25,11 +30,13 @@ export class UserService {
     return this.http.post("/api/login",JSON.stringify(user)).pipe(tap(ev => {
       const _token = ev.access_token;
       localStorage.setItem('access_token', _token);
+      this.subject.next(true);
     }));
   }
   logout(){
     this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
+    this.subject.next(false);
   }
 
   loggedIn(){
@@ -40,7 +47,15 @@ export class UserService {
   }
 
   getLoggedInUser(){
-    return this.http.get('/api/LoggedInUser');
+    return this.http.get('/api/LoggedInUser').pipe(map(val=>{
+      this.user_id = val['id'];
+      return val;
+    }));
   }
+
+  resetPassword(passowrds){
+    return this.http.put(`/api/resetpassword/${this.user_id}`,passowrds);
+  }
+
 
 }

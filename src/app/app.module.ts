@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHelperInterceptor } from './interceptor/auth-helper.interceptor';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { InterviewModule } from './interview/interview.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule,
 
     HttpClientModule,
     ProfileModule,
