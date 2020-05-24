@@ -1,1 +1,20 @@
-<p>interview-list works!</p>
+<table class="table">
+
+    <tbody>
+        <tr>
+            <td> id</td>
+            <td> application_id</td>
+            <td> employer_id</td>
+            <td> date</td>
+        </tr>
+        <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
+            <td>{{ interview.id }}</td>
+            <td>{{ interview.application_id }}</td>
+            <td>{{ interview.emp_id }}</td>
+            <td>{{ interview.date}}</td>
+            <td><button routerLink="../show/{{ interview.id }}" class="btn btn-primary"> Details</button></td>
+
+        </tr>
+
+    </tbody>
+</table>

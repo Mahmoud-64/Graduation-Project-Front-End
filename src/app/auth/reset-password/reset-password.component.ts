@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-
-  constructor() { }
+  passowrds = {
+    current_password: '',
+    new_password: '',
+    new_password_confirmation: '',
+  }
+  constructor( private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(f) {
+    console.log(this.passowrds);
+    this.userService.resetPassword(this.passowrds).subscribe(result=>{
+      console.log(result);
+    });
   }
 
 }
