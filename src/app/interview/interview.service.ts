@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class InterviewService {
     loadedInterview: any[];
+    singleInterview;
     constructor(private http: HttpClient) { }
+
 
     public fetchInterview() {
         // this.isFetching = true;
@@ -34,27 +36,11 @@ export class InterviewService {
 
     public fetchSingleInterview(id) {
         // this.isFetching = true;
-        this.http
+        return this.http
             .get(
                 'http://localhost:8000/api/interview/' + id
-            )
-            // .pipe(
-            //     map(responseData => {
-            //         const interviewaArray = [];
-            //         for (const id in responseData) {
-            //             if (responseData.hasOwnProperty(id)) {
-            //                 interviewaArray.push(responseData[id]);
-            //             }
-            //         }
-            //         return interviewaArray;
-            //     })
-            // )
-            .subscribe(interview => {
-                // this.isFetching = false;
-                // this.loadedInterview = interviews;
-                console.log(interview);
-                return interview;
+            );
 
-            });
     }
+
 }

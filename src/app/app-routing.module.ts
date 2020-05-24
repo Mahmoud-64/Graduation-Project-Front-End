@@ -38,7 +38,7 @@ const routes: Routes = [
         component: InterviewFormComponent
       },
       {
-        path: 'show',
+        path: 'show/:id',
         component: InterviewItemComponent
       },
       {
