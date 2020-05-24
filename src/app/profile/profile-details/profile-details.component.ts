@@ -26,6 +26,8 @@ export class ProfileDetailsComponent implements OnInit {
     };
     contacts: [];
 
+   isCollapsed = true;
+   isCollapsed2 = false;
   constructor(private seekerService: SeekerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,5 +47,6 @@ export class ProfileDetailsComponent implements OnInit {
       });
 
   }
+
 
 }

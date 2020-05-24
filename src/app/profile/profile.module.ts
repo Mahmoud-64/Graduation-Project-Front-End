@@ -10,15 +10,19 @@ import { ContactFormComponent } from './contact/contact-form/contact-form.compon
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { PersonalFormComponent } from './personal-form/personal-form.component';
+import { DetailsFormComponent } from './details-form/details-form.component';
 
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, ContactItemComponent, ContactListComponent, ContactFormComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent],
   imports: [
     CommonModule,
-    FormsModule,
+    ProfileRoutingModule,
     NgbModule,
-    ProfileRoutingModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     ProfileDetailsComponent, ProfileFormComponent, ProfileComponent

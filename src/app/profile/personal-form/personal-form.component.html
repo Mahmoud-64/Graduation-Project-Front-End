@@ -1,6 +1,5 @@
-
-<form class="text-center" [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
-  <table class="table table-borderless">
+<form [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
+  <table class="table table-borderless w-50">
   <tbody>
     <tr>
       <th scope="col">Name</th>

@@ -5,7 +5,6 @@ import { ProfileDetailsComponent } from '../profile-details/profile-details.comp
 import { ProfileFormComponent } from '../profile-form/profile-form.component';
 
 const routes: Routes = [
-  { path: '', component: ProfileComponent },
   { path: ':profileId', component: ProfileDetailsComponent },
   { path: 'edit/:profileId', component: ProfileFormComponent },
 ];

@@ -10,7 +10,7 @@ import { User } from '../models/user';
 export class UserService {
 
   public subject;
-  public static user_id: Number;
+  public user_id: Number;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject;
@@ -39,6 +39,10 @@ export class UserService {
     this.subject.next(false);
   }
 
+  updateUser(userId, user: User): Observable<any> {
+    return this.http.put("api/users/"+userId, user);
+  }
+
   loggedIn(){
     if(localStorage.getItem('access_token')){
       return true;
@@ -48,13 +52,13 @@ export class UserService {
 
   getLoggedInUser(){
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
-      UserService.user_id = val['id'];
+      this.user_id = val['id'];
       return val;
     }));
   }
 
   resetPassword(passowrds){
-    return this.http.put(`/api/resetpassword/${UserService.user_id}`,passowrds);
+    return this.http.put(`/api/resetpassword/${this.user_id}`,passowrds);
   }
 
 

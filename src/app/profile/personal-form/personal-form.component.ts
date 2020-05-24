@@ -4,12 +4,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../service/user.service';
 
 @Component({
-  selector: 'app-profile-form',
-  templateUrl: './profile-form.component.html',
-  styleUrls: ['./profile-form.component.css']
+  selector: 'app-personal-form',
+  templateUrl: './personal-form.component.html',
+  styleUrls: ['./personal-form.component.css']
 })
-export class ProfileFormComponent implements OnInit {
-  // form: FormGroup;
+export class PersonalFormComponent implements OnInit {
   seeker: FormGroup ;
 
   constructor(private userService: UserService) { }
@@ -30,5 +29,4 @@ export class ProfileFormComponent implements OnInit {
     .subscribe((data) => console.log(data));
 
   }
-
 }
