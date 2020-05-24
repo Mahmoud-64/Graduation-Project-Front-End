@@ -1,14 +1,19 @@
 <table class="table table-striped w-50">
     <tr>
         <td>
-            <input name="contact" type="text" [(ngModel)]="contact" class="form-control"
-                id="exampleInputcontact1" aria-describedby="contactHelp" placeholder="Enter contact" />
+            <input name="contact" type="text" [(ngModel)]="contact.data" class="form-control" id="exampleInputcontact1"
+                aria-describedby="contactHelp" placeholder="Enter contact" />
         </td>
         <td>
-            insert type
+            <select class="form-control" name="contact_types_id" [(ngModel)]="contact.contact_types_id">
+                <option value=''>please select</option>
+                <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
+                    {{contactType.type}}
+                </option>
+              </select>
         </td>
         <td>
-            <button class="btn btn-primary">add</button>
+            <button class="btn btn-primary" (click)="addContact()">add</button>
         </td>
     </tr>
 </table>

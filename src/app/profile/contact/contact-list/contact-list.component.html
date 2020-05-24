@@ -1,5 +1,5 @@
-
-<table class="table table-striped w-50">
-    <app-contact-item></app-contact-item>
+<table class="table table-striped">
+    <tr *ngFor="let contact of contacts">
+        <app-contact-item [contact]="contact"></app-contact-item>
+    </tr>
 </table>
-<app-contact-form></app-contact-form>

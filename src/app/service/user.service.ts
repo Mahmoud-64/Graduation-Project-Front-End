@@ -10,7 +10,7 @@ import { User } from '../models/user';
 export class UserService {
 
   public subject;
-  public user_id: Number;
+  public static user_id: Number;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject;
@@ -48,13 +48,13 @@ export class UserService {
 
   getLoggedInUser(){
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
-      this.user_id = val['id'];
+      UserService.user_id = val['id'];
       return val;
     }));
   }
 
   resetPassword(passowrds){
-    return this.http.put(`/api/resetpassword/${this.user_id}`,passowrds);
+    return this.http.put(`/api/resetpassword/${UserService.user_id}`,passowrds);
   }
 
 

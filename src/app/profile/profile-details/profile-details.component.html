@@ -1,4 +1,3 @@
-
 <p>
   <strong>Name : </strong>{{this.seeker.name}}
 </p>
@@ -28,6 +27,10 @@
 </p>
 <p>
   <strong>expectedSalary : </strong>{{this.seeker.expectedSalary}}
+</p>
+<p>
+  <strong>Contacts</strong>
+  <app-contact-list [contacts]="contacts"></app-contact-list>
 </p>
 <p>
   <strong>cv : </strong>{{this.seeker.cv}}
