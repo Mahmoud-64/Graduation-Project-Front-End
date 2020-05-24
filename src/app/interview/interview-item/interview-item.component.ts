@@ -18,22 +18,23 @@ export class InterviewItemComponent implements OnInit {
     this.route.params
       .subscribe((params: Params) => {
         this.id = params['id'];
-      }
-      )
-    console.log(this.id);
+        console.log(this.id);
 
-    this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
-      // this.isFetching = false;
-      // this.loadedInterview = interviews;
-      // console.log(interview['data']);
-      this.single = interview['data']
-      // this.singleInterview = interview;
-      // console.log(this.singleInterview['data']);
+        this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
+          // this.isFetching = false;
+          // this.loadedInterview = interviews;
+          // console.log(interview['data']);
+          this.single = interview['data']
+          // this.singleInterview = interview;
+          // console.log(this.singleInterview['data']);
 
-      // return this.singleInterview;
-      console.log(this.single);
+          // return this.singleInterview;
+          console.log(this.single);
 
-    });
+        }
+        )
+      });
+
     // this.single = this.interviewService.fetchSingleInterview(4);
     // this.single = this.interviewService.singleInterview;
 
