@@ -39,6 +39,10 @@ export class UserService {
     this.subject.next(false);
   }
 
+  updateUser(userId, user: User): Observable<any> {
+    return this.http.put("api/users/"+userId, user);
+  }
+
   loggedIn(){
     if(localStorage.getItem('access_token')){
       return true;

@@ -17,4 +17,7 @@ export class SeekerService {
   getSeeker(seekerId): Observable<Seeker>{
     return this.http.get<Seeker>(this.seekersUrl+seekerId);
   }
+  updateSeeker(seekerId, seeker: Seeker): Observable<any> {
+    return this.http.put(this.seekersUrl+seekerId, seeker);
+  }
 }

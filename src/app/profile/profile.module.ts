@@ -5,13 +5,21 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ProfileComponent } from './profile.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PersonalFormComponent } from './personal-form/personal-form.component';
+import { DetailsFormComponent } from './details-form/details-form.component';
 
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ProfileDetailsComponent, ProfileFormComponent, ProfileComponent
