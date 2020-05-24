@@ -24,7 +24,10 @@ export class ProfileDetailsComponent implements OnInit {
       expectedSalary: 0,
       cv: ""
     };
+    contacts: [];
 
+   isCollapsed = true;
+   isCollapsed2 = false;
   constructor(private seekerService: SeekerService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -36,8 +39,14 @@ export class ProfileDetailsComponent implements OnInit {
   getSeeker(seekerId): void
   {
       this.seekerService.getSeeker(seekerId)
-      .subscribe(seeker => this.seeker = seeker.data);
+      .subscribe(seeker => {
+        console.log(seeker);
+        
+        this.seeker = seeker.data;
+        this.contacts = seeker.data.contacts;
+      });
 
   }
+
 
 }

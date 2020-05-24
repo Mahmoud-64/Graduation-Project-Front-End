@@ -1,35 +1,141 @@
+<div class="row">
+  <div class="col-lg-5">
+    <div class="media">
+      <img class="media-object dp rounded-circle" src="https://via.placeholder.com/150"
+        style="width: 100px;height:100px;">
+      <div class="media-body p-3">
+        <h4 class="media-heading">{{this.seeker.name}} <small> {{this.seeker.city}}</small></h4>
+        <h5>{{this.seeker.currentJob}}</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="media">
+      <div class="media-body ">
+        <button type="button" class="btn btn-light m-2 float-right" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+          <svg class="bi bi-gear-wide-connected" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z" />
+            <path fill-rule="evenodd" d="M7.375 8L4.602 4.302l.8-.6L8.25 7.5h4.748v1H8.25L5.4 12.298l-.8-.6L7.376 8z" />
+          </svg>
+        </button>
+        <button class="btn btn-light m-2 float-right" type="button" name="button">
+          <svg class="bi bi-calendar3-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2H0z" />
+            <path fill-rule="evenodd"
+              d="M0 3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm6.5 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-8 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-8 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Name : </strong>{{this.seeker.name}}
-</p>
-<p>
-  <strong>email : </strong>{{this.seeker.email}}
-</p>
-<p>
-  <strong>contact : </strong>{{this.seeker.contact}}
-</p>
-<p>
-  <strong>Address : </strong>{{this.seeker.address}}
-</p>
-<p>
-  <strong>city : </strong>{{this.seeker.city}}
-</p>
-<p>
-  <strong>seniority : </strong>{{this.seeker.seniority}}
-</p>
-<p>
-  <strong>expYears : </strong>{{this.seeker.expYears}}
-</p>
-<p>
-  <strong>currentJob : </strong>{{this.seeker.currentJob}}
-</p>
-<p>
-  <strong>currentSalary : </strong>{{this.seeker.currentSalary}}
-</p>
-<p>
-  <strong>expectedSalary : </strong>{{this.seeker.expectedSalary}}
-</p>
-<p>
-  <strong>cv : </strong>{{this.seeker.cv}}
-</p>
-<p>======================================================</p>
+</div>
+
+<hr style="margin:8px auto">
+
+<div class="container px-0" id="collapseExample" [ngbCollapse]="isCollapsed">
+  <div class="card">
+    <div class="card-body bg-light px-5">
+      <app-personal-form></app-personal-form>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body bg-light">
+    <div class="row">
+      <div class="col">
+        <div class="container" id="collapseDetails" [ngbCollapse]="!isCollapsed2">
+          <app-details-form></app-details-form>
+        </div>
+        <div class="container" id="collapseDetails" [ngbCollapse]="isCollapsed2">
+          <div class="card">
+            <div class="card-body">
+
+              <table class="table table-borderless table-light">
+                <tbody>
+                  <tr>
+                    <th scope="col">Contact</th>
+                    <td>
+                      {{this.seeker.phone}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Other Contacts</th>
+                    <td>
+                      <app-contact-list [contacts]="contacts"></app-contact-list>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Address</th>
+                    <td>
+                      {{this.seeker.address}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">City</th>
+                    <td>
+                      {{this.seeker.city}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Seniority</th>
+                    <td>
+                      {{this.seeker.seniority}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Years of experience</th>
+                    <td>
+                      {{this.seeker.expYears}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Current Job</th>
+                    <td>
+                      {{this.seeker.currentJob}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Current Salary</th>
+                    <td>
+                      {{this.seeker.currentSalary}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">Expected Salary</th>
+                    <td>
+                      {{this.seeker.expectedSalary}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="col">CV</th>
+                    <td>
+                      {{this.seeker.cv}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-light m-2 float-right" (click)="isCollapsed2 = !isCollapsed2"
+          [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseDetails">
+          <svg class="bi bi-gear-wide-connected" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z" />
+            <path fill-rule="evenodd" d="M7.375 8L4.602 4.302l.8-.6L8.25 7.5h4.748v1H8.25L5.4 12.298l-.8-.6L7.376 8z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

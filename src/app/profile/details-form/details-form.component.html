@@ -1,0 +1,89 @@
+<form class="text-center" [formGroup] = "details" (ngSubmit) = "onClickSubmit(details.value)" >
+  <table class="table table-borderless">
+  <tbody>
+    <tr>
+      <th scope="col">Phone</th>
+      <td>
+        <input type = "text"
+          name = "phone"
+          placeholder = "phone"
+          formControlName = "phone">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Address</th>
+      <td>
+        <input type = "text"
+          name = "address"
+          placeholder = "address"
+          formControlName = "address">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">City</th>
+      <td>
+        <input type = "text"
+          name = "city"
+          placeholder = "city"
+          formControlName = "city">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Seniority</th>
+      <td>
+        <input type = "text"
+          name = "seniority"
+          placeholder = "seniority"
+          formControlName = "seniority">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Years of experience</th>
+      <td>
+        <input type = "number"
+          name = "expYears"
+          placeholder = "Years of experience"
+          formControlName = "expYears">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Current Job</th>
+      <td>
+        <input type = "text"
+          name = "currentJob"
+          placeholder = "Current Job"
+          formControlName = "currentJob">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Current Salary</th>
+      <td>
+        <input type = "number"
+          name = "currentSalary"
+          placeholder = "Current Salary"
+          formControlName = "currentSalary">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">Expected Salary</th>
+      <td>
+        <input type = "number"
+          name = "expectedSalary"
+          placeholder = "Expected Salary"
+          formControlName = "expectedSalary">
+      </td>
+    </tr>
+    <tr>
+      <th scope="col">CV</th>
+      <td>
+        <input type = "file"
+          name = "cv"
+          placeholder = "CV"
+          formControlName = "cv">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<input class="btn btn-success" type = "submit" value = "Edit">
+</form>

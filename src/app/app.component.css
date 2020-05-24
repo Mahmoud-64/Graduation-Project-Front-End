@@ -91,6 +91,10 @@
   }
 }
 
+.clickable{
+  cursor: pointer
+}
+
 @media (min-width: 1200px) {
   .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
     text-align: center;
