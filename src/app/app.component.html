@@ -17,10 +17,10 @@
         <span ngbDropdownToggle class="nav-link">{{userName}}</span>
 
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <a ngbDropdownItem routerLink="/profile" id="navbarDropdown" role="button">
+            <a ngbDropdownItem routerLink="/profile/{{profileId}}" id="navbarDropdown" role="button">
               {{userName}}
             </a>
-            <a ngbDropdownItem routerLink="/profile" id="navbarDropdown" role="button">
+            <a ngbDropdownItem routerLink="/profile/edit/{{profileId}}" id="navbarDropdown" role="button">
               Edit Profile
             </a>
             <a ngbDropdownItem routerLink="/resetpassword" id="navbarDropdown" role="button">
