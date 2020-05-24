@@ -1,5 +1,5 @@
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="assets/images/logo.png" width="120" height="50"></a>
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-info py-0">
+  <a class="navbar-brand" href="#"><img src="assets/images/logo.png" width="100" height="40"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,7 +8,6 @@
     <ul class="navbar-nav ml-auto mr-5">
       <li class="nav-item active">
         <a routerLink="/" class="nav-link" href="#">
-          <i class="fa fa-home"></i>
           Home
           <span class="sr-only">(current)</span>
         </a>
@@ -18,10 +17,7 @@
 
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <a ngbDropdownItem class="clickable" routerLink="/profile/{{profileId}}" id="navbarDropdown" role="button">
-              {{userName}}
-            </a>
-            <a ngbDropdownItem class="clickable" routerLink="/profile/edit/{{profileId}}" id="navbarDropdown" role="button">
-              Edit Profile
+              View Profile
             </a>
             <a ngbDropdownItem class="clickable" routerLink="/resetpassword" id="navbarDropdown" role="button">
               Reset Password
