@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AppDetailsComponent implements OnInit {
 
   application = {
+    "id":"",
     "seeker":"",
     "job":{"title":"","description":""},
     "status":{"name":"","description":""}
@@ -33,6 +34,20 @@ export class AppDetailsComponent implements OnInit {
       )
     })
     
+  }
+
+  deleteApplication()
+  {
+    this.applicationService.deleteSingleApplication(this.application.id).subscribe(
+      result=>{
+        console.log(result);
+        this.applicationService.appSubject.next("delete");                
+      },
+      error=>{
+        console.log(error);
+        
+      }
+    )
   }
 
 }

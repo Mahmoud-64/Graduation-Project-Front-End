@@ -23,7 +23,6 @@ export class JobsService {
 
   applyJob(jobId){
     return this.http.post<any>(this.applyToJobUrl,{
-      user_id : 2,
       job_id : jobId
     });
   }
