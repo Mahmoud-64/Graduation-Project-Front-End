@@ -4,22 +4,25 @@ import { ProfileRoutingModule } from "./profile-routing/profile-routing.module";
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ProfileComponent } from './profile.component';
-
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ContactItemComponent } from './contact/contact-item/contact-item.component';
+import { ContactListComponent } from './contact/contact-list/contact-list.component';
+import { ContactFormComponent } from './contact/contact-form/contact-form.component';
 import { FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { PersonalFormComponent } from './personal-form/personal-form.component';
 import { DetailsFormComponent } from './details-form/details-form.component';
 
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     ProfileDetailsComponent, ProfileFormComponent, ProfileComponent

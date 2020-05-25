@@ -10,11 +10,12 @@ import { JobApplicationRoutingModule } from "./job-application-routing.module";
 
 
 
+
 @NgModule({
   declarations: [AppListComponent, AppItemComponent, AppDetailsComponent, JobApplicationComponent],
   imports: [
     CommonModule,
-    JobApplicationRoutingModule
+    JobApplicationRoutingModule,
   ],
   exports: [ JobApplicationComponent],
 })

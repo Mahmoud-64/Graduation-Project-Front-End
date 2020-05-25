@@ -16,10 +16,8 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSubmit(f) {
-    console.log(this.passowrds);
+  onSubmit() {
     this.userService.resetPassword(this.passowrds).subscribe(result=>{
-      console.log(result);
     });
   }
 

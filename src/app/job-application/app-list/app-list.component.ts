@@ -22,7 +22,21 @@ export class AppListComponent implements OnInit {
         console.log("error");
         console.log(error);
       }
+    );
+    this.applicationService.appSubject.subscribe(
+      next=>{
+        console.log(next);
+        this.ngOnInit();
+      },
+      error=>{
+        console.log(error);
+      },
+      () =>{
+        console.log("done");
+      }
+      
     )
   }
+
 
 }

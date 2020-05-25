@@ -6,8 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JobsService {
 
-  private getAllJobsUrl = "http://127.0.0.1:8001/api/jobs";
-  private getSingleJobUrl = "http://127.0.0.1:8001/api/jobs/";
+  private getAllJobsUrl = "/api/jobs";
+  private getSingleJobUrl = "/api/jobs/";
+  private applyToJobUrl = "/api/applications"
+  
+
   constructor(private http:HttpClient) { }
 
   getAllJobs(){  
@@ -16,5 +19,16 @@ export class JobsService {
 
   getSingleJob(id:string){
     return this.http.get<any>(this.getSingleJobUrl+id);
+  }
+
+  applyJob(jobId){
+    return this.http.post<any>(this.applyToJobUrl,{
+      job_id : jobId
+    });
+  }
+
+  addNewJob(job)
+  {
+    return this.http.post<any>(this.getAllJobsUrl,job);
   }
 }
