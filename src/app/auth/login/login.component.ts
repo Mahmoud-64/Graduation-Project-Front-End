@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', [Validators.required,
-    Validators.minLength(7)]]
+    email: [''],
+    password: ['']
   })
+  userError = '';
 
   constructor(private userService: UserService,
     private router: Router,
@@ -29,6 +29,9 @@ export class LoginComponent implements OnInit {
       this.user = users;
       this.router.navigateByUrl('/');
       console.log(users);
+    },
+    err=>{
+      this.userError = "Email or Password is Incorrect"
     });
     
   }

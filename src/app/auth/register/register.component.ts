@@ -21,6 +21,14 @@ export class RegisterComponent implements OnInit {
 
     phone: ['', Validators.required],
   })
+  userError = {
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+
+    phone: '',
+  }
   constructor(private userService: UserService,
     private router: Router,
     private fb: FormBuilder) { }
@@ -31,7 +39,10 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.userService.register(this.user.value).subscribe(users => {
       this.router.navigateByUrl('/login');
-      console.log(users);
+    },
+    err=>{
+      let errorData = err.errors
+      this.userError = errorData;
     });
   }
   get name() { return this.user.get('name'); }

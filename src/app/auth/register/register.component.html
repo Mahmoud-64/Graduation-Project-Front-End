@@ -5,27 +5,33 @@
             <label for="exampleInputEmail1">username</label>
             <input name="name" type="text" formControlName="name" class="form-control" id="exampleInputname1"
                 aria-describedby="nameHelp" placeholder="Enter name">
-            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert text-danger">
+            <div *ngIf="!userError.name && name.invalid && (name.dirty || name.touched)" class="text-danger">
                 <div *ngIf="name.errors.required">
                     *username is required.
                 </div>
+            </div>
+            <div *ngIf="userError.name" class="text-danger">
+                {{userError.name}}
             </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp" placeholder="Enter email" />
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert text-danger">
+            <div *ngIf="!userError.email && email.invalid && (email.dirty || email.touched)" class="text-danger">
                 <div *ngIf="email.errors.email">
                     * and must match xxx@xxx.com.
                 </div>
+            </div>
+            <div *ngIf="userError.email" class="text-danger">
+                {{userError.email}}
             </div>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input name="password" type="password" formControlName="password" class="form-control"
                 id="exampleInputPassword1" placeholder="Password" />
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert text-danger">
+                <div *ngIf="!userError.password && password.invalid && (password.dirty || password.touched)" class="text-danger">
                     <div *ngIf="password.errors.required">
                         *password is required.
                     </div>
@@ -33,12 +39,15 @@
                         *password must be at least 7 characters long.
                     </div>
                 </div>
+                <div *ngIf="userError.password" class="text-danger">
+                    {{userError.password}}
+                </div>
         </div>
         <div class="form-group">
             <label for="exampleInputPasswordConfirmation1">Password Confirmation</label>
             <input name="password_confirmation" type="password" formControlName="password_confirmation"
                 class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Password Confirmation" />
-                <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)" class="alert text-danger">
+                <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)" class="text-danger">
                     <div *ngIf="password_confirmation.errors.required">
                         *password confirmation field is required and must match password field.
                     </div>
@@ -48,10 +57,13 @@
             <label for="exampleInputContact">Contact</label>
             <input name="phone" type="text" formControlName="phone" class="form-control" id="exampleInputContact"
                 placeholder="Contact" />
-            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert text-danger">
+            <div *ngIf="!userError.phone && phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
                 <div *ngIf="phone.errors.required">
                     *phone is required and must match '(+02)01234567891'.
                 </div>
+            </div>
+            <div *ngIf="userError.phone" class="text-danger">
+                {{userError.phone}}
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
