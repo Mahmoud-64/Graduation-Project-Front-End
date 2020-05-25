@@ -5,15 +5,17 @@ import { JobItemComponent } from './job-item/job-item.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { HomeComponent } from './home.component';
 import {HomeRoutingModule} from './home-routing.module'
+import { NewJobComponent } from './new-job/new-job.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent],
+  declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent,NewJobComponent],
   imports: [
-    CommonModule, HomeRoutingModule
+    CommonModule, HomeRoutingModule , FormsModule,ReactiveFormsModule
   ],
   exports: [
-    HomeComponent
+    HomeComponent, NewJobComponent
   ]
 })
 export class HomeModule { }

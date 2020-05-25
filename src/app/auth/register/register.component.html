@@ -1,6 +1,6 @@
 <div class="container w-50">
     <h2 class="text-center"><strong>Sign Up</strong></h2>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="exampleInputEmail1">Username</label>
             <input name="name" type="text" [(ngModel)]="user.name" class="form-control" id="exampleInputusername1" aria-describedby="usernameHelp"

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
 import { NgModel, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +17,17 @@ export class RegisterComponent implements OnInit {
     password_confirmation: '',
     phone: '',
   }
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(f: NgForm) {
-    this.userService.register(this.user).subscribe(users=>this.user=users);
-    console.log(f.value);
+  onSubmit() {
+    this.userService.register(this.user).subscribe(users=>{
+      this.router.navigateByUrl('/login');
+      // this.user=users
+    });
   }
 
 }

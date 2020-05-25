@@ -13,6 +13,7 @@ import { InterviewListComponent } from './interview/interview-list/interview-lis
 import { InterviewDetailsComponent } from './interview/interview-details/interview-details.component';
 import { Handel404Component } from './fallback/handel404/handel404.component';
 import { Handel500Component } from './fallback/handel500/handel500.component';
+import { Handel401Component } from './fallback/handel401/handel401.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,8 @@ const routes: Routes = [
     ]
   },
   { path: 'error404', component: Handel404Component },
-  { path: 'error500', component: Handel500Component }
+  { path: 'error500', component: Handel500Component },
+  { path: 'error401', component: Handel401Component },
 
 ];
 

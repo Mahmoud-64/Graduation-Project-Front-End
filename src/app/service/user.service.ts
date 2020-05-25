@@ -21,8 +21,7 @@ export class UserService {
   }
 
   register(user: User): Observable<any>{
-      _token: String;
-      return this.http.post("/api/register",JSON.stringify(user)).pipe(tap(ev => console.log(ev)));
+      return this.http.post("/api/register",user);
   }
 
   login(user: User): Observable<any>{
