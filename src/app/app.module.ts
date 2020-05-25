@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
 import { InterviewModule } from './interview/interview.module';
 import { Handel404Component } from './fallback/handel404/handel404.component';
 import { Handel500Component } from './fallback/handel500/handel500.component';
-import { Handel401Component } from './fallback/handel401/handel401.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
 
 
@@ -22,7 +21,6 @@ import { Handel403Component } from './fallback/handel403/handel403.component';
     AppComponent,
     Handel404Component,
     Handel500Component,
-    Handel401Component,
     Handel403Component,
   ],
   imports: [

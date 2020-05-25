@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
       this.user = users;
       this.router.navigateByUrl('/');
     });
-    console.log(f.value);
   }
 
 }
