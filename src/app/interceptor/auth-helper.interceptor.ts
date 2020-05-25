@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -53,7 +53,7 @@ export class AuthHelperInterceptor implements HttpInterceptor {
           else if (err.status === 403)
             this.router.navigateByUrl('/error403');
         }
-        return of(err);
+        return throwError(err.error);
       })
     );
   }
