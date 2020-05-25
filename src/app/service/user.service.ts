@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, pipe } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { Observable, Subject, pipe, of } from 'rxjs';
+import { tap, map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
 
 @Injectable({
@@ -39,7 +39,12 @@ export class UserService {
   }
 
   updateUser(userId, user: User): Observable<any> {
-    return this.http.put("api/users/"+userId, user);
+    return this.http.put("api/users/"+userId, user)
+    .pipe(
+      tap(()=>console.log(userId, user)),
+
+      catchError(this.handleError2<User[]>('updateUser', []))
+    );
   }
 
   loggedIn(){
@@ -60,5 +65,10 @@ export class UserService {
     return this.http.put(`/api/resetpassword/${this.user_id}`,passowrds);
   }
 
+  private handleError2<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      return of(error.error);
+    };
+  }
 
 }
