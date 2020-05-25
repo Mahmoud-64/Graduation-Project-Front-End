@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
-import { NgModel, NgForm } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,22 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user: User = {
-    email: '',
-    password: ''
-  }
+  user = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', [Validators.required,
+    Validators.minLength(7)]]
+  })
 
   constructor(private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(f: NgForm) {
-    this.userService.login(this.user).subscribe(users=>{
+  onSubmit() {
+    this.userService.login(this.user.value).subscribe(users=>{
       this.user = users;
       this.router.navigateByUrl('/');
+      console.log(users);
     });
+    
   }
+  get email() { return this.user.get('email'); }
+  get password() { return this.user.get('password'); }
 
 }
