@@ -40,7 +40,7 @@
 <div class="container px-0" id="collapseExample" [ngbCollapse]="isCollapsed">
   <div class="card">
     <div class="card-body bg-light px-5">
-      <app-personal-form [seekerData]="seeker"></app-personal-form>
+      <app-personal-form [seekerData]="seeker" (formEvent)="changeData($event)"></app-personal-form>
     </div>
   </div>
 </div>
@@ -51,7 +51,7 @@
         <div class="card bg-light">
           <div class="card-body">
             <div class="container" id="collapseDetails" [ngbCollapse]="!isCollapsed2">
-              <app-details-form [seeker]="seeker"></app-details-form>
+              <app-details-form [seeker]="seeker" (formEvent)="changeDetailsData($event)"></app-details-form>
             </div>
             <div class="container" id="collapseDetails" [ngbCollapse]="isCollapsed2">
                   <table class="table table-borderless">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter , OnChanges, SimpleChange  } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { UserService } from '../../service/user.service';
@@ -12,6 +12,7 @@ import { Seeker } from '../../models/seeker';
 export class PersonalFormComponent implements OnInit, OnChanges {
   error: any;
   @Input() seekerData: Seeker;
+  @Output() formEvent = new EventEmitter<Seeker>()
   seeker: FormGroup ;
 
   constructor(private userService: UserService) { }
@@ -31,13 +32,18 @@ export class PersonalFormComponent implements OnInit, OnChanges {
   onClickSubmit(formData)
   {
     let user_id = this.userService.user_id;
-    console.log(formData);
-    console.log(user_id);
     this.userService.updateUser(user_id, formData)
     .subscribe((data) => {
-      console.log("dataaaa",data)
-      this.error = data.message? data : null;
-      console.log("errorrrrrr", this.error);
+      if (data.message)
+      {
+          this.error = data;
+          console.log("errorrrrrr", this.error);
+      }
+      else
+      {
+          console.log("dataaaa",data.data);
+          this.formEvent.emit(data.data)
+      }
 
     });
 

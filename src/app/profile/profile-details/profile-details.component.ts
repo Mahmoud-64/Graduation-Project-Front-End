@@ -41,12 +41,24 @@ export class ProfileDetailsComponent implements OnInit {
       this.seekerService.getSeeker(seekerId)
       .subscribe(seeker => {
         console.log(seeker);
-        
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
       });
-
   }
 
+  changeData(data)
+  {
+    console.log("eventEmitter", data);
+    this.isCollapsed = !this.isCollapsed;
+    this.seeker.name = data.name;
+    this.seeker.email = data.email;
+  }
+
+  changeDetailsData(data)
+  {
+    console.log("eventEmitter2", data);
+    this.isCollapsed2 = !this.isCollapsed2;
+    this.seeker = data;
+  }
 
 }

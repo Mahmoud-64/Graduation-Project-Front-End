@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange  } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { UserService } from '../../service/user.service';
@@ -14,6 +14,7 @@ export class DetailsFormComponent implements OnInit, OnChanges {
   details: FormGroup ;
   error: any;
   @Input() seeker: Seeker;
+  @Output() formEvent = new EventEmitter<Seeker>()
 
   constructor(private seekerService: SeekerService, private userService: UserService) { }
 
@@ -48,14 +49,18 @@ export class DetailsFormComponent implements OnInit, OnChanges {
   onClickSubmit(formData)
   {
     let user_id = this.userService.user_id;
-    console.log(formData);
-    console.log(user_id);
     this.seekerService.updateSeeker(user_id, formData)
     .subscribe((data) => {
-      console.log("dataaaa",data)
-      this.error = data.message? data : null;
-      console.log("errorrrrrr", this.error);
-
+        if (data.message)
+        {
+            this.error = data;
+            console.log("errorrrrrr", this.error);
+        }
+        else
+        {
+            console.log("dataaaa",data.data);
+            this.formEvent.emit(data.data)
+        }
     });
 
   }
