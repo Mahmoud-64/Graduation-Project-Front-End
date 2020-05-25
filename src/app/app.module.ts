@@ -11,11 +11,15 @@ import { ProfileModule } from './profile/profile.module';
 import { JobApplicationModule } from './job-application/job-application.module';
 import { RouterModule } from '@angular/router';
 import { InterviewModule } from './interview/interview.module';
+import { Handel404Component } from './fallback/handel404/handel404.component';
+import { Handel500Component } from './fallback/handel500/handel500.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    Handel404Component,
+    Handel500Component,
   ],
   imports: [
     BrowserModule,

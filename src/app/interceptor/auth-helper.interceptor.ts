@@ -29,22 +29,25 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthHelperInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const _token = localStorage.getItem('access_token');
-    if(_token){
+    if (_token) {
       request = request.clone({
         setHeaders: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer '+_token
+          'Authorization': 'Bearer ' + _token
         }
       });
     }
@@ -55,6 +58,17 @@ export class AuthHelperInterceptor implements HttpInterceptor {
       }
     });
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      tap(),
+      catchError((err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 500)
+            this.router.navigateByUrl('/error500');
+          else if (err.status === 404)
+            this.router.navigateByUrl('/error404');
+        }
+        return of(err);
+      })
+    );
   }
 }
