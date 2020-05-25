@@ -27,7 +27,7 @@ export class SeekerService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      return of(error.error);
+      return of(error);
     };
   }
 
