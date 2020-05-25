@@ -1,3 +1,7 @@
+<div *ngIf="error" class="alert alert-danger">
+    {{error.message}}
+</div>
+
 <form class="text-center" [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
   <table class="table table-borderless">
   <tbody>
@@ -8,6 +12,11 @@
           name = "name"
           placeholder = "name"
           formControlName = "name">
+          <div *ngIf="error && error.errors.name" class="text-danger small">
+            <div *ngFor="let name of error.errors.name">
+              {{name}}
+            </div>
+          </div>
       </td>
     </tr>
     <tr>
@@ -17,6 +26,11 @@
           name = "email"
           placeholder = "email"
           formControlName = "email">
+          <div *ngIf="error && error.errors.email" class="text-danger small">
+            <div *ngFor="let email of error.errors.email">
+              {{email}}
+            </div>
+          </div>
       </td>
     </tr>
   </tbody>
