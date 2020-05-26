@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, pipe, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
+import { Role } from '../models/role.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  private user: User;
   public subject;
   public user_id: Number;
 
@@ -27,6 +28,7 @@ export class UserService {
   login(user: User): Observable<any>{
     user.device_name="anything";
     return this.http.post("/api/login",JSON.stringify(user)).pipe(tap(ev => {
+      this.user = ev;
       const _token = ev.access_token;
       localStorage.setItem('access_token', _token);
       this.subject.next(true);
@@ -53,11 +55,22 @@ export class UserService {
     return false;
   }
 
-  getLoggedInUser(){
+  getLoggedInUser(): Observable<any>{
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
+      this.user = val["data"];
       this.user_id = val['id'];
-      return val;
+      return val["data"];
     }));
+  }
+
+  hasRole()
+  {
+    if(this.loggedIn())
+    {
+      if (this.user.role == "admin") return Role.admin;
+      else if (this.user.role == "employee") return Role.employee;
+      else if (this.user.role == "seeker") return Role.seeker;
+    }
   }
 
   resetPassword(passowrds){

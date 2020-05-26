@@ -4,5 +4,6 @@ export interface User {
     password?: String,
     password_confirmation?: String,
     phone?: String,
+    role?: any
     [key: string]: any
 }
