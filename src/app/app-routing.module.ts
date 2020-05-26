@@ -14,6 +14,10 @@ import { InterviewDetailsComponent } from './interview/interview-details/intervi
 import { Handel404Component } from './fallback/handel404/handel404.component';
 import { Handel500Component } from './fallback/handel500/handel500.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
+import { AuthGuard } from './auth.guard';
+import { UserService } from './service/user.service';
+import { Role } from './models/role.enum';
+
 
 const routes: Routes = [
   {
@@ -23,6 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
+    data: {
+      role: Role.superadmin,
+    },
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
   },
@@ -33,6 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./profile/profile.module').then((m) => m.ProfileModule),
   },
@@ -70,6 +80,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuard,
+    UserService
+  ]
 })
 export class AppRoutingModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { UserService } from './service/user.service';
+import { Role } from './models/role.enum';
 
 @Component({
   selector: 'app-root',
@@ -36,5 +37,12 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
+  isSuperadmin()
+  {
+    console.log(this.userService.hasRole());
+    return this.userService.hasRole()==Role.superadmin;
+  }
+
 
 }

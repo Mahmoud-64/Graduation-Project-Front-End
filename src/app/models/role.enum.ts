@@ -1,5 +1,5 @@
 export enum Role {
-  admin,
+  superadmin=1,
   employee,
   seeker
 }

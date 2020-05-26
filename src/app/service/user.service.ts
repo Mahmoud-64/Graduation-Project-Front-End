@@ -39,6 +39,7 @@ export class UserService {
   logout(){
     this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
+    this.user = null;
     this.subject.next(false);
   }
 
@@ -60,6 +61,8 @@ export class UserService {
   getLoggedInUser(): Observable<any>{
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
       this.user = val["data"];
+        console.log("mmmmm", this.user.role);
+
       this.user_id = val["data"]['id'];
       return val["data"];
     }));
@@ -67,12 +70,13 @@ export class UserService {
 
   hasRole()
   {
-    if(this.loggedIn())
+    if(this.loggedIn() && this.user)
     {
-      if (this.user.role == "admin") return Role.admin;
-      else if (this.user.role == "employee") return Role.employee;
-      else if (this.user.role == "seeker") return Role.seeker;
+      if (this.user.role == "super-admin") return (Role.superadmin);
+      else if (this.user.role == "employee") return (Role.employee);
+      else if (this.user.role == "seeker") return (Role.seeker);
     }
+    return 0;
   }
 
   resetPassword(passowrds){
