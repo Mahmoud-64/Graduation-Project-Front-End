@@ -41,7 +41,7 @@ export class AuthHelperInterceptor implements HttpInterceptor {
     });
 
     return next.handle(request).pipe(
-      retry(2),
+      retry(1),
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 500)

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, pipe, of } from 'rxjs';
+import { Observable, Subject, pipe, of, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Role } from '../models/role.enum';
@@ -22,7 +22,9 @@ export class UserService {
   }
 
   register(user: User): Observable<any>{
-      return this.http.post("/api/register",user);
+      return this.http.post("/api/register",user).pipe(
+        catchError(this.handleError2<User[]>('register', []))
+      );
   }
 
   login(user: User): Observable<any>{
@@ -79,7 +81,7 @@ export class UserService {
 
   private handleError2<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      return of(error);
+      return throwError(error);
     };
   }
 
