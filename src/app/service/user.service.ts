@@ -60,7 +60,7 @@ export class UserService {
   getLoggedInUser(): Observable<any>{
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
       this.user = val["data"];
-      this.user_id = val['id'];
+      this.user_id = val["data"]['id'];
       return val["data"];
     }));
   }

@@ -34,18 +34,14 @@ export class PersonalFormComponent implements OnInit, OnChanges {
     let user_id = this.userService.user_id;
     this.userService.updateUser(user_id, formData)
     .subscribe((data) => {
-      if (data.message)
-      {
-          this.error = data;
-          console.log("errorrrrrr", this.error);
-      }
-      else
-      {
-          console.log("dataaaa",data.data);
-          this.formEvent.emit(data.data)
-      }
-
+        console.log("dataaaa",data);
+        this.formEvent.emit(data)
+    },
+    err=>{
+        this.error = err;
+        console.log("errorrrrrr", this.error);
     });
+
 
   }
 }

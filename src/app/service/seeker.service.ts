@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
 // import { Role } from '../models/role.enum';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -30,7 +30,7 @@ export class SeekerService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      return of(error);
+      return throwError(error);
     };
   }
 
