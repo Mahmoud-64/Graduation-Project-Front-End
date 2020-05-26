@@ -16,7 +16,7 @@ export class UserService {
     this.subject = new Subject;
   }
 
-  getUsers(){
+  getUsers(): Observable<any>{
     return this.http.get("/api/users");
   }
 
