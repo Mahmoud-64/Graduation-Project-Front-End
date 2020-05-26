@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate, CanLoad {
 
       const role = route.data.role as Role;
       if (role && !this.userService.hasRole()) {
-          this.router.navigateByUrl('/error404');
+          this.router.navigateByUrl('/error403');
           return false;
       }
     return true;

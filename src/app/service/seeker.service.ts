@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
-// import { Role } from '../models/role.enum';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -17,8 +16,6 @@ export class SeekerService {
     return this.http.get<Seeker>(this.seekersUrl);
   }
   getSeeker(seekerId): Observable<Seeker>{
-    // console.log("role=======", Role[Role.seeker]);
-
     return this.http.get<Seeker>(this.seekersUrl+seekerId);
   }
   updateSeeker(seekerId, seeker: Seeker): Observable<any> {
