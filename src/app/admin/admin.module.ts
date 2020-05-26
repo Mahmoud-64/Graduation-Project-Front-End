@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
+import { SeekersComponent } from './dashboard/seekers/seekers.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent],
   imports: [
     CommonModule,
     AdminRoutingModule

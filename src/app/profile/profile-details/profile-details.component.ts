@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
 import { Seeker } from '../../models/seeker';
 
@@ -9,7 +9,7 @@ import { Seeker } from '../../models/seeker';
   styleUrls: ['./profile-details.component.css']
 })
 export class ProfileDetailsComponent implements OnInit {
-    seeker: Seeker =
+  seeker: Seeker =
     {
       name: "",
       email: "",
@@ -24,21 +24,26 @@ export class ProfileDetailsComponent implements OnInit {
       expectedSalary: 0,
       cv: ""
     };
-    contacts: [];
+  contacts: [];
 
-   isCollapsed = true;
-   isCollapsed2 = false;
-  constructor(private seekerService: SeekerService, private route: ActivatedRoute) { }
+  isCollapsed = true;
+  isCollapsed2 = false;
+  constructor(private seekerService: SeekerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
+      if (this.router.url.includes('/profile/edit')) {
+        this.isCollapsed = false;
+        this.isCollapsed2 = true;
+      }
+      console.log("id==",+params.get('profileId'));
+
       this.getSeeker(+params.get('profileId'));
     });
   }
 
-  getSeeker(seekerId): void
-  {
-      this.seekerService.getSeeker(seekerId)
+  getSeeker(seekerId): void {
+    this.seekerService.getSeeker(seekerId)
       .subscribe(seeker => {
         console.log(seeker);
         this.seeker = seeker.data;

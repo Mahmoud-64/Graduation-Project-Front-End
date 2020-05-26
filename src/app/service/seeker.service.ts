@@ -24,6 +24,9 @@ export class SeekerService {
       catchError(this.handleError<Seeker[]>('updateSeeker', []))
     );
   }
+  deleteSeeker(seekerId): Observable<Seeker>{
+    return this.http.delete<Seeker>(this.seekersUrl+seekerId);
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
