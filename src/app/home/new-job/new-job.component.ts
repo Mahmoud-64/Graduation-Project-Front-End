@@ -45,7 +45,6 @@ export class NewJobComponent implements OnInit {
 
 
   addRequire() {
-    console.log("addRequire");
     this.requirements().push(this.newRequire());
   }
   removeRequire(i: number) {
@@ -53,7 +52,6 @@ export class NewJobComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("submit");
     console.log(this.newJobForm.value);
     this.jobService.addNewJob(this.newJobForm.value).subscribe(
       result => {

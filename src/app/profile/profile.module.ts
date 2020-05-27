@@ -13,10 +13,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PersonalFormComponent } from './personal-form/personal-form.component';
 import { DetailsFormComponent } from './details-form/details-form.component';
+import { MobileModalComponent } from './mobile-modal/mobile-modal.component';
 
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent, MobileModalComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

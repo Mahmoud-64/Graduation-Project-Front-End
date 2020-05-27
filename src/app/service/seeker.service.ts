@@ -9,6 +9,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class SeekerService {
   private seekersUrl = '/api/seekers/';  // URL to web api
+  private VerifyPhoneUrl = '/api/checkphone';
   constructor(private http: HttpClient) { }
 
 
@@ -26,6 +27,10 @@ export class SeekerService {
   }
   deleteSeeker(seekerId): Observable<Seeker>{
     return this.http.delete<Seeker>(this.seekersUrl+seekerId);
+  }
+  verifyPhone(data)
+  {
+    return this.http.post<any>(this.VerifyPhoneUrl,data)
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
