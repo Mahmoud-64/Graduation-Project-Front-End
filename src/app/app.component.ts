@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { UserService } from './service/user.service';
 import { Role } from './models/role.enum';
+import { tap, map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
       this.userService.getLoggedInUser().subscribe(user => {
         this.userName = user['name'];
         this.profileId = user['id'];
-        this.isSuperadmin = this.userService.hasRole()==Role.superadmin;
+        this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
+        console.log("is superadmin", this.isSuperadmin);
         this.loggedIn = this.userService.loggedIn();
       });
     }
@@ -35,7 +37,8 @@ export class AppComponent implements OnInit {
           this.userService.getLoggedInUser().subscribe(user => {
             this.userName = user['name'];
             this.profileId = user['id'];
-            this.isSuperadmin = this.userService.hasRole()==Role.superadmin;
+            this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
+            console.log("is superadmin", this.isSuperadmin);
             this.loggedIn = this.userService.loggedIn();
           });
         }

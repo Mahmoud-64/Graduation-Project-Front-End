@@ -10,6 +10,7 @@ import { Role } from '../models/role.enum';
 })
 export class UserService {
   private user: User;
+  private loggedInFlag: Boolean= false;
   public subject;
   public user_id: Number;
 
@@ -61,21 +62,35 @@ export class UserService {
   getLoggedInUser(): Observable<any>{
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
       this.user = val["data"];
-        console.log("mmmmm", this.user.role);
+        console.log("mmmmm", val["data"].role);
       this.user_id = val["data"]['id'];
       return val["data"];
     }));
   }
 
-  hasRole()
+  getUserRole()
   {
-    if(this.loggedIn() && this.user)
-    {
-      if (this.user.role == "super-admin") return (Role.superadmin);
-      else if (this.user.role == "employee") return (Role.employee);
-      else if (this.user.role == "seeker") return (Role.seeker);
-    }
-    return 0;
+      if(this.loggedIn() && this.user)
+      {
+        if (this.user.role == "super-admin") return (Role.superadmin);
+        else if (this.user.role == "employee") return (Role.employee);
+        else if (this.user.role == "seeker") return (Role.seeker);
+      }
+      return (0);
+  }
+
+  hasRole(): Observable<Number>
+  {
+    return this.getLoggedInUser().pipe(map(user=>{
+      console.log("check logged in ", this.loggedIn() , user);
+      if(this.loggedIn() && user)
+      {
+        if (user.role == "super-admin") return (Role.superadmin);
+        else if (user.role == "employee") return (Role.employee);
+        else if (user.role == "seeker") return (Role.seeker);
+      }
+      return (0);
+    }))
   }
 
   resetPassword(passowrds){
