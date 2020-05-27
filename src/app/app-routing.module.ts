@@ -27,8 +27,8 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
     canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       role: Role.superadmin,
     },
