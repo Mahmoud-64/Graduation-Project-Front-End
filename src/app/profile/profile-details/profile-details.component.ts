@@ -25,7 +25,7 @@ export class ProfileDetailsComponent implements OnInit {
       currentSalary: 0,
       expectedSalary: 0,
       cv: "",
-      isVerified:false
+      isVerified:0
     };
   contacts: [];
 

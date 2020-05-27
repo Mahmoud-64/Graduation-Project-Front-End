@@ -21,7 +21,7 @@ import { Role } from './models/role.enum';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'jobs',
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomeModule),
   },

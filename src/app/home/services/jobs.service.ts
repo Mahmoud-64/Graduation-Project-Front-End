@@ -13,8 +13,11 @@ export class JobsService {
 
   constructor(private http:HttpClient) { }
 
-  getAllJobs(){  
-    return this.http.get<any>(this.getAllJobsUrl);
+  getAllJobs(filterParams){  
+    // return this.http.get<any>(this.getAllJobsUrl+'?page='+page);
+    return this.http.get<any>(this.getAllJobsUrl ,{
+      params: filterParams
+    });
   }
 
   getSingleJob(id:string){
