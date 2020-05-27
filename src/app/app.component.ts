@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   loggedIn = false;
   userName: String;
   profileId: String;
+  isSuperadmin: Boolean;
   constructor(public userService: UserService) { }
   ngOnInit() {
     this.loggedIn = this.userService.loggedIn();
@@ -20,6 +21,8 @@ export class AppComponent implements OnInit {
       this.userService.getLoggedInUser().subscribe(user => {
         this.userName = user['name'];
         this.profileId = user['id'];
+        this.isSuperadmin = this.userService.hasRole()==Role.superadmin;
+        this.loggedIn = this.userService.loggedIn();
       });
     }
     this.userService.subject.subscribe({
@@ -29,20 +32,17 @@ export class AppComponent implements OnInit {
             this.loggedIn = false;
           });
         } else {
-          setTimeout(() => {
-            this.loggedIn = true;
+          this.userService.getLoggedInUser().subscribe(user => {
+            this.userName = user['name'];
+            this.profileId = user['id'];
+            this.isSuperadmin = this.userService.hasRole()==Role.superadmin;
+            this.loggedIn = this.userService.loggedIn();
           });
-          this.userService.getLoggedInUser().subscribe(user => this.userName = user['name']);
         }
       }
     });
   }
 
-  isSuperadmin()
-  {
-    console.log(this.userService.hasRole());
-    return this.userService.hasRole()==Role.superadmin;
-  }
 
 
 }

@@ -62,7 +62,6 @@ export class UserService {
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
       this.user = val["data"];
         console.log("mmmmm", this.user.role);
-
       this.user_id = val["data"]['id'];
       return val["data"];
     }));
