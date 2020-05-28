@@ -11,37 +11,61 @@ export class JobListComponent implements OnInit {
   jobs = [];
   filterParams = {
     page: 1,
-    available:1,
+    available: 1,
   }
+  isDataLoaded: boolean = false;
   lastPage: number;
   firstElementId;
   constructor(
     private jobService: JobsService,
     private router: Router
-  ) { }
+  ) {
+    this.subscribeJobSubject();
+  }
 
   ngOnInit(): void {
     this.jobService.getAllJobs(this.filterParams).subscribe(
       result => {
-        console.log(result);
-        console.log(this.filterParams);
-
+        this.jobs = result.data;
+        this.isDataLoaded = true;
         this.filterParams.page = result.meta.current_page;
         this.lastPage = result.meta.last_page;
-        this.jobs = result.data;
-        this.firstElementId = result.data[0].id;
-        this.router.navigateByUrl('/jobs/' + this.firstElementId);
-        console.log('first id ' + this.firstElementId);
-
-        console.log(this.jobs);
+        if (result.data.length > 0) {
+          this.renderFirstJob(result.data);
+        }
+        else {
+          this.router.navigateByUrl('/jobs')
+        }
       },
       error => {
-        console.log("error");
         console.log(error);
-
       }
     )
+
   }
+
+  subscribeJobSubject() {
+    this.jobService.jobSubject.subscribe(
+      next => {
+
+        console.log("subject hit", next);
+        this.filterParams = { ...this.filterParams, ...next };
+
+        console.log('after merg', this.filterParams);
+        this.ngOnInit();
+
+      }
+    );
+  }
+
+  changeFilterParams() {
+  }
+  renderFirstJob(jobs) {
+    this.firstElementId = jobs[0].id;
+    this.router.navigateByUrl('/jobs/' + this.firstElementId);
+    console.log('first id ' + this.firstElementId);
+  }
+
   nextPage() {
     this.filterParams.page += 1
     this.ngOnInit();
@@ -56,8 +80,8 @@ export class JobListComponent implements OnInit {
   }
 
   wantPage(n) {
-    if (n>0 && this.filterParams.page) {
-      this.filterParams.page=n;
+    if (n > 0 && this.filterParams.page) {
+      this.filterParams.page = n;
       this.ngOnInit();
     }
   }
