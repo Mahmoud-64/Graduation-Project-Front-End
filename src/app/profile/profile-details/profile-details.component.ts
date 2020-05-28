@@ -67,7 +67,6 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   changeDetailsData(data) {
-    console.log("eventEmitter2", data);
     if (!this.router.url.includes('/profile/edit')) {
       this.isCollapsed2 = !this.isCollapsed2;
     }
@@ -77,7 +76,6 @@ export class ProfileDetailsComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
-
   }
 
 }

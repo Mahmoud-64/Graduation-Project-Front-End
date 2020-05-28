@@ -21,7 +21,7 @@ export class SeekerService {
   }
   updateSeeker(seekerId, seeker): Observable<any> {
     console.log(seeker);
-    
+
     return this.http.put(this.seekersUrl+seekerId, seeker)
     .pipe(
       catchError(this.handleError<Seeker[]>('updateSeeker', []))
@@ -39,7 +39,11 @@ export class SeekerService {
     xhr.onreadystatechange = function() {
       console.log('readyState', xhr.readyState);
       if (xhr.readyState === 4) {
-        callback(xhr.response);
+        if (xhr.status === 200) {
+          callback(JSON.parse(xhr.response));
+        } else {
+          callback({errors: "you must upload file of type pdf"});
+        }
       }
     }
     xhr.open('POST', "http://localhost:8000/api/seekers/uploadcv/"+changed_user_id, true);

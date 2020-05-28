@@ -14,11 +14,11 @@
               Phone is required.
             </div>
           </div>
-          <!-- <div *ngIf="error && error.errors.phone" class="text-danger small">
+          <div *ngIf="error && error.errors.phone" class="text-danger small">
             <div *ngFor="let phone of error.errors.phone">
               {{phone}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
@@ -37,31 +37,31 @@
         <th scope="col">Address</th>
         <td>
           <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
-          <!-- <div *ngIf="error && error.errors.address" class="text-danger small">
+          <div *ngIf="error && error.errors.address" class="text-danger small">
           *{{error.errors.address}}
-        </div> -->
+        </div>
         </td>
       </tr>
       <tr>
         <th scope="col">City</th>
         <td>
           <input type="text" class="form-control" name="city" placeholder="city" formControlName="city" required>
-          <!-- <div *ngIf="error && error.errors.city" class="text-danger small">
+          <div *ngIf="error && error.errors.city" class="text-danger small">
             <div *ngFor="let city of error.errors.city">
               {{city}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
         <th scope="col">Seniority</th>
         <td>
           <input type="text" class="form-control" name="seniority" placeholder="seniority" formControlName="seniority">
-          <!-- <div *ngIf="error && error.errors.seniority" class="text-danger small">
+          <div *ngIf="error && error.errors.seniority" class="text-danger small">
             <div *ngFor="let seniority of error.errors.seniority">
               {{seniority}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
@@ -69,11 +69,11 @@
         <td>
           <input type="number" class="form-control" name="expYears" placeholder="Years of experience"
             formControlName="expYears">
-          <!-- <div *ngIf="error && error.errors.expYears" class="text-danger small">
+          <div *ngIf="error && error.errors.expYears" class="text-danger small">
             <div *ngFor="let expYears of error.errors.expYears">
               {{expYears}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
@@ -81,11 +81,11 @@
         <td>
           <input type="text" class="form-control" name="currentJob" placeholder="Current Job"
             formControlName="currentJob">
-          <!-- <div *ngIf="error && error.errors.currentJob" class="text-danger small">
+          <div *ngIf="error && error.errors.currentJob" class="text-danger small">
             <div *ngFor="let currentJob of error.errors.currentJob">
               {{currentJob}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
@@ -93,11 +93,11 @@
         <td>
           <input type="number" class="form-control" name="currentSalary" placeholder="Current Salary"
             formControlName="currentSalary">
-          <!-- <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
+          <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
             <div *ngFor="let currentSalary of error.errors.currentSalary">
               {{currentSalary}}
             </div>
-          </div> -->
+          </div>
         </td>
       </tr>
       <tr>
@@ -105,26 +105,30 @@
         <td>
           <input type="number" class="form-control" name="expectedSalary" placeholder="Expected Salary"
             formControlName="expectedSalary">
-          <!-- <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
+          <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
             <div *ngFor="let expectedSalary of error.errors.expectedSalary">
               {{expectedSalary}}
             </div>
-          </div> -->
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
-          <div *ngIf="error && error.errors.cv" class="text-danger small">
-            <div *ngFor="let cv of error.errors.cv">
-              {{cv}}
-            </div>
           </div>
-          <button class="btn btn-warning text-white small" (click)="uploadCV()">Upload CV</button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <input class="btn btn-success" type="submit" value="Edit">
+</form>
+
+
+
+<form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
+    <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
+    <div *ngIf="cvError" class="text-danger small">
+        {{cvError}}
+    </div>
+    <div *ngIf="error && error.errors.cv" class="text-danger small">
+      <div *ngFor="let cv of error.errors.cv">
+        {{cv}}
+      </div>
+    </div>
+  <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
 </form>

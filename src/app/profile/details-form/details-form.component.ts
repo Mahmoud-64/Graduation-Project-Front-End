@@ -12,20 +12,14 @@ import { Seeker } from '../../models/seeker';
   styleUrls: ['./details-form.component.css']
 })
 export class DetailsFormComponent implements OnInit, OnChanges {
-  details: FormGroup;
+
   error: any;
+  cvError: any;
   @Input() seeker: Seeker;
   @Output() formEvent = new EventEmitter<Seeker>()
   user_id;
   selfile =null;
-
-  constructor(private seekerService: SeekerService, private userService: UserService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router) { }
-
-  ngOnInit(): void {
-    this.details = this.fb.group({
+    details: FormGroup = this.fb.group({
       phone: ['', Validators.required],
       address: [''],
       city: [''],
@@ -37,6 +31,13 @@ export class DetailsFormComponent implements OnInit, OnChanges {
       cv: [''],
       contacts: this.fb.array([]),
     });
+
+  constructor(private seekerService: SeekerService, private userService: UserService,
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router) { }
+
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.user_id = +params.get('profileId');
     })
@@ -52,34 +53,46 @@ export class DetailsFormComponent implements OnInit, OnChanges {
   }
 
   onFileSelected(event) {
-    if(event.target.files && event.target.files.length > 0) {
-      this.selfile = event.target.files[0];
+    let file = event.target.files;
+    if(file && file.length > 0) {
+      this.selfile = file[0];
     }
+    this.cvError = "";
   }
 
   uploadCV() {
-    this.seekerService.updateCv(this.selfile, this.user_id, (result)=>{
-      console.log("response", result);
-    });
+    if(this.selfile){
+      this.seekerService.updateCv(this.selfile, this.user_id, (result)=>{
+        if (result.errors) {
+          this.cvError = result.errors;
+        }
+        else{
+          this.seeker = result["data"];
+          this.formEvent.emit(this.seeker);
+        }
+      });
+    }
+    else {
+      this.cvError = "You must choose file to upload";
+    }
   }
 
   onClickSubmit(formData) {
-    // console.log("data entered", this.contacts.controls);
-    
     this.seekerService.updateSeeker(this.user_id, this.details.value)
     .subscribe(result=>{
       this.seeker = result.data;
+      this.error = "";
       this.formEvent.emit(this.seeker);
     },
     err=>{
-      console.log("error happened", err);
+      this.error = err;
     });
   }
 
   addContact(){
     this.contacts.push(this.newContact());
   }
-  
+
   newContact(): FormGroup {
     return this.fb.group({
       contact_types_id: '',
