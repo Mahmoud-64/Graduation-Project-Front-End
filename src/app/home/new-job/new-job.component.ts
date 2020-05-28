@@ -15,6 +15,7 @@ export class NewJobComponent implements OnInit {
   //   "years_exp": "",
   //   "requirements": []
   // }
+  jobServerError = "";
   constructor(
     private fB: FormBuilder,
     private jobService: JobsService
@@ -26,21 +27,34 @@ export class NewJobComponent implements OnInit {
   newJobForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
+      Validators.maxLength(30),
+      Validators.minLength(5),
     ]),
     description: new FormControl('', [
       Validators.required,
+      Validators.maxLength(150),
+      Validators.minLength(10),
     ]),
     seniority: new FormControl('', [
       Validators.required,
+      Validators.maxLength(15),
+      Validators.minLength(5),
     ]),
     years_exp: new FormControl('', [
       Validators.required,
+      Validators.min(0),
+      Validators.max(25),
+    ]),
+    available: new FormControl('', [
+
     ]),
     requirements: this.fB.array([])
   })
 
   newRequire() {
-    return this.fB.control('');
+    return this.fB.control('',
+      Validators.required,
+    );
   }
 
 
@@ -75,6 +89,9 @@ export class NewJobComponent implements OnInit {
   }
   public get years_exp() {
     return this.newJobForm.get('years_exp');
+  }
+  public get available() {
+    return this.newJobForm.get('available');
   }
 
   requirements(): FormArray {

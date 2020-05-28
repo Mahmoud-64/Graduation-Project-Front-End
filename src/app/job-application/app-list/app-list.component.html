@@ -1,2 +1,9 @@
-<app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]" [applicationData]="application"
-></app-item>
+<div *ngIf="applications.length > 0;else notFound">
+    <app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]"
+        [applicationData]="application"></app-item>
+</div>
+
+
+<ng-template #notFound>
+    <h3 class="alert alert-danger">Sorry you dont have any application yet</h3>
+</ng-template>
