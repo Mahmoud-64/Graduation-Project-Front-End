@@ -20,6 +20,8 @@ export class SeekerService {
     return this.http.get<Seeker>(this.seekersUrl+seekerId);
   }
   updateSeeker(seekerId, seeker): Observable<any> {
+    console.log(seeker);
+    
     return this.http.put(this.seekersUrl+seekerId, seeker)
     .pipe(
       catchError(this.handleError<Seeker[]>('updateSeeker', []))

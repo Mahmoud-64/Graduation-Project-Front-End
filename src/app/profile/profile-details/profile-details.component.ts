@@ -53,14 +53,12 @@ export class ProfileDetailsComponent implements OnInit {
   getSeeker(seekerId): void {
     this.seekerService.getSeeker(seekerId)
       .subscribe(seeker => {
-        console.log(seeker);
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
       });
   }
 
   changeData(data) {
-    console.log("eventEmitter", data);
     if (!this.router.url.includes('/profile/edit')) {
       this.isCollapsed = !this.isCollapsed;
     }
