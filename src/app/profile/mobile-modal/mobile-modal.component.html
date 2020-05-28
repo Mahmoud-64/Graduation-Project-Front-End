@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h4 class="modal-title">Verify mobile Number</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>plz enter code that send to your phone  </p>
+    <p>{{seeker_phone}}</p>
+    <form [formGroup]="VerifyPhoneForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="verifyError">
+            <small class="text-danger">{{verifyError}}</small>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-3">
+                    <label for="code">Code</label>
+                </div>
+                <div class="col-9">
+                    <input formControlName="code" type="text" class="form-control" id="code"  >
+                    <div *ngIf="code.touched && code.invalid">
+                        <small *ngIf="code.errors.required" class="text-danger">code is required<br></small>
+                        <small *ngIf="code.errors.maxlength || code.errors.minlength" class="text-danger">must be 6 characters<br></small>
+                    </div>
+                </div>
+            </div>           
+        </div>
+        <button type="submit" [disabled]="VerifyPhoneForm.invalid" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

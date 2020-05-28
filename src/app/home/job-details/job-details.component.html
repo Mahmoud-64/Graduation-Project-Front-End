@@ -1,4 +1,7 @@
-<div class="bg-info p-3">
+<div class="single-app p-3">
+    <div class="alert alert-danger" *ngIf="applyError">
+        <small >Sorry u already apply for this job</small>
+    </div>
     <h5>{{job.title}}</h5>
     <p>{{job.description}}</p>
     <p>{{job.seniority}}</p>
@@ -9,7 +12,8 @@
         </ul>
     </div>
     <div>
-        <button (click)="applyJob()" class="btn btn-primary">Apply to job </button>
+        <button *ngIf="canApply" (click)="applyJob()" class="btn btn-primary">Apply to job </button>
+        
     </div>
    
 

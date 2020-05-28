@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
 import { Seeker } from '../../models/seeker';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
 
 @Component({
   selector: 'app-profile-details',
@@ -23,13 +25,18 @@ export class ProfileDetailsComponent implements OnInit {
       currentJob: "",
       currentSalary: 0,
       expectedSalary: 0,
-      cv: ""
+      cv: "",
+      isVerified:0
     };
   contacts: [];
 
   isCollapsed = true;
   isCollapsed2 = false;
-  constructor(private seekerService: SeekerService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private seekerService: SeekerService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -67,6 +74,12 @@ export class ProfileDetailsComponent implements OnInit {
       this.isCollapsed2 = !this.isCollapsed2;
     }
     this.seeker = data;
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(MobileModalComponent);
+    modalRef.componentInstance.seeker_phone = this.seeker.phone;
+
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-job-details',
@@ -10,25 +11,33 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class JobDetailsComponent implements OnInit {
 
   job = {
-    "id":"",
+    "id": "",
     "title": "",
-    "description":"",
-    "seniority":"",
-    "requirements" : ""
-  } ;
+    "description": "",
+    "seniority": "",
+    "requirements": ""
+  };
+  user = {};
+  logged: Boolean;
+  canApply: Boolean = true;
+  applyError;
   constructor(
-    private jobService:JobsService,
+    private jobService: JobsService,
+    private userService: UserService,
     private route: ActivatedRoute,
-    private router:Router
-    ) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    // let jobId = this.route.snapshot.params.id;
+    this.logged = this.userService.loggedIn();
+
     this.route.params.subscribe(routeParams => {
       this.jobService.getSingleJob(routeParams.id).subscribe(
         result => {
           console.log(result);
-          this.job=result.data;
+          this.job = result.data;
+          this.canApply = true;
+          this.applyError = '';
 
         },
         error => {
@@ -37,24 +46,27 @@ export class JobDetailsComponent implements OnInit {
         }
       )
     });
-    
+
   }
-  applyJob()
-  {
+  applyJob() {
     console.log(this.job.id);
-    this.jobService.applyJob(this.job.id).subscribe(
-      result => {
-        console.log(result);
-        this.router.navigateByUrl('/applications/'+result.data.id)
-        
-        
-      },
-      error => {
-        console.log(error);
-        
-      }
-    )
-    console.log("aftersend");
+    if (this.logged) {
+      this.jobService.applyJob(this.job.id).subscribe(
+        result => {
+          console.log(result);
+          this.router.navigateByUrl('/applications/' + result.data.id)
+        },
+        error => {
+          console.log(error);
+          this.applyError = error;
+          this.canApply = false;
+        }
+      )
+      console.log("aftersend");
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+
   }
 
 }

@@ -16,65 +16,84 @@ import { Handel500Component } from './fallback/handel500/handel500.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
 import { AuthGuard } from './auth.guard';
 import { UserService } from './service/user.service';
+import { UserResolverService } from './resolvers/user-resolver.service';
 import { Role } from './models/role.enum';
+import { BaseComponent } from './base/base.component';
 
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomeModule),
+    path: '',
+    redirectTo: 'jobs',
+    pathMatch: 'full'
   },
   {
-    path: 'admin',
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
-    data: {
-      role: Role.superadmin,
-    },
-    loadChildren: () =>
-      import('./admin/admin.module').then((m) => m.AdminModule),
-  },
-  {
-    path: 'applications',
-    loadChildren: () =>
-      import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
-  },
-  {
-    path: 'profile',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./profile/profile.module').then((m) => m.ProfileModule),
-  },
-  { path: 'signup', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'resetpassword', component: ResetPasswordComponent },
-
-  {
-    path: 'interview', component: InterviewComponent,
+    path: '',
+    component: BaseComponent,
+    resolve: { authUser: UserResolverService },
     children: [
       {
-        path: 'add',
-        component: InterviewFormComponent
+        path: 'jobs',
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'show/:id',
-        component: InterviewItemComponent
+        path: 'admin',
+        // canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
+        data: {
+          role: Role.superadmin,
+        },
+        loadChildren: () =>
+          import('./admin/admin.module').then((m) => m.AdminModule),
       },
       {
-        path: 'list',
-        component: InterviewListComponent
+        path: 'applications',
+        loadChildren: () =>
+          import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
       },
       {
-        path: 'details',
-        component: InterviewDetailsComponent
-      }
+        path: 'profile',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+      },
+      { path: 'signup', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'logout', component: LogoutComponent },
+      { path: 'resetpassword', component: ResetPasswordComponent },
+
+      {
+        path: 'interview', component: InterviewComponent,
+        children: [
+          {
+            path: 'add',
+            component: InterviewFormComponent
+          },
+          {
+            path: 'show/:id',
+            component: InterviewItemComponent
+          },
+          {
+            path: 'list',
+            component: InterviewListComponent
+          },
+          {
+            path: 'details',
+            component: InterviewDetailsComponent
+          }
+        ]
+      },
+      { path: 'error404', component: Handel404Component },
+      { path: 'error500', component: Handel500Component },
+      { path: 'error403', component: Handel403Component },
+      {
+        path: '**',
+        redirectTo: 'jobs',
+        pathMatch: 'full'
+      },
     ]
   },
-  { path: 'error404', component: Handel404Component },
-  { path: 'error500', component: Handel500Component },
-  { path: 'error403', component: Handel403Component },
 
 ];
 

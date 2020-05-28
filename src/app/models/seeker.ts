@@ -11,6 +11,6 @@ export interface Seeker extends User
     currentSalary?: Number,
     expectedSalary?: Number,
     cv?: String,
-    cvFile?: any,
+    isVerified?: Number,
     contacts?: [],
 }
