@@ -20,11 +20,11 @@
               Phone is required.
             </div>
           </div>
-          <div *ngIf="error && error.errors.phone" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.phone" class="text-danger small">
             <div *ngFor="let phone of error.errors.phone">
               {{phone}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -35,9 +35,9 @@
           name = "address"
           placeholder = "address"
           formControlName = "address">
-        <div *ngIf="error && error.errors.address" class="text-danger small">
+        <!-- <div *ngIf="error && error.errors.address" class="text-danger small">
           *{{error.errors.address}}
-        </div>
+        </div> -->
       </td>
     </tr>
     <tr>
@@ -48,11 +48,11 @@
           name = "city"
           placeholder = "city"
           formControlName = "city" required>
-          <div *ngIf="error && error.errors.city" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.city" class="text-danger small">
             <div *ngFor="let city of error.errors.city">
               {{city}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -63,11 +63,11 @@
           name = "seniority"
           placeholder = "seniority"
           formControlName = "seniority">
-          <div *ngIf="error && error.errors.seniority" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.seniority" class="text-danger small">
             <div *ngFor="let seniority of error.errors.seniority">
               {{seniority}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -78,11 +78,11 @@
           name = "expYears"
           placeholder = "Years of experience"
           formControlName = "expYears">
-          <div *ngIf="error && error.errors.expYears" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.expYears" class="text-danger small">
             <div *ngFor="let expYears of error.errors.expYears">
               {{expYears}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -93,11 +93,11 @@
           name = "currentJob"
           placeholder = "Current Job"
           formControlName = "currentJob">
-          <div *ngIf="error && error.errors.currentJob" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.currentJob" class="text-danger small">
             <div *ngFor="let currentJob of error.errors.currentJob">
               {{currentJob}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -108,11 +108,11 @@
           name = "currentSalary"
           placeholder = "Current Salary"
           formControlName = "currentSalary">
-          <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
             <div *ngFor="let currentSalary of error.errors.currentSalary">
               {{currentSalary}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -123,11 +123,11 @@
           name = "expectedSalary"
           placeholder = "Expected Salary"
           formControlName = "expectedSalary">
-          <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
+          <!-- <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
             <div *ngFor="let expectedSalary of error.errors.expectedSalary">
               {{expectedSalary}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
     <tr>
@@ -135,13 +135,14 @@
       <td>
         <input type = "file"
           name = "cv"
+          #fileupload
           placeholder = "CV"
-          formControlName = "cv">
-          <div *ngIf="error && error.errors.cv" class="text-danger small">
+          (change)="onFileSelected($event)">
+          <!-- <div *ngIf="error && error.errors.cv" class="text-danger small">
             <div *ngFor="let cv of error.errors.cv">
               {{cv}}
             </div>
-          </div>
+          </div> -->
       </td>
     </tr>
   </tbody>

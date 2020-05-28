@@ -14,6 +14,7 @@ export class ProfileDetailsComponent implements OnInit {
       name: "",
       email: "",
       password: "",
+      phone: "",
       contact: "",
       address: "",
       city: "",
@@ -36,7 +37,7 @@ export class ProfileDetailsComponent implements OnInit {
         this.isCollapsed = false;
         this.isCollapsed2 = true;
       }
-      console.log("id==",+params.get('profileId'));
+      console.log("id==", +params.get('profileId'));
 
       this.getSeeker(+params.get('profileId'));
     });
@@ -51,18 +52,20 @@ export class ProfileDetailsComponent implements OnInit {
       });
   }
 
-  changeData(data)
-  {
+  changeData(data) {
     console.log("eventEmitter", data);
-    this.isCollapsed = !this.isCollapsed;
-    this.seeker.name = data.name;
-    this.seeker.email = data.email;
+    if (!this.router.url.includes('/profile/edit')) {
+      this.isCollapsed = !this.isCollapsed;
+    }
+    this.seeker.name = data.data.name;
+    this.seeker.email = data.data.email;
   }
 
-  changeDetailsData(data)
-  {
+  changeDetailsData(data) {
     console.log("eventEmitter2", data);
-    this.isCollapsed2 = !this.isCollapsed2;
+    if (!this.router.url.includes('/profile/edit')) {
+      this.isCollapsed2 = !this.isCollapsed2;
+    }
     this.seeker = data;
   }
 
