@@ -1,10 +1,10 @@
 <ul class="list-group">
-  <li class="list-group-item px-3" routerLink="seeker">Seekers</li>
-  <li class="list-group-item px-3" routerLink="employee">Employees</li>
-  <li class="list-group-item px-3" routerLink="job">Jobs</li>
-  <li class="list-group-item px-3" routerLink="application">Applications</li>
-  <li class="list-group-item px-3" routerLink="review">Reviews</li>
-  <li class="list-group-item px-3" routerLink="requirement">Requirements</li>
-  <li class="list-group-item px-3" routerLink="level">Levels</li>
-  <li class="list-group-item px-3" routerLink="contacttypes">Contact Types</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('seeker')">Seekers</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('employee')">Employees</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('jobs')">Jobs</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('applications')">Applications</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('reviews')">Reviews</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('requirements')">Requirements</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('levels')">Levels</li>
+  <li class="list-group-item px-3 clickable" (click)="onClick('contactType')">Contact Types</li>
 </ul>

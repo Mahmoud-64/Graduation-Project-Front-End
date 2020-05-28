@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter , OnChanges, SimpleChange  } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from '../../service/user.service';
 import { Seeker } from '../../models/seeker';
@@ -14,13 +15,18 @@ export class PersonalFormComponent implements OnInit, OnChanges {
   @Input() seekerData: Seeker;
   @Output() formEvent = new EventEmitter<Seeker>()
   seeker: FormGroup ;
-
-  constructor(private userService: UserService) { }
+  user_id;
+  constructor(private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.seeker = new FormGroup({
       name: new FormControl(''),
       email: new FormControl('')
+    });
+    this.route.paramMap.subscribe(params => {
+      this.user_id = +params.get('profileId');
     });
   }
 
@@ -31,15 +37,13 @@ export class PersonalFormComponent implements OnInit, OnChanges {
 
   onClickSubmit(formData)
   {
-    let user_id = this.userService.user_id;
-    this.userService.updateUser(user_id, formData)
+    this.userService.updateUser(this.user_id, formData)
     .subscribe((data) => {
-        console.log("dataaaa",data);
         this.formEvent.emit(data)
     },
     err=>{
         this.error = err;
-        console.log("errorrrrrr", this.error);
+        console.log("error=", this.error);
     });
 
 

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     err=>{
       this.userError = "Email or Password is Incorrect"
     });
-    
+
   }
   get email() { return this.user.get('email'); }
   get password() { return this.user.get('password'); }

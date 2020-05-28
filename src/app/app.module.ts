@@ -14,6 +14,8 @@ import { InterviewModule } from './interview/interview.module';
 import { Handel404Component } from './fallback/handel404/handel404.component';
 import { Handel500Component } from './fallback/handel500/handel500.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
+import { HeaderComponent } from './header/header.component';
+import { BaseComponent } from './base/base.component';
 import { HomeModule } from './home/home.module';
 
 
@@ -23,6 +25,8 @@ import { HomeModule } from './home/home.module';
     Handel404Component,
     Handel500Component,
     Handel403Component,
+    HeaderComponent,
+    BaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     HomeModule,
     ProfileModule,
-    
+
     JobApplicationModule,
     AuthModule,
     InterviewModule,

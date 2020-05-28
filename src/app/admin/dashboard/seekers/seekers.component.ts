@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../service/user.service';
 import { SeekerService } from '../../../service/seeker.service';
 import { Seeker } from '../../../models/seeker';
 
@@ -17,8 +16,8 @@ export class SeekersComponent implements OnInit {
     role: ''
   }];
   changed=true;
-  
-  constructor(private userService: UserService,
+
+  constructor(
     private seekerService: SeekerService,
     private router: Router) { }
 
@@ -47,7 +46,7 @@ export class SeekersComponent implements OnInit {
             console.log(this.users);
           })
         });
-        
+
         break;
     }
   }

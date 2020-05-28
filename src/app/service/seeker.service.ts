@@ -19,12 +19,38 @@ export class SeekerService {
   getSeeker(seekerId): Observable<Seeker>{
     return this.http.get<Seeker>(this.seekersUrl+seekerId);
   }
-  updateSeeker(seekerId, seeker: Seeker): Observable<any> {
+  updateSeeker(seekerId, seeker): Observable<any> {
+    console.log(seeker);
+
     return this.http.put(this.seekersUrl+seekerId, seeker)
     .pipe(
       catchError(this.handleError<Seeker[]>('updateSeeker', []))
     );
   }
+
+  updateCv(selfile, changed_user_id, callback?) {
+    let xhr = new XMLHttpRequest();
+    let form = new FormData();
+    let token = localStorage.getItem('access_token');
+    form.append('cv', selfile, selfile.name);
+    xhr.onload = (e) =>{
+      console.log('file uploaded');
+    };
+    xhr.onreadystatechange = function() {
+      console.log('readyState', xhr.readyState);
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          callback(JSON.parse(xhr.response));
+        } else {
+          callback({errors: "you must upload file of type pdf"});
+        }
+      }
+    }
+    xhr.open('POST', "http://localhost:8000/api/seekers/uploadcv/"+changed_user_id, true);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    xhr.send(form);
+  }
+
   deleteSeeker(seekerId): Observable<Seeker>{
     return this.http.delete<Seeker>(this.seekersUrl+seekerId);
   }

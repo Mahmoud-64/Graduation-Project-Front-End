@@ -16,6 +16,7 @@ export class ProfileDetailsComponent implements OnInit {
       name: "",
       email: "",
       password: "",
+      phone: "",
       contact: "",
       address: "",
       city: "",
@@ -52,29 +53,29 @@ export class ProfileDetailsComponent implements OnInit {
   getSeeker(seekerId): void {
     this.seekerService.getSeeker(seekerId)
       .subscribe(seeker => {
-        console.log(seeker);
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
       });
   }
 
   changeData(data) {
-    console.log("eventEmitter", data);
-    this.isCollapsed = !this.isCollapsed;
-    this.seeker.name = data.name;
-    this.seeker.email = data.email;
+    if (!this.router.url.includes('/profile/edit')) {
+      this.isCollapsed = !this.isCollapsed;
+    }
+    this.seeker.name = data.data.name;
+    this.seeker.email = data.data.email;
   }
 
   changeDetailsData(data) {
-    console.log("eventEmitter2", data);
-    this.isCollapsed2 = !this.isCollapsed2;
+    if (!this.router.url.includes('/profile/edit')) {
+      this.isCollapsed2 = !this.isCollapsed2;
+    }
     this.seeker = data;
   }
 
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
-
   }
 
 }
