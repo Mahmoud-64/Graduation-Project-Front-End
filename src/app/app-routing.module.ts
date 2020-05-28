@@ -24,7 +24,7 @@ import { BaseComponent } from './base/base.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'jobs',
     pathMatch: 'full'
   },
   { path: '',
@@ -32,7 +32,7 @@ const routes: Routes = [
     resolve: {authUser: UserResolverService},
     children: [
       {
-        path: 'home',
+        path: 'jobs',
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
       },

@@ -16,6 +16,7 @@ import { Handel500Component } from './fallback/handel500/handel500.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
 import { HeaderComponent } from './header/header.component';
 import { BaseComponent } from './base/base.component';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { BaseComponent } from './base/base.component';
     NgbModule,
 
     HttpClientModule,
+    HomeModule,
     ProfileModule,
+
     JobApplicationModule,
     AuthModule,
     InterviewModule,

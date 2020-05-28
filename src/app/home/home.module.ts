@@ -9,10 +9,13 @@ import { NewJobComponent } from './new-job/new-job.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
+
+
 @NgModule({
   declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent,NewJobComponent],
   imports: [
-    CommonModule, HomeRoutingModule , FormsModule,ReactiveFormsModule
+    CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule,
   ],
   exports: [
     HomeComponent, NewJobComponent
