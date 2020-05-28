@@ -22,11 +22,11 @@ import { BaseComponent } from './base/base.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   { path: '',
     component: BaseComponent,
     resolve: {authUser: UserResolverService},
@@ -38,8 +38,8 @@ const routes: Routes = [
       },
       {
         path: 'admin',
+        // canActivate: [AuthGuard],
         canLoad: [AuthGuard],
-        canActivate: [AuthGuard],
         data: {
           role: Role.superadmin,
         },
@@ -86,6 +86,11 @@ const routes: Routes = [
       { path: 'error404', component: Handel404Component },
       { path: 'error500', component: Handel500Component },
       { path: 'error403', component: Handel403Component },
+      // {
+      //   path: '',
+      //   redirectTo: 'home',
+      //   pathMatch: 'full'
+      // },
     ]
   },
 

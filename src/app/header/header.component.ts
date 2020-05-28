@@ -40,16 +40,15 @@ export class HeaderComponent implements OnInit {
       {
         if (val === false)
         {
-          setTimeout(() => {
             this.loggedIn = false;
-          });
         }
         else
         {
-            this.userName = this.user['name'];
-            this.profileId = this.user['id'];
-            this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
-            this.loggedIn = this.userService.loggedIn();
+          let userData = this.userService.getUser().data;
+          this.userName = userData['name'];
+          this.profileId = userData['id'];
+          this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
+          this.loggedIn = true;
         }
       }
     });

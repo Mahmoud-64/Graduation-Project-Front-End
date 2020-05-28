@@ -61,11 +61,19 @@ export class UserService {
 
   getLoggedInUser(): Observable<any>{
     return this.http.get('/api/LoggedInUser').pipe(map(val=>{
-      this.user = val["data"];
-        console.log("mmmmm", val["data"].role);
-      this.user_id = val["data"]['id'];
-      return val["data"];
+      if(val["data"]){
+        this.user = val["data"];
+        this.user_id = val["data"]['id'];
+        return val["data"];
+      }
+      return false;
+
     }));
+  }
+
+  getUser()
+  {
+    return this.user;
   }
 
   getUserRole()
