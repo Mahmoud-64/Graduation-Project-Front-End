@@ -1,18 +1,22 @@
-<div *ngIf="jobs.length > 0;else notFound">
-   
-    <job-item *ngFor="let job of jobs" [routerLink]="['/jobs',job.id]" [jobData]="job"></job-item>
-    <nav class="text-center" aria-label="Page navigation example">
-        <ul class="pagination">
-            <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item"><Button type="button"
-                    class="page-link">Previous</Button></li>
-            <li *ngFor="let i of pageNumbers() " (click)="wantPage(i)"
-                [ngClass]="(i==filterParams.page)?'active page-item':'page-item'">
-                <Button type="button" class="page-link">{{i}}</Button></li>
-            <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item"><Button type="button"
-                    class="page-link">Next</Button></li>
-        </ul>
-    </nav>
+<div *ngIf="isDataLoaded">
+    <div *ngIf="jobs.length > 0;else notFound">
+
+        <job-item *ngFor="let job of jobs" [routerLink]="['/jobs',job.id]" [jobData]="job"></job-item>
+        <nav class="text-center" aria-label="Page navigation example">
+            <ul class="pagination">
+                <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item"><Button type="button"
+                        class="page-link">Previous</Button></li>
+                <li *ngFor="let i of pageNumbers() " (click)="wantPage(i)"
+                    [ngClass]="(i==filterParams.page)?'active page-item':'page-item'">
+                    <Button type="button" class="page-link">{{i}}</Button></li>
+                <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item"><Button type="button"
+                        class="page-link">Next</Button></li>
+            </ul>
+        </nav>
+    </div>
+    <ng-template #notFound>
+        <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
+    </ng-template>
+
+
 </div>
-<ng-template #notFound>
-    <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
-</ng-template>

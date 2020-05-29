@@ -14,18 +14,12 @@ import { ContactService } from '../contact/service/contact.service';
 })
 export class DetailsFormComponent implements OnInit, OnChanges {
   error: any;
+  cvError: any;
   @Input() seeker: Seeker;
   @Output() formEvent = new EventEmitter<Seeker>()
   user_id;
   selfile = null;
   contactTypes: [];
-
-  constructor(private seekerService: SeekerService, private userService: UserService,
-    private contactService: ContactService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private router: Router) { }
-
   details: FormGroup = this.fb.group({
     phone: ['', Validators.required],
     address: [''],
@@ -39,11 +33,17 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     contacts: this.fb.array([]),
   });
 
+  constructor(private seekerService: SeekerService, private userService: UserService,
+    private contactService: ContactService,
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router) { }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.user_id = +params.get('profileId');
     });
-    this.contactService.contactTypes.subscribe(val=>{
+    this.contactService.contactTypes.subscribe(val => {
       this.contactTypes = val;
     })
   }
@@ -53,7 +53,6 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     this.details ? this.details.patchValue(this.seeker) : null;
     this.contacts.clear();
     for (let contact in this.seeker.contacts) {
-      console.log("contact",this.seeker.contacts[contact]);
       this.contacts.push(this.newContact(
         this.seeker.contacts[contact]['id'],
         this.seeker.contacts[contact]['contact_types_id'],
@@ -61,6 +60,8 @@ export class DetailsFormComponent implements OnInit, OnChanges {
       ));
     }
   }
+
+  ////////////////////////// Contact //////////////////////
   newContact(id, contact_types_id, data): FormGroup {
     return this.fb.group({
       id: id,
@@ -68,45 +69,60 @@ export class DetailsFormComponent implements OnInit, OnChanges {
       data: data,
     })
   }
-  get phone() {
-    return this.details.get('phone');
-  }
 
-  removeContact(index){
+  removeContact(index) {
     let contact = this.contacts.at(index)
     this.contacts.removeAt(index);
-    console.log(contact.value.id);
-    
-    this.contactService.deleteContact(contact.value.id).subscribe(res=>{
-      console.log("removed", res);
-      
+    this.contactService.deleteContact(contact.value.id).subscribe(res => {
     });
   }
-  
+  ////////////////////////// // ///////////////////////
+
+  ////////////////////////// pdf //////////////////////
   onFileSelected(event) {
     if (event.target.files && event.target.files.length > 0) {
       this.selfile = event.target.files[0];
     }
+    this.cvError = "";
   }
 
   uploadCV() {
-    this.seekerService.updateCv(this.selfile, this.user_id, (result) => {
-      console.log("response", result);
-    });
+    if (this.selfile) {
+      this.seekerService.updateCv(this.selfile, this.user_id, (result) => {
+        if (result.errors) {
+          this.cvError = result.errors;
+        }
+        else {
+          this.seeker = result["data"];
+          this.formEvent.emit(this.seeker);
+        }
+      });
+    }
+    else {
+      this.cvError = "You must choose file to upload";
+    }
   }
+  ////////////////////////// // //////////////////////////
 
+  ////////////////////////// edit form ////////////////////
   onClickSubmit(formData) {
     this.seekerService.updateSeeker(this.user_id, this.details.value)
       .subscribe(result => {
         this.seeker = result.data;
+        this.error = "";
         this.formEvent.emit(this.seeker);
       },
         err => {
-          console.log("error happened", err);
+          this.error = err;
         });
   }
+  ////////////////////////// // //////////////////////
+
   get contacts(): FormArray {
     return this.details.get("contacts") as FormArray
+  }
+  get phone() {
+    return this.details.get('phone');
   }
 
 

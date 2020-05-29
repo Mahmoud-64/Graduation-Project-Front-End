@@ -15,6 +15,7 @@ export class JobDetailsComponent implements OnInit {
     "title": "",
     "description": "",
     "seniority": "",
+    "years_exp":"",
     "requirements": ""
   };
   user = {};

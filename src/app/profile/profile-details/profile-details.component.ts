@@ -44,8 +44,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.isCollapsed = false;
         this.isCollapsed2 = true;
       }
-      console.log("id==", +params.get('profileId'));
-
       this.getSeeker(+params.get('profileId'));
     });
   }
@@ -67,7 +65,6 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   changeDetailsData(data) {
-    console.log("eventEmitter2", data);
     if (!this.router.url.includes('/profile/edit')) {
       this.isCollapsed2 = !this.isCollapsed2;
     }
@@ -77,7 +74,6 @@ export class ProfileDetailsComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
-
   }
 
 }
