@@ -4,7 +4,6 @@
         <div class="form-group">
             <label for="title">title </label>
             <input type="text" id="title"  class="form-control" formControlName="title"   name="title" placeholder="Enter title">
-            <small id="titleHelp" class="form-text text-muted"></small>
             <div *ngIf="title.touched && title.invalid">
                 <small class="text-danger" *ngIf="title.errors.required"> please enter title</small>
             </div>

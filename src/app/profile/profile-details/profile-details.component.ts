@@ -44,8 +44,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.isCollapsed = false;
         this.isCollapsed2 = true;
       }
-      console.log("id==", +params.get('profileId'));
-
       this.getSeeker(+params.get('profileId'));
     });
   }

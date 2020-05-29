@@ -1,37 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgForm, ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from '../service/contact.service';
+import { contact } from '../../../models/contact';
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray
+} from '@angular/forms';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.css']
+  styleUrls: ['./contact-form.component.css'],
 })
 export class ContactFormComponent implements OnInit {
-
+  subscriptions: Subscription[] = [];
   contactTypes: Array<any> = [];
-  contact = {
-    data: '',
-    contact_types_id: ''
-  }
-  constructor(public contactService: ContactService) { }
+  contact: FormArray = this.fb.array([]);
+  @Input() inputContact: contact;
+
+  constructor(public contactService: ContactService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    // get contact types
     this.contactService.getContactTypes().subscribe(contact => {
       this.contactTypes = contact['data'];
-      console.log(this.contactTypes);
     });
   }
+  
 
-  addContact() {
-    console.log("clicked", this.contactService.user_id);
-    // console.log("data", this.contact);
-
-    this.contactService.addContact(this.contact)
-    .subscribe(result=>{
-      // this.contactTypes=contact['data'];
-      console.log(result);
-    });
+  submitContact() {
+    console.log(this.contact.value);
+    
+    this.contactService.addContact(this.contact.value)
+      .subscribe(result => {
+        // this.contactTypes=contact['data'];
+        console.log(result);
+      });
   }
+
+  addContact(){
+    this.contact.push(this.newContact());
+  }
+  removeContact(index){
+    this.contact.removeAt(index);
+  }
+  
+  newContact(): FormGroup {
+    return this.fb.group({
+      contact_types_id: '',
+      data: '',
+    })
+ }
 
 }
