@@ -1,3 +1,2 @@
-<app-profile-details></app-profile-details>
-<app-contact-list></app-contact-list>
-<app-profile-form></app-profile-form>
+<app-profile-details *ngIf="role=='seeker'"></app-profile-details>
+<app-employee-profile *ngIf="role=='employee'"></app-employee-profile>
