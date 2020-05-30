@@ -18,17 +18,10 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="loggedIn===true" ngbDropdown>
-        <span ngbDropdownToggle class="nav-link clickable">{{userName}}</span>
-
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <a ngbDropdownItem class="clickable" routerLink="/profile/{{profileId}}" id="navbarDropdown" role="button">
-              View Profile
-            </a>
-            <a ngbDropdownItem class="clickable" routerLink="/resetpassword" id="navbarDropdown" role="button">
-              Reset Password
-            </a>
-        </div>
+      <li class="nav-item clickable active"  *ngIf="loggedIn===true">
+        <a routerLink="/profile/{{profileId}}" class="nav-link">
+          {{userName}}
+        </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
         <a class="nav-link" routerLink="/logout" id="navbarDropdown" role="button">

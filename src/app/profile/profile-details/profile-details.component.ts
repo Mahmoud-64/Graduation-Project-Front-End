@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
@@ -10,6 +11,7 @@ import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
   templateUrl: './profile-details.component.html',
   styleUrls: ['./profile-details.component.css']
 })
+
 export class ProfileDetailsComponent implements OnInit {
   seeker: Seeker =
     {
@@ -30,7 +32,7 @@ export class ProfileDetailsComponent implements OnInit {
     };
   contacts: [];
   url = '';
-
+  role;
   isCollapsed = true;
   isCollapsed2 = false;
   constructor(
@@ -54,6 +56,9 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
+        this.role = seeker.data.role;
+        console.log("roooooole", this.role);
+
         this.url = `/api/seekers/downloadcv/${this.seeker.id}/${this.seeker.cv}`;
       });
   }
@@ -75,7 +80,7 @@ export class ProfileDetailsComponent implements OnInit {
 
   downloadFile(){
     console.log(this.seeker);
-    
+
     this.seekerService.downloadCV(this.seeker.id, this.seeker.cv).subscribe(res=>{
       console.log(res);
     })
