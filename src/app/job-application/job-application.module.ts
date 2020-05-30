@@ -17,6 +17,9 @@ import { JobApplicationRoutingModule } from "./job-application-routing.module";
     CommonModule,
     JobApplicationRoutingModule,
   ],
-  exports: [ JobApplicationComponent],
+  exports: [ 
+    JobApplicationComponent,
+    AppDetailsComponent
+],
 })
 export class JobApplicationModule { }

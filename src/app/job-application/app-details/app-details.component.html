@@ -1,6 +1,6 @@
 <div class="class">
     <div>
-        <p>{{application.seeker}}</p>
+        <p>{{application.seeker.user.name}}</p>
     </div>
     <div>
         <h5>{{application.job.title}}</h5>
@@ -11,4 +11,9 @@
         <p>{{application.status.description}}</p>
     </div>
     <button (click)="deleteApplication()" class="btn btn-danger">remove</button>
+</div>
+
+<!-- Interviews Section -->
+<div class="container">
+
 </div>
