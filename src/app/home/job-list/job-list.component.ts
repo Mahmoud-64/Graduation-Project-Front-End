@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./job-list.component.css']
 })
 export class JobListComponent implements OnInit {
-
+  clicked = 0;
   jobs = [];
   filterParams = {
     page: 1,
     available: 1,
+    perPage:5,
   }
   isDataLoaded: boolean = false;
   lastPage: number;
@@ -28,6 +29,7 @@ export class JobListComponent implements OnInit {
       result => {
         this.jobs = result.data;
         this.isDataLoaded = true;
+        this.clicked = this.jobs[0]['id'];
         this.filterParams.page = result.meta.current_page;
         this.lastPage = result.meta.last_page;
         if (result.data.length > 0) {

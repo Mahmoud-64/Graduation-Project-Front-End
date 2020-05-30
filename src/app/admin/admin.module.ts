@@ -5,14 +5,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { SeekersComponent } from './dashboard/seekers/seekers.component';
 import { EmployeesComponent } from './dashboard/employees/employees.component';
+import { JobsComponent } from './dashboard/jobs/jobs.component';
+import { HomeModule } from '../home/home.module';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    HomeModule
   ]
 })
 export class AdminModule { }

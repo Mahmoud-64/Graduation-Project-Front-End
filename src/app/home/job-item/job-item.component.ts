@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./job-item.component.css']
 })
 export class JobItemComponent implements OnInit {
- 
+  @Input() isClicked;
   @Input('jobData') job ;
   constructor() { }
 

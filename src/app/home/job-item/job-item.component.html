@@ -1,6 +1,5 @@
-<div class="bg-light p-3 mb-2" >
-    
-    <h4 class="text-center">{{job.title}}</h4>
-    <p><span> description :</span>  {{job.description}}</p>
-    <p>{{job.seniority}}</p>
+<div class="p-3 mb-2 hoveredItem" [class.clickedItem]="job.id==isClicked">
+    <h6 class="text-center"><strong>{{job.title}}</strong></h6>
+    <p class="mb-0"><span class="small font-weight-bold"> description :</span>  {{job.description | slice:0:35}}...</p>
+    <p class="mb-0 small">{{job.seniority}}</p>
 </div>
