@@ -20,7 +20,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule, ScrollingModule
   ],
   exports: [
-    HomeComponent, NewJobComponent
+    HomeComponent, NewJobComponent , JobDetailsComponent
   ]
 })
 export class HomeModule { }

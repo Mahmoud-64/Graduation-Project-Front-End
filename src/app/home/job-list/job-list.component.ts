@@ -12,6 +12,7 @@ export class JobListComponent implements OnInit {
   filterParams = {
     page: 1,
     available: 1,
+    perPage:5,
   }
   isDataLoaded: boolean = false;
   lastPage: number;
