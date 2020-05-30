@@ -29,6 +29,7 @@ export class ProfileDetailsComponent implements OnInit {
       isVerified:0
     };
   contacts: [];
+  url = '';
 
   isCollapsed = true;
   isCollapsed2 = false;
@@ -44,8 +45,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.isCollapsed = false;
         this.isCollapsed2 = true;
       }
-      console.log("id==", +params.get('profileId'));
-
       this.getSeeker(+params.get('profileId'));
     });
   }
@@ -55,6 +54,7 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
+        this.url = `/api/seekers/downloadcv/${this.seeker.id}/${this.seeker.cv}`;
       });
   }
 
@@ -71,6 +71,14 @@ export class ProfileDetailsComponent implements OnInit {
       this.isCollapsed2 = !this.isCollapsed2;
     }
     this.seeker = data;
+  }
+
+  downloadFile(){
+    console.log(this.seeker);
+    
+    this.seekerService.downloadCV(this.seeker.id, this.seeker.cv).subscribe(res=>{
+      console.log(res);
+    })
   }
 
   openModal() {

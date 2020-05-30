@@ -28,6 +28,10 @@ export class SeekerService {
     );
   }
 
+  downloadCV(seeker_id, cvName){
+    return this.http.get(`/api/seekers/downloadcv/${seeker_id}/${cvName}`);
+  }
+
   updateCv(selfile, changed_user_id, callback?) {
     let xhr = new XMLHttpRequest();
     let form = new FormData();
