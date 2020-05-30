@@ -1,41 +1,37 @@
+<div class="mx-auto">
 
-<div *ngIf="error" class="alert alert-danger">
-    {{error.message}}
+  <div *ngIf="error" class="alert alert-danger">
+      {{error.message}}
+  </div>
+
+  <form class="text-center" [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
+    <div class="row">
+      <div class="col-12">
+        <strong>Name</strong>
+          <input type = "text"
+            name = "name"
+            placeholder = "name"
+            formControlName = "name">
+            <div *ngIf="error && error.errors.name" class="text-danger small">
+              <div *ngFor="let name of error.errors.name">
+                {{name}}
+              </div>
+            </div>
+      </div>
+      <div class="col-12">
+        <strong>Email</strong>
+          <input type = "email"
+            name = "email"
+            placeholder = "email"
+            formControlName = "email">
+            <div *ngIf="error && error.errors.email" class="text-danger small">
+              <div *ngFor="let email of error.errors.email">
+                {{email}}
+              </div>
+            </div>
+      </div>
+    </div>
+
+  <input class="btn btn-success m-2" type = "submit" value = "Edit">
+  </form>
 </div>
-
-<form class="text-center" [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
-  <table class="table table-borderless w-50">
-  <tbody>
-    <tr>
-      <th scope="col">Name</th>
-      <td>
-        <input type = "text"
-          name = "name"
-          placeholder = "name"
-          formControlName = "name">
-          <div *ngIf="error && error.errors.name" class="text-danger small">
-            <div *ngFor="let name of error.errors.name">
-              {{name}}
-            </div>
-          </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="col">Email</th>
-      <td>
-        <input type = "email"
-          name = "email"
-          placeholder = "email"
-          formControlName = "email">
-          <div *ngIf="error && error.errors.email" class="text-danger small">
-            <div *ngFor="let email of error.errors.email">
-              {{email}}
-            </div>
-          </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<input class="btn btn-success" type = "submit" value = "Edit">
-</form>

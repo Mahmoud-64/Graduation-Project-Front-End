@@ -1,0 +1,33 @@
+.navAdmin
+{
+  background-color: black;
+}
+.navAdmin .nav-item .nav-link {
+    color: #666666;
+    background-color: #black;
+    font-weight: bold;
+}
+.navAdmin .nav-item .nav-link:hover, .nav-item .nav-link:active {
+    color: #666666;
+    background-color: #DDDDDD;
+    border-color: #111111;
+}
+
+
+
+.navSeeker
+{
+  background-color: #5C8074;
+}
+
+.navSeeker .nav-item .nav-link {
+    color: #D0DBD7;
+    background-color: #5C8074;
+    border-color: #EAECFF;
+    font-weight: bold;
+}
+.navSeeker .nav-item .nav-link:hover, .nav-item .nav-link:active {
+    color: #071913;
+    background-color: #BDCDC8;
+    border-color: #111111;
+}
