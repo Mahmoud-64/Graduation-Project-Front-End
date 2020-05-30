@@ -36,5 +36,8 @@ export class JobsService {
     return this.http.post<any>(this.getAllJobsUrl,job);
   }
 
+  deleteJob(jobId){
+    return this.http.delete<any>(this.getSingleJobUrl + jobId);
+  }
   jobSubject = new Subject<any>();
 }

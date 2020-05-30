@@ -4,13 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from '../admin.component';
 import { SeekersComponent } from '../dashboard/seekers/seekers.component';
 import { EmployeesComponent } from '../dashboard/employees/employees.component';
+import { JobsComponent } from '../dashboard/jobs/jobs.component';
+import { JobDetailsComponent } from 'src/app/home/job-details/job-details.component';
+import { NewJobComponent } from 'src/app/home/new-job/new-job.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent,
     children:[
       { path: 'seeker', component: SeekersComponent },
       { path: 'employee', component: EmployeesComponent },
-      { path: 'job', component: AdminComponent },
+      { path: 'jobs', component: JobsComponent },   
+      { path: 'jobs/new', component: NewJobComponent },
+      { path: 'jobs/:id', component: JobDetailsComponent },
       { path: 'application', component: AdminComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },

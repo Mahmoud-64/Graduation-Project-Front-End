@@ -1,0 +1,23 @@
+<a [routerLink]="['/admin/jobs/new']" class="btn btn-dark"> new Job</a>
+<table class="table text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Seniority</th>
+            <th scope="col">Years Exp</th>
+            <th scope="col" colspan="3">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let job of jobs">
+            <th scope="row">{{job.id}}</th>
+            <td>{{job.title}}</td>
+            <td>{{job.seniority}}</td>
+            <td>{{job.years_exp}}</td>
+            <td><a class="btn btn-success btn-sm text-white" (click)="showJob(job.id)" >show</a></td>
+            <td><a class="btn btn-primary btn-sm text-white" >edit</a></td>
+            <td><a class="btn btn-danger btn-sm text-white" (click)="deleteJob(job.id)">delete</a></td>
+        </tr>
+    </tbody>
+</table>

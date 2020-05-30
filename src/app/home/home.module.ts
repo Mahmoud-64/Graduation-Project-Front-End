@@ -19,7 +19,7 @@ import { SearchComponent } from './search/search.component';
     CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule,
   ],
   exports: [
-    HomeComponent, NewJobComponent
+    HomeComponent, NewJobComponent , JobDetailsComponent
   ]
 })
 export class HomeModule { }
