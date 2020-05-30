@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
@@ -10,6 +11,7 @@ import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
   templateUrl: './profile-details.component.html',
   styleUrls: ['./profile-details.component.css']
 })
+
 export class ProfileDetailsComponent implements OnInit {
   seeker: Seeker =
     {
@@ -29,7 +31,8 @@ export class ProfileDetailsComponent implements OnInit {
       isVerified:0
     };
   contacts: [];
-
+  url = '';
+  role;
   isCollapsed = true;
   isCollapsed2 = false;
   constructor(
@@ -44,8 +47,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.isCollapsed = false;
         this.isCollapsed2 = true;
       }
-      console.log("id==", +params.get('profileId'));
-
       this.getSeeker(+params.get('profileId'));
     });
   }
@@ -55,6 +56,10 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
+        this.role = seeker.data.role;
+        console.log("roooooole", this.role);
+
+        this.url = `/api/seekers/downloadcv/${this.seeker.id}/${this.seeker.cv}`;
       });
   }
 
@@ -67,17 +72,23 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   changeDetailsData(data) {
-    console.log("eventEmitter2", data);
     if (!this.router.url.includes('/profile/edit')) {
       this.isCollapsed2 = !this.isCollapsed2;
     }
     this.seeker = data;
   }
 
+  downloadFile(){
+    console.log(this.seeker);
+
+    this.seekerService.downloadCV(this.seeker.id, this.seeker.cv).subscribe(res=>{
+      console.log(res);
+    })
+  }
+
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
-
   }
 
 }

@@ -1,21 +1,24 @@
-<div class="single-app p-3">
-    <div class="alert alert-danger" *ngIf="applyError">
-        <small >Sorry u already apply for this job</small>
-    </div>
-    <h5>{{job.title}}</h5>
-    <p>{{job.description}}</p>
-    <p>{{job.seniority}}</p>
-    <div *ngIf="job.requirements.length > 0">
-        <p >Requirements</p>
-        <ul>
-            <li *ngFor="let req of job.requirements"> {{req.name}}</li>
-        </ul>
-    </div>
-    <div>
-        <button *ngIf="canApply" (click)="applyJob()" class="btn btn-primary">Apply to job </button>
-        
-    </div>
-   
+<cdk-virtual-scroll-viewport class="mb-4 mx-0 border single-app rounded" style="height: 500px" itemSize="90">
 
-</div>
-
+    <div class="p-5">
+        <div class="alert alert-danger" *ngIf="applyError">
+            <small>Sorry u already apply for this job</small>
+        </div>
+        <h3 class="text-center mb-4"><strong>{{job.title}}</strong></h3>
+        <div class="bg-white p-4 my-2 mx-auto w-75 rounded">
+            <h5>Description</h5>
+            <p class="mb-0">{{job.description}}</p>
+            <p class="mb-0">Years of Experience: {{job.years_exp}}</p>
+            <p class="mb-0">{{job.seniority}}</p>
+        </div>
+        <div *ngIf="job.requirements.length > 0" class="bg-white p-4 my-2 mx-auto w-75 rounded">
+            <h5>Requirements</h5>
+            <ul>
+                <li *ngFor="let req of job.requirements"> {{req.name}}</li>
+            </ul>
+        </div>
+        <div class="my-3 float-right">
+            <button *ngIf="canApply" (click)="applyJob()" class="btn btn-danger">Apply to job </button>
+        </div>
+    </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,7 @@
+.clickedItem{
+    background-color: #5C8074 !important;
+    color: white;
+}
+.hoveredItem{
+    cursor: pointer;
+}

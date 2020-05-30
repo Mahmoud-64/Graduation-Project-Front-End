@@ -7,18 +7,20 @@ import { HomeComponent } from './home.component';
 import {HomeRoutingModule} from './home-routing.module'
 import { NewJobComponent } from './new-job/new-job.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 
 
 
 @NgModule({
-  declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent,NewJobComponent],
+  declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent,NewJobComponent, SearchComponent],
   imports: [
-    CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule,
+    CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule, ScrollingModule
   ],
   exports: [
-    HomeComponent, NewJobComponent
+    HomeComponent, NewJobComponent , JobDetailsComponent
   ]
 })
 export class HomeModule { }

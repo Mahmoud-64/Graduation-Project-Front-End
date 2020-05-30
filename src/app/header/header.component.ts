@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: { authUser: any }) => {
       this.user = data.authUser;
-      console.log("auth useeeer from header======", data, this.user);
       if(this.user)
       {
           this.userName = this.user['name'];
@@ -44,9 +43,9 @@ export class HeaderComponent implements OnInit {
         }
         else
         {
-          let userData = this.userService.getUser().data;
-          this.userName = userData['name'];
-          this.profileId = userData['id'];
+          this.user = this.userService.getUser().data;
+          this.userName = this.user['name'];
+          this.profileId = this.user['id'];
           this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
           this.loggedIn = true;
         }

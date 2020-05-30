@@ -1,4 +1,7 @@
 <app-header></app-header>
-<div class="container mx-0">
+<div class="crop">
+<img class="img-fluid w-100" src="assets/images/home.jpg" *ngIf="image.url != '/login' && image.url != '/signup' && image.url != '/admin'" >
+    </div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>
