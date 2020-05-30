@@ -17,7 +17,8 @@ import { LogoutComponent } from './logout/logout.component';
     ReactiveFormsModule,
   ],
   exports: [
-    AuthComponent
+    AuthComponent,
+    ResetPasswordComponent
   ]
 })
 export class AuthModule { }

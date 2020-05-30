@@ -4,8 +4,10 @@ import { ProfileComponent } from '../profile.component';
 import { ProfileDetailsComponent } from '../profile-details/profile-details.component';
 
 const routes: Routes = [
-  { path: ':profileId', component: ProfileDetailsComponent },
-  { path: 'edit/:profileId', component: ProfileDetailsComponent },
+  {
+    path: ':profileId',
+    component: ProfileComponent,
+    },
 ];
 
 @NgModule({

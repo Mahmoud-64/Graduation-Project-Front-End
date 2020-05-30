@@ -13,16 +13,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalFormComponent } from './personal-form/personal-form.component';
 import { DetailsFormComponent } from './details-form/details-form.component';
 import { MobileModalComponent } from './mobile-modal/mobile-modal.component';
-
+import { AuthModule } from "../auth/auth.module";
+import { RouterModule } from '@angular/router';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent, MobileModalComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent, MobileModalComponent, EmployeeProfileComponent],
   imports: [
     CommonModule,
+    AuthModule,
     ProfileRoutingModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     ProfileDetailsComponent, ProfileFormComponent, ProfileComponent

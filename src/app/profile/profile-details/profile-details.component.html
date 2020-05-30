@@ -16,7 +16,6 @@
         </button>
         <button type="button" *ngIf="seeker.isVerified == 0" (click)="openModal()"
           class="btn btn-light btn-sm col-12  float-right"> verify mobile</button>
-
         <div class="card" id="collapseExample" [ngbCollapse]="isCollapsed">
           <div class="card-body">
             <app-personal-form [seekerData]="seeker" (formEvent)="changeData($event)"></app-personal-form>
@@ -42,10 +41,18 @@
           <li class="nav-item">
             <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Edit Profile</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#resetPassword" role="tab" data-toggle="tab">Reset Password</a>
+          </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade" id="resetPassword">
+            <div class="my-5">
+              <app-reset-password></app-reset-password>
+            </div>
+          </div>
           <div role="tabpanel" class="tab-pane fade" id="buzz">
             <app-details-form [seeker]="seeker" (formEvent)="changeDetailsData($event)"></app-details-form>
           </div>
