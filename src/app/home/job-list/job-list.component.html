@@ -1,7 +1,8 @@
 <div *ngIf="isDataLoaded">
     <div *ngIf="jobs.length > 0;else notFound">
-
-        <job-item *ngFor="let job of jobs" [routerLink]="['/jobs',job.id]" [jobData]="job"></job-item>
+        <cdk-virtual-scroll-viewport class="mb-4 mx-0 border rounded" style="height: 500px" itemSize="90">
+            <job-item *ngFor="let job of jobs" (click)="clicked = job.id" [isClicked]="clicked" [routerLink]="['/jobs',job.id]" [jobData]="job"></job-item>
+        </cdk-virtual-scroll-viewport>
         <nav class="text-center" aria-label="Page navigation example">
             <ul class="pagination">
                 <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item"><Button type="button"
