@@ -5,15 +5,31 @@
         <input type="number" class="form-control" id="application_id" required ngModel name="application_id" />
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="emp_id">emp_id</label>
         <input type="number" class="form-control" id="emp_id" required ngModel name="emp_id" />
+    </div> -->
+    <div class="form-group">
+        <label for="emp_id">emp_id</label>
+        <select id="secret" class="form-control" ngModel required name="emp_id">
+            <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.emp_id">
+                {{(interview.emp_name)}}</option>
+        </select>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="level_id">level_id</label>
         <input type="number" class="form-control" id="level_id" required ngModel name="level_id" />
+    </div>-->
+
+    <div class="form-group">
+        <label for="leve_id">level_id</label>
+        <select class="form-control" ngModel required name="level_id" id="level_id">
+            <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.level_id">
+                {{(interview.level_name)}}</option>
+        </select>
     </div>
+
 
     <div class="form-group">
         <label for="date">date</label>
@@ -30,11 +46,18 @@
         <input type="text" class="form-control" id="company_review" required ngModel name="company_review" />
     </div>
 
+
     <div class="form-group">
         <label for="zoom">zoom</label>
         <input type="text" class="form-control" id="zoom" required ngModel name="zoom" />
     </div>
-
+    <!-- ########################################################### -->
+    <!-- <select id="secret" class="form-control" ngModel required name="emp_id">
+        <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.emp_id">
+            {{(interview.emp_name)}}</option>
+         <option value="teacher">Your first teacher?</option> -->
+    <!-- </select> -->
+    <!-- ########################################################### -->
 
 
     <!-- <div class="form-group">

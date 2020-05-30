@@ -4,15 +4,16 @@
         <tr>
             <td> id</td>
             <td> application_id</td>
-            <td> employer_id</td>
+            <td> employer_name</td>
             <td> date</td>
         </tr>
         <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
             <td>{{ interview.id }}</td>
             <td>{{ interview.application_id }}</td>
-            <td>{{ interview.emp_id }}</td>
+            <td>{{ interview.emp_name }}</td>
             <td>{{ interview.date}}</td>
-            <td><button routerLink="../show/{{ interview.id }}" class="btn btn-primary"> Details</button></td>
+            <td><button routerLink="../show/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
+            <td><button class="btn btn-danger btn-sm" (click)="delete(interview.id)"> delete</button></td>
 
         </tr>
 
