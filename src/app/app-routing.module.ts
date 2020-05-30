@@ -19,6 +19,7 @@ import { UserService } from './service/user.service';
 import { UserResolverService } from './resolvers/user-resolver.service';
 import { Role } from './models/role.enum';
 import { BaseComponent } from './base/base.component';
+import { InterviewLevelsComponent } from './interview/interview-levels/interview-levels.component';
 
 
 const routes: Routes = [
@@ -81,6 +82,10 @@ const routes: Routes = [
           {
             path: 'details',
             component: InterviewDetailsComponent
+          },
+          {
+            path: 'levels',
+            component: InterviewLevelsComponent
           }
         ]
       },
