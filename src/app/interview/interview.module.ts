@@ -26,7 +26,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     InterviewListComponent,
     InterviewItemComponent,
     InterviewDetailsComponent,
-    InterviewFormComponent
+    InterviewFormComponent,
+    InterviewLevelsComponent,
   ]
 })
 export class InterviewModule { }

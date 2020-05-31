@@ -32,11 +32,11 @@ export class EmployeesComponent implements OnInit {
       switch (crudName) {
         case 'show':
           console.log('show', id, this.router.url);
-          this.router.navigateByUrl(`/profile/${id}`);
+          this.router.navigateByUrl(`/admin/profile/${id}`);
           break;
         case 'edit':
           console.log('edit');
-          this.router.navigateByUrl(`/profile/edit/${id}`);
+          this.router.navigateByUrl(`/admin/profile/edit/${id}`);
           break;
         case 'delete':
           console.log('delete');
