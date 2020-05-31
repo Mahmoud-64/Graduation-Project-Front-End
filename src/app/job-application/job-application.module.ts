@@ -17,6 +17,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ScrollingModule,
     NgbModule,
   ],
-  exports: [ JobApplicationComponent],
+  exports: [ 
+    JobApplicationComponent,
+    AppDetailsComponent
+],
 })
 export class JobApplicationModule { }

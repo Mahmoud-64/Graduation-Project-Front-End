@@ -12,7 +12,21 @@ import { InterviewService } from '../interview.service';
 })
 export class InterviewListComponent implements OnInit {
 
-  constructor(public interviewService: InterviewService) { }
+  delete(id: number) {
+    console.log(id);
+    this.http
+      .delete(
+        'http://localhost:8000/api/interview/' + id
+      )
+
+      .subscribe(posts => {
+        console.log('deleted');
+
+      });
+
+  }
+
+  constructor(public interviewService: InterviewService, private http: HttpClient) { }
   // loadedPosts = this.interviewService.fetchPosts();
 
   ngOnInit() {
@@ -26,6 +40,8 @@ export class InterviewListComponent implements OnInit {
     // console.log(this.loadedPosts);
 
   }
+
+
 
 
   // private fetchPosts() {
@@ -54,3 +70,9 @@ export class InterviewListComponent implements OnInit {
   // }
 
 }
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<div class="container bg-light">
+    <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">title </label>
+            <input type="text" id="title" class="form-control" formControlName="title" name="title" [value]="job.title">
+            <div *ngIf="title.touched && title.invalid">
+                <small class="text-danger" *ngIf="title.errors.required"> please enter title</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">description</label>
+            <!-- <input type="text"  name="description" formControlName="description"  class="form-control"  placeholder="description"> -->
+            <textarea [value]="job.description" name="description" formControlName="description" class="form-control"
+                placeholder="description" rows="3"></textarea>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label for="seniority">seniority</label>
+                <input type="text" name="seniority" [value]="job.seniority" formControlName="seniority"
+                    class="form-control" placeholder="seniority">
+            </div>
+            <div class="col-6 form-group">
+                <label for="years_exp">years_exp</label>
+                <input type="number" [value]="job.years_exp" class="form-control" formControlName="years_exp"
+                    name="years_exp" placeholder="0" min="0">
+                <div *ngIf="years_exp.touched && years_exp.invalid">
+                    <small class="text-danger" *ngIf="years_exp.errors.required"> please enter years_exp</small>
+                    <small class="text-danger" *ngIf="years_exp.errors.max || years_exp.errors.min"> number between 0
+                        and 25 </small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>requirements</label>
+            <button type="button" class="btn btn-success" (click)="addRequire()">add</button>
+            <!-- <div *ngIf="isDataLoaded">
+                <div  *ngFor="let require of job.requirements" class="row">
+                    <input type="text" class="form-control col-10"  [value]="require.name" [formControl]="oldRequire">
+                    <button type="button" class="btn btn-danger col-2">X</button>
+                </div>
+            </div> -->
+
+            <div formArrayName="requirements">
+                <div *ngFor="let require of requirements().controls; let i=index " class="row">
+                    <input type="text" class="form-control col-10" [formControlName]="i" placeholder="requirement">
+                    <button type="button" class="btn btn-danger col-2" (click)="removeRequire(i)">X</button>
+                </div>
+            </div>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" formControlName="available" class="form-check-input">
+            <label class="form-check-label" for="available">available</label>
+        </div>
+
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>

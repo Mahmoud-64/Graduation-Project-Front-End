@@ -19,7 +19,10 @@ export class EmployeesComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private router: Router) { }
+    private router: Router) {
+      console.log('employee opened');
+      
+     }
 
 
     ngOnInit(): void {
