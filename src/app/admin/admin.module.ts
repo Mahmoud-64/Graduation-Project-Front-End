@@ -5,16 +5,18 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { SeekersComponent } from './dashboard/seekers/seekers.component';
 import { EmployeesComponent } from './dashboard/employees/employees.component';
-import { JobsComponent } from './dashboard/jobs/jobs.component';
+import { JobsComponent } from './dashboard/admin-jobs/jobs/jobs.component';
 import { HomeModule } from '../home/home.module';
-import { ApplicationsComponent } from './dashboard/applications/applications.component';
+import { ApplicationsComponent } from './dashboard/admin-apps/applications/applications.component';
 import { JobApplicationModule } from '../job-application/job-application.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SearchComponent } from './dashboard/admin-apps/search/search.component';
+import { SingleComponent } from './dashboard/admin-jobs/single/single.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
