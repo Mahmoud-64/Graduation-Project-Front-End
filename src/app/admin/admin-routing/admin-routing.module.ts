@@ -10,6 +10,7 @@ import { NewJobComponent } from 'src/app/home/new-job/new-job.component';
 import { ApplicationsComponent } from '../dashboard/admin-apps/applications/applications.component';
 import { AppDetailsComponent } from 'src/app/job-application/app-details/app-details.component';
 import { SingleComponent } from '../dashboard/admin-jobs/single/single.component';
+import { EditJobComponent } from '../dashboard/admin-jobs/edit-job/edit-job.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'jobs', component: JobsComponent },
       { path: 'jobs/new', component: NewJobComponent },
       { path: 'jobs/:id', component: SingleComponent },
+      { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
       { path: 'interviews', component: AppDetailsComponent },

@@ -12,11 +12,12 @@ import { JobApplicationModule } from '../job-application/job-application.module'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SearchComponent } from './dashboard/admin-apps/search/search.component';
 import { SingleComponent } from './dashboard/admin-jobs/single/single.component';
+import { EditJobComponent } from './dashboard/admin-jobs/edit-job/edit-job.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -25,6 +25,12 @@ export class JobsService {
     return this.http.get<any>(this.getSingleJobUrl+id);
   }
 
+  updateJob(job,jobId){
+    console.log(job);
+    
+    return this.http.put<any>(this.getSingleJobUrl+jobId,job);
+  }
+
   applyJob(jobId){
     return this.http.post<any>(this.applyToJobUrl,{
       job_id : jobId

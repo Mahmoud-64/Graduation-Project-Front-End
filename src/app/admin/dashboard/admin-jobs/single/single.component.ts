@@ -21,7 +21,6 @@ export class SingleComponent implements OnInit {
   isDataLoaded:boolean=false;
   constructor(
     private jobService: JobsService,
-    private appService: ApplicationService,
     private route: ActivatedRoute,
   ) { }
 
