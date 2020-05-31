@@ -14,6 +14,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 
+
 @NgModule({
   declarations: [JobListComponent, JobItemComponent, JobDetailsComponent, HomeComponent,NewJobComponent, SearchComponent],
   imports: [

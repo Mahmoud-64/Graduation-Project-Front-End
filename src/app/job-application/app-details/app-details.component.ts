@@ -11,7 +11,9 @@ export class AppDetailsComponent implements OnInit {
 
   application = {
     "id":"",
-    "seeker":"",
+    "seeker":{'user':{
+      'name':""
+    }},
     "job":{"title":"","description":""},
     "status":{"name":"","description":""}
   };

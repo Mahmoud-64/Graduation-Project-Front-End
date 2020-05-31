@@ -39,11 +39,9 @@ export class JobDetailsComponent implements OnInit {
           this.job = result.data;
           this.canApply = true;
           this.applyError = '';
-
         },
         error => {
           console.log(error);
-
         }
       )
     });
@@ -69,5 +67,6 @@ export class JobDetailsComponent implements OnInit {
     }
 
   }
+ 
 
 }

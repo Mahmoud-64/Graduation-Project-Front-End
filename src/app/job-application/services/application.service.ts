@@ -14,6 +14,11 @@ export class ApplicationService {
   getAllApplications() {
     return this.http.get<any>(this.getAllapplicationsUrl);
   }
+  getFilterApplications(params) {
+    return this.http.get<any>(this.getAllapplicationsUrl, {
+      params: params
+    });
+  }
 
   getSingleApplication(id: string) {
     return this.http.get<any>(this.getSingleapplicationUrl + id);

@@ -1,9 +1,6 @@
-<cdk-virtual-scroll-viewport class="mb-4 mx-0 border single-app rounded" style="height: 500px" itemSize="90">
-
+<div class="mb-4 mx-0 border single-app rounded">
     <div class="p-5">
-        <div class="alert alert-danger" *ngIf="applyError">
-            <small>Sorry u already apply for this job</small>
-        </div>
+
         <h3 class="text-center mb-4"><strong>{{job.title}}</strong></h3>
         <div class="bg-white p-4 my-2 mx-auto w-75 rounded">
             <h5>Description</h5>
@@ -17,9 +14,12 @@
                 <li *ngFor="let req of job.requirements"> {{req.name}}</li>
             </ul>
         </div>
-        <div class="my-3 float-right">
-            <button *ngIf="canApply" (click)="applyJob()" class="btn btn-danger">Apply to job </button>
-        </div>
     </div>
-</cdk-virtual-scroll-viewport>
 
+</div>
+
+
+<!-- job applications -->
+<div *ngIf="isDataLoaded">
+    <admin-applications [job]="job.id"></admin-applications>
+</div>

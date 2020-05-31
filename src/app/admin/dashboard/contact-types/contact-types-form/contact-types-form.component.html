@@ -1,0 +1,10 @@
+
+<form [formGroup]="contactType" (ngSubmit)="submitContactType()">
+            <div class="p-2 bd-highlight">
+                <input name="type" type="text" formControlName="type" class="form-control" id="exampleInputcontactType1"
+                    aria-describedby="contactTypeHelp" placeholder="Enter contactType" value="{{type}}" />
+            </div>
+    <div class="container text-center">
+        <button class="btn btn-primary">Submit Contact Type</button>
+    </div>
+</form>

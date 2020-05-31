@@ -4,11 +4,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from '../admin.component';
 import { SeekersComponent } from '../dashboard/seekers/seekers.component';
 import { EmployeesComponent } from '../dashboard/employees/employees.component';
-import { JobsComponent } from '../dashboard/jobs/jobs.component';
-import { JobDetailsComponent } from 'src/app/home/job-details/job-details.component';
-import { NewJobComponent } from 'src/app/home/new-job/new-job.component';
-import { ApplicationsComponent } from '../dashboard/applications/applications.component';
-import { AppDetailsComponent } from 'src/app/job-application/app-details/app-details.component';
+import { JobsComponent } from '../dashboard/admin-jobs/jobs/jobs.component';
+import { JobDetailsComponent } from '../../home/job-details/job-details.component';
+import { NewJobComponent } from '../../home/new-job/new-job.component';
+import { ApplicationsComponent } from '../dashboard/admin-apps/applications/applications.component';
+import { AppDetailsComponent } from '../../job-application/app-details/app-details.component';
+import { SingleComponent } from '../dashboard/admin-jobs/single/single.component';
+import { EditJobComponent } from '../dashboard/admin-jobs/edit-job/edit-job.component';
+
+import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.component';
+import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
+import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 
 const routes: Routes = [
   {
@@ -18,13 +24,18 @@ const routes: Routes = [
       { path: 'employee', component: EmployeesComponent },
       { path: 'jobs', component: JobsComponent },
       { path: 'jobs/new', component: NewJobComponent },
-      { path: 'jobs/:id', component: JobDetailsComponent },
+      { path: 'jobs/:id', component: SingleComponent },
+      { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
+      { path: 'interviews', component: AppDetailsComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },
       { path: 'level', component: AdminComponent },
-      { path: 'contacttype', component: AdminComponent },
+      { path: 'contacttype', component: ContactTypesComponent },
+      { path: 'contacttype/new', component: ContactTypesFormComponent },
+      { path: 'contacttype/:Id', component: ContactTypesItemComponent },
+      { path: 'contacttype/edit/:Id', component: ContactTypesFormComponent },
     ],
   },
 ];
