@@ -12,6 +12,7 @@ export class InterviewFormComponent implements OnInit {
   // arr: any[]=[];
   apps: any;
   levels: any;
+  employees: any;
 
 
   constructor(private http: HttpClient, public interviewService: InterviewService) { }
@@ -58,6 +59,16 @@ export class InterviewFormComponent implements OnInit {
 
       });
 
+    this.http
+      .get(
+        '/api/employees/'
+      )
+
+      .subscribe(emp => {
+        this.employees = emp;
+        console.log(this.employees);
+
+      });
 
 
   }
