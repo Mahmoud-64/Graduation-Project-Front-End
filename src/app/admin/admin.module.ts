@@ -28,11 +28,10 @@ import { InterviewLevelsFormComponent } from './dashboard/interview-levels/inter
 import { InterviewLevelsItemComponent } from './dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
 
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
-import { EditSeekerComponent } from './dashboard/seekers/edit-seeker/edit-seeker.component';
 import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
-import { EditEmployeeComponent } from './dashboard/employees/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
 import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.component';
+import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
 
 
 @NgModule({
@@ -43,7 +42,7 @@ import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.co
     ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, 
     ContactsComponent, ContactItemComponent, ContactFormComponent, 
     InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
-    ShowSeekerComponent, EditSeekerComponent, ShowEmployeeComponent, EditEmployeeComponent, AddEmployeeComponent, AddSeekerComponent
+    ShowSeekerComponent, ShowEmployeeComponent, AddEmployeeComponent, AddSeekerComponent, FormEmployeeComponent
   ],
   
   imports: [
