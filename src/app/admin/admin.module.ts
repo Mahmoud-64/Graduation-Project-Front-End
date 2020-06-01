@@ -19,6 +19,7 @@ import { ContactTypesComponent } from './dashboard/contact-types/contact-types.c
 import { ContactTypesListComponent } from './dashboard/contact-types/contact-types-list/contact-types-list.component';
 import { ContactTypesItemComponent } from './dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from './dashboard/contact-types/contact-types-form/contact-types-form.component';
+// import { AdminInterviewsModule } from '../admin-interviews/admin-interviews.module';
 
 
 @NgModule({
@@ -31,8 +32,7 @@ import { ContactTypesFormComponent } from './dashboard/contact-types/contact-typ
     FormsModule,
     ReactiveFormsModule,
     JobApplicationModule,
-    FormsModule,
-    ReactiveFormsModule,
+    // AdminInterviewsModule
 
   ]
 })

@@ -8,6 +8,7 @@ import { JobApplicationComponent } from './job-application.component';
 import { JobApplicationRoutingModule } from "./job-application-routing.module";
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AdminInterviewsModule } from '../admin-interviews/admin-interviews.module';
 
 @NgModule({
   declarations: [AppListComponent, AppItemComponent, AppDetailsComponent, JobApplicationComponent],
@@ -16,6 +17,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     JobApplicationRoutingModule,
     ScrollingModule,
     NgbModule,
+    AdminInterviewsModule
+    
   ],
   exports: [ 
     JobApplicationComponent,

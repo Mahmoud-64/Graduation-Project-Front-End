@@ -11,8 +11,14 @@
         <p>{{application.status.description}}</p>
     </div>
     <button (click)="deleteApplication()" class="btn btn-danger">remove</button>
+    <button *ngIf="isAdmin" (click)="showForm()"  class="btn btn-info"> apply Interview </button>
 </div>
 
+<!-- interview form -->
+<div *ngIf="interviewForm">
+    <admin-interview-form [appId]="application.id"></admin-interview-form>
+    <!-- <router-outlet></router-outlet> -->
+</div>
 <!-- Interviews Section -->
 <div class="container">
 
