@@ -7,6 +7,7 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+  error;
   passowrds = {
     current_password: '',
     new_password: '',
@@ -18,6 +19,9 @@ export class ResetPasswordComponent implements OnInit {
   }
   onSubmit() {
     this.userService.resetPassword(this.passowrds).subscribe(result=>{
+    },
+    err=>{
+      this.error = err.errors;
     });
   }
 

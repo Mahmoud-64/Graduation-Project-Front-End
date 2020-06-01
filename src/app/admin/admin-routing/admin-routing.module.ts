@@ -16,10 +16,20 @@ import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.
 import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 
+
+import { ContactsComponent } from '../dashboard/contacts/contacts.component';
+import { ContactItemComponent } from '../dashboard/contacts/contact-item/contact-item.component';
+import { ContactFormComponent } from '../dashboard/contacts/contact-form/contact-form.component';
+
+import { InterviewLevelsComponent } from '../dashboard/interview-levels/interview-levels.component';
+import { InterviewLevelsItemComponent } from '../dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
+import { InterviewLevelsFormComponent } from '../dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
+
+
 import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
 import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
-import { EditEmployeeComponent } from '../dashboard/employees/edit-employee/edit-employee.component';
+import { FormEmployeeComponent } from '../dashboard/employees/form-employee/form-employee.component';
 
 const routes: Routes = [
   {
@@ -30,8 +40,9 @@ const routes: Routes = [
       { path: 'seeker/new', component: SeekerFormComponent },
       { path: 'seeker/edit/:id', component: SeekerFormComponent },
       { path: 'employee', component: EmployeesComponent },
+      { path: 'employee/new', component: FormEmployeeComponent },
       { path: 'employee/show/:id', component: ShowEmployeeComponent },
-      { path: 'employee/edit/:id', component: EditEmployeeComponent },
+      { path: 'employee/edit/:id', component: FormEmployeeComponent },
       { path: 'jobs', component: JobsComponent },
       { path: 'jobs/new', component: NewJobComponent },
       { path: 'jobs/:id', component: SingleComponent },
@@ -41,11 +52,18 @@ const routes: Routes = [
       { path: 'interviews', component: AppDetailsComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },
-      { path: 'level', component: AdminComponent },
       { path: 'contacttype', component: ContactTypesComponent },
       { path: 'contacttype/new', component: ContactTypesFormComponent },
       { path: 'contacttype/:Id', component: ContactTypesItemComponent },
       { path: 'contacttype/edit/:Id', component: ContactTypesFormComponent },
+      { path: 'contact', component: ContactsComponent },
+      { path: 'contact/new', component: ContactFormComponent },
+      { path: 'contact/:Id', component: ContactItemComponent },
+      { path: 'contact/edit/:Id', component: ContactFormComponent },
+      { path: 'levels', component: InterviewLevelsComponent },
+      { path: 'levels/new', component: InterviewLevelsFormComponent },
+      { path: 'levels/:Id', component: InterviewLevelsItemComponent },
+      { path: 'levels/edit/:Id', component: InterviewLevelsFormComponent },
     ],
   },
 ];

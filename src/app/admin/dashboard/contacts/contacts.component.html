@@ -1,0 +1,26 @@
+<a class="btn btn-primary btn-sm text-white" (click)="crudOperation('new','')">New</a>
+<div class="container text-center my-1 bg-warning">
+  {{error}}
+</div>
+<table class="table text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Seeker</th>
+        <th scope="col">data</th>
+        <th scope="col">Type</th>
+        <th scope="col" colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts">
+        <th scope="row">{{contact.id}}</th>
+        <td>{{contact.seeker_name}}</td>
+        <td>{{contact.data}}</td>
+        <td>{{contact.contact_type}}</td>
+        <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',contact.id)">show</a></td>
+        <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',contact.id)">edit</a></td>
+        <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',contact.id)">delete</a></td>
+      </tr>
+    </tbody>
+  </table>

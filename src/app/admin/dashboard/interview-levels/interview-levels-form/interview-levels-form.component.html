@@ -1,0 +1,15 @@
+<form [formGroup]="level" (ngSubmit)="submitLevel()">
+    <div>
+        <div class="my-3">
+            <label>Name</label>
+            <input name="name" type="text" formControlName="name" class="form-control" id="exampleInputlevel1"
+                aria-describedby="levelHelp" placeholder="Enter level" />
+                <div *ngIf="error && error.name" class="text-danger">
+                    {{error.name}}
+                </div>
+        </div>
+    </div>
+<div class="container text-center">
+    <button class="btn btn-primary">submit level</button>
+</div>
+</form>
