@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
 import { Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +16,17 @@ export class LoginComponent implements OnInit {
     password: ['']
   })
   userError = '';
+  verify_email: Boolean = false;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
+    this.verify_email = this.route.snapshot.paramMap.get('verify_email')? true : false;
   }
 
   onSubmit() {

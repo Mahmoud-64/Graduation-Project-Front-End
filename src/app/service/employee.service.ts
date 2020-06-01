@@ -25,6 +25,14 @@ export class EmployeeService {
         catchError(this.handleError<Employee[]>('updateEmployee', []))
       );
     }
+
+    addEmployee(employee): Observable<any> {
+      return this.http.post(this.employeesUrl, employee)
+      .pipe(
+        catchError(this.handleError<Employee[]>('addEmployee', []))
+      );
+    }
+
     deleteEmployee(employeeId): Observable<Employee>{
       return this.http.delete<Employee>(this.employeesUrl+employeeId);
     }

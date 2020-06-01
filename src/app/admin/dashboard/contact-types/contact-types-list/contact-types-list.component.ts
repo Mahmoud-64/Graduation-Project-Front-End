@@ -9,16 +9,21 @@ import { ContactService } from '../../../../profile/contact/service/contact.serv
 })
 export class ContactTypesListComponent implements OnInit {
   contactTypes;
+  error;
   constructor(private contactService: ContactService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.contactService.getContactTypes().subscribe(contactTypes=>{
+    this.contactService.getContactTypes().subscribe(contactTypes => {
       this.contactTypes = contactTypes['data'];
     })
   }
   crudOperation(crudName, id) {
     switch (crudName) {
+      case 'new':
+        console.log('new', '');
+        this.router.navigateByUrl(`/admin/contacttype/new`);
+        break;
       case 'show':
         console.log('show', id);
         this.router.navigateByUrl(`/admin/contacttype/${id}`);
@@ -29,8 +34,11 @@ export class ContactTypesListComponent implements OnInit {
         break;
       case 'delete':
         console.log('delete');
-        this.contactService.deleteContactType(id).subscribe(result=>{
-          console.log(result);
+        this.contactService.deleteContactType(id).subscribe(result => {
+          this.error = result['data'];
+          this.contactService.getContactTypes().subscribe(contactTypes => {
+            this.contactTypes = contactTypes['data'];
+          })
         });
         break;
     }

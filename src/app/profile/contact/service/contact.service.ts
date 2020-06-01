@@ -49,11 +49,23 @@ export class ContactService {
     return this.http.post(`/api/contact`, addContact);
   }
 
+  addNewContact(contact: any) {
+    return this.http.post(`/api/contact`, contact);
+  }
+
   getContacts() {
     this.user_id = this.userService.user_id;
     console.log(this.user_id);
 
     return this.http.get(`/api/contact?current_user=${this.user_id}`);
+  }
+
+  getContact(id) {
+    return this.http.get(`/api/contact/${id}`);
+  }
+
+  editContact(id, data) {
+    return this.http.put(`/api/contact/${id}`, data);
   }
 
   deleteContact(contact_id){

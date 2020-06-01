@@ -27,6 +27,7 @@ export class HeaderComponent implements OnInit {
       this.user = data.authUser;
       if(this.user)
       {
+          this.userService.verifyEmailSubject.next(this.user['verify_email']);
           this.userName = this.user['name'];
           this.profileId = this.user['id'];
           this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;

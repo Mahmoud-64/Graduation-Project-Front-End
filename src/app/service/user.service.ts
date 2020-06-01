@@ -9,13 +9,15 @@ import { Role } from '../models/role.enum';
   providedIn: 'root'
 })
 export class UserService {
-  private user: User;
+  private user: User = null;
   private loggedInFlag: Boolean= false;
   public subject;
+  public verifyEmailSubject;
   public user_id: Number;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject;
+    this.verifyEmailSubject = new Subject;
   }
 
   getUsers(): Observable<any>{
@@ -24,17 +26,23 @@ export class UserService {
 
   register(user: User): Observable<any>{
       return this.http.post("/api/register",user).pipe(
+        tap(data=>{
+          this.verifyEmailSubject.next(data['verify_email']);
+        }),
         catchError(this.handleError2<User[]>('register', []))
       );
   }
 
   login(user: User): Observable<any>{
     user.device_name="anything";
-    return this.http.post("/api/login",JSON.stringify(user)).pipe(tap(ev => {
-      this.user = ev;
-      const _token = ev.access_token;
-      localStorage.setItem('access_token', _token);
-      this.subject.next(true);
+    return this.http.post("/api/login",JSON.stringify(user)).pipe(
+      tap(ev => {
+        this.user = ev;
+        console.log("login email verify", ev.verify_email);
+        this.verifyEmailSubject.next(ev.verify_email);
+        const _token = ev.access_token;
+        localStorage.setItem('access_token', _token);
+        this.subject.next(true);
     }));
   }
   logout(){
