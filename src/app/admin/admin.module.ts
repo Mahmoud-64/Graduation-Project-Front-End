@@ -22,10 +22,18 @@ import { ContactTypesFormComponent } from './dashboard/contact-types/contact-typ
 import { ContactsComponent } from './dashboard/contacts/contacts.component';
 import { ContactItemComponent } from './dashboard/contacts/contact-item/contact-item.component';
 import { ContactFormComponent } from './dashboard/contacts/contact-form/contact-form.component';
-
+import { InterviewLevelsComponent } from './dashboard/interview-levels/interview-levels.component';
+import { InterviewLevelsFormComponent } from './dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
+import { InterviewLevelsItemComponent } from './dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, ContactsComponent, ContactItemComponent, ContactFormComponent],
+  declarations: [
+    AdminComponent, SidebarComponent, 
+    SeekersComponent, EmployeesComponent, 
+    JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, 
+    ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, 
+    ContactsComponent, ContactItemComponent, ContactFormComponent, 
+    InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,],
 
   imports: [
     CommonModule,

@@ -20,6 +20,11 @@ import { ContactsComponent } from '../dashboard/contacts/contacts.component';
 import { ContactItemComponent } from '../dashboard/contacts/contact-item/contact-item.component';
 import { ContactFormComponent } from '../dashboard/contacts/contact-form/contact-form.component';
 
+import { InterviewLevelsComponent } from '../dashboard/interview-levels/interview-levels.component';
+import { InterviewLevelsItemComponent } from '../dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
+import { InterviewLevelsFormComponent } from '../dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
+
+
 
 const routes: Routes = [
   {
@@ -45,6 +50,10 @@ const routes: Routes = [
       { path: 'contact/new', component: ContactFormComponent },
       { path: 'contact/:Id', component: ContactItemComponent },
       { path: 'contact/edit/:Id', component: ContactFormComponent },
+      { path: 'levels', component: InterviewLevelsComponent },
+      { path: 'levels/new', component: InterviewLevelsFormComponent },
+      { path: 'levels/:Id', component: InterviewLevelsItemComponent },
+      { path: 'levels/edit/:Id', component: InterviewLevelsFormComponent },
     ],
   },
 ];
