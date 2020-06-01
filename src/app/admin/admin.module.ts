@@ -19,17 +19,32 @@ import { ContactTypesComponent } from './dashboard/contact-types/contact-types.c
 import { ContactTypesListComponent } from './dashboard/contact-types/contact-types-list/contact-types-list.component';
 import { ContactTypesItemComponent } from './dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from './dashboard/contact-types/contact-types-form/contact-types-form.component';
+
+import { ContactsComponent } from './dashboard/contacts/contacts.component';
+import { ContactItemComponent } from './dashboard/contacts/contact-item/contact-item.component';
+import { ContactFormComponent } from './dashboard/contacts/contact-form/contact-form.component';
+import { InterviewLevelsComponent } from './dashboard/interview-levels/interview-levels.component';
+import { InterviewLevelsFormComponent } from './dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
+import { InterviewLevelsItemComponent } from './dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
+
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
-import { EditSeekerComponent } from './dashboard/seekers/edit-seeker/edit-seeker.component';
 import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
-import { EditEmployeeComponent } from './dashboard/employees/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
 import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.component';
+import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, ShowSeekerComponent, EditSeekerComponent, ShowEmployeeComponent, EditEmployeeComponent, AddEmployeeComponent, AddSeekerComponent],
-
+  declarations: [
+    AdminComponent, SidebarComponent, 
+    SeekersComponent, EmployeesComponent, 
+    JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, 
+    ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, 
+    ContactsComponent, ContactItemComponent, ContactFormComponent, 
+    InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
+    ShowSeekerComponent, ShowEmployeeComponent, AddEmployeeComponent, AddSeekerComponent, FormEmployeeComponent
+  ],
+  
   imports: [
     CommonModule,
     AdminRoutingModule,

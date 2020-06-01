@@ -19,6 +19,10 @@ export class ContactTypesListComponent implements OnInit {
   }
   crudOperation(crudName, id) {
     switch (crudName) {
+      case 'new':
+        console.log('new', '');
+        this.router.navigateByUrl(`/admin/contacttype/new`);
+        break;
       case 'show':
         console.log('show', id);
         this.router.navigateByUrl(`/admin/contacttype/${id}`);

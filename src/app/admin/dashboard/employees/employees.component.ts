@@ -33,6 +33,10 @@ export class EmployeesComponent implements OnInit {
     }
     crudOperation(crudName, id) {
       switch (crudName) {
+        case 'new':
+          console.log('new', id, this.router.url);
+          this.router.navigateByUrl(`/admin/employee/new`);
+          break;
         case 'show':
           console.log('show', id, this.router.url);
           this.router.navigateByUrl(`/admin/employee/show/${id}`);

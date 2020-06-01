@@ -1,0 +1,36 @@
+
+<form [formGroup]="employee" (ngSubmit)="submitEmployee()">
+    <div class="p-2 bd-highlight">
+        <label>Name</label>
+        <input name="name" type="text" formControlName="name" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Name" />
+    </div>
+    <div class="p-2 bd-highlight">
+        <label>email</label>
+        <input email="email" type="email" formControlName="email" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Email" />
+    </div>
+    <div class="p-2 bd-highlight">
+        <label>password</label>
+        <input password="password" type="password" formControlName="password" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Password" />
+    </div>
+    <div class="p-2 bd-highlight">
+        <label>password_confirmation</label>
+        <input password_confirmation="password_confirmation" type="password" formControlName="password_confirmation" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Password Confirmation" />
+    </div>
+    <div class="p-2 bd-highlight">
+        <label>Position</label>
+        <input name="position" type="text" formControlName="position" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Position" />
+    </div>
+    <div class="p-2 bd-highlight">
+        <label>Branch</label>
+        <input name="branch" type="text" formControlName="branch" class="form-control"
+            aria-describedby="employeeHelp" placeholder="Enter Employee Branch" />
+    </div>
+<div class="container text-center">
+<button class="btn btn-primary">Submit Contact Type</button>
+</div>
+</form>

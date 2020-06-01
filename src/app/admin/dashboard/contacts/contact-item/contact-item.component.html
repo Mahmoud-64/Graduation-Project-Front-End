@@ -1,0 +1,18 @@
+<table class="table text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Seeker</th>
+        <th scope="col">Data</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="contact">
+        <th scope="row">{{contact.id}}</th>
+        <td>{{contact.seeker_name}}</td>
+        <td>{{contact.data}}</td>
+        <td>{{contact.contact_type}}</td>
+    </tr>
+    </tbody>
+  </table>
