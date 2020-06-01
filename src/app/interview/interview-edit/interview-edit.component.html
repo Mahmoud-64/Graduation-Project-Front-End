@@ -1,0 +1,99 @@
+<!-- <p>interview-form works!</p> -->
+<form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+    <!-- <div class="form-group">
+        <label for="application_id">application_id</label>
+        <input type="number" class="form-control" id="application_id" required ngModel name="application_id" />
+    </div> -->
+
+    <div class="form-group">
+        <label for="application_id">application_id</label>
+        <select class="form-control" ngModel required name="application_id" id="application_id">
+            <option *ngFor="let app of this.apps.data" [value]="app.id">
+                {{(app.id)}}</option>
+        </select>
+    </div>
+
+
+    <!-- <div class="form-group">
+        <label for="emp_id">emp_id</label>
+        <input type="number" class="form-control" id="emp_id" required ngModel name="emp_id" />
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="emp_id">emp_id</label>
+        <select id="secret" class="form-control" ngModel required name="emp_id">
+            <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.emp_id">
+                {{(interview.emp_name)}}</option>
+        </select>
+    </div> -->
+
+    <div class="form-group">
+        <label for="emp_id">employee</label>
+        <select class="form-control" ngModel required name="emp_id" id="emp_id">
+            <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
+                {{(employee.name)}}</option>
+        </select>
+    </div>
+
+
+
+
+    <!-- <div class="form-group">
+        <label for="level_id">level_id</label>
+        <input type="number" class="form-control" id="level_id" required ngModel name="level_id" />
+    </div>-->
+
+    <!-- <div class="form-group">
+        <label for="leve_id">level_id</label>
+        <select class="form-control" ngModel required name="level_id" id="level_id">
+            <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.level_id">
+                {{(interview.application_id)}}</option>
+        </select>
+    </div> -->
+
+    <div class="form-group">
+        <label for="leve_id">leve_id</label>
+        <select class="form-control" ngModel required name="level_id" id="leve_id">
+            <option *ngFor="let level of this.levels.data" [value]="level.id">
+                {{(level.name)}}</option>
+        </select>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="date">date</label>
+        <input type="text" class="form-control" id="date" required ngModel name="date" />
+    </div>
+
+    <div class="form-group">
+        <label for="seeker_review">seeker_review</label>
+        <input type="text" class="form-control" id="seeker_review" required ngModel name="seeker_review" />
+    </div>
+
+    <div class="form-group">
+        <label for="company_review">company_review</label>
+        <input type="text" class="form-control" id="company_review" required ngModel name="company_review" />
+    </div>
+
+
+    <div class="form-group">
+        <label for="zoom">zoom</label>
+        <input type="text" class="form-control" id="zoom" required ngModel name="zoom" />
+    </div>
+    <!-- ########################################################### -->
+    <!-- <select id="secret" class="form-control" ngModel required name="emp_id">
+        <option *ngFor="let interview of this.interviewService.loadedInterview[0]" [value]="interview.emp_id">
+            {{(interview.emp_name)}}</option>
+         <option value="teacher">Your first teacher?</option> -->
+    <!-- </select> -->
+    <!-- ########################################################### -->
+
+
+    <!-- <div class="form-group">
+        <label for="content">Content</label>
+        <textarea class="form-control" id="content" required ngModel name="content"></textarea>
+      </div> -->
+    <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
+        Send Post
+    </button>
+</form>
