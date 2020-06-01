@@ -13,6 +13,7 @@ import { EmployeeService } from '../../../../service/employee.service';
   styleUrls: ['./form-employee.component.css']
 })
 export class FormEmployeeComponent implements OnInit {
+  error;
   employee_id;
   employee: FormGroup = this.fb.group({
     name: [''],
@@ -48,13 +49,21 @@ export class FormEmployeeComponent implements OnInit {
       this.employeeService.updateEmployee(this.employee_id, this.employee.value)
         .subscribe(result => {
           console.log(result);
-        })
+        },
+          err => {
+            console.log("error", err.errors);
+            this.error = err.errors;
+          })
     } else {
       console.log(this.employee.value);
       this.employeeService.addEmployee(this.employee.value)
         .subscribe(result => {
           console.log(result);
-        })
+        },
+          err => {
+            console.log("error", err.errors);
+            this.error = err.errors;
+          })
     }
   }
 

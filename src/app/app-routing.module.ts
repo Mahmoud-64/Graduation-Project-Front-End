@@ -55,6 +55,11 @@ const routes: Routes = [
           import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
       },
       {
+        path: 'admin-interviews',
+        loadChildren: () =>
+          import('./admin-interviews/admin-interviews.module').then((m) => m.AdminInterviewsModule),
+      },
+      {
         path: 'profile',
         canActivate: [AuthGuard],
         loadChildren: () =>

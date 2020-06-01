@@ -9,11 +9,12 @@ import { LevelsService } from '../../../service/levels.service';
 })
 export class InterviewLevelsComponent implements OnInit {
   levels;
+  error;
   constructor(private router: Router,
-              private levelsService: LevelsService) { }
+    private levelsService: LevelsService) { }
 
   ngOnInit(): void {
-    this.levelsService.getLevels().subscribe(result=>{
+    this.levelsService.getLevels().subscribe(result => {
       this.levels = result["data"];
       console.log(this.levels);
     });
@@ -34,13 +35,13 @@ export class InterviewLevelsComponent implements OnInit {
         this.router.navigateByUrl(`/admin/levels/edit/${id}`);
         break;
       case 'delete':
-        console.log('delete');
-        this.levelsService.deleteLevel(id).subscribe(result=>{
-          this.levelsService.getLevels().subscribe(result=>{
-            this.levels = result["data"];
-            console.log(this.levels);
+        this.levelsService.deleteLevel(id).subscribe(
+          result => {
+            this.error = result["data"];
+            this.levelsService.getLevels().subscribe(result => {
+              this.levels = result["data"];
+            });
           });
-        });
         break;
     }
   }
