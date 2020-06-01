@@ -1,0 +1,37 @@
+<div class="container bg-light">
+    <form [formGroup]="newInterviewForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="application">application</label>
+            <input type="text" readonly class="form-control-plaintext bg-white " [(ngModel)]="appId" formControlName="application_id"
+                name="application">
+        </div>
+        <div>
+            <label for="employee">employee</label>
+            <select class="custom-select form-control" formControlName="employee_id">
+                <option *ngFor="let emp of employees" [value]="emp.id">
+                    {{emp.name}} </option>
+            </select>
+        </div>
+        <div>
+            <label for="level">level</label>
+            <select class="custom-select form-control" formControlName="level_id">
+                <option *ngFor="let lev of levels" [value]="lev.id">
+                    {{lev.name}} </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="date">enter meeting date</label>
+            <input type="datetime-local" class="form-control" formControlName="date" name="date" [value]="current" >
+        </div>
+        <div class="form-group">
+            <label for="zoom">zoom </label>
+            <input type="text" id="zoom" class="form-control" formControlName="zoom" name="zoom"
+                placeholder="Enter Link">
+        </div>
+        <div>
+            <button class="btn-success btn"> submit</button>
+        </div>
+
+
+    </form>
+</div>

@@ -15,6 +15,8 @@ import { EditJobComponent } from '../dashboard/admin-jobs/edit-job/edit-job.comp
 import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.component';
 import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
+import { InterviewsComponent } from '../../admin-interviews/interviews/interviews.component';
+import { SingleInterviewComponent } from 'src/app/admin-interviews/single-interview/single-interview.component';
 
 
 import { ContactsComponent } from '../dashboard/contacts/contacts.component';
@@ -49,7 +51,8 @@ const routes: Routes = [
       { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
-      { path: 'interviews', component: AppDetailsComponent },
+      { path: 'interviews', component: InterviewsComponent },
+      { path: 'interviews/:id', component: SingleInterviewComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },
       { path: 'contacttype', component: ContactTypesComponent },
