@@ -9,11 +9,12 @@ import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { InterviewLevelsComponent } from './interview-levels/interview-levels.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { InterviewEditComponent } from './interview-edit/interview-edit.component';
 
 
 @NgModule({
-  declarations: [InterviewListComponent, InterviewItemComponent, InterviewDetailsComponent, InterviewFormComponent, InterviewComponent, InterviewLevelsComponent],
+  declarations: [InterviewListComponent, InterviewItemComponent, InterviewDetailsComponent, InterviewFormComponent, InterviewComponent, InterviewLevelsComponent, InterviewEditComponent],
   imports: [
     CommonModule,
     AppRoutingModule,

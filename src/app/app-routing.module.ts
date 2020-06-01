@@ -20,6 +20,7 @@ import { UserResolverService } from './resolvers/user-resolver.service';
 import { Role } from './models/role.enum';
 import { BaseComponent } from './base/base.component';
 import { InterviewLevelsComponent } from './interview/interview-levels/interview-levels.component';
+import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
           {
             path: 'add',
             component: InterviewFormComponent
+          },
+          {
+            path: 'edit/:id',
+            component: InterviewEditComponent
           },
           {
             path: 'show/:id',
