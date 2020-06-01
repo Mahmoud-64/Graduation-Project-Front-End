@@ -13,6 +13,8 @@
             <td>{{ interview.emp_name }}</td>
             <td>{{ interview.date}}</td>
             <td><button routerLink="../show/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
+            <td><button routerLink="../edit/{{ interview.id }}" class="btn btn-success btn-sm"> edit &nbsp;</button>
+            </td>
             <td><button class="btn btn-danger btn-sm" (click)="delete(interview.id)"> delete</button></td>
 
         </tr>

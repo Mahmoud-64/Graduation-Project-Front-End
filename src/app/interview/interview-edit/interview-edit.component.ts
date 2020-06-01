@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InterviewService } from '../interview.service';
+import { Params, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-interview-edit',
@@ -13,9 +14,11 @@ export class InterviewEditComponent implements OnInit {
   apps: any;
   levels: any;
   employees: any;
+  single: any = {};
+  id = 0;
 
 
-  constructor(private http: HttpClient, public interviewService: InterviewService) { }
+  constructor(private http: HttpClient, public interviewService: InterviewService, private route: ActivatedRoute) { }
   defaultQuestion = 'teacher';
   genders = ['male', 'female', 'a', 'b'];
   onCreatePost(postData: { title: string; content: string }) {
@@ -23,7 +26,7 @@ export class InterviewEditComponent implements OnInit {
 
     this.http
       .put(
-        'http://localhost:8000/api/interview/5',
+        'http://localhost:8000/api/interview/' + this.id,
         postData,
         // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
       )
@@ -32,6 +35,21 @@ export class InterviewEditComponent implements OnInit {
       });
   }
   ngOnInit() {
+
+    this.route.params
+      .subscribe((params: Params) => {
+        this.id = params['id'];
+        console.log(this.id);
+
+        this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
+          this.single = interview['data']
+          console.log(this.single);
+
+        }
+        )
+      });
+
+
     this.interviewService.fetchInterview();
     // console.log(this.interviewService.fetchInterview());
     // this.arr = this.interviewService.loadedInterview[0]
