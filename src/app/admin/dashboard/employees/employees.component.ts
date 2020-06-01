@@ -21,7 +21,7 @@ export class EmployeesComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router) {
       console.log('employee opened');
-      
+
      }
 
 
@@ -39,11 +39,11 @@ export class EmployeesComponent implements OnInit {
           break;
         case 'show':
           console.log('show', id, this.router.url);
-          this.router.navigateByUrl(`/admin/profile/${id}`);
+          this.router.navigateByUrl(`/admin/employee/show/${id}`);
           break;
         case 'edit':
           console.log('edit');
-          this.router.navigateByUrl(`/admin/profile/edit/${id}`);
+          this.router.navigateByUrl(`/admin/employee/edit/${id}`);
           break;
         case 'delete':
           console.log('delete');

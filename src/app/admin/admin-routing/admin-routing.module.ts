@@ -16,6 +16,7 @@ import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.
 import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 
+
 import { ContactsComponent } from '../dashboard/contacts/contacts.component';
 import { ContactItemComponent } from '../dashboard/contacts/contact-item/contact-item.component';
 import { ContactFormComponent } from '../dashboard/contacts/contact-form/contact-form.component';
@@ -25,13 +26,21 @@ import { InterviewLevelsItemComponent } from '../dashboard/interview-levels/inte
 import { InterviewLevelsFormComponent } from '../dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
 
 
+import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
+import { EditSeekerComponent } from '../dashboard/seekers/edit-seeker/edit-seeker.component';
+import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
+import { EditEmployeeComponent } from '../dashboard/employees/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   {
     path: '', component: AdminComponent,
     children: [
       { path: 'seeker', component: SeekersComponent },
+      { path: 'seeker/show/:id', component: ShowSeekerComponent },
+      { path: 'seeker/edit/:id', component: EditSeekerComponent },
       { path: 'employee', component: EmployeesComponent },
+      { path: 'employee/show/:id', component: ShowEmployeeComponent },
+      { path: 'employee/edit/:id', component: EditEmployeeComponent },
       { path: 'jobs', component: JobsComponent },
       { path: 'jobs/new', component: NewJobComponent },
       { path: 'jobs/:id', component: SingleComponent },

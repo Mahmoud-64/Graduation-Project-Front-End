@@ -1,7 +1,17 @@
 <app-header></app-header>
-<div class="crop">
-<img class="img-fluid w-100" src="assets/images/home.jpg" *ngIf="image.url != '/login' && image.url != '/signup' && image.url != '/admin'" >
-    </div>
+<div class="crop" *ngIf="image.url != '/login' && image.url != '/signup' && image.url != '/admin'" >
+  <img class="img-fluid w-100" src="assets/images/home.jpg" >
+</div>
+
+<div class="bg-warning text-center" *ngIf="isEmailSent()">
+  please verify your email, if you didn't recieve any emails click this button
+  <button class="btn btn-success" (click)="resendEmailVerification()"> send email verification </button>
+</div>
+
+<div class="bg-warning text-center" *ngIf="loggedinUser && emailSent && !emailVerified">
+  email has been sent, check your inbox
+</div>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>

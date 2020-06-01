@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.userService.register(this.user.value).subscribe(users => {
-      this.router.navigateByUrl('/login');
+      this.router.navigate(['/login', {verify_email: users['verify_email']?true:false}]);
     },
     err=>{
       let errorData = err.errors

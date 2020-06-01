@@ -18,7 +18,6 @@ import { HeaderComponent } from './header/header.component';
 import { BaseComponent } from './base/base.component';
 import { HomeModule } from './home/home.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
