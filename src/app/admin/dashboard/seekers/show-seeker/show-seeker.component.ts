@@ -11,6 +11,7 @@ export class ShowSeekerComponent implements OnInit {
   user={
     id: "",
     name: "",
+    email: "",
     password: "",
     phone: "",
     contact: "",

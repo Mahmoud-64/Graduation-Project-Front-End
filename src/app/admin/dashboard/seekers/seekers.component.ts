@@ -24,7 +24,6 @@ export class SeekersComponent implements OnInit {
   ngOnInit(): void {
     this.seekerService.getSeekers().subscribe(users => {
       this.users = users.data;
-      console.log(this.users);
     })
   }
   crudOperation(crudName, id) {

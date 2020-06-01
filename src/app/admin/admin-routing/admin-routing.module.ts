@@ -18,6 +18,8 @@ import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-ty
 
 import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
 import { EditSeekerComponent } from '../dashboard/seekers/edit-seeker/edit-seeker.component';
+import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
+import { EditEmployeeComponent } from '../dashboard/employees/edit-employee/edit-employee.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,8 @@ const routes: Routes = [
       { path: 'seeker/show/:id', component: ShowSeekerComponent },
       { path: 'seeker/edit/:id', component: EditSeekerComponent },
       { path: 'employee', component: EmployeesComponent },
+      { path: 'employee/show/:id', component: ShowEmployeeComponent },
+      { path: 'employee/edit/:id', component: EditEmployeeComponent },
       { path: 'jobs', component: JobsComponent },
       { path: 'jobs/new', component: NewJobComponent },
       { path: 'jobs/:id', component: SingleComponent },

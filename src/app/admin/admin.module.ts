@@ -21,10 +21,14 @@ import { ContactTypesItemComponent } from './dashboard/contact-types/contact-typ
 import { ContactTypesFormComponent } from './dashboard/contact-types/contact-types-form/contact-types-form.component';
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
 import { EditSeekerComponent } from './dashboard/seekers/edit-seeker/edit-seeker.component';
+import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
+import { EditEmployeeComponent } from './dashboard/employees/edit-employee/edit-employee.component';
+import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
+import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, ShowSeekerComponent, EditSeekerComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, ShowSeekerComponent, EditSeekerComponent, ShowEmployeeComponent, EditEmployeeComponent, AddEmployeeComponent, AddSeekerComponent],
 
   imports: [
     CommonModule,
