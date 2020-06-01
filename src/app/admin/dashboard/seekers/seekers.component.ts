@@ -28,6 +28,10 @@ export class SeekersComponent implements OnInit {
   }
   crudOperation(crudName, id) {
     switch (crudName) {
+      case 'new':
+        console.log('new', this.router.url);
+        this.router.navigateByUrl(`/admin/seeker/new`);
+        break;
       case 'show':
         console.log('show', id, this.router.url);
         this.router.navigateByUrl(`/admin/seeker/show/${id}`);

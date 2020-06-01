@@ -43,8 +43,8 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       this.user_id = +params.get('profileId');
     });
-    this.contactService.contactTypes.subscribe(val => {
-      this.contactTypes = val;
+    this.contactService.getContactTypes().subscribe(val => {
+      this.contactTypes = val['data'];
     })
   }
 

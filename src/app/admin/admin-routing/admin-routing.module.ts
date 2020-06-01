@@ -17,7 +17,7 @@ import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-ty
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 
 import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
-import { EditSeekerComponent } from '../dashboard/seekers/edit-seeker/edit-seeker.component';
+import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
 import { EditEmployeeComponent } from '../dashboard/employees/edit-employee/edit-employee.component';
 
@@ -27,7 +27,8 @@ const routes: Routes = [
     children: [
       { path: 'seeker', component: SeekersComponent },
       { path: 'seeker/show/:id', component: ShowSeekerComponent },
-      { path: 'seeker/edit/:id', component: EditSeekerComponent },
+      { path: 'seeker/new', component: SeekerFormComponent },
+      { path: 'seeker/edit/:id', component: SeekerFormComponent },
       { path: 'employee', component: EmployeesComponent },
       { path: 'employee/show/:id', component: ShowEmployeeComponent },
       { path: 'employee/edit/:id', component: EditEmployeeComponent },
