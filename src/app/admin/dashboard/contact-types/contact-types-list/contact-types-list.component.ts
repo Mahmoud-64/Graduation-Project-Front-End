@@ -9,6 +9,7 @@ import { ContactService } from '../../../../profile/contact/service/contact.serv
 })
 export class ContactTypesListComponent implements OnInit {
   contactTypes;
+  error;
   constructor(private contactService: ContactService,
     private router: Router) { }
 
@@ -34,6 +35,7 @@ export class ContactTypesListComponent implements OnInit {
       case 'delete':
         console.log('delete');
         this.contactService.deleteContactType(id).subscribe(result => {
+          this.error = result['data'];
           this.contactService.getContactTypes().subscribe(contactTypes => {
             this.contactTypes = contactTypes['data'];
           })

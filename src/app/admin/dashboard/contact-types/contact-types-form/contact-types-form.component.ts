@@ -12,6 +12,7 @@ import { ContactService } from '../../../../profile/contact/service/contact.serv
   styleUrls: ['./contact-types-form.component.css']
 })
 export class ContactTypesFormComponent implements OnInit {
+  error;
   contact_type_id;
   contactType: FormGroup = this.fb.group({
     id: [''],
@@ -40,11 +41,19 @@ export class ContactTypesFormComponent implements OnInit {
       this.contactService.editContactType(this.contact_type_id, this.contactType.value)
         .subscribe(result => {
           console.log(result);
+        },
+        err=>{
+          console.log("error",err.errors);
+          this.error = err.errors;
         })
     } else {
       this.contactService.addContactType(this.contactType.value)
         .subscribe(result => {
           console.log(result);
+        },
+        err=>{
+          console.log("error",err.errors);
+          this.error = err.errors;
         })
     }
   }

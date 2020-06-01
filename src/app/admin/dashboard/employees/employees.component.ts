@@ -9,6 +9,7 @@ import { Employee } from '../../../models/employee';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  error;
   users: Array<Employee> = [{
     id: '',
     name: '',
@@ -49,6 +50,7 @@ export class EmployeesComponent implements OnInit {
           console.log('delete');
           this.employeeService.deleteEmployee(id).subscribe(result=>{
             console.log(result);
+            this.error = result['data'];
             this.employeeService.getEmployees().subscribe(users => {
               this.users = users.data;
               console.log(this.users);

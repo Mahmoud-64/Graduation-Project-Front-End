@@ -14,6 +14,7 @@ import { SeekerService } from '../../../../service/seeker.service';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
+  error;
   contact_id;
   contactTypes: Array<any> = [];
   seekers: Array<any> = [];
@@ -58,9 +59,13 @@ export class ContactFormComponent implements OnInit {
           console.log(result);
         })
     } else {
-      this.contactService.addContact(this.contact.value)
+      this.contactService.addNewContact(this.contact.value)
         .subscribe(result => {
           console.log(result);
+        },
+        err=>{
+          console.log("error",err.errors);
+          this.error = err.errors;
         })
     }
   }

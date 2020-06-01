@@ -12,6 +12,7 @@ import {
   styleUrls: ['./interview-levels-form.component.css']
 })
 export class InterviewLevelsFormComponent implements OnInit {
+  error;
   level_id;
   level: FormGroup = this.fb.group({
     id: [''],
@@ -44,11 +45,19 @@ export class InterviewLevelsFormComponent implements OnInit {
       this.levelsService.updateLevel(this.level_id, this.level.value)
         .subscribe(result => {
           console.log(result);
+        },
+        err=>{
+          console.log("error",err.errors);
+          this.error = err.errors;
         })
     } else {
       this.levelsService.addLevel(this.level.value)
         .subscribe(result => {
           console.log(result);
+        },
+        err=>{
+          console.log("error",err.errors);
+          this.error = err.errors;
         })
     }
   }
