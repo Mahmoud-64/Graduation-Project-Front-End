@@ -23,6 +23,7 @@ export class SeekerFormComponent implements OnInit {
     contacts: []
   };
     error: any;
+    errordata: any;
     cvError: any;
     user_id;
     selfile = null;
@@ -96,9 +97,19 @@ export class SeekerFormComponent implements OnInit {
           this.user = result.data;
           this.error = "";
         },
-          err => {
-            this.error = err;
-          });
+        err => {
+          this.error = err;
+        });
+
+        this.userService.updateUser(this.user.id, this.details.value)
+        .subscribe((data) => {
+          this.errordata = "";
+          console.log("data", data);
+        },
+        err=>{
+            this.errordata = err;
+            console.log("error=", this.errordata);
+        });
     }
     else
     {
@@ -113,7 +124,6 @@ export class SeekerFormComponent implements OnInit {
         },
           err => {
             this.error = err;
-            console.log("return====", this.error);
           });
     }
   }

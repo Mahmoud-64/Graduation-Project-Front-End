@@ -22,36 +22,6 @@
         </td>
       </tr>
       <tr>
-        <th>Other Contacts</th>
-        <td>
-          <div formArrayName="contacts">
-            <div *ngFor="let contact of contacts.controls; index as i">
-              <div [formGroupName]="i" class="d-flex flex-row-reverse bd-highlight">
-                <!-- <input type="text" formControlName="data" name="data">
-                <input type="text" formControlName="contact_types_id" name="contact_types_id"> -->
-                <div class="p-2 bd-highlight">
-                  <span class="addContact" (click)="removeContact(i)">
-                      <img src="https://img.icons8.com/metro/20/000000/close-window.png"/>
-                  </span>
-              </div>
-                <div class="p-2 bd-highlight">
-                  <input name="contact" type="text" formControlName="data" class="form-control"
-                    aria-describedby="contactHelp" placeholder="Enter contact" />
-                </div>
-                <div class="p-2 bd-highlight">
-                  <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
-                    <option value=''>please select</option>
-                    <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
-                      {{contactType.type}}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
         <th scope="col">Address</th>
         <td>
           <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
@@ -130,23 +100,55 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <th>Other Contacts
+          <span class="addContact" (click)="addContact()">
+              <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
+          </span>
+        </th>
+        <td>
+          <div formArrayName="contacts">
+            <div *ngFor="let contact of contacts.controls; index as i">
+              <div [formGroupName]="i" class="d-flex bd-highlight">
+                <div class="p-2 bd-highlight">
+                  <input class="form-control" name="contact" type="text" formControlName="data" class="form-control"
+                    aria-describedby="contactHelp" placeholder="Enter contact" />
+                </div>
+                <div class="p-2 bd-highlight">
+                  <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
+                    <option value=''>please select</option>
+                    <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
+                      {{contactType.type}}
+                    </option>
+                  </select>
+                </div>
+                <div class="p-2 bd-highlight">
+                  <span class="addContact" (click)="removeContact(i)">
+                      <img src="https://img.icons8.com/metro/20/000000/close-window.png"/>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 
   <input class="btn btn-success" type="submit" value="Edit">
 </form>
 
-<app-contact-form [inputContact]="seeker.contacts"></app-contact-form>
-
-<form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
+<div class="m-4">
+  <form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
     <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
     <div *ngIf="cvError" class="text-danger small">
-        {{cvError}}
+      {{cvError}}
     </div>
     <div *ngIf="error && error.errors.cv" class="text-danger small">
       <div *ngFor="let cv of error.errors.cv">
         {{cv}}
       </div>
     </div>
-  <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
-</form>
+    <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
+  </form>
+</div>

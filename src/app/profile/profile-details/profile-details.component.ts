@@ -43,10 +43,6 @@ export class ProfileDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      if (this.router.url.includes('/profile/edit')) {
-        this.isCollapsed = false;
-        this.isCollapsed2 = true;
-      }
       this.getSeeker(+params.get('profileId'));
     });
   }
@@ -58,24 +54,19 @@ export class ProfileDetailsComponent implements OnInit {
         this.contacts = seeker.data.contacts;
         this.role = seeker.data.role;
         console.log("roooooole", this.role);
-
         this.url = `/api/seekers/downloadcv/${this.seeker.id}/${this.seeker.cv}`;
       });
   }
 
   changeData(data) {
-    if (!this.router.url.includes('/profile/edit')) {
-      this.isCollapsed = !this.isCollapsed;
-    }
+    this.isCollapsed = !this.isCollapsed;
     this.seeker.name = data.data.name;
     this.seeker.email = data.data.email;
   }
 
   changeDetailsData(data) {
-    if (!this.router.url.includes('/profile/edit')) {
-      this.isCollapsed2 = !this.isCollapsed2;
-    }
     this.seeker = data;
+    this.contacts = data.contacts;
   }
 
   downloadFile(){
