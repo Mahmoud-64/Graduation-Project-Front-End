@@ -22,6 +22,22 @@ export class ContactService {
     );
   }
 
+  getContactType(id){
+    return this.http.get(`/api/contacttype/${id}`);
+  }
+
+  addContactType(data){
+    return this.http.post(`/api/contacttype`, data);
+  }
+
+  editContactType(id, data){
+    return this.http.put(`/api/contacttype/${id}`, data);
+  }
+
+  deleteContactType(id){
+    return this.http.delete(`/api/contacttype/${id}`);
+  }
+
   addContact(contact: any) {
     this.user_id = this.userService.user_id;
     let addContact = {

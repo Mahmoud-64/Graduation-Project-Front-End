@@ -10,6 +10,11 @@ import { InterviewService } from '../interview.service';
 })
 export class InterviewFormComponent implements OnInit {
   // arr: any[]=[];
+  apps: any;
+  levels: any;
+  employees: any;
+
+
   constructor(private http: HttpClient, public interviewService: InterviewService) { }
   defaultQuestion = 'teacher';
   genders = ['male', 'female', 'a', 'b'];
@@ -30,6 +35,41 @@ export class InterviewFormComponent implements OnInit {
     this.interviewService.fetchInterview();
     // console.log(this.interviewService.fetchInterview());
     // this.arr = this.interviewService.loadedInterview[0]
+    //############################
+    this.http
+      .get(
+        '/api/applications/'
+      )
+
+      .subscribe(applications => {
+        this.apps = applications;
+        console.log(this.apps);
+
+      });
+
+
+    this.http
+      .get(
+        '/api/levels/'
+      )
+
+      .subscribe(l => {
+        this.levels = l;
+        console.log(this.levels);
+
+      });
+
+    this.http
+      .get(
+        '/api/employees/'
+      )
+
+      .subscribe(emp => {
+        this.employees = emp;
+        console.log(this.employees);
+
+      });
+
 
   }
 

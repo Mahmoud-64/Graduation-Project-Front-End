@@ -23,6 +23,11 @@
           {{userName}}
         </a>
       </li>
+      <li class="nav-item clickable active"  *ngIf="loggedIn===true">
+        <a routerLink="/applications" class="nav-link">
+          Applications
+        </a>
+      </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
         <a class="nav-link" routerLink="/logout" id="navbarDropdown" role="button">
           Log Out
