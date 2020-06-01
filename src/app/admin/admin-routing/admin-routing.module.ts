@@ -16,6 +16,11 @@ import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.
 import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 
+import { ContactsComponent } from '../dashboard/contacts/contacts.component';
+import { ContactItemComponent } from '../dashboard/contacts/contact-item/contact-item.component';
+import { ContactFormComponent } from '../dashboard/contacts/contact-form/contact-form.component';
+
+
 const routes: Routes = [
   {
     path: '', component: AdminComponent,
@@ -36,6 +41,10 @@ const routes: Routes = [
       { path: 'contacttype/new', component: ContactTypesFormComponent },
       { path: 'contacttype/:Id', component: ContactTypesItemComponent },
       { path: 'contacttype/edit/:Id', component: ContactTypesFormComponent },
+      { path: 'contact', component: ContactsComponent },
+      { path: 'contact/new', component: ContactFormComponent },
+      { path: 'contact/:Id', component: ContactItemComponent },
+      { path: 'contact/edit/:Id', component: ContactFormComponent },
     ],
   },
 ];

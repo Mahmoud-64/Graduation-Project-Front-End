@@ -19,10 +19,13 @@ import { ContactTypesComponent } from './dashboard/contact-types/contact-types.c
 import { ContactTypesListComponent } from './dashboard/contact-types/contact-types-list/contact-types-list.component';
 import { ContactTypesItemComponent } from './dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from './dashboard/contact-types/contact-types-form/contact-types-form.component';
+import { ContactsComponent } from './dashboard/contacts/contacts.component';
+import { ContactItemComponent } from './dashboard/contacts/contact-item/contact-item.component';
+import { ContactFormComponent } from './dashboard/contacts/contact-form/contact-form.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent],
+  declarations: [AdminComponent, SidebarComponent, SeekersComponent, EmployeesComponent, JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, ContactsComponent, ContactItemComponent, ContactFormComponent],
 
   imports: [
     CommonModule,

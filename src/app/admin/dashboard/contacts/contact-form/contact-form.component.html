@@ -1,0 +1,31 @@
+<form [formGroup]="contact" (ngSubmit)="submitContact()">
+        <div>
+
+            <div class="my-3">
+                <label>Seeker</label>
+                <select class="form-control" name="seeker_id" formControlName="seeker_id">
+                    <option value=''>please select</option>
+                    <option *ngFor="let seeker of seekers" value="{{seeker.id}}">
+                        {{seeker.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="my-3">
+                <label>Data</label>
+                <input name="contact" type="text" formControlName="data" class="form-control" id="exampleInputcontact1"
+                    aria-describedby="contactHelp" placeholder="Enter contact" />
+            </div>
+            <div class="my-3">
+                <label>Contact Type</label>
+                <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
+                    <option value=''>please select</option>
+                    <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
+                        {{contactType.type}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    <div class="container text-center">
+        <button class="btn btn-primary">submit contact</button>
+    </div>
+</form>
