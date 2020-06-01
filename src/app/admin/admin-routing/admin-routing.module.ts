@@ -41,7 +41,6 @@ const routes: Routes = [
       { path: 'interviews', component: AppDetailsComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },
-      { path: 'level', component: AdminComponent },
       { path: 'contacttype', component: ContactTypesComponent },
       { path: 'contacttype/new', component: ContactTypesFormComponent },
       { path: 'contacttype/:Id', component: ContactTypesItemComponent },
