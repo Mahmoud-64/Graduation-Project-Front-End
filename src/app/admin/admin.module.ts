@@ -29,7 +29,6 @@ import { InterviewLevelsItemComponent } from './dashboard/interview-levels/inter
 
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
 import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
-import { AddEmployeeComponent } from './dashboard/employees/add-employee/add-employee.component';
 import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.component';
 import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
 
@@ -42,7 +41,7 @@ import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-
     ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, 
     ContactsComponent, ContactItemComponent, ContactFormComponent, 
     InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
-    ShowSeekerComponent, ShowEmployeeComponent, AddEmployeeComponent, AddSeekerComponent, FormEmployeeComponent
+    ShowSeekerComponent, ShowEmployeeComponent, AddSeekerComponent, FormEmployeeComponent
   ],
   
   imports: [

@@ -13,7 +13,7 @@ export class ContactTypesListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.contactService.getContactTypes().subscribe(contactTypes=>{
+    this.contactService.getContactTypes().subscribe(contactTypes => {
       this.contactTypes = contactTypes['data'];
     })
   }
@@ -33,8 +33,10 @@ export class ContactTypesListComponent implements OnInit {
         break;
       case 'delete':
         console.log('delete');
-        this.contactService.deleteContactType(id).subscribe(result=>{
-          console.log(result);
+        this.contactService.deleteContactType(id).subscribe(result => {
+          this.contactService.getContactTypes().subscribe(contactTypes => {
+            this.contactTypes = contactTypes['data'];
+          })
         });
         break;
     }
