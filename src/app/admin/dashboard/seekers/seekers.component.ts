@@ -31,11 +31,11 @@ export class SeekersComponent implements OnInit {
     switch (crudName) {
       case 'show':
         console.log('show', id, this.router.url);
-        this.router.navigateByUrl(`/profile/${id}`);
+        this.router.navigateByUrl(`/admin/seeker/show/${id}`);
         break;
       case 'edit':
         console.log('edit');
-        this.router.navigateByUrl(`/profile/edit/${id}`);
+        this.router.navigateByUrl(`/admin/seeker/edit/${id}`);
         break;
       case 'delete':
         console.log('delete');

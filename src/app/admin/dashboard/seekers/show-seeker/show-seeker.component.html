@@ -1,0 +1,28 @@
+<div class="border">
+  <ul class="list-group">
+    <li class="list-group-item"><strong class="m-3">Name : </strong> {{user.name}}</li>
+    <li class="list-group-item"><strong class="m-3">Email : </strong> {{user.email}}</li>
+    <li class="list-group-item"><strong class="m-3">Password : </strong> {{user.password}}</li>
+    <li class="list-group-item"><strong class="m-3">Phone : </strong> {{user.phone}}</li>
+    <li class="list-group-item"><strong class="m-3">Name : </strong> {{user.name}}</li>
+
+    <li class="list-group-item"><strong class="m-3">Email verified at : </strong> {{user.emailVerified}}</li>
+    <li class="list-group-item"><strong class="m-3">Phone is verified : </strong> {{user.isVerified}}</li>
+    <li class="list-group-item"><strong class="m-3">Address : </strong> {{user.address}}</li>
+    <li class="list-group-item"><strong class="m-3">City : </strong> {{user.city}}</li>
+    <li class="list-group-item"><strong class="m-3">Seniority Level : </strong> {{user.seniority}}</li>
+
+    <li class="list-group-item"><strong class="m-3">Years of experience : </strong> {{user.expYears}}</li>
+    <li class="list-group-item"><strong class="m-3">Current Job : </strong> {{user.currentJob}}</li>
+    <li class="list-group-item"><strong class="m-3">Current Salary : </strong> {{user.currentSalary}}</li>
+    <li class="list-group-item"><strong class="m-3">Expected Salary : </strong> {{user.expectedSalary}}</li>
+    <li class="list-group-item"><strong class="m-3">CV : </strong>
+      <a [href]="url" target="_blank" rel="noopener noreferrer">{{user.cv}}</a>
+    </li>
+    <li class="list-group-item"><strong class="m-3">contacts : </strong>
+      <div *ngFor="let contact of user.contacts">
+        {{contact}}
+      </div>
+    </li>
+  </ul>
+</div>
