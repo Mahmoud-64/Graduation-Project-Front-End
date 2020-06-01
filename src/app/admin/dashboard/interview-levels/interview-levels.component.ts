@@ -16,7 +16,6 @@ export class InterviewLevelsComponent implements OnInit {
     this.levelsService.getLevels().subscribe(result=>{
       this.levels = result["data"];
       console.log(this.levels);
-      
     });
   }
 
@@ -37,7 +36,10 @@ export class InterviewLevelsComponent implements OnInit {
       case 'delete':
         console.log('delete');
         this.levelsService.deleteLevel(id).subscribe(result=>{
-          console.log(result);
+          this.levelsService.getLevels().subscribe(result=>{
+            this.levels = result["data"];
+            console.log(this.levels);
+          });
         });
         break;
     }

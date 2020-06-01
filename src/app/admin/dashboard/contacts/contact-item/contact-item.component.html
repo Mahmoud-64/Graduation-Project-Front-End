@@ -1,18 +1,10 @@
-<table class="table text-center">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Seeker</th>
-        <th scope="col">Data</th>
-        <th scope="col">Type</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngIf="contact">
-        <th scope="row">{{contact.id}}</th>
-        <td>{{contact.seeker_name}}</td>
-        <td>{{contact.data}}</td>
-        <td>{{contact.contact_type}}</td>
-    </tr>
-    </tbody>
-  </table>
+
+  <div class="border">
+    <ul class="list-group" *ngIf="contact">
+      <li class="list-group-item"><strong class="m-3">Id : </strong> {{contact.id}}</li>
+      <li class="list-group-item"><strong class="m-3">Seeker : </strong> {{contact.seeker_name}}</li>
+      <li class="list-group-item"><strong class="m-3">Data : </strong> {{contact.data}}</li>
+      <li class="list-group-item"><strong class="m-3">Type : </strong> {{contact.contact_type}}</li>
+    </ul>
+  </div>
+  

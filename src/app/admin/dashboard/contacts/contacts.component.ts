@@ -16,7 +16,6 @@ export class ContactsComponent implements OnInit {
     this.contactService.getContacts().subscribe(contact=>{
       this.contacts = contact['data'];
       console.log(contact['data']);
-      
     })
   }
 
@@ -37,7 +36,10 @@ export class ContactsComponent implements OnInit {
       case 'delete':
         console.log('delete');
         this.contactService.deleteContact(id).subscribe(result => {
-          console.log(result);
+          this.contactService.getContacts().subscribe(contact=>{
+            this.contacts = contact['data'];
+            console.log(contact['data']);
+          })
         });
         break;
     }
