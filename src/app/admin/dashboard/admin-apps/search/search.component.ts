@@ -35,15 +35,13 @@ export class SearchComponent implements OnInit {
     this.applicationService.getAllStatus().subscribe(statuses=>{
       this.statuses = statuses.data;
     })
+    this.searchForm.valueChanges.subscribe(data => {
+       this.applicationService.getAllApplications(data).subscribe(applications=>{
+         this.applications = applications['data'];
+         this.appEvent.emit(this.applications);
+       })
+   })
 
-  }
-
-  onSubmit(){
-    this.applicationService.getAllApplications(this.searchForm.value).subscribe(applications=>{
-      this.applications = applications['data'];
-      console.log("searched applications",applications);
-      this.appEvent.emit(this.applications);
-    })
   }
 
 }

@@ -12,8 +12,6 @@ export class ApplicationService {
   constructor(private http:HttpClient) { }
 
   getAllApplications(params={}) {
-    console.log("params", params);
-    
     return this.http.get<any>(this.getAllapplicationsUrl, {params});
   }
   getFilterApplications(params) {

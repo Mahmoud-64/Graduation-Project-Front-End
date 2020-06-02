@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="searchForm">
     <div class="row justify-content-center">
         <div class="col-4 row">
             <div class="col-6 px-0 form-group">
@@ -13,35 +13,28 @@
                 <input type="text" formControlName="position" class="form-control" placeholder="Position">
             </div>
         </div>
-        <div class="col-6 row">
-            <div class="col-4 px-0 form-group">
+        <div class="col-8 row">
+            <div class="col-3 px-0 form-group">
                 <input type="text" formControlName="seniority" class="form-control" placeholder="Seniority">
             </div>
-            <div class="col-5 px-0 form-group">
-                <input type="number" formControlName="expYears" class="form-control" placeholder="Years of Experience">
-            </div>
             <div class="col-3 px-0 form-group">
+                <input type="text" formControlName="expYears" class="form-control" placeholder="Years of Experience">
+            </div>
+            <div class="col-2 px-0 form-group">
                 <input type="text" formControlName="city" class="form-control" placeholder="City">
             </div>
-        </div>
-        <div class="col-2 px-0">
-            <button type="submit" class="btn btn-success">search</button>
-        </div>
-    </div>
 
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="col-6 px-0 form-group">
-                    <select class="form-control" name="exporder" formControlName="exporder">
-                        <option value=''>Order By Years Of Experience</option>
-                        <option value="desc">
-                            From higher to lower
-                        </option>
-                        <option value="asc">
-                            From lower to higher
-                        </option>
-                    </select>
-                </div>
+            <div class="col-4 px-0 form-group">
+                <select class="form-control" name="exporder" formControlName="exporder">
+                    <option value=''>Order By Years Of Experience</option>
+                    <option value="desc">
+                        From higher to lower
+                    </option>
+                    <option value="asc">
+                        From lower to higher
+                    </option>
+                </select>
             </div>
-        </div>
+    </div>
+</div>
 </form>
