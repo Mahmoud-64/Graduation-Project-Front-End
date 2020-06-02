@@ -101,6 +101,8 @@ export class SeekerFormComponent implements OnInit {
           this.error = err;
         });
 
+        console.log("user", this.user.id);
+        
         this.userService.updateUser(this.user.id, this.details.value)
         .subscribe((data) => {
           this.errordata = "";

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { JobsService } from '../../../../home/services/jobs.service';
 import { ApplicationService } from '../../../../job-application/services/application.service';
 import {
@@ -13,6 +13,7 @@ import {
 })
 export class SearchComponent implements OnInit {
 
+  @Output() appEvent: EventEmitter<any> = new EventEmitter<any>();
   searchForm: FormGroup = this.fb.group({
     status: [''],
     position: [''],
@@ -21,6 +22,7 @@ export class SearchComponent implements OnInit {
     city: [''],
   });
   statuses=[];
+  applications=[];
   
   constructor(
     private jobsService: JobsService,
@@ -32,11 +34,15 @@ export class SearchComponent implements OnInit {
     this.applicationService.getAllStatus().subscribe(statuses=>{
       this.statuses = statuses.data;
     })
+
   }
 
   onSubmit(){
-    console.log(this.searchForm.value);
-    
+    this.applicationService.getAllApplications(this.searchForm.value).subscribe(applications=>{
+      this.applications = applications['data'];
+      console.log("searched applications",applications);
+      this.appEvent.emit(this.applications);
+    })
   }
 
 }

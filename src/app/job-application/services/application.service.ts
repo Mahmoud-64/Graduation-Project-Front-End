@@ -11,8 +11,10 @@ export class ApplicationService {
   private getAllStatusUrl = '/api/appstatuses';
   constructor(private http:HttpClient) { }
 
-  getAllApplications() {
-    return this.http.get<any>(this.getAllapplicationsUrl);
+  getAllApplications(params={}) {
+    console.log("params", params);
+    
+    return this.http.get<any>(this.getAllapplicationsUrl, {params});
   }
   getFilterApplications(params) {
     return this.http.get<any>(this.getAllapplicationsUrl, {
