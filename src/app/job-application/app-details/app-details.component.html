@@ -1,4 +1,7 @@
-<div class="class">
+<div *ngIf="isDataLoaded">
+    <app-interview-levels [interviews]="application.interviews"></app-interview-levels>
+</div>
+<div class="m-3 p-3">
     <div>
         <p>{{application.seeker.user.name}}</p>
     </div>

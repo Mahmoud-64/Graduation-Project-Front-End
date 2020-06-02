@@ -1,15 +1,14 @@
-<mat-horizontal-stepper>
+<mat-horizontal-stepper (selectionChange)="showInterview($event)">
+    <mat-step  *ngFor="let interview of interviews"  [label]="interview.level_name">
+      {{interview.level_name}}
+    </mat-step>  
+</mat-horizontal-stepper>
+<div *ngIf="loadInterview;else anotherInterview" class="p-3 m-3">
+  <app-interview-item [newInterview]="newInterview"></app-interview-item>
+</div>
 
-    <mat-step label="First Interview">
-      Step 1 content
-    </mat-step>
-  
-    <mat-step label="Second Interview">
-      Step 2 content
-    </mat-step>
-  
-    <mat-step label="Final Interview">
-      You are now done.
-    </mat-step>
-    
-  </mat-horizontal-stepper>
+<ng-template #anotherInterview>
+  <div  class="p-3 m-3">
+    <app-interview-item [newInterview]="newInterview"></app-interview-item>
+  </div>
+</ng-template>

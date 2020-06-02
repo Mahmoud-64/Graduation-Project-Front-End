@@ -17,10 +17,12 @@ export class AppDetailsComponent implements OnInit {
       }
     },
     "job": { "title": "", "description": "" },
-    "status": { "name": "", "description": "" }
+    "status": { "name": "", "description": "" },
+    "interviews":[]
   };
   isAdmin: boolean = true;
   interviewForm: boolean = false;
+  isDataLoaded:boolean = false;
   constructor(
     private applicationService: ApplicationService,
     private route: ActivatedRoute
@@ -32,6 +34,7 @@ export class AppDetailsComponent implements OnInit {
         result => {
           console.log(result);
           this.application = result.data;
+          this.isDataLoaded=true;
         },
         error => {
           console.log(error);

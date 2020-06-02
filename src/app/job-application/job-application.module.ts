@@ -9,6 +9,7 @@ import { JobApplicationRoutingModule } from "./job-application-routing.module";
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AdminInterviewsModule } from '../admin-interviews/admin-interviews.module';
+import { InterviewModule } from '../interview/interview.module';
 
 @NgModule({
   declarations: [AppListComponent, AppItemComponent, AppDetailsComponent, JobApplicationComponent],
@@ -17,7 +18,8 @@ import { AdminInterviewsModule } from '../admin-interviews/admin-interviews.modu
     JobApplicationRoutingModule,
     ScrollingModule,
     NgbModule,
-    AdminInterviewsModule
+    AdminInterviewsModule,
+    InterviewModule
     
   ],
   exports: [ 
