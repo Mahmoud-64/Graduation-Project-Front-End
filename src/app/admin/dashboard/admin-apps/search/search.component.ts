@@ -20,10 +20,11 @@ export class SearchComponent implements OnInit {
     seniority: [''],
     expYears: [''],
     city: [''],
+    exporder: [''],
   });
   statuses=[];
   applications=[];
-  
+
   constructor(
     private jobsService: JobsService,
     private applicationService: ApplicationService,
