@@ -1,0 +1,25 @@
+<!-- <a [routerLink]="['/admin/jobs/new']" class="btn btn-dark"> new Interview</a> -->
+<table class="table text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Application</th>
+            <th scope="col">Seeker</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Date</th>
+            <th scope="col" colspan="3">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let interview of interviews">
+            <th scope="row">{{interview.id}}</th>
+            <td>{{interview.application_id}}</td>
+            <td>{{interview.application_id}}</td>
+            <td>{{interview.emp_name}}</td>
+            <td>{{interview.date}}</td>
+            <td><a class="btn btn-success btn-sm text-white" [routerLink]="['/admin/interviews',interview.id]" >show</a></td>
+            <td><a class="btn btn-primary btn-sm text-white" [routerLink]="['/admin-interviews/edit',interview.id]">edit</a></td>
+            <td><a class="btn btn-danger btn-sm text-white" (click)="deleteInterview(interview.id)">delete</a></td>
+        </tr>
+    </tbody>
+</table>

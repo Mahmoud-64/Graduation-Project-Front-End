@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class InterviewService {
     loadedInterview: any[];
     singleInterview;
@@ -42,5 +45,7 @@ export class InterviewService {
             );
 
     }
+
+    
 
 }

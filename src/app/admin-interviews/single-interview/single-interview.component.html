@@ -1,0 +1,63 @@
+<div class="bg-light m-3 p-3">
+    <div class="row">
+        <div class="col-3">
+            <a class="btn btn-primary btn-sm text-white" [routerLink]="['/admin-interviews/edit',interview.id]">edit</a>
+        </div>
+        <div class="text-center text-info col-6">
+            <h2>Interview Details</h2>
+        </div>
+        <div class="col-3 text-right">
+            <a class="btn btn-danger btn-sm text-white " (click)="deleteInterview(interview.id)">delete</a>
+        </div>
+    </div>
+    
+<table class="table">
+    <tbody>
+        <tr>
+            <td>application</td>
+            <td class="text">{{interview.application_id}}</td>
+        </tr>
+        <tr>
+            <td>Seeker</td>
+            <td class="text">
+                
+            </td>
+        
+        </tr>
+        <tr>
+            <td>Employee</td>
+            <td class="text">
+                {{interview.emp_name}}
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>level</td>
+            <td class="text"> {{interview.level_name}}</td>
+
+        </tr>
+        <tr>
+            <td>date</td>
+            <td class="text"> {{interview.date}}</td>
+
+        </tr>
+        <tr>
+            <td>seeker review</td>
+            <td class="text"> {{interview.seeker_review}}</td>
+
+        </tr>
+        <tr>
+            <td>company review</td>
+            <td class="text"> {{interview.company_review}}</td>
+
+        </tr>
+        <tr>
+            <td>zoom</td>
+            <td class="text"> {{interview.zoom}}</td>
+
+        </tr>
+    </tbody>
+</table>
+</div>
+

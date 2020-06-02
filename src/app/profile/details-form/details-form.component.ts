@@ -43,8 +43,8 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       this.user_id = +params.get('profileId');
     });
-    this.contactService.contactTypes.subscribe(val => {
-      this.contactTypes = val;
+    this.contactService.getContactTypes().subscribe(val => {
+      this.contactTypes = val['data'];
     })
   }
 
@@ -70,12 +70,33 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     })
   }
 
-  removeContact(index) {
-    let contact = this.contacts.at(index)
-    this.contacts.removeAt(index);
-    this.contactService.deleteContact(contact.value.id).subscribe(res => {
-    });
-  }
+    removeContact(index) {
+      let contact = this.contacts.at(index)
+      this.contacts.removeAt(index);
+      if (contact.value.id) {
+        this.contactService.deleteContact(contact.value.id).subscribe(res => {
+          let user;
+          this.seekerService.getSeeker(this.user_id).subscribe(
+            (data)=>{
+              this.formEvent.emit(data["data"]);
+            }
+          )
+
+        });
+      }
+    }
+
+    addContact(){
+      this.contacts.push(this.newContactEmpty());
+    }
+
+
+    newContactEmpty(): FormGroup {
+      return this.fb.group({
+        contact_types_id: '',
+        data: '',
+      })
+   }
   ////////////////////////// // ///////////////////////
 
   ////////////////////////// pdf //////////////////////

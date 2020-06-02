@@ -10,24 +10,31 @@ import { ActivatedRoute } from '@angular/router';
 export class AppDetailsComponent implements OnInit {
 
   application = {
-    "id":"",
-    "seeker":{'user':{
-      'name':""
-    }},
-    "job":{"title":"","description":""},
-    "status":{"name":"","description":""}
+    "id": "",
+    "seeker": {
+      'user': {
+        'name': ""
+      }
+    },
+    "job": { "title": "", "description": "" },
+    "status": { "name": "", "description": "" },
+    "interviews":[]
   };
+  isAdmin: boolean = true;
+  interviewForm: boolean = false;
+  isDataLoaded:boolean = false;
   constructor(
     private applicationService: ApplicationService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(routParams =>{
+    this.route.params.subscribe(routParams => {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
           console.log(result);
           this.application = result.data;
+          this.isDataLoaded=true;
         },
         error => {
           console.log(error);
@@ -35,21 +42,24 @@ export class AppDetailsComponent implements OnInit {
         }
       )
     })
-    
+
   }
 
-  deleteApplication()
-  {
+  deleteApplication() {
     this.applicationService.deleteSingleApplication(this.application.id).subscribe(
-      result=>{
+      result => {
         console.log(result);
-        this.applicationService.appSubject.next("delete");                
+        this.applicationService.appSubject.next("delete");
       },
-      error=>{
+      error => {
         console.log(error);
-        
+
       }
     )
+  }
+
+  showForm(){
+    this.interviewForm=true;
   }
 
 }

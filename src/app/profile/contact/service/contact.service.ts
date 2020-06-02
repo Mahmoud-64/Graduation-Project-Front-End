@@ -15,11 +15,7 @@ export class ContactService {
   }
 
   getContactTypes() {
-    return this.http.get('/api/contacttype').pipe(
-      tap(val => {
-        this.contactTypes.next(val['data']);
-      })
-    );
+    return this.http.get('/api/contacttype');
   }
 
   getContactType(id){

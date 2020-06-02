@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="crop" *ngIf="image.url != '/login' && image.url != '/signup' && image.url != '/admin'" >
+<div class="crop" *ngIf="checkPath()" >
   <img class="img-fluid w-100" src="assets/images/home.jpg" >
 </div>
 
