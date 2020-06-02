@@ -29,22 +29,24 @@ import { InterviewLevelsFormComponent } from './dashboard/interview-levels/inter
 import { InterviewLevelsItemComponent } from './dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
 
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
+import { SeekerFormComponent } from './dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
-import { AddSeekerComponent } from './dashboard/seekers/add-seeker/add-seeker.component';
 import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
+
+
 
 
 @NgModule({
   declarations: [
-    AdminComponent, SidebarComponent, 
-    SeekersComponent, EmployeesComponent, 
-    JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent, 
-    ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent, 
-    ContactsComponent, ContactItemComponent, ContactFormComponent, 
+    AdminComponent, SidebarComponent,
+    SeekersComponent, EmployeesComponent,
+    JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent,
+    ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent,
+    ContactsComponent, ContactItemComponent, ContactFormComponent,
     InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
-    ShowSeekerComponent, ShowEmployeeComponent, AddSeekerComponent, FormEmployeeComponent
+    ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent
   ],
-  
+
   imports: [
     CommonModule,
     AdminRoutingModule,

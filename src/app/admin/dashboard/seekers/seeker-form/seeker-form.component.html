@@ -6,6 +6,70 @@
   <table class="table table-borderless text-center">
     <tbody>
       <tr>
+        <th scope="col">Name</th>
+        <td>
+          <input type="text" class="form-control" name="name" placeholder="name" formControlName="name">
+          <div *ngIf="name.invalid && (name.dirty || name.touched) && !error" class="text-danger small">
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+          </div>
+          <div *ngIf="error && error.errors.name" class="text-danger small">
+            <div *ngFor="let name of error.errors.name">
+              {{name}}
+            </div>
+          </div>
+        </td>
+      </tr>
+        <tr>
+          <th scope="col">Email</th>
+          <td>
+            <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
+            </div>
+            <div *ngIf="error && error.errors.email" class="text-danger small">
+              <div *ngFor="let email of error.errors.email">
+                {{email}}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Password</th>
+          <td>
+            <input type="text" class="form-control" name="password" placeholder="password" formControlName="password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
+            </div>
+            <div *ngIf="error && error.errors.password" class="text-danger small">
+              <div *ngFor="let password of error.errors.password">
+                {{password}}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Password confirmation</th>
+          <td>
+            <input type="text" class="form-control" name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
+            <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error" class="text-danger small">
+              <div *ngIf="password_confirmation.errors.required">
+                Password confirmation is required.
+              </div>
+            </div>
+            <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
+              <div *ngFor="let password_confirmation of error.errors.password_confirmation">
+                {{password_confirmation}}
+              </div>
+            </div>
+          </td>
+        </tr>
+      <tr>
         <th scope="col">Phone</th>
         <td>
           <input type="text" class="form-control" name="phone" placeholder="phone" formControlName="phone">
@@ -135,7 +199,8 @@
     </tbody>
   </table>
 
-  <input class="btn btn-success" type="submit" value="Edit">
+  <input class="btn btn-success" type="submit" value="Edit" *ngIf="editRoute">
+  <input class="btn btn-success" type="submit" value="Add" *ngIf="!editRoute">
 </form>
 
 <div class="m-4">
