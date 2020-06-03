@@ -3,12 +3,19 @@
       {{interview.level_name}}
     </mat-step>  
 </mat-horizontal-stepper>
-<div *ngIf="loadInterview;else anotherInterview" class="p-3 m-3">
-  <app-interview-item [newInterview]="newInterview"></app-interview-item>
-</div>
 
-<ng-template #anotherInterview>
-  <div  class="p-3 m-3">
+<!-- show or hide interview -->
+<div>
+  <button (click)="myInterviews()" class="btn btn-info">interview</button>
+</div>
+<div *ngIf="renderInterview">
+  <div *ngIf="loadInterview;else anotherInterview" class="p-3 m-3">
     <app-interview-item [newInterview]="newInterview"></app-interview-item>
   </div>
-</ng-template>
+  
+  <ng-template #anotherInterview>
+    <div class="p-3 m-3">
+      <app-interview-item [newInterview]="newInterview"></app-interview-item>
+    </div>
+  </ng-template>
+</div>

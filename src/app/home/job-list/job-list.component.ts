@@ -49,7 +49,7 @@ export class JobListComponent implements OnInit {
   subscribeJobSubject() {
     this.jobService.jobSubject.subscribe(
       next => {
-
+        this.filterParams.page=1;
         console.log("subject hit", next);
         this.filterParams = { ...this.filterParams, ...next };
 
