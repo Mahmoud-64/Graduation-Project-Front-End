@@ -1,8 +1,10 @@
-<a class="btn btn-primary btn-sm text-white" (click)="crudOperation('new','')">New</a>
+<div class="text-right mr-5">
+  <a class="btn btn-info my-2 btn-sm text-white" (click)="crudOperation('new','')">New</a>
+</div>
 <div class="container text-center my-1 bg-warning">
   {{error}}
 </div>
-<table class="table text-center">
+<table class="table text-center bg-white">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Id</th>

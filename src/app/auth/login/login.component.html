@@ -1,25 +1,28 @@
 <div class="container w-50">
     <div class="bg-warning text-center" *ngIf="verify_email">
-      please verify your email
+        please verify your email
     </div>
+    <div class="bg-white border rounded p-5 m-5">
+        <h2 class="text-center"><strong>Sign In</strong></h2>
+        <form [formGroup]="user" (ngSubmit)="onSubmit()">
+            <div *ngIf="userError" class="text-danger text-center">
+                {{userError}}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Enter email" />
 
-    <h2 class="text-center"><strong>Sign In</strong></h2>
-    <form [formGroup]="user" (ngSubmit)="onSubmit()">
-        <div *ngIf="userError" class="text-danger text-center">
-            {{userError}}
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp" placeholder="Enter email" />
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input name="password" type="password" formControlName="password" class="form-control"
+                    id="exampleInputPassword1" placeholder="Password" />
 
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input name="password" type="password" formControlName="password" class="form-control"
-                id="exampleInputPassword1" placeholder="Password" />
-
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-color">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -1,3 +1,21 @@
+.btn-color{
+  background-color: #45a29e !important;
+  color: white;
+}
+.btn-color:hover{
+  background-color: white !important;
+  color: #45a29e;
+  border: 1px solid #45a29e;
+}
+.btn-verify{
+  background-color: #ccc !important;
+  color: black;
+}
+.btn-verify:hover{
+  background-color: white !important;
+  color: black;
+  border: 1px solid #ccc;
+}
 .border{
   border-bottom:1px solid #F1F1F1;
   margin-bottom:10px;

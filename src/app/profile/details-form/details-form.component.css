@@ -1,3 +1,12 @@
 .addContact{
     cursor: pointer;
 }
+.btn-color{
+    background-color: #45a29e !important;
+    color: white;
+}
+.btn-color:hover{
+    background-color: white !important;
+    color: #45a29e;
+    border: 1px solid #45a29e;
+}

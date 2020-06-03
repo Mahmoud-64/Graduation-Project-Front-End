@@ -2,7 +2,7 @@
   {{error.message}}
 </div>
 
-<form class="text-center" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
+<form class="text-center bg-light m-2 p-2 border" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
   <table class="table table-borderless text-center">
     <tbody>
       <tr>
@@ -135,11 +135,11 @@
     </tbody>
   </table>
 
-  <input class="btn btn-success" type="submit" value="Edit">
+  <input class="btn btn-color mb-3" type="submit" value="Edit">
 </form>
 
-<div class="m-4">
-  <form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
+<!-- <div class="m-5"> -->
+  <form class="text-center bg-light m-2 p-5 border" [formGroup]="details" (ngSubmit)="uploadCV()">
     <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
     <div *ngIf="cvError" class="text-danger small">
       {{cvError}}
@@ -149,6 +149,6 @@
         {{cv}}
       </div>
     </div>
-    <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
+    <input class="btn btn-color small" type="submit" value="Upload CV">
   </form>
-</div>
+<!-- </div> -->

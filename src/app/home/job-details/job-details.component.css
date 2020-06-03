@@ -1,3 +1,23 @@
 .single-app{
-    background-color: rgb(132, 184, 166) ;
+    background-color: #1f2833 ;
+}
+p{
+    font-size: 14px;
+}
+.btn-color:hover{
+    background-color: #66fcf1 !important;
+    color: white;
+}
+.btn-color{
+    background-color: white !important;
+    color: #66fcf1;
+    border: 1px solid #66fcf1;
+}
+.heading{
+    background-color: #45a29e !important;
+    color: white;
+}
+.details{
+    background-color: white;
+    color: #1f2833;
 }

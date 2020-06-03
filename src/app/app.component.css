@@ -1,5 +1,7 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-
+.allBody{
+  background-color: #c5c6c7;
+}
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;
