@@ -4,34 +4,28 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">job</th>
-            
+
             <th scope="col">Seeker</th>
             <th scope="col">Years Exp</th>
-            <th scope="col" colspan="3">Status</th>
+            <th scope="col">Status</th>
             <th scope="col" colspan="2">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let application of applications">
-            <th scope="row">{{application.id}}</th>
-            <td>{{application.job.title}}</td>
-            <td>{{application.seeker.user.name}}</td>
-            <td>{{application.seeker.expYears}}</td>
-            <td>{{application.status.name}}</td>
-            <!-- <form > -->
-                <td>
-                    <!-- [selected]="status.id==application.status.id" -->
-                    <select class="custom-select form-control" [formControl]="newStatus"  >
-                        <option value="" selected disabled>Status</option>
-                        <option  *ngFor="let status of allStatus"  [disabled]="status.id==application.status.id"  [value]="status.id">{{status.name}} </option>
-                    </select>
-                </td>
-                <td>
-                    <button class="btn btn-info" (click)="submitStatus(application.id)"> update </button>
-                </td>
-            <!-- </form> -->
-            <td><a class="btn btn-success btn-sm text-white" [routerLink]="['/admin/applications/',application.id]" >show</a></td>
-            <td><a class="btn btn-danger btn-sm text-white" (click)="deleteApplication(application.id)">delete</a></td>
+        <tr *ngFor="let application of applications; index as i">
+            <th class="align-middle" scope="row">{{application.id}}</th>
+            <td class="align-middle">{{application.job.title}}</td>
+            <td class="align-middle">{{application.seeker.user.name}}</td>
+            <td class="align-middle">{{application.seeker.expYears}}</td>
+            <td class="align-middle">
+                <div>
+                  <select class="custom-select form-control" [formControl]="statuses.controls[i]">
+                    <option  *ngFor="let status of allStatus"  [value]="status.id">{{status.name}} </option>
+                  </select>
+                </div>
+            </td>
+            <td class="align-middle"><a class="btn btn-success btn-sm text-white" [routerLink]="['/admin/applications/',application.id]" >show</a></td>
+            <td class="align-middle"><a class="btn btn-danger btn-sm text-white" (click)="deleteApplication(application.id, i)">delete</a></td>
         </tr>
     </tbody>
 </table>
