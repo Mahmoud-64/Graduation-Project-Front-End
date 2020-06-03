@@ -21,54 +21,60 @@
           </div>
         </td>
       </tr>
-        <tr>
-          <th scope="col">Email</th>
-          <td>
-            <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
-            <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
-              <div *ngIf="email.errors.required">
-                Email is required.
-              </div>
+      <tr>
+        <th scope="col">Email</th>
+        <td>
+          <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
+            <div *ngIf="email.errors.required">
+              Email is required.
             </div>
-            <div *ngIf="error && error.errors.email" class="text-danger small">
-              <div *ngFor="let email of error.errors.email">
-                {{email}}
-              </div>
+          </div>
+          <div *ngIf="error && error.errors.email" class="text-danger small">
+            <div *ngFor="let email of error.errors.email">
+              {{email}}
             </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="col">Password</th>
-          <td>
-            <input type="text" class="form-control" name="password" placeholder="password" formControlName="password">
-            <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
-              <div *ngIf="password.errors.required">
-                Password is required.
-              </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Password</th>
+        <td>
+          <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
+          <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
+            <div *ngIf="password.errors.required">
+              Password is required.
             </div>
-            <div *ngIf="error && error.errors.password" class="text-danger small">
-              <div *ngFor="let password of error.errors.password">
-                {{password}}
-              </div>
+          </div>
+          <div *ngIf="error && error.errors.password" class="text-danger small">
+            <div *ngFor="let password of error.errors.password">
+              {{password}}
             </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="col">Password confirmation</th>
-          <td>
-            <input type="text" class="form-control" name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
-            <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error" class="text-danger small">
-              <div *ngIf="password_confirmation.errors.required">
-                Password confirmation is required.
-              </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Password confirmation</th>
+        <td>
+          <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control" name="password_confirmation" placeholder="password_confirmation"
+            formControlName="password_confirmation">
+          <div
+            *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
+            class="text-danger small">
+            <div *ngIf="password_confirmation.errors.required">
+              Password confirmation is required.
             </div>
-            <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
-              <div *ngFor="let password_confirmation of error.errors.password_confirmation">
-                {{password_confirmation}}
-              </div>
+          </div>
+          <div *ngIf="details.errors?.misMatch" class="text-danger small">
+            password confirmation doesn't match password field
+          </div>
+          <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
+            <div *ngFor="let password_confirmation of error.errors.password_confirmation">
+              {{password_confirmation}}
             </div>
-          </td>
-        </tr>
+          </div>
+        </td>
+      </tr>
       <tr>
         <th scope="col">Phone</th>
         <td>
@@ -90,8 +96,8 @@
         <td>
           <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
           <div *ngIf="error && error.errors.address" class="text-danger small">
-          *{{error.errors.address}}
-        </div>
+            *{{error.errors.address}}
+          </div>
         </td>
       </tr>
       <tr>
@@ -167,7 +173,7 @@
       <tr>
         <th>Other Contacts
           <span class="addContact" (click)="addContact()">
-              <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
+            <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
           </span>
         </th>
         <td>
@@ -188,7 +194,7 @@
                 </div>
                 <div class="p-2 bd-highlight">
                   <span class="addContact" (click)="removeContact(i)">
-                      <img src="https://img.icons8.com/metro/20/000000/close-window.png"/>
+                    <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
                   </span>
                 </div>
               </div>

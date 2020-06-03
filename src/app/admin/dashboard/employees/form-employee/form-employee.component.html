@@ -3,7 +3,12 @@
         <label>Name</label>
         <input name="name" type="text" formControlName="name" class="form-control" aria-describedby="employeeHelp"
             placeholder="Name" />
-        <div *ngIf="error && error.name" class="text-danger">
+        <div *ngIf="name.invalid && (name.dirty || name.touched) && !error" class="text-danger small">
+            <div *ngIf="name.errors.required">
+                Name is required.
+            </div>
+        </div>
+        <div *ngIf="error && error.name" class="text-danger small">
             {{error.name}}
         </div>
     </div>
@@ -11,22 +16,42 @@
         <label>email</label>
         <input email="email" type="email" formControlName="email" class="form-control" aria-describedby="employeeHelp"
             placeholder="Email" />
-            <div *ngIf="error && error.email" class="text-danger">
-                {{error.email}}
+        <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
+            <div *ngIf="email.errors.required">
+                Email is required.
             </div>
+        </div>
+        <div *ngIf="error && error.email" class="text-danger small">
+            {{error.email}}
+        </div>
     </div>
     <div class="p-2 bd-highlight">
         <label>password</label>
         <input password="password" type="password" formControlName="password" class="form-control"
             aria-describedby="employeeHelp" placeholder="Password" />
-            <div *ngIf="error && error.password" class="text-danger">
-                {{error.password}}
+        <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
+            <div *ngIf="password.errors.required">
+                Password is required.
             </div>
+        </div>
+        <div *ngIf="error && error.password" class="text-danger small">
+            {{error.password}}
+        </div>
     </div>
     <div class="p-2 bd-highlight">
         <label>password_confirmation</label>
-        <input password_confirmation="password_confirmation" type="password" formControlName="password_confirmation"
-            class="form-control" aria-describedby="employeeHelp" placeholder="Password Confirmation" />
+        <input [class.is-invalid]="employee.errors?.misMatch" password_confirmation="password_confirmation"
+            type="password" formControlName="password_confirmation" class="form-control" aria-describedby="employeeHelp"
+            placeholder="Password Confirmation" />
+        <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
+            class="text-danger small">
+            <div *ngIf="password_confirmation.errors.required">
+                Password confirmation is required.
+            </div>
+        </div>
+        <div *ngIf="employee.errors?.misMatch" class="text-danger small">
+            password confirmation doesn't match password field
+        </div>
     </div>
     <div class="p-2 bd-highlight">
         <label>Position</label>

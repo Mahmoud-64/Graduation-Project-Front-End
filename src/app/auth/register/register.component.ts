@@ -3,6 +3,7 @@ import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PasswordValidator } from '../../shared/password.validator';
 
 @Component({
   selector: 'app-register',
@@ -18,15 +19,13 @@ export class RegisterComponent implements OnInit {
     password: ['', [Validators.required,
     Validators.minLength(7)]],
     password_confirmation: ['', Validators.required],
-
     phone: ['', Validators.required],
-  })
+  }, {validators: PasswordValidator})
   userError = {
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
-
     phone: '',
   }
   constructor(private userService: UserService,

@@ -6,6 +6,7 @@ import { UserService } from '../../../../service/user.service';
 import { SeekerService } from '../../../../service/seeker.service';
 import { Seeker } from '../../../../models/seeker';
 import { ContactService } from '../../../../profile/contact/service/contact.service';
+import { PasswordValidator } from '../../../../shared/password.validator';
 
 
 @Component({
@@ -43,7 +44,7 @@ export class SeekerFormComponent implements OnInit {
       expectedSalary: [''],
       cv: [''],
       contacts: this.fb.array([]),
-    });
+    }, {validators: PasswordValidator});
 
     constructor(
       private seekerService: SeekerService,

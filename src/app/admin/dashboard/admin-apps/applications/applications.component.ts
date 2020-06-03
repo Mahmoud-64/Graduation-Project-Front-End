@@ -27,6 +27,8 @@ export class ApplicationsComponent implements OnInit {
     this.applicationService.getFilterApplications(this.filterParams).subscribe(
       result => {
         this.applications = result.data;
+        console.log(this.applications);
+        
       },
       error => {
         console.log(error);

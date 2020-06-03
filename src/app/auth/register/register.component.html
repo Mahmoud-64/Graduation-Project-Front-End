@@ -45,12 +45,10 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPasswordConfirmation1">Password Confirmation</label>
-            <input name="password_confirmation" type="password" formControlName="password_confirmation"
+            <input [class.is-invalid]="user.errors?.misMatch" name="password_confirmation" type="password" formControlName="password_confirmation"
                 class="form-control" id="exampleInputPasswordConfirmation1" placeholder="Password Confirmation" />
-                <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)" class="text-danger">
-                    <div *ngIf="password_confirmation.errors.required">
-                        *password confirmation field is required and must match password field.
-                    </div>
+                <div *ngIf="user.errors?.misMatch" class="text-danger">
+                    password confirmation doesn't match password field
                 </div>
         </div>
         <div class="form-group">

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
+import { FormBuilder } from '@angular/forms';
+import { PasswordValidator } from '../../shared/password.validator';
 
 @Component({
   selector: 'app-reset-password',
@@ -8,17 +10,18 @@ import { UserService } from '../../service/user.service';
 })
 export class ResetPasswordComponent implements OnInit {
   error;
-  passowrds = {
+  passwords = this.fb.group({
     current_password: '',
-    new_password: '',
-    new_password_confirmation: '',
-  }
-  constructor( private userService: UserService) { }
+    password: '',
+    password_confirmation: '',
+  }, {validators: PasswordValidator})
+  constructor(private userService: UserService,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
   onSubmit() {
-    this.userService.resetPassword(this.passowrds).subscribe(result=>{
+    this.userService.resetPassword(this.passwords.value).subscribe(result=>{
     },
     err=>{
       this.error = err.errors;

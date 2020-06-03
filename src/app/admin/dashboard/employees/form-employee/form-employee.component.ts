@@ -3,8 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
+  Validators,
 } from '@angular/forms';
 import { EmployeeService } from '../../../../service/employee.service';
+import { PasswordValidator } from '../../../../shared/password.validator';
 
 
 @Component({
@@ -16,13 +18,13 @@ export class FormEmployeeComponent implements OnInit {
   error;
   employee_id;
   employee: FormGroup = this.fb.group({
-    name: [''],
-    email: [''],
-    password: [''],
-    password_confirmation: [''],
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+    password_confirmation: ['', Validators.required],
     position: [''],
     branch: ['']
-  });
+  }, { validators: PasswordValidator });
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -67,5 +69,17 @@ export class FormEmployeeComponent implements OnInit {
     }
   }
 
+  get name() {
+    return this.employee.get('name');
+  }
+  get email() {
+    return this.employee.get('email');
+  }
+  get password() {
+    return this.employee.get('password');
+  }
+  get password_confirmation() {
+    return this.employee.get('password_confirmation');
+  }
 
 }
