@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/application.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-app-details',
@@ -18,21 +19,25 @@ export class AppDetailsComponent implements OnInit {
     },
     "job": { "title": "", "description": "" },
     "status": { "name": "", "description": "" },
-    "interviews":[]
+    "interviews":[],
   };
-  isAdmin: boolean = true;
+  isAdmin: boolean = false;
   interviewForm: boolean = false;
   isDataLoaded:boolean = false;
+
   constructor(
     private applicationService: ApplicationService,
+    private userService:UserService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(routParams => {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
           console.log(result);
+          this.interviewForm= false;
           this.application = result.data;
           this.isDataLoaded=true;
         },
@@ -42,7 +47,7 @@ export class AppDetailsComponent implements OnInit {
         }
       )
     })
-
+    this.checkRole();
   }
 
   deleteApplication() {
@@ -59,7 +64,20 @@ export class AppDetailsComponent implements OnInit {
   }
 
   showForm(){
-    this.interviewForm=true;
+    this.interviewForm = !this.interviewForm;
+  }
+
+  checkRole(){
+    this.userService.hasRole().subscribe(
+      result=>{
+        if (result == 1) {
+          this.isAdmin=true;
+        }
+        console.log('role', result);
+      }
+    );
+    
+    
   }
 
 }
