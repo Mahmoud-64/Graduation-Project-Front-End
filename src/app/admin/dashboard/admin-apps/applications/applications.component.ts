@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationService } from 'src/app/job-application/services/application.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'admin-applications',
@@ -14,7 +14,9 @@ export class ApplicationsComponent implements OnInit {
   filterParams = {
     jobId: "",
   }
+  statuses = new FormArray([]);
   @Input() job;
+
   constructor(
     private applicationService: ApplicationService,
   ) { }
@@ -26,46 +28,54 @@ export class ApplicationsComponent implements OnInit {
 
     this.applicationService.getFilterApplications(this.filterParams).subscribe(
       result => {
-        this.applications = result.data;
+        let res = result.data;
+        let flag=0;
+        for (const app in res)
+        {
+          let appId = res[app]["id"];
+          this.addStatus(res[app]['status']);
+          this.statuses.controls[app].valueChanges.subscribe(status => {
+              if(flag==1)
+              {
+                this.applicationService.updateAppStatus(appId, status).subscribe(
+                  result => {
+                    console.log("updated==", result);
+                  },
+                  error => {
+                    console.log(error);
+                  })
+              }
+           })
+          flag = 1;
+        }
+        if (flag==1)
+        {
+          this.applications = result.data;
+        }
       },
       error => {
         console.log(error);
-
       }
     );
     this.applicationService.getAllStatus().subscribe(
       result => {
         this.allStatus = result.data;
-        console.log(result);
       },
       error => {
         console.log(error);
+      })
 
-      }
-    )
+
   }
 
-
-  newStatus = new FormControl('');
-  submitStatus(appId) {
-    console.log('submited', this.newStatus.value);
-    this.applicationService.updateAppStatus(appId, this.newStatus.value).subscribe(
-      result => {
-        console.log(result);
-        this.ngOnInit();
-      },
-      error => {
-        console.log(error);
-
-      }
-    )
-  }
+  addStatus(status) {
+      this.statuses.push(new FormControl(status['id']));
+    }
 
 
-  deleteApplication(appId) {
+  deleteApplication(appId, statusIndex) {
     this.applicationService.deleteSingleApplication(appId).subscribe(
       result => {
-        console.log(result);
         this.ngOnInit();
       },
       error => {

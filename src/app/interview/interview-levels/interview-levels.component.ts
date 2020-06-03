@@ -18,7 +18,7 @@ export class InterviewLevelsComponent implements OnInit {
   newInterview;
 
   constructor(private _formBuilder: FormBuilder,
-    
+
     ) {}
 
   ngOnInit() {
