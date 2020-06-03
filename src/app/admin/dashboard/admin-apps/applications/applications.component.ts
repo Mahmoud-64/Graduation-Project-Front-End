@@ -74,4 +74,8 @@ export class ApplicationsComponent implements OnInit {
   }
 
 
+  updateAppTable(event){
+    this.applications = event;
+  }
+
 }

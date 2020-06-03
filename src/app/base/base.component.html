@@ -5,7 +5,7 @@
 
 <div class="bg-warning text-center" *ngIf="isEmailSent()">
   please verify your email, if you didn't recieve any emails click this button
-  <button class="btn btn-success" (click)="resendEmailVerification()"> send email verification </button>
+  <a class="text-primary verigyEmail" (click)="resendEmailVerification()"> send email verification </a>
 </div>
 
 <div class="bg-warning text-center" *ngIf="loggedinUser && emailSent && !emailVerified">
