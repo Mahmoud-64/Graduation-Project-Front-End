@@ -29,17 +29,20 @@ import { InterviewLevelsFormComponent } from '../dashboard/interview-levels/inte
 
 
 import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
-import { EditSeekerComponent } from '../dashboard/seekers/edit-seeker/edit-seeker.component';
+import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
 import { FormEmployeeComponent } from '../dashboard/employees/form-employee/form-employee.component';
+import { StatusComponent } from '../dashboard/admin-apps/status/status.component';
 
 const routes: Routes = [
   {
+    // we have to refactor this routes if we can use child of child
     path: '', component: AdminComponent,
     children: [
       { path: 'seeker', component: SeekersComponent },
       { path: 'seeker/show/:id', component: ShowSeekerComponent },
-      { path: 'seeker/edit/:id', component: EditSeekerComponent },
+      { path: 'seeker/new', component: SeekerFormComponent },
+      { path: 'seeker/edit/:id', component: SeekerFormComponent },
       { path: 'employee', component: EmployeesComponent },
       { path: 'employee/new', component: FormEmployeeComponent },
       { path: 'employee/show/:id', component: ShowEmployeeComponent },
@@ -50,6 +53,7 @@ const routes: Routes = [
       { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
+      { path: 'statuses', component: StatusComponent },
       { path: 'interviews', component: InterviewsComponent },
       { path: 'interviews/:id', component: SingleInterviewComponent },
       { path: 'review', component: AdminComponent },

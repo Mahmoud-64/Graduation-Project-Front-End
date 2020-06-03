@@ -2,9 +2,79 @@
   {{error.message}}
 </div>
 
-<form class="text-center bg-light m-2 p-2 border" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
+<form class="text-center" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
   <table class="table table-borderless text-center">
     <tbody>
+      <tr>
+        <th scope="col">Name</th>
+        <td>
+          <input type="text" class="form-control" name="name" placeholder="name" formControlName="name">
+          <div *ngIf="name.invalid && (name.dirty || name.touched) && !error" class="text-danger small">
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+          </div>
+          <div *ngIf="error && error.errors.name" class="text-danger small">
+            <div *ngFor="let name of error.errors.name">
+              {{name}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Email</th>
+        <td>
+          <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
+          <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
+            <div *ngIf="email.errors.required">
+              Email is required.
+            </div>
+          </div>
+          <div *ngIf="error && error.errors.email" class="text-danger small">
+            <div *ngFor="let email of error.errors.email">
+              {{email}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Password</th>
+        <td>
+          <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
+          <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
+            <div *ngIf="password.errors.required">
+              Password is required.
+            </div>
+          </div>
+          <div *ngIf="error && error.errors.password" class="text-danger small">
+            <div *ngFor="let password of error.errors.password">
+              {{password}}
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="col">Password confirmation</th>
+        <td>
+          <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control" name="password_confirmation" placeholder="password_confirmation"
+            formControlName="password_confirmation">
+          <div
+            *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
+            class="text-danger small">
+            <div *ngIf="password_confirmation.errors.required">
+              Password confirmation is required.
+            </div>
+          </div>
+          <div *ngIf="details.errors?.misMatch" class="text-danger small">
+            password confirmation doesn't match password field
+          </div>
+          <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
+            <div *ngFor="let password_confirmation of error.errors.password_confirmation">
+              {{password_confirmation}}
+            </div>
+          </div>
+        </td>
+      </tr>
       <tr>
         <th scope="col">Phone</th>
         <td>
@@ -26,8 +96,8 @@
         <td>
           <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
           <div *ngIf="error && error.errors.address" class="text-danger small">
-          *{{error.errors.address}}
-        </div>
+            *{{error.errors.address}}
+          </div>
         </td>
       </tr>
       <tr>
@@ -103,7 +173,7 @@
       <tr>
         <th>Other Contacts
           <span class="addContact" (click)="addContact()">
-              <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
+            <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
           </span>
         </th>
         <td>
@@ -124,7 +194,7 @@
                 </div>
                 <div class="p-2 bd-highlight">
                   <span class="addContact" (click)="removeContact(i)">
-                      <img src="https://img.icons8.com/metro/20/000000/close-window.png"/>
+                    <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
                   </span>
                 </div>
               </div>
@@ -135,11 +205,12 @@
     </tbody>
   </table>
 
-  <input class="btn btn-color mb-3" type="submit" value="Edit">
+  <input class="btn btn-success" type="submit" value="Edit" *ngIf="editRoute">
+  <input class="btn btn-success" type="submit" value="Add" *ngIf="!editRoute">
 </form>
 
-<!-- <div class="m-5"> -->
-  <form class="text-center bg-light m-2 p-5 border" [formGroup]="details" (ngSubmit)="uploadCV()">
+<div class="m-4">
+  <form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
     <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
     <div *ngIf="cvError" class="text-danger small">
       {{cvError}}
@@ -149,6 +220,6 @@
         {{cv}}
       </div>
     </div>
-    <input class="btn btn-color small" type="submit" value="Upload CV">
+    <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
   </form>
-<!-- </div> -->
+</div>

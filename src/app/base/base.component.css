@@ -6,3 +6,12 @@
     .crop img {
         height: 380px;
     }
+
+    .verigyEmail{
+        cursor: pointer;
+        color: blue;
+    }
+    .color-warning{
+        background-color: #f13c20;
+        color: white;
+    }

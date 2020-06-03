@@ -1,0 +1,74 @@
+<div class="text-right mr-5">
+    <a class="btn btn-info my-2 btn-sm text-white" (click)="showNewStatusForm()">New</a>
+</div>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+<table class="table text-center bg-white">
+    <thead class="thead-dark">
+        <tr>
+            <th style="width: 10%" scope="col">Id</th>
+            <th style="width: 10%" scope="col">Name</th>
+            <th style="width: 65%" scope="col">Description</th>
+            <th scope="col" style="width: 15%" colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="addNewStatus" [formGroup]="newStatusForm">
+       
+        <tr>
+            <td colspan="2">Description</td>
+            <td colspan="3">
+                <input formControlName="description" class="form-control" type="text">
+                <div *ngIf="newStatusForm.get('description').touched && newStatusForm.get('description').invalid">
+                    <small class="text-danger"> sorry required and between 15 and 100</small>
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="2">Name</td>
+            <td colspan="2">
+                <input formControlName="name" class="form-control" type="text">
+                <div *ngIf="newStatusForm.get('name').touched && newStatusForm.get('name').invalid">
+                    <small class="text-danger"> sorry required and between 3 and 15</small>
+                </div>
+            </td>
+            <td>
+                <button [disabled]="newStatusForm.invalid" (click)="submitNewStatus()" class="btn btn-success btn-sm text-white">Submit</button>
+            </td>
+        </tr>
+    </tbody>
+    <tbody *ngFor="let status of statuses let i=index;">
+        <tr *ngIf="hideForm[i];else statusForm">
+            <th scope="row">{{status.id}}</th>
+            <th>{{status.name}}</th>
+            <th>{{status.description}}</th>
+            <td><a class="btn btn-primary btn-sm text-white" (click)="editStatus(i)">edit</a></td>
+            <td><a class="btn btn-danger btn-sm text-white" (click)="deleteStatus(status.id)">delete</a></td>
+        </tr>
+        <ng-template #statusForm>
+            <tr [formGroup]="statusesForm.controls[i]">
+                <td colspan="2">
+                    <input formControlName="name" class="form-control" type="text">
+                    <div
+                        *ngIf="statusesForm.controls[i].get('name').touched && statusesForm.controls[i].get('name').invalid">
+                        <small class="text-danger"> sorry required and between 3 and 15</small>
+                    </div>
+                </td>
+                <td colspan="2">
+                    <input formControlName="description" class="form-control" type="text">
+                    <div
+                        *ngIf="statusesForm.controls[i].get('description').touched && statusesForm.controls[i].get('description').invalid">
+                        <small class="text-danger"> sorry required and between 15 and 100</small>
+                    </div>
+                    <span class="addContact" (click)="editStatus(i)">
+                        <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
+                    </span>
+                </td>
+                <td><button [disabled]="statusesForm.controls[i].invalid" class="btn btn-success btn-sm text-white"
+                        (click)="updateStatus(i,status.id)">Update</button></td>
+            </tr>
+        </ng-template>
+
+    </tbody>
+</table>

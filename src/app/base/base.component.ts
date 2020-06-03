@@ -18,9 +18,9 @@ export class BaseComponent implements OnInit {
   private router: Router,
   private verifyemailService: VerifyemailService
   ) {
-    this.image = router;
    }
   ngOnInit(): void {
+    this.image = this.router;
     this.loggedinUser = this.userService.getUser()? true : false;
     this.userService.verifyEmailSubject.subscribe({
       next: (result)=>{
@@ -36,6 +36,14 @@ export class BaseComponent implements OnInit {
         });
       }
     });
+  }
+
+  checkPath()
+  {
+    return !(this.image.url.includes('admin')
+          ||this.image.url.includes('login')
+          ||this.image.url.includes('signup')
+        );
   }
 
   isEmailSent()

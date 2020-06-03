@@ -1,7 +1,13 @@
 .clickedItem{
-    background-color: #5C8074 !important;
-    color: white;
+    background-color: #1f2833 !important;
+    color: #66fcf1;
 }
-.hoveredItem{
+.notClickedItem{
+    background-color: white !important;
+    color: #1f2833;
+}
+.hoveredItem:hover{
+    background-color: #1f2833 !important;
+    color: #66fcf1;
     cursor: pointer;
 }

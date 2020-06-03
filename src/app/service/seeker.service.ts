@@ -28,6 +28,15 @@ export class SeekerService {
     );
   }
 
+  createSeeker(seeker): Observable<any> {
+    console.log("create seeker", seeker);
+
+    return this.http.post(this.seekersUrl, seeker)
+    .pipe(
+      catchError(this.handleError<Seeker[]>('createSeeker', []))
+    );
+  }
+
   downloadCV(seeker_id, cvName){
     return this.http.get(`/api/seekers/downloadcv/${seeker_id}/${cvName}`);
   }

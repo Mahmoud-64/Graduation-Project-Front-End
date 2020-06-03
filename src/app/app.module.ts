@@ -17,6 +17,8 @@ import { Handel403Component } from './fallback/handel403/handel403.component';
 import { HeaderComponent } from './header/header.component';
 import { BaseComponent } from './base/base.component';
 import { HomeModule } from './home/home.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { HomeModule } from './home/home.module';
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
+    BrowserAnimationsModule,
 
     HttpClientModule,
     HomeModule,

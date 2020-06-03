@@ -4,7 +4,7 @@
 </span>
 <form [formGroup]="contact" (ngSubmit)="submitContact()">
     <div *ngFor="let onecontact of contact.controls; let i=index">
-        <div [formGroupName]="i" class="d-flex flex-row-reverse bd-highlight">
+        <div [formArrayName]="i" class="d-flex flex-row-reverse bd-highlight">
             <div class="p-2 bd-highlight">
                 <input name="contact" type="text" formControlName="data" class="form-control" id="exampleInputcontact1"
                     aria-describedby="contactHelp" placeholder="Enter contact" />

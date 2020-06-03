@@ -30,5 +30,8 @@ export class SingleInterviewComponent implements OnInit {
       )
     })
   }
+  deleteInterview(interview){
+    
+  }
 
 }
