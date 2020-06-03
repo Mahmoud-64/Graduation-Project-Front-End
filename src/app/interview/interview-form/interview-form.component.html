@@ -11,6 +11,7 @@
             <option *ngFor="let app of this.apps.data" [value]="app.id">
                 {{(app.id)}}</option>
         </select>
+        <p class="interviewErrorMessages" *ngIf="error.errors.application_id">{{error.errors.application_id}}</p>
     </div>
 
 
@@ -32,6 +33,8 @@
             <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
                 {{(employee.name)}}</option>
         </select>
+        <p class="interviewErrorMessages" *ngIf="error.errors.emp_id">{{error.errors.emp_id}}</p>
+
     </div>
 
 
@@ -56,6 +59,7 @@
             <option *ngFor="let level of this.levels.data" [value]="level.id">
                 {{(level.name)}}</option>
         </select>
+        <p class="interviewErrorMessages" *ngIf="error.errors.level_id">{{error.errors.level_id}}</p>
     </div>
 
 
@@ -63,11 +67,14 @@
     <div class="form-group">
         <label for="date">date</label>
         <input type="text" class="form-control" id="date" required ngModel name="date" />
+        <p class="interviewErrorMessages" *ngIf="error.errors.date">{{error.errors.date}}</p>
+
     </div>
 
     <!-- <div class="form-group">
         <label for="seeker_review">seeker_review</label>
         <input type="text" class="form-control" id="seeker_review" ngModel name="seeker_review" />
+        
     </div>
 
     <div class="form-group">
@@ -79,6 +86,8 @@
     <div class="form-group">
         <label for="zoom">zoom</label>
         <input type="text" class="form-control" id="zoom" required ngModel name="zoom" />
+        <p class="interviewErrorMessages" *ngIf="error.errors.zoom">{{error.errors.zoom}}</p>
+
     </div>
     <!-- ########################################################### -->
     <!-- <select id="secret" class="form-control" ngModel required name="emp_id">
@@ -93,7 +102,7 @@
         <label for="content">Content</label>
         <textarea class="form-control" id="content" required ngModel name="content"></textarea>
       </div> -->
-    <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
-        Send Post
+    <button class="btn btn-primary" type="submit">
+        Submit
     </button>
 </form>
