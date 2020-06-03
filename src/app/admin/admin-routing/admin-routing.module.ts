@@ -32,9 +32,11 @@ import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeke
 import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
 import { FormEmployeeComponent } from '../dashboard/employees/form-employee/form-employee.component';
+import { StatusComponent } from '../dashboard/admin-apps/status/status.component';
 
 const routes: Routes = [
   {
+    // we have to refactor this routes if we can use child of child
     path: '', component: AdminComponent,
     children: [
       { path: 'seeker', component: SeekersComponent },
@@ -51,6 +53,7 @@ const routes: Routes = [
       { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
+      { path: 'statuses', component: StatusComponent },
       { path: 'interviews', component: InterviewsComponent },
       { path: 'interviews/:id', component: SingleInterviewComponent },
       { path: 'review', component: AdminComponent },

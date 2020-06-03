@@ -32,6 +32,7 @@ import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker
 import { SeekerFormComponent } from './dashboard/seekers/seeker-form/seeker-form.component';
 import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-employee.component';
 import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
+import { StatusComponent } from './dashboard/admin-apps/status/status.component';
 
 
 
@@ -44,7 +45,7 @@ import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-
     ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent,
     ContactsComponent, ContactItemComponent, ContactFormComponent,
     InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
-    ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent
+    ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent, StatusComponent
   ],
 
   imports: [
