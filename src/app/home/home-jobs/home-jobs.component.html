@@ -1,0 +1,48 @@
+
+<div *ngIf="isDataLoaded" class="container-lg m-2">
+    <div class="justify-content-right ">
+        <search></search>
+    </div>
+     
+    <div *ngIf="jobs.length > 0;else notFound">
+        <div class="row justify-content-center ">
+            <div class="col-12 text-center">
+                <h1><b>Latest available Jobs</b></h1>
+            </div>
+            <div *ngFor="let job of jobs" class="item col-3  p-2 m-2" [routerLink]="['/jobs',job.id]" >
+                <div class="h-item text-center text-primary">
+                    <h2>{{job.title}}</h2>
+                </div>
+                <div>
+                    <div class="text-center">
+                        <p>{{job.description | slice:0:35}}...</p>
+                    </div>    
+                    <p><b>Seniority</b> : {{job.seniority}}</p>
+                    <p><b>Years</b> : {{job.years_exp}}</p>
+                    <div class="text-secondary align-text-bottom">
+                        <hr>
+                        <p >{{job.date | date}}</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="">
+            <nav class="" aria-label="Page navigation example">
+                <ul class="pagination ">
+                    <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item"><Button type="button"
+                            class="page-link">Previous</Button></li>
+                    <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item"><Button type="button"
+                            class="page-link">Next</Button></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    <ng-template #notFound>
+        <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
+    </ng-template>
+
+
+</div>
