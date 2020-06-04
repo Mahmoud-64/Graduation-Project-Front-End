@@ -13,7 +13,16 @@ export class InterviewFormComponent implements OnInit {
   apps: any;
   levels: any;
   employees: any;
-
+  error: any = {
+    errors:
+      [
+        { 'application_id': null },
+        { 'emp_id': null },
+        { 'level_id': null },
+        { 'date': null },
+        { 'zoom': null },
+      ]
+  };
 
   constructor(private http: HttpClient, public interviewService: InterviewService) { }
   defaultQuestion = 'teacher';
@@ -29,6 +38,9 @@ export class InterviewFormComponent implements OnInit {
       )
       .subscribe(responseData => {
         console.log(responseData);
+      }, error => {
+        this.error = error;
+        // console.log(this.error.errors.application_id);
       });
   }
   ngOnInit() {
