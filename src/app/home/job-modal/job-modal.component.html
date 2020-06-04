@@ -8,7 +8,7 @@
     </button>
 </div> -->
 
-<div class="modal-body bg-color  ">
+<div class="modal-body bg-primary  ">
     <div class=" m-2  float-right">
         <button  (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
@@ -19,7 +19,7 @@
         <div class="alert alert-danger" *ngIf="applyError">
             <small>Sorry u already apply for this job</small>
         </div>
-        <h1 class="text-center "> {{job.title}}</h1>
+        <h1 class="text-center text-white "> {{job.title}}</h1>
         <div class="p-2 mt-2 mx-2 bg-white rounded details">
             <h3 class="mb-0"><strong>Description</strong></h3>
             <div class=" pl-3 pt-1"> 
@@ -39,7 +39,7 @@
 
 <div class="modal-footer">
     <div *ngIf="canApply" class=" text-center">
-        <button (click)="applyJob()" class="btn btn-outline-dark">Apply to job</button>
+        <button (click)="applyJob()" class="btn btn-outline-primary">Apply to job</button>
     </div>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-primary" (click)="activeModal.close('Close click')">Close</button>
 </div>
