@@ -1,46 +1,52 @@
 <!-- <p>interview-item works!</p> -->
 <!-- <p>{{single.seeker_review}}</p> -->
 <!-- <a [routerLink]="['../5']">aaaaaaa</a> -->
-<table class="table">
+<div class=" p-3  border border-white rounded">
+    <div class="p-2  text-center bg-white">
+        <h2 class="text-primary">Interview Details</h2>
+    </div>
+    <table class="table bg-white text-center">
+        
+        <tbody>
+            <tr>
+                <td>application_id</td>
+                <td class="text">{{single.application_id}}</td>
+    
+    
+            </tr>
+            <tr>
+                <td>emp_name</td>
+                <td class="text">
+                    {{single.emp_name}}
+                </td>
+    
+            </tr>
+            <tr>
+                <td>level</td>
+                <td class="text"> {{single.level_name}}</td>
+    
+            </tr>
+            <tr>
+                <td>date</td>
+                <td class="text"> {{single.date}}</td>
+    
+            </tr>
+            <tr>
+                <td>seeker_review</td>
+                <td class="text"> {{single.seeker_review}}</td>
+    
+            </tr>
+            <tr>
+                <td>company_review</td>
+                <td class="text"> {{single.company_review}}</td>
+    
+            </tr>
+            <tr>
+                <td>zoom</td>
+                <td class="text"> {{single.zoom}}</td>
+    
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-    <tbody>
-        <tr>
-            <td>application_id</td>
-            <td class="text">{{single.application_id}}</td>
-
-
-        </tr>
-        <tr>
-            <td>emp_name</td>
-            <td class="text">
-                {{single.emp_name}}
-            </td>
-
-        </tr>
-        <tr>
-            <td>level</td>
-            <td class="text"> {{single.level_name}}</td>
-
-        </tr>
-        <tr>
-            <td>date</td>
-            <td class="text"> {{single.date}}</td>
-
-        </tr>
-        <tr>
-            <td>seeker_review</td>
-            <td class="text"> {{single.seeker_review}}</td>
-
-        </tr>
-        <tr>
-            <td>company_review</td>
-            <td class="text"> {{single.company_review}}</td>
-
-        </tr>
-        <tr>
-            <td>zoom</td>
-            <td class="text"> {{single.zoom}}</td>
-
-        </tr>
-    </tbody>
-</table>

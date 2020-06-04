@@ -9,6 +9,7 @@ export class ApplicationService {
   private getAllapplicationsUrl = "/api/applications";
   private getSingleapplicationUrl = "/api/applications/";
   private getAllStatusUrl = '/api/appstatuses';
+  private getSingleStatusUrl = '/api/appstatuses/';
   constructor(private http:HttpClient) { }
 
   getAllApplications(params={}) {
@@ -37,6 +38,17 @@ export class ApplicationService {
     return this.http.put<any>(this.getSingleapplicationUrl+appId,{
       params:{status:statusId}
     });
+  }
+  updateStatus(statusId,data){
+    return this.http.put<any>(this.getSingleStatusUrl+statusId,data);
+  }
+
+  deleteStatus(statusId){
+    return this.http.delete<any>(this.getSingleStatusUrl + statusId);
+  }
+
+  addNewStatus(status){
+    return this.http.post<any>(this.getAllStatusUrl,status);
   }
   appSubject = new Subject<any>();
 }

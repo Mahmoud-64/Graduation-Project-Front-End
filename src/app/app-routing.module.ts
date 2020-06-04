@@ -21,19 +21,24 @@ import { Role } from './models/role.enum';
 import { BaseComponent } from './base/base.component';
 import { InterviewLevelsComponent } from './interview/interview-levels/interview-levels.component';
 import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
+import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'jobs',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: '',
+  //   redirectTo: 'jobs',
+  //   pathMatch: 'full'
+  // },
   {
     path: '',
     component: BaseComponent,
     resolve: { authUser: UserResolverService },
     children: [
+      {
+        path: '',
+        component: HomeJobsComponent,
+      },
       {
         path: 'jobs',
         loadChildren: () =>

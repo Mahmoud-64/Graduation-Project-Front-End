@@ -30,7 +30,16 @@ export class SearchComponent implements OnInit {
   })
 
   onSubmit() {
-    
+    if (this.searchForm.value.maxYears == null) {
+      this.searchForm.patchValue({
+        maxYears:""
+      })
+    }
+    if (this.searchForm.value.minYears == null) {
+      this.searchForm.patchValue({
+        minYears: ""
+      })
+    }
     console.log("submit",this.searchForm.value);
     this.jobService.jobSubject.next(this.searchForm.value);
     // this.jobService.jobSubject.complete();

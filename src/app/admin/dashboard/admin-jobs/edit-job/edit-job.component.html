@@ -1,63 +1,100 @@
-<div class="container bg-light">
+<div class="container p-3 m-3 border border-white rounded">
+    <div class="p-1 text-center" >
+        <h1 class="text-primary"><b>{{header}}</b></h1>
+    </div>
+    
+    <div *ngIf="jobServerError && jobServerError.message" class="alert alert-danger" role="alert">
+        {{jobServerError.message}}
+    </div> 
     <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
+        <div class="px-2 py-1 bd-highlight form-group">
             <label for="title">title </label>
-            <input type="text" id="title" class="form-control" formControlName="title" name="title" [value]="job.title">
+            <input type="text" id="title" class="form-control" formControlName="title" name="title">
             <div *ngIf="title.touched && title.invalid">
                 <small class="text-danger" *ngIf="title.errors.required"> please enter title</small>
+                <small class="text-danger" *ngIf="title.errors.maxlength || title.errors.minlength"> between 5 and 30 character</small>
+            </div>
+            <div *ngIf="jobServerError && jobServerError.errors.title">
+                <small class="text-danger"> {{jobServerError.errors.title[0]}}</small>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="px-2 py-1 bd-highlight form-group">
             <label for="description">description</label>
             <!-- <input type="text"  name="description" formControlName="description"  class="form-control"  placeholder="description"> -->
-            <textarea [value]="job.description" name="description" formControlName="description" class="form-control"
-                placeholder="description" rows="3"></textarea>
-        </div>
-        <div class="row">
-            <div class="col-6 form-group">
-                <label for="seniority">seniority</label>
-                <input type="text" name="seniority" [value]="job.seniority" formControlName="seniority"
-                    class="form-control" placeholder="seniority">
+            <textarea name="description" formControlName="description" class="form-control" placeholder="description"
+                rows="3"></textarea>
+            <div *ngIf="description.touched && description.invalid">
+                <small class="text-danger" *ngIf="description.errors.required"> please enter years_exp</small>
+                <small class="text-danger" *ngIf="description.errors.maxlength || description.errors.minlength"> 
+                    between 10
+                    and 150 character </small>
             </div>
-            <div class="col-6 form-group">
+            <div *ngIf="jobServerError && jobServerError.errors.description">
+                <small class="text-danger"> {{jobServerError.errors.description[0]}}</small>
+            </div>
+        </div>
+        <div class="px-2 py-1 row">
+            <div class="col-6 px-2 py-1 bd-highlight form-group">
+                <label for="seniority">seniority</label>
+                <input type="text" name="seniority" formControlName="seniority" class="form-control"
+                    placeholder="seniority">
+                <div *ngIf="seniority.touched && seniority.invalid">
+                    <small class="text-danger" *ngIf="seniority.errors.required"> please enter years_exp</small>
+                    <small class="text-danger" *ngIf="seniority.errors.maxlength || seniority.errors.minlength"> between 5
+                    and 15 character</small>
+                </div>
+                <div *ngIf="jobServerError && jobServerError.errors.seniority">
+                    <small class="text-danger"> {{jobServerError.errors.seniority[0]}}</small>
+                </div>
+            </div>
+            <div class="col-6 px-2 py-1 bd-highlight form-group">
                 <label for="years_exp">years_exp</label>
-                <input type="number" [value]="job.years_exp" class="form-control" formControlName="years_exp"
-                    name="years_exp" placeholder="0" min="0">
+                <input type="number" class="form-control" formControlName="years_exp" name="years_exp" placeholder="0"
+                    min="0">
                 <div *ngIf="years_exp.touched && years_exp.invalid">
                     <small class="text-danger" *ngIf="years_exp.errors.required"> please enter years_exp</small>
                     <small class="text-danger" *ngIf="years_exp.errors.max || years_exp.errors.min"> number between 0
-                        and 25 </small>
+                        and 25 years </small>
+                </div>
+                <div *ngIf="jobServerError && jobServerError.errors.years_exp">
+                    <small class="text-danger"> {{jobServerError.errors.years_exp[0]}}</small>
                 </div>
             </div>
         </div>
 
 
-        <div class="form-group">
-            <label>requirements</label>
-            <button type="button" class="btn btn-success" (click)="addRequire()">add</button>
-            <!-- <div *ngIf="isDataLoaded">
-                <div  *ngFor="let require of job.requirements" class="row">
-                    <input type="text" class="form-control col-10"  [value]="require.name" [formControl]="oldRequire">
-                    <button type="button" class="btn btn-danger col-2">X</button>
-                </div>
-            </div> -->
-
-            <div formArrayName="requirements">
+        <div class=" px-2 py-1  form-group">
+            <!-- <label>requirements</label>
+            <button type="button" class="btn btn-success" (click)="addRequire()">add</button> -->
+            <span class="addContact" (click)="addRequire()">
+                <strong>Requirements </strong>
+                <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
+            </span>
+            <div class="px-2 py-1" formArrayName="requirements">
                 <div *ngFor="let require of requirements().controls; let i=index " class="row">
                     <input type="text" class="form-control col-10" [formControlName]="i" placeholder="requirement">
-                    <button type="button" class="btn btn-danger col-2" (click)="removeRequire(i)">X</button>
+                    <!-- <button type="button" class="btn btn-danger col-2" (click)="removeRequire(i)">X</button> -->
+                    <div class="p-2 bd-highlight">
+                        <span class="addContact" (click)="removeRequire(i)">
+                            <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
+                        </span>
+                    </div>
+                    <div *ngIf="requirements().controls[i].touched && requirements().controls[i].invalid">
+                        <small class="text-danger"> sorry required and between 15 and 100</small>
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        <div class="form-check">
+        <div class="form-check px-4 py-1">
             <input type="checkbox" formControlName="available" class="form-check-input">
             <label class="form-check-label" for="available">available</label>
         </div>
 
 
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button  type="submit" class="btn btn-primary">Submit</button>
         </div>
 
     </form>
