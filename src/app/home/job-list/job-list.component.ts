@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../services/jobs.service'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'job-list',
   templateUrl: './job-list.component.html',
@@ -19,7 +19,8 @@ export class JobListComponent implements OnInit {
   firstElementId;
   constructor(
     private jobService: JobsService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ) {
     this.subscribeJobSubject();
   }
@@ -27,17 +28,20 @@ export class JobListComponent implements OnInit {
   ngOnInit(): void {
     this.jobService.getAllJobs(this.filterParams).subscribe(
       result => {
+        console.log(result);
+        
         this.jobs = result.data;
         this.isDataLoaded = true;
         this.clicked = this.jobs[0]['id'];
         this.filterParams.page = result.meta.current_page;
         this.lastPage = result.meta.last_page;
-        if (result.data.length > 0) {
-          this.renderFirstJob(result.data);
-        }
-        else {
-          this.router.navigateByUrl('/jobs')
-        }
+        
+        // if (result.data.length > 0) {
+        //   this.renderFirstJob(result.data);
+        // }
+        // else {
+        //   this.router.navigateByUrl('/jobs')
+        // }
       },
       error => {
         console.log(error);
@@ -89,10 +93,10 @@ export class JobListComponent implements OnInit {
   }
 
   pageNumbers(): number[] {
-    let startFrom = this.filterParams.page - 2;
-    startFrom = this.filterParams.page - 2 >= 1 ? startFrom : 1;
-    let n = this.filterParams.page + 2;
-    n = this.filterParams.page + 2 <= this.lastPage ? n : this.lastPage;
+    let startFrom = this.filterParams.page - 1;
+    startFrom = this.filterParams.page - 1 >= 1 ? startFrom : 1;
+    let n = this.filterParams.page + 1;
+    n = this.filterParams.page + 1 <= this.lastPage ? n : this.lastPage;
     let numbers = [];
 
     for (let index = startFrom; index <= n; index++) {

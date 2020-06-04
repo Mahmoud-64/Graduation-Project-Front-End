@@ -5,3 +5,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .allBody{
   background-color: #c5c6c7;
 }
+.pre{
+    white-space: pre-wrap;
+    white-space: pre-line;
+}

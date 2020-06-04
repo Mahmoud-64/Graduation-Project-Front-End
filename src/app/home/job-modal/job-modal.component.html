@@ -1,0 +1,45 @@
+<!-- <div class="modal-header">
+    <div class="text-center">
+        <h4 class="modal-title">Job Details</h4>
+    </div>
+    
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div> -->
+
+<div class="modal-body bg-color  ">
+    <div class=" m-2  float-right">
+        <button  (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="  p-1">
+        <div class="alert alert-danger" *ngIf="applyError">
+            <small>Sorry u already apply for this job</small>
+        </div>
+        <h1 class="text-center "> {{job.title}}</h1>
+        <div class="p-2 mt-2 mx-2 bg-white rounded details">
+            <h3 class="mb-0"><strong>Description</strong></h3>
+            <div class=" pl-3 pt-1"> 
+                <p class="pre">{{job.description}}</p>
+            </div>
+            <p><strong>Years of Experience : </strong>{{job.years_exp}}</p>
+            <p><strong>Seniority : </strong>{{job.seniority}}</p>
+        </div>
+        <div *ngIf="job.requirements.length > 0" class="p-2 mt-2 mx-2 bg-white rounded details">
+            <h3 ><strong>Requirements</strong></h3>
+            <ul>
+                <li *ngFor="let req of job.requirements"> {{req.name}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <div *ngIf="canApply" class=" text-center">
+        <button (click)="applyJob()" class="btn btn-outline-dark">Apply to job</button>
+    </div>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
