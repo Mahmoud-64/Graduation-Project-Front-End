@@ -8,11 +8,12 @@ import { SeekerService } from '../../../../service/seeker.service';
   styleUrls: ['./show-seeker.component.css']
 })
 export class ShowSeekerComponent implements OnInit {
-  user={
-    id: "",
+  seeker={
+    user: {id: "",
     name: "",
     email: "",
     password: "",
+    verify_email: ""},
     phone: "",
     contact: "",
     address: "",
@@ -25,7 +26,6 @@ export class ShowSeekerComponent implements OnInit {
     cv: "",
     contacts: [],
     isVerified:0,
-    emailVerified: ""
   };
   url;
 
@@ -43,9 +43,9 @@ export class ShowSeekerComponent implements OnInit {
   getSeeker(user_id)
   {
     this.seekerService.getSeeker(user_id).subscribe(user => {
-      this.user = user.data;
-      this.url = `/api/seekers/downloadcv/${this.user.id}/${this.user.cv}`;
-      console.log("show user", this.user);
+      this.seeker = user.data;
+      this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
+      console.log("show seeker", this.seeker);
     });
   }
 

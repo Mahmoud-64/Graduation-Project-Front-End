@@ -1,26 +1,26 @@
 <div class="border">
   <ul class="list-group">
-    <li class="list-group-item"><strong class="m-3">Name : </strong> {{user.name}}</li>
-    <li class="list-group-item"><strong class="m-3">Email : </strong> {{user.email}}</li>
-    <li class="list-group-item"><strong class="m-3">Password : </strong> {{user.password}}</li>
-    <li class="list-group-item"><strong class="m-3">Phone : </strong> {{user.phone}}</li>
+    <li class="list-group-item"><strong class="m-3">Name : </strong> {{seeker.user.name}}</li>
+    <li class="list-group-item"><strong class="m-3">Email : </strong> {{seeker.user.email}}</li>
+    <li class="list-group-item"><strong class="m-3">Password : </strong> {{seeker.user.password}}</li>
+    <li class="list-group-item"><strong class="m-3">Phone : </strong> {{seeker.phone}}</li>
 
-    <li class="list-group-item"><strong class="m-3">Email verified at : </strong> {{user.emailVerified}}</li>
-    <li class="list-group-item"><strong class="m-3">Phone is verified : </strong> {{user.isVerified}}</li>
-    <li class="list-group-item"><strong class="m-3">Address : </strong> {{user.address}}</li>
-    <li class="list-group-item"><strong class="m-3">City : </strong> {{user.city}}</li>
-    <li class="list-group-item"><strong class="m-3">Seniority Level : </strong> {{user.seniority}}</li>
+    <li class="list-group-item"><strong class="m-3">Email verified at : </strong> {{seeker.user.verify_email}}</li>
+    <li class="list-group-item"><strong class="m-3">Phone is verified : </strong> {{seeker.isVerified}}</li>
+    <li class="list-group-item"><strong class="m-3">Address : </strong> {{seeker.address}}</li>
+    <li class="list-group-item"><strong class="m-3">City : </strong> {{seeker.city}}</li>
+    <li class="list-group-item"><strong class="m-3">Seniority Level : </strong> {{seeker.seniority}}</li>
 
-    <li class="list-group-item"><strong class="m-3">Years of experience : </strong> {{user.expYears}}</li>
-    <li class="list-group-item"><strong class="m-3">Current Job : </strong> {{user.currentJob}}</li>
-    <li class="list-group-item"><strong class="m-3">Current Salary : </strong> {{user.currentSalary}}</li>
-    <li class="list-group-item"><strong class="m-3">Expected Salary : </strong> {{user.expectedSalary}}</li>
+    <li class="list-group-item"><strong class="m-3">Years of experience : </strong> {{seeker.expYears}}</li>
+    <li class="list-group-item"><strong class="m-3">Current Job : </strong> {{seeker.currentJob}}</li>
+    <li class="list-group-item"><strong class="m-3">Current Salary : </strong> {{seeker.currentSalary}}</li>
+    <li class="list-group-item"><strong class="m-3">Expected Salary : </strong> {{seeker.expectedSalary}}</li>
     <li class="list-group-item"><strong class="m-3">CV : </strong>
-      <a [href]="url" target="_blank" rel="noopener noreferrer">{{user.cv}}</a>
+      <a [href]="url" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
     </li>
     <li class="list-group-item"><strong class="m-3">contacts : </strong>
-      <div *ngFor="let contact of user.contacts">
-        {{contact}}
+      <div *ngFor="let contact of seeker.contacts" class="ml-5">
+        {{contact.contact_type}}: {{contact.data}}
       </div>
     </li>
   </ul>

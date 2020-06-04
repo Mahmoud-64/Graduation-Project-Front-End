@@ -1,7 +1,7 @@
 
 import { User } from './user';
 
-export interface Seeker extends User
+export interface Seeker
 {
     address?: String,
     city?: String,
@@ -13,4 +13,5 @@ export interface Seeker extends User
     cv?: String,
     isVerified?: Number,
     contacts?: [],
+    [key: string]: any
 }

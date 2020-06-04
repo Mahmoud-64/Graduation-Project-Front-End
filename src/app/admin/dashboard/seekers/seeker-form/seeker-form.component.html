@@ -5,7 +5,7 @@
 <form class="text-center" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
   <table class="table table-borderless text-center">
     <tbody>
-      <tr>
+      <tr formGroupName="user">
         <th scope="col">Name</th>
         <td>
           <input type="text" class="form-control" name="name" placeholder="name" formControlName="name">
@@ -14,14 +14,14 @@
               Name is required.
             </div>
           </div>
-          <div *ngIf="error && error.errors.name" class="text-danger small">
-            <div *ngFor="let name of error.errors.name">
+          <div *ngIf="errordata && errordata.errors.name" class="text-danger small">
+            <div *ngFor="let name of errordata.errors.name">
               {{name}}
             </div>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr formGroupName="user">
         <th scope="col">Email</th>
         <td>
           <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
@@ -30,14 +30,14 @@
               Email is required.
             </div>
           </div>
-          <div *ngIf="error && error.errors.email" class="text-danger small">
-            <div *ngFor="let email of error.errors.email">
+          <div *ngIf="errordata && errordata.errors.email" class="text-danger small">
+            <div *ngFor="let email of errordata.errors.email">
               {{email}}
             </div>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr formGroupName="user">
         <th scope="col">Password</th>
         <td>
           <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
@@ -46,18 +46,18 @@
               Password is required.
             </div>
           </div>
-          <div *ngIf="error && error.errors.password" class="text-danger small">
-            <div *ngFor="let password of error.errors.password">
+          <div *ngIf="errordata && errordata.errors.password" class="text-danger small">
+            <div *ngFor="let password of errordata.errors.password">
               {{password}}
             </div>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr formGroupName="user">
         <th scope="col">Password confirmation</th>
         <td>
-          <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control" name="password_confirmation" placeholder="password_confirmation"
-            formControlName="password_confirmation">
+          <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control"
+            name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
           <div
             *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
             class="text-danger small">
@@ -65,11 +65,11 @@
               Password confirmation is required.
             </div>
           </div>
-          <div *ngIf="details.errors?.misMatch" class="text-danger small">
+          <div *ngIf="details.get('user').errors?.misMatch" class="text-danger small">
             password confirmation doesn't match password field
           </div>
-          <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
-            <div *ngFor="let password_confirmation of error.errors.password_confirmation">
+          <div *ngIf="errordata && errordata.errors.password_confirmation" class="text-danger small">
+            <div *ngFor="let password_confirmation of errordata.errors.password_confirmation">
               {{password_confirmation}}
             </div>
           </div>
