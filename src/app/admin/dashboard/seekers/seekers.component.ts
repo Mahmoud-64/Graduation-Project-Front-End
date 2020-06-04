@@ -9,12 +9,13 @@ import { Seeker } from '../../../models/seeker';
   styleUrls: ['./seekers.component.css']
 })
 export class SeekersComponent implements OnInit {
-  users: Array<Seeker> = [{
-    id: '',
-    name: '',
-    email: '',
-    role: ''
-  }];
+  seekers: Array<Seeker>;
+  //  = [{
+  //   id: '',
+  //   name: '',
+  //   email: '',
+  //   role: ''
+  // }];
   changed=true;
 
   constructor(
@@ -22,8 +23,10 @@ export class SeekersComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.seekerService.getSeekers().subscribe(users => {
-      this.users = users.data;
+    this.seekerService.getSeekers().subscribe(seekers => {
+      this.seekers = seekers.data;
+      console.log(this.seekers);
+      
     })
   }
   crudOperation(crudName, id) {
@@ -44,9 +47,9 @@ export class SeekersComponent implements OnInit {
         console.log('delete');
         this.seekerService.deleteSeeker(id).subscribe(result=>{
           console.log(result);
-          this.seekerService.getSeekers().subscribe(users => {
-            this.users = users.data;
-            console.log(this.users);
+          this.seekerService.getSeekers().subscribe(seekers => {
+            this.seekers = seekers.data;
+            console.log(this.seekers);
           })
         });
 

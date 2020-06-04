@@ -18,9 +18,6 @@ export class SeekerFormComponent implements OnInit {
 
   editRoute;
   user={
-    id: '',
-    name: '',
-    password:'',
     contacts: []
   };
     error: any;
@@ -30,10 +27,13 @@ export class SeekerFormComponent implements OnInit {
     selfile = null;
     contactTypes: [];
     details: FormGroup = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      password_confirmation: ['', Validators.required],
+      user: this.fb.group({
+        id: [''],
+        name: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        password_confirmation: ['', Validators.required],
+      }, {validators: PasswordValidator}),
       phone: ['', Validators.required],
       address: [''],
       city: [''],
@@ -44,7 +44,7 @@ export class SeekerFormComponent implements OnInit {
       expectedSalary: [''],
       cv: [''],
       contacts: this.fb.array([]),
-    }, {validators: PasswordValidator});
+    });
 
     constructor(
       private seekerService: SeekerService,
@@ -62,12 +62,13 @@ export class SeekerFormComponent implements OnInit {
       console.log("edit=", this.router.url.includes('edit'));
 
         this.route.paramMap.subscribe(params => {
+          this.user_id=params.get('id');
           this.getSeeker(params.get('id')).subscribe((data)=>{
             this.user = data.data;
-            this.user.password = "";
-            console.log("user", this.user, this.user.id);
+            // this.user.password = "";
+            // console.log("user", this.user, this.user.id);
 
-            this.details ? this.details.patchValue(this.user) : null;
+            this.details ? this.details.patchValue(data.data) : null;
             this.contacts.clear();
             for (let contact in this.user.contacts) {
               this.contacts.push(this.newContact(
@@ -93,18 +94,15 @@ export class SeekerFormComponent implements OnInit {
   onClickSubmit(formData) {
     if (this.editRoute)
     {
-      this.seekerService.updateSeeker(this.user.id, this.details.value)
+      this.seekerService.updateSeeker(this.user_id, this.details.value)
         .subscribe(result => {
-          this.user = result.data;
           this.error = "";
         },
         err => {
           this.error = err;
         });
 
-        console.log("user", this.user.id);
-        
-        this.userService.updateUser(this.user.id, this.details.value)
+        this.userService.updateUser(this.user_id, this.details.get('user').value)
         .subscribe((data) => {
           this.errordata = "";
           console.log("data", data);
@@ -139,16 +137,16 @@ export class SeekerFormComponent implements OnInit {
     return this.details.get('phone');
   }
   get name() {
-    return this.details.get('name');
+    return this.details.get('user').get('name');
   }
   get email() {
-    return this.details.get('email');
+    return this.details.get('user').get('email');
   }
   get password() {
-    return this.details.get('password');
+    return this.details.get('user').get('password');
   }
   get password_confirmation() {
-    return this.details.get('password_confirmation');
+    return this.details.get('user').get('password_confirmation');
   }
 
     ////////////////////////// pdf //////////////////////
@@ -196,7 +194,6 @@ export class SeekerFormComponent implements OnInit {
       addContact(){
         this.contacts.push(this.newContactEmpty());
       }
-
 
       newContactEmpty(): FormGroup {
         return this.fb.group({

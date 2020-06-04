@@ -15,9 +15,11 @@ import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
 export class ProfileDetailsComponent implements OnInit {
   seeker: Seeker =
     {
-      name: "",
-      email: "",
-      password: "",
+      user: {
+        name: "",
+        email: "",
+        password: "",
+      },
       phone: "",
       contact: "",
       address: "",
@@ -28,7 +30,7 @@ export class ProfileDetailsComponent implements OnInit {
       currentSalary: 0,
       expectedSalary: 0,
       cv: "",
-      isVerified:0
+      isVerified: 0
     };
   contacts: [];
   url = '';
@@ -52,16 +54,16 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
-        this.role = seeker.data.role;
+        this.role = seeker.data.user.role;
         console.log("roooooole", this.role);
-        this.url = `/api/seekers/downloadcv/${this.seeker.id}/${this.seeker.cv}`;
+        this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });
   }
 
   changeData(data) {
     this.isCollapsed = !this.isCollapsed;
-    this.seeker.name = data.data.name;
-    this.seeker.email = data.data.email;
+    this.seeker.user.name = data.data.name;
+    this.seeker.user.email = data.data.email;
   }
 
   changeDetailsData(data) {
@@ -69,10 +71,10 @@ export class ProfileDetailsComponent implements OnInit {
     this.contacts = data.contacts;
   }
 
-  downloadFile(){
+  downloadFile() {
     console.log(this.seeker);
 
-    this.seekerService.downloadCV(this.seeker.id, this.seeker.cv).subscribe(res=>{
+    this.seekerService.downloadCV(this.seeker.user.id, this.seeker.cv).subscribe(res => {
       console.log(res);
     })
   }

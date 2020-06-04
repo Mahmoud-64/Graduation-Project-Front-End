@@ -1,37 +1,31 @@
 <div class="mx-auto">
 
   <div *ngIf="error" class="alert alert-danger">
-      {{error.message}}
+    {{error.message}}
   </div>
 
-  <form class="text-center" [formGroup] = "seeker" (ngSubmit) = "onClickSubmit(seeker.value)" >
+  <form class="text-center" [formGroup]="seeker" (ngSubmit)="onClickSubmit(seeker.value)">
     <div class="row">
       <div class="col-12">
         <strong>Name</strong>
-          <input type = "text"
-            name = "name"
-            placeholder = "name"
-            formControlName = "name">
-            <div *ngIf="error && error.errors.name" class="text-danger small">
-              <div *ngFor="let name of error.errors.name">
-                {{name}}
-              </div>
-            </div>
+        <input type="text" name="name" placeholder="name" formControlName="name">
+        <div *ngIf="error && error.errors.name" class="text-danger small">
+          <div *ngFor="let name of error.errors.name">
+            {{name}}
+          </div>
+        </div>
       </div>
-      <div class="col-12">
+      <!-- <div class="col-12">
         <strong>Email</strong>
-          <input type = "email"
-            name = "email"
-            placeholder = "email"
-            formControlName = "email">
-            <div *ngIf="error && error.errors.email" class="text-danger small">
-              <div *ngFor="let email of error.errors.email">
-                {{email}}
-              </div>
-            </div>
-      </div>
+        <input type="email" name="email" placeholder="email" formControlName="email">
+        <div *ngIf="error && error.errors.email" class="text-danger small">
+          <div *ngFor="let email of error.errors.email">
+            {{email}}
+          </div>
+        </div>
+      </div> -->
     </div>
 
-  <input class="btn btn-color m-2" type = "submit" value = "Edit">
+    <input class="btn btn-color m-2" type="submit" value="Edit">
   </form>
 </div>

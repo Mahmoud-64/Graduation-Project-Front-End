@@ -23,7 +23,7 @@ export class PersonalFormComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.seeker = new FormGroup({
       name: new FormControl(''),
-      email: new FormControl('')
+      // email: new FormControl('')
     });
     this.route.paramMap.subscribe(params => {
       this.user_id = +params.get('profileId');
@@ -32,7 +32,7 @@ export class PersonalFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange})
   {
-      this.seeker? this.seeker.patchValue(this.seekerData) : null ;
+      this.seeker? this.seeker.patchValue(this.seekerData.user) : null ;
   }
 
   onClickSubmit(formData)
