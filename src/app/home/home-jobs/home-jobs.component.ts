@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { JobModalComponent } from '../job-modal/job-modal.component';
 
 @Component({
   selector: 'home-jobs',
@@ -21,7 +23,8 @@ export class HomeJobsComponent implements OnInit {
 
   constructor(
     private jobService: JobsService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) {
     this.subscribeJobSubject();
   }
@@ -63,6 +66,11 @@ export class HomeJobsComponent implements OnInit {
     this.filterParams.page -= 1
     this.ngOnInit();
     console.log('prev ' + this.filterParams.page);
+  }
+
+  openModal(job){
+    const modalRef = this.modalService.open(JobModalComponent);
+    modalRef.componentInstance.job = job;
   }
 
 }
