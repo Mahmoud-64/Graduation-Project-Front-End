@@ -75,8 +75,10 @@ export class AppDetailsComponent implements OnInit {
         }
         console.log('role', result);
       }
-    );
-    
+    );  
+  }
+  jobHover(){
+    console.log("hover");
     
   }
 

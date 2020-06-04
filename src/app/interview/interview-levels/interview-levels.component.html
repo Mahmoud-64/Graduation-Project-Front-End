@@ -1,20 +1,19 @@
 <mat-horizontal-stepper (selectionChange)="showInterview($event)">
     <mat-step  *ngFor="let interview of interviews"  [label]="interview.level_name">
-      {{interview.level_name}}
+      
+      <button (click)="myInterviews()" class="btn btn-primary">{{interview.level_name}}</button>
     </mat-step>  
 </mat-horizontal-stepper>
 
 <!-- show or hide interview -->
-<div>
-  <button (click)="myInterviews()" class="btn btn-info">interview</button>
-</div>
-<div *ngIf="renderInterview">
-  <div *ngIf="loadInterview;else anotherInterview" class="p-3 m-3">
+
+<div *ngIf="renderInterview" class="pt-2 ">
+  <div *ngIf="loadInterview;else anotherInterview" class=" ">
     <app-interview-item [newInterview]="newInterview"></app-interview-item>
   </div>
   
   <ng-template #anotherInterview>
-    <div class="p-3 m-3">
+    <div class=" ">
       <app-interview-item [newInterview]="newInterview"></app-interview-item>
     </div>
   </ng-template>
