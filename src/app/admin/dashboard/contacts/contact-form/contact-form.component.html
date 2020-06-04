@@ -1,12 +1,12 @@
 <form [formGroup]="contact" (ngSubmit)="submitContact()">
-    <div>
+    <div class="bg-white p-5 m-5 w-75">
 
         <div class="my-3">
             <label>Seeker</label>
             <select class="form-control" name="seeker_id" formControlName="seeker_id">
                 <option value=''>please select</option>
-                <option *ngFor="let seeker of seekers" value="{{seeker.id}}">
-                    {{seeker.name}}
+                <option *ngFor="let seeker of seekers" value="{{seeker.user.id}}">
+                    {{seeker.user.name}}
                 </option>
             </select>
             <div *ngIf="error && error.seeker_id" class="text-danger">
