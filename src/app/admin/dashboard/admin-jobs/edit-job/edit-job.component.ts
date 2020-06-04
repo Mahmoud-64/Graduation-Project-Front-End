@@ -11,15 +11,25 @@ import { ActivatedRoute } from '@angular/router';
 export class EditJobComponent implements OnInit {
 
   job = {
-    "id":"",
+    "id": "",
     "title": "",
     "description": "",
     "seniority": "",
     "years_exp": "",
+    'available': "",
     "requirements": []
   }
-  isDataLoaded:boolean=false;
-  jobServerError = "";
+
+  isDataLoaded: boolean = false;
+  jobServerError ={
+    message:"",
+    errors:{
+      "title": [],
+      "description": [],
+      "seniority": [],
+      "years_exp": [],
+    }
+  } ;
   constructor(
     private fB: FormBuilder,
     private jobService: JobsService,
@@ -32,21 +42,22 @@ export class EditJobComponent implements OnInit {
         result => {
           console.log(result);
           this.job = result.data;
-          this.isDataLoaded=true;
+          this.isDataLoaded = true;
           this.setRequires();
+          this.pushData();
         },
         error => {
           console.log(error);
         }
       )
     });
-    
+
   }
 
   oldRequire = new FormControl()
 
   newJobForm = new FormGroup({
-    title: new FormControl('', [
+    title: new FormControl(this.job.title, [
       Validators.required,
       Validators.maxLength(30),
       Validators.minLength(5),
@@ -70,19 +81,27 @@ export class EditJobComponent implements OnInit {
 
     ]),
     requirements: this.fB.array([
-      
+
     ])
   })
-  setRequires(){
+  setRequires() {
     let controls = <FormArray>this.newJobForm.controls.requirements;
     for (const require of this.job.requirements) {
-      controls.push(this.fB.control(require.name))
+      controls.push(this.fB.control(require.name,[
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.minLength(5)
+      ]))
     }
-    
+
   }
   newRequire() {
     return this.fB.control('',
-      Validators.required,
+      [
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.minLength(5)
+      ]
     );
   }
 
@@ -95,12 +114,13 @@ export class EditJobComponent implements OnInit {
 
   onSubmit() {
     console.log(this.newJobForm.value);
-    this.jobService.updateJob(this.newJobForm.value , this.job.id).subscribe(
+    this.jobService.updateJob(this.newJobForm.value, this.job.id).subscribe(
       result => {
         console.log(result);
       },
-      error => {
-        console.log(error);
+      error => {     
+        this.jobServerError=error;
+        console.log(this.jobServerError);     
       }
     )
   }
@@ -126,5 +146,13 @@ export class EditJobComponent implements OnInit {
     return this.newJobForm.get('requirements') as FormArray;
   }
 
-
+  pushData() {
+    this.newJobForm.patchValue({
+      title: this.job.title,
+      description: this.job.description,
+      seniority: this.job.seniority,
+      years_exp: this.job.years_exp,
+      available: this.job.available,
+    })
+  }
 }
