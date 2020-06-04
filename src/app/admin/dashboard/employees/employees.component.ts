@@ -11,10 +11,12 @@ import { Employee } from '../../../models/employee';
 export class EmployeesComponent implements OnInit {
   error;
   users: Array<Employee> = [{
-    id: '',
-    name: '',
-    email: '',
-    role: ''
+    'user': [{
+      id: '',
+      name: '',
+      email: '',
+      role: ''
+    }]
   }];
   changed=true;
 

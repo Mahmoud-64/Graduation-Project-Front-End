@@ -18,13 +18,15 @@ export class FormEmployeeComponent implements OnInit {
   error;
   employee_id;
   employee: FormGroup = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-    password_confirmation: ['', Validators.required],
+    user: this.fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      password_confirmation: ['', Validators.required],
+    }, { validators: PasswordValidator }),
     position: [''],
     branch: ['']
-  }, { validators: PasswordValidator });
+  });
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -38,6 +40,8 @@ export class FormEmployeeComponent implements OnInit {
       });
 
       this.employeeService.getEmployee(this.employee_id).subscribe(employee => {
+        console.log("employeeee", employee['data']);
+
         this.employee.patchValue(employee['data']);
         console.log(this.employee.value);
 
@@ -47,19 +51,30 @@ export class FormEmployeeComponent implements OnInit {
 
 
   submitEmployee() {
+    let employeeData = {
+      name: this.employee.value.user.name,
+      email: this.employee.value.user.email,
+      password: this.employee.value.user.password,
+      password_confirmation: this.employee.value.user.password_confirmation,
+      position: this.employee.value.position,
+      branch: this.employee.value.branch,
+    };
     if (this.router.url.includes('edit')) {
-      this.employeeService.updateEmployee(this.employee_id, this.employee.value)
+      this.employeeService.updateEmployee(this.employee_id, employeeData)
         .subscribe(result => {
+        this.error = '';
           console.log(result);
+          this.router.navigateByUrl(`/admin/employee/show/${this.employee_id}`);
         },
           err => {
-            console.log("error", err.errors);
             this.error = err.errors;
           })
     } else {
-      console.log(this.employee.value);
-      this.employeeService.addEmployee(this.employee.value)
+      console.log(employeeData);
+      this.employeeService.addEmployee(employeeData)
         .subscribe(result => {
+        this.error = '';
+        this.router.navigateByUrl(`/admin/employee/show/${result.data.user.id}`);
           console.log(result);
         },
           err => {
@@ -70,16 +85,16 @@ export class FormEmployeeComponent implements OnInit {
   }
 
   get name() {
-    return this.employee.get('name');
+    return this.employee.get('user').get('name');
   }
   get email() {
-    return this.employee.get('email');
+    return this.employee.get('user').get('email');
   }
   get password() {
-    return this.employee.get('password');
+    return this.employee.get('user').get('password');
   }
   get password_confirmation() {
-    return this.employee.get('password_confirmation');
+    return this.employee.get('user').get('password_confirmation');
   }
 
 }

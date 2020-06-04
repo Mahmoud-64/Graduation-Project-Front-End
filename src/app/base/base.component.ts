@@ -48,7 +48,7 @@ export class BaseComponent implements OnInit {
 
   isEmailSent()
   {
-    if (this.loggedinUser && this.userService.getUserRole()!=2 && this.userService.getUserRole()!=1) {
+    if (this.loggedinUser && this.userService.getUserRole()==3) {
       return (this.loggedinUser && !this.emailSent && !this.emailVerified);
     }
     return false;
