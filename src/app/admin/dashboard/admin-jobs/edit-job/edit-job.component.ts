@@ -19,17 +19,18 @@ export class EditJobComponent implements OnInit {
     'available': "",
     "requirements": []
   }
+  header="New Job"
 
   isDataLoaded: boolean = false;
-  jobServerError ={
-    message:"",
-    errors:{
+  jobServerError = {
+    message: "",
+    errors: {
       "title": [],
       "description": [],
       "seniority": [],
       "years_exp": [],
     }
-  } ;
+  };
   constructor(
     private fB: FormBuilder,
     private jobService: JobsService,
@@ -38,23 +39,24 @@ export class EditJobComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
-      this.jobService.getSingleJob(routeParams.id).subscribe(
-        result => {
-          console.log(result);
-          this.job = result.data;
-          this.isDataLoaded = true;
-          this.setRequires();
-          this.pushData();
-        },
-        error => {
-          console.log(error);
-        }
-      )
+      if (routeParams.id) {
+        this.jobService.getSingleJob(routeParams.id).subscribe(
+          result => {
+            console.log(result);
+            this.job = result.data;
+            this.isDataLoaded = true;
+            this.header="Update Job"
+            this.setRequires();
+            this.pushData();
+          },
+          error => {
+            console.log(error);
+          }
+        )
+      }
     });
 
   }
-
-  oldRequire = new FormControl()
 
   newJobForm = new FormGroup({
     title: new FormControl(this.job.title, [
@@ -87,7 +89,7 @@ export class EditJobComponent implements OnInit {
   setRequires() {
     let controls = <FormArray>this.newJobForm.controls.requirements;
     for (const require of this.job.requirements) {
-      controls.push(this.fB.control(require.name,[
+      controls.push(this.fB.control(require.name, [
         Validators.required,
         Validators.maxLength(50),
         Validators.minLength(5)
@@ -114,16 +116,37 @@ export class EditJobComponent implements OnInit {
 
   onSubmit() {
     console.log(this.newJobForm.value);
+    if (this.isDataLoaded) {
+      this.updateJob();
+    } else {
+      this.storeJob();
+    }
+    
+  }
+  updateJob(){
     this.jobService.updateJob(this.newJobForm.value, this.job.id).subscribe(
       result => {
         console.log(result);
       },
-      error => {     
-        this.jobServerError=error;
-        console.log(this.jobServerError);     
+      error => {
+        this.jobServerError = error;
+        console.log(this.jobServerError);
       }
     )
   }
+
+  storeJob(){
+    this.jobService.addNewJob(this.newJobForm.value).subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        this.jobServerError = error;
+        console.log(this.jobServerError);
+      }
+    )
+  }
+
 
 
   public get title() {
