@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InterviewService } from '../interview.service';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-interview-form',
@@ -24,7 +26,7 @@ export class InterviewFormComponent implements OnInit {
       ]
   };
 
-  constructor(private http: HttpClient, public interviewService: InterviewService) { }
+  constructor(private http: HttpClient, public interviewService: InterviewService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
   defaultQuestion = 'teacher';
   genders = ['male', 'female', 'a', 'b'];
   onCreatePost(postData: { title: string; content: string }) {
@@ -38,9 +40,15 @@ export class InterviewFormComponent implements OnInit {
       )
       .subscribe(responseData => {
         console.log(responseData);
+        this._flashMessagesService.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
+        // this.router.navigate(["/admin/interviews"]);
+        setTimeout(() => {
+          this.router.navigate(["/admin/interviews"]);
+        }, 2000);
       }, error => {
         this.error = error;
         // console.log(this.error.errors.application_id);
+        this._flashMessagesService.show('error', { cssClass: 'alert-danger', timeout: 1000 });
       });
   }
   ngOnInit() {
@@ -86,3 +94,5 @@ export class InterviewFormComponent implements OnInit {
   }
 
 }
+
+

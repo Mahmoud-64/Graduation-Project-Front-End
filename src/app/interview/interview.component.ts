@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InterviewListComponent } from './interview-list/interview-list.component'
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',

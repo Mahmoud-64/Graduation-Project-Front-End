@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material/stepper';
 import { InterviewEditComponent } from './interview-edit/interview-edit.component';
 import { RouterModule } from '@angular/router';
+import { InterviewsRoutingModule2 } from './interviews-routing-module2';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     // BrowserAnimationsModule,
     MatStepperModule,
+    InterviewsRoutingModule2,
+    FlashMessagesModule.forRoot(),
+
 
   ],
   exports: [

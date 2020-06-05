@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class JobsComponent implements OnInit {
 
   jobs = [];
-  private filterParams = {
+  filterParams = {
     page: 1,
     available: 1,
     perPage: 15,

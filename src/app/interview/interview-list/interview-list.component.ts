@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { InterviewService } from '../interview.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 
 
 @Component({
@@ -21,16 +23,18 @@ export class InterviewListComponent implements OnInit {
 
       .subscribe(posts => {
         console.log('deleted');
-
+        this.ngOnInit()
       });
 
   }
 
-  constructor(public interviewService: InterviewService, private http: HttpClient) { }
+  constructor(public interviewService: InterviewService, private http: HttpClient, private _flashMessagesService: FlashMessagesService) { }
   // loadedPosts = this.interviewService.fetchPosts();
 
   ngOnInit() {
     this.interviewService.fetchInterview();
+    // this._flashMessagesService.show('We are in about component!', { cssClass: 'alert-success', timeout: 5000 });
+
     // console.log(this.interviewService.loadedPosts['data']);
     // console.log(this.interviewService.loadedPosts);
     // console.log('sssssssssss');

@@ -29,20 +29,16 @@
                 </div>
             </div>
         </div>
-            <div>
-                <nav class="justify-content-center mt-4" aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item mx-1"><Button
-                                type="button" class="page-link">Previous</Button></li>
-                        <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item mx-1"><Button
-                                type="button" class="page-link">Next</Button></li>
-                    </ul>
-                </nav>
-            </div>
-
-            
-
-
+        <div>
+            <nav class="justify-content-center mt-4" aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item mx-1"><Button type="button"
+                            class="page-link">Previous</Button></li>
+                    <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item mx-1"><Button
+                            type="button" class="page-link">Next</Button></li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <ng-template #notFound>
         <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
