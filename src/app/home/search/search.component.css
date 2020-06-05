@@ -1,10 +1,10 @@
 
 .btn-color{
-    background-color: #45a29e !important;
+    background-color: rgb(16,122,248) !important;
     color: white;
 }
 .btn-color:hover{
     background-color: white !important;
-    color: #45a29e;
-    border: 1px solid #45a29e;
+    color: rgb(16,122,248);
+    border: 1px solid rgb(16,122,248);
 }
