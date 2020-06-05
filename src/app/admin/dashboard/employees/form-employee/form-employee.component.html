@@ -1,5 +1,5 @@
 <form [formGroup]="employee" (ngSubmit)="submitEmployee()">
-    <div class="p-2 bd-highlight">
+    <div class="p-2 bd-highlight" formGroupName="user">
         <label>Name</label>
         <input name="name" type="text" formControlName="name" class="form-control" aria-describedby="employeeHelp"
             placeholder="Name" />
@@ -12,7 +12,7 @@
             {{error.name}}
         </div>
     </div>
-    <div class="p-2 bd-highlight">
+    <div class="p-2 bd-highlight" formGroupName="user">
         <label>email</label>
         <input email="email" type="email" formControlName="email" class="form-control" aria-describedby="employeeHelp"
             placeholder="Email" />
@@ -25,7 +25,7 @@
             {{error.email}}
         </div>
     </div>
-    <div class="p-2 bd-highlight">
+    <div class="p-2 bd-highlight" formGroupName="user">
         <label>password</label>
         <input password="password" type="password" formControlName="password" class="form-control"
             aria-describedby="employeeHelp" placeholder="Password" />
@@ -38,9 +38,9 @@
             {{error.password}}
         </div>
     </div>
-    <div class="p-2 bd-highlight">
+    <div class="p-2 bd-highlight" formGroupName="user">
         <label>password_confirmation</label>
-        <input [class.is-invalid]="employee.errors?.misMatch" password_confirmation="password_confirmation"
+        <input [class.is-invalid]="employee.get('user').errors?.misMatch" password_confirmation="password_confirmation"
             type="password" formControlName="password_confirmation" class="form-control" aria-describedby="employeeHelp"
             placeholder="Password Confirmation" />
         <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
@@ -49,7 +49,7 @@
                 Password confirmation is required.
             </div>
         </div>
-        <div *ngIf="employee.errors?.misMatch" class="text-danger small">
+        <div *ngIf="employee.get('user').errors?.misMatch" class="text-danger small">
             password confirmation doesn't match password field
         </div>
     </div>

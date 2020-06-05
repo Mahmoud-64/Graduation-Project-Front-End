@@ -1,35 +1,55 @@
-<div class="container bg-light">
+<div class="container p-3 m-3 border border-white rounded">
+    <div class="p-1 text-center">
+        <h1 class="text-primary">
+            <b>New Interview</b>
+        </h1>
+    </div>
     <form [formGroup]="newInterviewForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
+        <div class="px-2 py-1 form-group">
             <label for="application">application</label>
-            <input type="text" readonly class="form-control-plaintext bg-white " [(ngModel)]="appId" formControlName="application_id"
+            <input type="text" readonly class="form-control bg-white " formControlName="application_id"
                 name="application">
         </div>
-        <div>
+
+        <div class="px-2 py-1 form-group">
             <label for="employee">employee</label>
-            <select class="custom-select form-control" formControlName="employee_id">
+            <select class="custom-select form-control" formControlName="emp_id">
                 <option *ngFor="let emp of employees" [value]="emp.id">
                     {{emp.name}} </option>
             </select>
+            <div *ngIf="emp_id.touched && emp_id.invalid">
+                <small class="text-danger" *ngIf="emp_id.errors.required"> choose Employee</small>
+            </div>
         </div>
-        <div>
+
+        <div class="px-2 py-1 form-group">
             <label for="level">level</label>
             <select class="custom-select form-control" formControlName="level_id">
                 <option *ngFor="let lev of levels" [value]="lev.id">
                     {{lev.name}} </option>
             </select>
+            <div *ngIf="level_id.touched && level_id.invalid">
+                <small class="text-danger" *ngIf="level_id.errors.required"> choose Level</small>
+            </div>
         </div>
-        <div class="form-group">
+        <div class="px-2 py-1 form-group">
             <label for="date">enter meeting date</label>
-            <input type="datetime-local" class="form-control" formControlName="date" name="date" [value]="current" >
+            <input type="datetime-local" class="form-control" formControlName="date" >
+            <div *ngIf="date.touched && date.invalid">
+                <small class="text-danger" *ngIf="date.errors.required"> choose valid date</small>
+            </div>
         </div>
-        <div class="form-group">
+
+        <div class="px-2 py-1 form-group">
             <label for="zoom">zoom </label>
             <input type="text" id="zoom" class="form-control" formControlName="zoom" name="zoom"
                 placeholder="Enter Link">
+            <div *ngIf="zoom.touched && zoom.invalid">
+                <small class="text-danger" *ngIf="zoom.errors.required"> Enter zoom meeting link </small>
+            </div>
         </div>
-        <div>
-            <button class="btn-success btn"> submit</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InterviewService } from '../services/interview.service';
 import { EmployeeService } from 'src/app/service/employee.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'admin-interview-form',
@@ -41,17 +41,30 @@ export class InterviewFormComponent implements OnInit {
         console.log(error);
       }
     )
+    this.pushDate();
   }
 
   newInterviewForm = new FormGroup({
-    application_id: new FormControl(''),
-    employee_id: new FormControl(''),
-    level_id: new FormControl(''),
-    date: new FormControl(),
-    zoom: new FormControl(),
+    application_id: new FormControl('',[
+      Validators.required
+    ]
+    ),
+    emp_id: new FormControl('',[
+      Validators.required
+    ]),
+    level_id: new FormControl('',[
+      Validators.required
+    ]),
+    date: new FormControl('',[
+      Validators.required
+    ]),
+    zoom: new FormControl('',[
+      Validators.required,
+    ]),
   })
 
   onSubmit() {
+    this.changeDateFormate()
     console.log(this.newInterviewForm.value);
     this.interviewService.addNewInterview(this.newInterviewForm.value).subscribe(
       result => {
@@ -61,6 +74,36 @@ export class InterviewFormComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  pushDate(){
+    let d = new Date().toISOString().slice(0, 16);
+    this.newInterviewForm.patchValue({
+      date: d,
+      application_id:this.appId
+    })
+  }
+
+  changeDateFormate(){
+    let d = new Date(this.newInterviewForm.value.date);
+    let newDate = d.toISOString().slice(0, 19).replace('T', ' ');
+    console.log('new', newDate);
+    this.newInterviewForm.patchValue({
+      date: newDate,
+    })
+  }
+
+  public get emp_id() {
+    return this.newInterviewForm.get('emp_id');
+  }
+  public get level_id() {
+    return this.newInterviewForm.get('level_id');
+  }
+  public get date() {
+    return this.newInterviewForm.get('date');
+  }
+  public get zoom() {
+    return this.newInterviewForm.get('zoom');
   }
 }
 

@@ -52,7 +52,7 @@ const routes: Routes = [
       { path: 'employee/show/:id', component: ShowEmployeeComponent },
       { path: 'employee/edit/:id', component: FormEmployeeComponent },
       { path: 'jobs', component: JobsComponent },
-      { path: 'jobs/new', component: NewJobComponent },
+      { path: 'jobs/new', component: EditJobComponent },
       { path: 'jobs/:id', component: SingleComponent },
       { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },

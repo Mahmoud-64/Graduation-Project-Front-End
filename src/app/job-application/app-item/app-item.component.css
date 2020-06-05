@@ -1,0 +1,4 @@
+.item:hover{
+    cursor: pointer;
+    border-style: groove;
+}

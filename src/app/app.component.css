@@ -1,7 +1,9 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-.allBody{
-  background-color: #c5c6c7;
-}
+/* .allBody{
+  border-radius: 5px;
+  background: rgb(216,228,240);
+background: radial-gradient(circle, rgba(216,228,240,1) 50%, rgba(238,244,149,1) 100%);
+} */
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;
@@ -118,4 +120,8 @@
   .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
     top: -7px;
   }
+
+  
 }
+
+

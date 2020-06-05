@@ -1,29 +1,52 @@
-<div *ngIf="application.interviews && application.interviews.length >0">
+<!-- interview form -->
+<div *ngIf="interviewForm">
+    <div class="p-2 bd-highlight text-center">
+        <span class="addContact" (click)="showForm()">
+            <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
+        </span>
+    </div>
+    <admin-interview-form [appId]="application.id"></admin-interview-form>
+</div>
+<div class=" rounded mx-3 my-1 p-3" *ngIf="application.interviews && application.interviews.length >0">
     <app-interview-levels [interviews]="application.interviews"></app-interview-levels>
 </div>
 
-<div class="m-3 p-3">
-    <div>
-        <p>{{application.seeker.user.name}}</p>
+<div class="mx-3 my-1 px-3 rounded">
+    <table class="table bg-white text-center">
+        <tbody>
+            <tr *ngIf="isAdmin">
+                <td>Seeker</td>
+                <td>{{application.seeker.user.name}}</td>
+            </tr>
+            <tr >
+                <td><h2>Job</h2></td>
+                <td>
+                    <button type="button" class="btn  mr-2" placement="left"
+                        [ngbPopover]="application.job.description" [popoverTitle]="application.job.title">
+                        {{application.job.title}}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td><h2>Status</h2></td>
+                <td>
+                    <button type="button" class="btn  mr-2" placement="left"
+                        [ngbPopover]="application.status.description" [popoverTitle]="application.status.name">
+                        {{application.status.name}}
+                    </button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-6">
+            <button (click)="deleteApplication()" class="btn btn-danger">remove</button>
+        </div>
+        <div *ngIf="isAdmin" class="col-6 text-right">
+            <button (click)="showForm()" class="btn btn-info"> apply Interview </button>
+        </div>
     </div>
-    <div>
-        <h5>{{application.job.title}}</h5>
-        <p>{{application.job.description}}</p>
-    </div>
-    <div>
-        <h5>{{application.status.name}}</h5>
-        <p>{{application.status.description}}</p>
-    </div>
-    <button (click)="deleteApplication()" class="btn btn-danger">remove</button>
-    <button *ngIf="isAdmin" (click)="showForm()"  class="btn btn-info"> apply Interview </button>
 </div>
 
-<!-- interview form -->
-<div *ngIf="interviewForm">
-    <admin-interview-form [appId]="application.id"></admin-interview-form>
-    <!-- <router-outlet></router-outlet> -->
-</div>
-<!-- Interviews Section -->
-<div class="container">
 
-</div>

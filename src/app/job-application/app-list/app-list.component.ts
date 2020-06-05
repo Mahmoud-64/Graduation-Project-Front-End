@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/application.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,11 @@ import { ApplicationService } from '../services/application.service';
 export class AppListComponent implements OnInit {
 
   applications = [];
-  constructor(private applicationService: ApplicationService) { }
+  firstElementId ;
+  constructor(
+    private applicationService: ApplicationService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
     this.applicationService.getAllApplications().subscribe(
@@ -17,6 +22,9 @@ export class AppListComponent implements OnInit {
         console.log("success");
         console.log(result.data);
         this.applications = result.data;
+        if (result.data.length > 0) {
+          this.renderFirstApp(result.data);
+        }
       },
       error => {
         console.log("error");
@@ -35,7 +43,13 @@ export class AppListComponent implements OnInit {
         console.log("done");
       }
       
+      
     )
+  }
+  renderFirstApp(apps) {
+    this.firstElementId = apps[0].id;
+    this.router.navigateByUrl('/applications/' + this.firstElementId);
+    console.log('first id ' + this.firstElementId);
   }
 
 

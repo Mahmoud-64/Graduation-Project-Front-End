@@ -38,8 +38,14 @@ export class UserService {
     return this.http.post("/api/login",JSON.stringify(user)).pipe(
       tap(ev => {
         this.user = ev;
-        console.log("login email verify", ev.verify_email);
-        this.verifyEmailSubject.next(ev.verify_email);
+        if (ev.role!="employee" && ev.role!="super-admin")
+        {
+          this.verifyEmailSubject.next(ev.verify_email);
+        }
+        else
+        {
+          this.verifyEmailSubject.next(true);
+        }
         const _token = ev.access_token;
         localStorage.setItem('access_token', _token);
         this.subject.next(true);
