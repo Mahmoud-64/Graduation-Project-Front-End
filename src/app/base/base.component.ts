@@ -48,7 +48,10 @@ export class BaseComponent implements OnInit {
 
   isEmailSent()
   {
-    return (this.loggedinUser && !this.emailSent && !this.emailVerified);
+      if (this.loggedinUser && this.userService.getUserRole()==3) {
+        return (this.loggedinUser && !this.emailSent && !this.emailVerified);
+      }
+      return (this.loggedinUser && !this.emailSent && !this.emailVerified);
   }
 
   resendEmailVerification()

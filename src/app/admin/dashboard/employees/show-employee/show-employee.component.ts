@@ -9,10 +9,11 @@ import { EmployeeService } from '../../../../service/employee.service';
 })
 export class ShowEmployeeComponent implements OnInit {
   user={
-    id: "",
-    name: "",
-    email: "",
-    password: "",
+    user: {
+      id: "",
+      name: "",
+      email: "",
+    },
     position: "",
     branch: "",
   };

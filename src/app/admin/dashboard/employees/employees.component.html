@@ -16,13 +16,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <th scope="row">{{user.id}}</th>
-        <td>{{user.name}}</td>
+        <th scope="row">{{user.user.id}}</th>
+        <td>{{user.user.name}}</td>
         <td>{{user.position}}</td>
         <td>{{user.branch}}</td>
-        <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',user.id)">show</a></td>
-        <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',user.id)">edit</a></td>
-        <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',user.id)">delete</a></td>
+        <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',user.user.id)">show</a></td>
+        <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',user.user.id)">edit</a></td>
+        <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',user.user.id)">delete</a></td>
       </tr>
     </tbody>
   </table>

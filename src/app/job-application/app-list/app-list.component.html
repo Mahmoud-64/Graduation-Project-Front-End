@@ -1,4 +1,4 @@
-<cdk-virtual-scroll-viewport class=" mb-4 mx-0 border rounded" style="height: 500px" itemSize="90">
+<cdk-virtual-scroll-viewport class=" mb-4 mx-0 border rounded"  style="height: 500px;" itemSize="90">
 
 <div *ngIf="applications.length > 0;else notFound">
     <app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]"

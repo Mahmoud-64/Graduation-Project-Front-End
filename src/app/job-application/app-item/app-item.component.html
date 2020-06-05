@@ -1,5 +1,10 @@
-<div class="m-3 p-3 bg-light">
-    <p> {{application.seeker.user.name}}</p>
-    <p><b>job title</b> : {{application.job.title}}</p>
-    <p><b>Status</b> : {{application.status.name}}</p>
+<div class="m-3 p-3 bg-light item" (mouseenter)="p.open()" (mouseleave)="p.close()">
+    <p class="text-center"><b>{{application.job.title}}</b></p>
+    <span><b>Status</b></span>
+    <button type="button" class="btn  mr-2" placement="top-left"  #p="ngbPopover"
+        [ngbPopover]="application.status.description">
+        {{application.status.name}}
+    </button>
+    <hr>
+    <p><b>Last Updated</b> : {{application.date | date}}</p>
 </div>
