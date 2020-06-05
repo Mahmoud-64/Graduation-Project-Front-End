@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-end ml-5">
                 <search></search>
             </div>
-            <div *ngFor="let job of jobs" class="col-3 my-2 px-1" (click)="openModal(job)">
+            <div *ngFor="let job of jobs" class="col-lg-4 col-md-6 col-12 my-2 px-1" (click)="openModal(job)">
                 <div class="item card text-center h-100">
                     <div class="h-item text-center text-primary card-header h-25">
                         <h2>{{job.title}}</h2>
@@ -40,10 +40,11 @@
                 </nav>
             </div>
 
-            <ng-template #notFound>
-                <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
-            </ng-template>
+            
 
 
     </div>
+    <ng-template #notFound>
+        <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
+    </ng-template>
 </div>

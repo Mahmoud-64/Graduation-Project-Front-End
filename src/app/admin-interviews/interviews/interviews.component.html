@@ -2,19 +2,23 @@
 <table class="table bg-white text-center">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Application</th>
+            <th scope="col" class="clickable" (click)="orderInterviews('id')" >ID</th>
+            <th scope="col" >Type</th>
+            <th scope="col">Job</th>
+            <th scope="col" class="clickable" (click)="orderInterviews('application_id')">Application</th>
             <th scope="col">Seeker</th>
-            <th scope="col">Employee</th>
-            <th scope="col">Date</th>
+            <th scope="col" class="clickable" (click)="orderInterviews('emp_name')">Employee</th>
+            <th scope="col" class="clickable" (click)="orderInterviews('date')">Date</th>
             <th scope="col" colspan="3">Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let interview of interviews">
             <th scope="row">{{interview.id}}</th>
+            <th >{{interview.level_name}}</th>
+            <th>{{interview.job}}</th>
             <td>{{interview.application_id}}</td>
-            <td>{{interview.application_id}}</td>
+            <td>{{interview.seeker}}</td>
             <td>{{interview.emp_name}}</td>
             <td>{{interview.date}}</td>
             <td><a class="btn btn-success btn-sm text-white" [routerLink]="['/admin/interviews',interview.id]" >show</a></td>
@@ -23,3 +27,13 @@
         </tr>
     </tbody>
 </table>
+<!-- <div>
+    <nav class="justify-content-center mt-4" aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li *ngIf="filterParams.page > 1" (click)="prevPage()" class="page-item mx-1"><Button type="button"
+                    class="page-link">Previous</Button></li>
+            <li *ngIf="filterParams.page < lastPage" (click)="nextPage()" class="page-item mx-1"><Button type="button"
+                    class="page-link">Next</Button></li>
+        </ul>
+    </nav>
+</div> -->

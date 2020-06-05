@@ -10,8 +10,10 @@ export class InterviewService {
   private getAllLevelsUrl='/api/levels'
   constructor(private http:HttpClient) { }
 
-  getAllInterviews(){
-    return this.http.get<any>(this.getAllInterviewsUrl);
+  getAllInterviews(filterParams){
+    return this.http.get<any>(this.getAllInterviewsUrl, {
+      params: filterParams
+    });
   }
 
   addNewInterview(interview){

@@ -12,7 +12,7 @@
             <input type="text" id="title" class="form-control" formControlName="title" name="title">
             <div *ngIf="title.touched && title.invalid">
                 <small class="text-danger" *ngIf="title.errors.required"> please enter title</small>
-                <small class="text-danger" *ngIf="title.errors.maxlength || title.errors.minlength"> between 5 and 30 character</small>
+                <small class="text-danger" *ngIf="title.errors.maxlength || title.errors.minlength"> must between 5 and 50 character</small>
             </div>
             <div *ngIf="jobServerError && jobServerError.errors.title">
                 <small class="text-danger"> {{jobServerError.errors.title[0]}}</small>
@@ -27,8 +27,8 @@
             <div *ngIf="description.touched && description.invalid">
                 <small class="text-danger" *ngIf="description.errors.required"> please enter years_exp</small>
                 <small class="text-danger" *ngIf="description.errors.maxlength || description.errors.minlength"> 
-                    between 10
-                    and 150 character </small>
+                    muust between 10
+                    and 300 character </small>
             </div>
             <div *ngIf="jobServerError && jobServerError.errors.description">
                 <small class="text-danger"> {{jobServerError.errors.description[0]}}</small>
@@ -41,8 +41,8 @@
                     placeholder="seniority">
                 <div *ngIf="seniority.touched && seniority.invalid">
                     <small class="text-danger" *ngIf="seniority.errors.required"> please enter years_exp</small>
-                    <small class="text-danger" *ngIf="seniority.errors.maxlength || seniority.errors.minlength"> between 5
-                    and 15 character</small>
+                    <small class="text-danger" *ngIf="seniority.errors.maxlength || seniority.errors.minlength"> must between 5
+                    and 20 character</small>
                 </div>
                 <div *ngIf="jobServerError && jobServerError.errors.seniority">
                     <small class="text-danger"> {{jobServerError.errors.seniority[0]}}</small>
@@ -81,7 +81,7 @@
                         </span>
                     </div>
                     <div *ngIf="requirements().controls[i].touched && requirements().controls[i].invalid">
-                        <small class="text-danger"> sorry required and between 15 and 100</small>
+                        <small class="text-danger"> sorry required and must between 15 and 100 characters</small>
                     </div>
                     
                 </div>

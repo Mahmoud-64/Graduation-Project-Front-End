@@ -1,0 +1,14 @@
+.clickable:hover{
+    cursor: pointer;
+    border-style: inset;
+}
+
+.page-link:hover{
+    background-color: #31708e !important;
+    color: white !important;
+}
+.page-link{
+    background-color: white !important;
+    color: #31708e !important;
+    border: 1px solid #31708e;
+}

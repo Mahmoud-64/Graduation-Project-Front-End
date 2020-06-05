@@ -61,18 +61,18 @@ export class EditJobComponent implements OnInit {
   newJobForm = new FormGroup({
     title: new FormControl(this.job.title, [
       Validators.required,
-      Validators.maxLength(30),
+      Validators.maxLength(50),
       Validators.minLength(5),
     ]),
     description: new FormControl('', [
       Validators.required,
-      Validators.maxLength(150),
+      Validators.maxLength(300),
       Validators.minLength(10),
     ]),
     seniority: new FormControl('', [
       Validators.required,
-      Validators.maxLength(15),
-      Validators.minLength(5),
+      Validators.maxLength(20),
+      Validators.minLength(4),
     ]),
     years_exp: new FormControl('', [
       Validators.required,
