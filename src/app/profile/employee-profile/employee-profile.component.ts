@@ -12,9 +12,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class EmployeeProfileComponent implements OnInit {
   employee: Employee =
     {
-      name: "",
-      email: "",
-      password: "",
+      user: {
+        name: "",
+        email: "",
+        password: "",
+      },
       position: "",
       branch: "",
     };

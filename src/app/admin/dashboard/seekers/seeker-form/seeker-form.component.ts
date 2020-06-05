@@ -111,6 +111,9 @@ export class SeekerFormComponent implements OnInit {
             this.errordata = err;
             console.log("error=", this.errordata);
         });
+        if (!this.error && !this.errordata) {
+          this.router.navigateByUrl(`/admin/seeker/show/${this.user_id}`);
+        }
     }
     else
     {
@@ -121,7 +124,7 @@ export class SeekerFormComponent implements OnInit {
           this.user = result.data;
           this.error = "";
           console.log("return====", this.user);
-
+          // this.router.navigateByUrl(`/admin/seeker/show/${result.data.user.id}`);
         },
           err => {
             this.error = err;
