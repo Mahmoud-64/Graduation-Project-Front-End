@@ -1,5 +1,5 @@
 <nav class="navbar navbar-icon-top navbar-expand-lg py-0" [ngClass]="{navAdmin:isSuperadmin===true, navSeeker:isSuperadmin!=true}">
-  <a class="navbar-brand" href="#"><img src="assets/images/logo2.png" width="40" height="40"></a>
+  <a class="navbar-brand py-2" href="#"><img src="assets/images/logo2.png" width="40" height="40"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,39 +7,39 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-2">
       <li class="nav-item active">
-        <a routerLink="/" class="nav-link" href="#">
+        <a routerLink="/" class="nav-link py-2" href="#">
           Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item active" *ngIf="loggedIn===true&&isSuperadmin===true">
-        <a routerLink="/admin" class="nav-link">
+        <a routerLink="/admin" class="nav-link py-2">
           Dashboard
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item clickable active"  *ngIf="loggedIn===true">
-        <a routerLink="/profile/{{profileId}}" class="nav-link">
+        <a routerLink="/profile/{{profileId}}" class="nav-link py-2">
           {{userName}}
         </a>
       </li>
       <li class="nav-item clickable active"  *ngIf="loggedIn===true">
-        <a routerLink="/applications" class="nav-link">
+        <a routerLink="/applications" class="nav-link py-2">
           Applications
         </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===true">
-        <a class="nav-link" routerLink="/logout" id="navbarDropdown" role="button">
+        <a class="nav-link py-2" routerLink="/logout" id="navbarDropdown" role="button">
           Log Out
         </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===false">
-        <a class="nav-link" routerLink="/login" id="navbarDropdown" role="button">
+        <a class="nav-link py-2" routerLink="/login" id="navbarDropdown" role="button">
           Log In
         </a>
       </li>
       <li class="nav-item dropdown" *ngIf="loggedIn===false">
-        <a class="nav-link" routerLink="/signup" id="navbarDropdown" role="button">
+        <a class="nav-link py-2" routerLink="/signup" id="navbarDropdown" role="button">
           Register
         </a>
       </li>

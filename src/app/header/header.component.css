@@ -17,17 +17,19 @@
 
 .navSeeker
 {
-  background-color: #1f2833;
+  background-color: #1f4369;
+  /* opacity: 0.5; */
 }
 
 .navSeeker .nav-item .nav-link {
-    color: #D0DBD7;
-    background-color: #1f2833;
+    color: white;
+    /* background-color: #1f4369; */
     border-color: #EAECFF;
     font-weight: bold;
 }
 .navSeeker .nav-item .nav-link:hover, .nav-item .nav-link:active {
-    color: #071913;
-    background-color: #66fcf1;
-    border-color: #111111;
+    color: #1f4369;
+    background-color: #f7f9fb;
+    border-color: #1f4369;
+    border-radius: 2px;
 }

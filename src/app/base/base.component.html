@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div class="crop" *ngIf="checkPath()" >
-  <img class="img-fluid w-100" src="assets/images/home.jpg" >
+<div class="crop" *ngIf="checkPath()">
+  <img class="img-fluid w-100" src="assets/images/home.jpg">
 </div>
 
 <div class="color-warning text-center" *ngIf="isEmailSent()">
@@ -11,7 +11,6 @@
 <div class="color-warning text-center" *ngIf="loggedinUser && emailSent && !emailVerified">
   email has been sent, check your inbox
 </div>
-
 <div class="container-fluid">
   <router-outlet></router-outlet>
 </div>
