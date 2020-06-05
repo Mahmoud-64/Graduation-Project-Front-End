@@ -33,6 +33,10 @@ import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-for
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
 import { FormEmployeeComponent } from '../dashboard/employees/form-employee/form-employee.component';
 import { StatusComponent } from '../dashboard/admin-apps/status/status.component';
+import { InterviewItemComponent } from 'src/app/interview/interview-item/interview-item.component';
+import { InterviewListComponent } from 'src/app/interview/interview-list/interview-list.component';
+import { InterviewFormComponent } from 'src/app/interview/interview-form/interview-form.component';
+import { InterviewEditComponent } from 'src/app/interview/interview-edit/interview-edit.component';
 
 const routes: Routes = [
   {
@@ -54,8 +58,11 @@ const routes: Routes = [
       { path: 'applications', component: ApplicationsComponent },
       { path: 'applications/:id', component: AppDetailsComponent },
       { path: 'statuses', component: StatusComponent },
-      { path: 'interviews', component: InterviewsComponent },
-      { path: 'interviews/:id', component: SingleInterviewComponent },
+      // { path: 'interviews', component: InterviewsComponent },
+      { path: 'interviews', component: InterviewListComponent },
+      { path: 'interviews/new', component: InterviewFormComponent },
+      { path: 'interviews/:id', component: InterviewItemComponent },
+      { path: 'interviews/edit/:id', component: InterviewEditComponent },
       { path: 'review', component: AdminComponent },
       { path: 'requirement', component: AdminComponent },
       { path: 'contacttype', component: ContactTypesComponent },

@@ -66,7 +66,7 @@
 
     <div class="form-group">
         <label for="date">date</label>
-        <input type="text" class="form-control" id="date" required ngModel name="date" />
+        <input type="datetime-local" class="form-control" id="date" required ngModel name="date" />
         <p class="interviewErrorMessages" *ngIf="error.errors.date">{{error.errors.date}}</p>
 
     </div>
@@ -106,3 +106,4 @@
         Submit
     </button>
 </form>
+<flash-messages></flash-messages>

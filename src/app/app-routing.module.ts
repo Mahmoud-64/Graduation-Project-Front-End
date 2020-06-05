@@ -54,11 +54,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
       },
-      {
-        path: 'admin-interviews',
-        loadChildren: () =>
-          import('./admin-interviews/admin-interviews.module').then((m) => m.AdminInterviewsModule),
-      },
+      // {
+      //   path: 'admin-interviews',
+      //   loadChildren: () =>
+      //     import('./interview/interview.module').then((m) => m.InterviewModule),
+      // },
       {
         path: 'profile',
         canActivate: [AuthGuard],
@@ -70,35 +70,35 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent },
       { path: 'resetpassword', component: ResetPasswordComponent },
 
-      {
-        path: 'interview', component: InterviewComponent,
-        children: [
-          {
-            path: 'add',
-            component: InterviewFormComponent
-          },
-          {
-            path: 'edit/:id',
-            component: InterviewEditComponent
-          },
-          {
-            path: 'show/:id',
-            component: InterviewItemComponent
-          },
-          {
-            path: 'list',
-            component: InterviewListComponent
-          },
-          {
-            path: 'details',
-            component: InterviewDetailsComponent
-          },
-          {
-            path: 'levels',
-            component: InterviewLevelsComponent
-          }
-        ]
-      },
+      // {
+      //   path: 'interview', component: InterviewComponent,
+      //   children: [
+      //     {
+      //       path: 'add',
+      //       component: InterviewFormComponent
+      //     },
+      //     {
+      //       path: 'edit/:id',
+      //       component: InterviewEditComponent
+      //     },
+      //     {
+      //       path: 'show/:id',
+      //       component: InterviewItemComponent
+      //     },
+      //     {
+      //       path: 'list',
+      //       component: InterviewListComponent
+      //     },
+      //     {
+      //       path: 'details',
+      //       component: InterviewDetailsComponent
+      //     },
+      //     {
+      //       path: 'levels',
+      //       component: InterviewLevelsComponent
+      //     }
+      //   ]
+      // },
       { path: 'error404', component: Handel404Component },
       { path: 'error500', component: Handel500Component },
       { path: 'error403', component: Handel403Component },
