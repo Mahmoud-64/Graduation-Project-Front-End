@@ -51,7 +51,7 @@ export class BaseComponent implements OnInit {
       if (this.loggedinUser && this.userService.getUserRole()==3) {
         return (this.loggedinUser && !this.emailSent && !this.emailVerified);
       }
-      return (this.loggedinUser && !this.emailSent && !this.emailVerified);
+      return false;
   }
 
   resendEmailVerification()

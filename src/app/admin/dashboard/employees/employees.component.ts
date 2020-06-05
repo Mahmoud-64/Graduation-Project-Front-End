@@ -11,7 +11,7 @@ import { Employee } from '../../../models/employee';
 export class EmployeesComponent implements OnInit {
   error;
   users: Array<Employee> = [{
-    'user': [{
+    user: [{
       id: '',
       name: '',
       email: '',

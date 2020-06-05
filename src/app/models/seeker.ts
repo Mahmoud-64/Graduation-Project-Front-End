@@ -1,6 +1,4 @@
 
-import { User } from './user';
-
 export interface Seeker
 {
     address?: String,
