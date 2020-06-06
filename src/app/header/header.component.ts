@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   user;
   profileId: String;
   isSuperadmin: Boolean;
+  isEmployee: Boolean;
   constructor(
     public userService: UserService,
     private activatedRoute: ActivatedRoute
@@ -25,29 +26,28 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: { authUser: any }) => {
       this.user = data.authUser;
-      if(this.user)
-      {
-          this.userService.verifyEmailSubject.next(this.user['verify_email']);
-          this.userName = this.user['name'];
-          this.profileId = this.user['id'];
-          this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
-          this.loggedIn = true;
+      if (this.user) {
+        this.userService.verifyEmailSubject.next(this.user['verify_email']);
+        this.userName = this.user['name'];
+        this.profileId = this.user['id'];
+        this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+        this.isEmployee = this.userService.getUserRole() == Role.employee;
+        this.loggedIn = true;
       }
     });
 
     this.userService.subject.subscribe({
-      next: (val) =>
-      {
-        if (val === false)
-        {
-            this.loggedIn = false;
+      next: (val) => {
+        if (val === false) {
+          this.loggedIn = false;
         }
-        else
-        {
+        else {
           this.user = this.userService.getUser().data;
           this.userName = this.user['name'];
           this.profileId = this.user['id'];
-          this.isSuperadmin = this.userService.getUserRole()==Role.superadmin;
+          this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+          this.isEmployee = this.userService.getUserRole() == Role.employee;
+
           this.loggedIn = true;
         }
       }

@@ -14,10 +14,24 @@ import { InterviewEditComponent } from './interview-edit/interview-edit.componen
 import { RouterModule } from '@angular/router';
 import { InterviewsRoutingModule2 } from './interviews-routing-module2';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { EmpInterviewListComponent } from './emp-interview-list/interview-list.component';
+import { EmpInterviewItemComponent } from './emp-interview-item/interview-item.component';
+import { EmpInterviewEditComponent } from './emp-interview-edit/interview-edit.component';
 
 
 @NgModule({
-  declarations: [InterviewListComponent, InterviewItemComponent, InterviewDetailsComponent, InterviewFormComponent, InterviewComponent, InterviewLevelsComponent, InterviewEditComponent],
+  declarations: [
+    InterviewListComponent,
+    InterviewItemComponent,
+    InterviewDetailsComponent,
+    InterviewFormComponent,
+    InterviewComponent,
+    InterviewLevelsComponent,
+    InterviewEditComponent,
+    EmpInterviewListComponent,
+    EmpInterviewItemComponent,
+    EmpInterviewEditComponent,
+  ],
   imports: [
     CommonModule,
     // AppRoutingModule,
