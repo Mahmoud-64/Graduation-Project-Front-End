@@ -3,6 +3,7 @@ import { UserService } from '../../service/user.service';
 import { User } from '../../models/user';
 import { Validators, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Role } from 'src/app/models/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -26,18 +27,22 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.verify_email = this.route.snapshot.paramMap.get('verify_email')? true : false;
+    this.verify_email = this.route.snapshot.paramMap.get('verify_email') ? true : false;
   }
 
   onSubmit() {
-    this.userService.login(this.user.value).subscribe(users=>{
+    this.userService.login(this.user.value).subscribe(users => {
       this.user = users;
-      this.router.navigateByUrl('/');
+      if (this.userService.getUserRole() == Role.superadmin) {
+        this.router.navigateByUrl('/admin');
+      } else {
+        this.router.navigateByUrl('/');
+      }
       console.log(users);
     },
-    err=>{
-      this.userError = "Email or Password is Incorrect"
-    });
+      err => {
+        this.userError = "Email or Password is Incorrect"
+      });
 
   }
   get email() { return this.user.get('email'); }

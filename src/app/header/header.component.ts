@@ -17,7 +17,11 @@ export class HeaderComponent implements OnInit {
   user;
   profileId: String;
   isSuperadmin: Boolean;
+<<<<<<< HEAD
   isEmployee: Boolean;
+=======
+  isSeeker: Boolean;
+>>>>>>> 461f30fd6400a54f5f8c8c99e2684aac8a4c3bb8
   constructor(
     public userService: UserService,
     private activatedRoute: ActivatedRoute
@@ -31,7 +35,11 @@ export class HeaderComponent implements OnInit {
         this.userName = this.user['name'];
         this.profileId = this.user['id'];
         this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+<<<<<<< HEAD
         this.isEmployee = this.userService.getUserRole() == Role.employee;
+=======
+        this.isSeeker = this.userService.getUserRole() == Role.seeker;
+>>>>>>> 461f30fd6400a54f5f8c8c99e2684aac8a4c3bb8
         this.loggedIn = true;
       }
     });
@@ -46,8 +54,11 @@ export class HeaderComponent implements OnInit {
           this.userName = this.user['name'];
           this.profileId = this.user['id'];
           this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+<<<<<<< HEAD
           this.isEmployee = this.userService.getUserRole() == Role.employee;
 
+=======
+>>>>>>> 461f30fd6400a54f5f8c8c99e2684aac8a4c3bb8
           this.loggedIn = true;
         }
       }

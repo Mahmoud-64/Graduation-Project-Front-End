@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../service/user.service';
 import { VerifyemailService } from './../service/verifyemail.service';
+import { Role } from '../models/role.enum';
+
 
 @Component({
   selector: 'app-base',
@@ -14,23 +16,25 @@ export class BaseComponent implements OnInit {
   loggedinUser: Boolean = false;
   emailSent: Boolean = false;
   constructor(
-  public userService: UserService,
-  private router: Router,
-  private verifyemailService: VerifyemailService
+    public userService: UserService,
+    private router: Router,
+    private verifyemailService: VerifyemailService
   ) {
-   }
+
+  }
   ngOnInit(): void {
+
     this.image = this.router;
-    this.loggedinUser = this.userService.getUser()? true : false;
+    this.loggedinUser = this.userService.getUser() ? true : false;
+
     this.userService.verifyEmailSubject.subscribe({
-      next: (result)=>{
-      this.emailVerified = result;
-    }
+      next: (result) => {
+        this.emailVerified = result;
+      }
     });
 
     this.userService.subject.subscribe({
-      next: (val) =>
-      {
+      next: (val) => {
         setTimeout(() => {
           this.loggedinUser = val;
         });
@@ -38,30 +42,27 @@ export class BaseComponent implements OnInit {
     });
   }
 
-  checkPath()
-  {
+  checkPath() {
     return !(this.image.url.includes('admin')
-          ||this.image.url.includes('login')
-          ||this.image.url.includes('signup')
-        );
+      || this.image.url.includes('login')
+      || this.image.url.includes('signup')
+    );
   }
 
-  isEmailSent()
-  {
-      if (this.loggedinUser && this.userService.getUserRole()==3) {
-        return (this.loggedinUser && !this.emailSent && !this.emailVerified);
-      }
-      return false;
+  isEmailSent() {
+    if (this.loggedinUser && this.userService.getUserRole() == 3) {
+      return (this.loggedinUser && !this.emailSent && !this.emailVerified);
+    }
+    return false;
   }
 
-  resendEmailVerification()
-  {
+  resendEmailVerification() {
     this.verifyemailService.resendEmailVerification().subscribe(
-      (data)=>{
+      (data) => {
         this.emailSent = true;
         console.log("resend email success", data);
       },
-      (err)=>{
+      (err) => {
         console.log("resend email error", err);
       }
     );
