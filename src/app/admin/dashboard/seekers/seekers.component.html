@@ -2,34 +2,47 @@
   <a class="btn btn-info my-2 btn-sm text-white" (click)="crudOperation('new','')">New</a>
 </div>
 <table class="table text-center bg-white">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">name</th>
-        <th scope="col">address</th>
-        <th scope="col">city</th>
-        <th scope="col">seniority</th>
-        <th scope="col">exp years</th>
-        <th scope="col">current job</th>
-        <th scope="col">current salary</th>
-        <th scope="col">expected salay</th>
-        <th scope="col" colspan="3">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let seeker of seekers">
-        <th scope="row">{{seeker.user.id}}</th>
-        <td>{{seeker.user.name}}</td>
-        <td>{{seeker.address}}</td>
-        <td>{{seeker.city}}</td>
-        <td>{{seeker.seniority}}</td>
-        <td>{{seeker.expYears}}</td>
-        <td>{{seeker.currentJob}}</td>
-        <td>{{seeker.currentSalary}}</td>
-        <td>{{seeker.expectedSalary}}</td>
-        <td><a class="btn btn-success text-white" (click)="crudOperation('show',seeker.user.id)">show</a></td>
-        <td><a class="btn btn-primary text-white" (click)="crudOperation('edit',seeker.user.id)">edit</a></td>
-        <td><a class="btn btn-danger text-white" (click)="crudOperation('delete',seeker.user.id)">delete</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">address</th>
+      <th scope="col">city</th>
+      <th scope="col">seniority</th>
+      <th scope="col">exp years</th>
+      <th scope="col">current job</th>
+      <th scope="col">current salary</th>
+      <th scope="col">expected salay</th>
+      <th scope="col" colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let seeker of seekers">
+      <th scope="row">{{seeker.user.id}}</th>
+      <td>{{seeker.user.name}}</td>
+      <td>{{seeker.address}}</td>
+      <td>{{seeker.city}}</td>
+      <td>{{seeker.seniority}}</td>
+      <td>{{seeker.expYears}}</td>
+      <td>{{seeker.currentJob}}</td>
+      <td>{{seeker.currentSalary}}</td>
+      <td>{{seeker.expectedSalary}}</td>
+      <td><a class="btn btn-success text-white" (click)="crudOperation('show',seeker.user.id)">show</a></td>
+      <td><a class="btn btn-primary text-white" (click)="crudOperation('edit',seeker.user.id)">edit</a></td>
+      <td><a class="btn btn-danger text-white" (click)="crudOperation('delete',seeker.user.id)">delete</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="!prev">
+        <span class="page-link" (click)="gotoPrev()">Previous</span>
+      </li>
+      <li class="page-item" [class.disabled]="!next">
+        <span class="page-link" (click)="gotoNext()">Next</span>
+      </li>
+    </ul>
+  </nav>
+</div>

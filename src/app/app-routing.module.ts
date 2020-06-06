@@ -22,6 +22,9 @@ import { BaseComponent } from './base/base.component';
 import { InterviewLevelsComponent } from './interview/interview-levels/interview-levels.component';
 import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
 import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
+import { EmpInterviewListComponent } from './interview/emp-interview-list/interview-list.component';
+import { EmpInterviewItemComponent } from './interview/emp-interview-item/interview-item.component';
+import { EmpInterviewEditComponent } from './interview/emp-interview-edit/interview-edit.component';
 
 
 const routes: Routes = [
@@ -74,6 +77,10 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'logout', component: LogoutComponent },
       { path: 'resetpassword', component: ResetPasswordComponent },
+
+      { path: 'emprev', component: EmpInterviewListComponent },
+      { path: 'emprev/details/:id', component: EmpInterviewItemComponent },
+      { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
 
       // {
       //   path: 'interview', component: InterviewComponent,

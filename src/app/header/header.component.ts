@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   user;
   profileId: String;
   isSuperadmin: Boolean;
+  isEmployee: Boolean;
   isSeeker: Boolean;
   constructor(
     public userService: UserService,
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
         this.userName = this.user['name'];
         this.profileId = this.user['id'];
         this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+        this.isEmployee = this.userService.getUserRole() == Role.employee;
         this.isSeeker = this.userService.getUserRole() == Role.seeker;
         this.loggedIn = true;
       }
@@ -46,6 +48,8 @@ export class HeaderComponent implements OnInit {
           this.userName = this.user['name'];
           this.profileId = this.user['id'];
           this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+          this.isEmployee = this.userService.getUserRole() == Role.employee;
+
           this.loggedIn = true;
         }
       }

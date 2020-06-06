@@ -14,8 +14,8 @@
               Name is required.
             </div>
           </div>
-          <div *ngIf="errordata && errordata.errors.name" class="text-danger small">
-            <div *ngFor="let name of errordata.errors.name">
+          <div *ngIf="error && error.errors.name" class="text-danger small">
+            <div *ngFor="let name of error.errors.name">
               {{name}}
             </div>
           </div>
@@ -30,8 +30,8 @@
               Email is required.
             </div>
           </div>
-          <div *ngIf="errordata && errordata.errors.email" class="text-danger small">
-            <div *ngFor="let email of errordata.errors.email">
+          <div *ngIf="error && error.errors.email" class="text-danger small">
+            <div *ngFor="let email of error.errors.email">
               {{email}}
             </div>
           </div>
@@ -46,8 +46,8 @@
               Password is required.
             </div>
           </div>
-          <div *ngIf="errordata && errordata.errors.password" class="text-danger small">
-            <div *ngFor="let password of errordata.errors.password">
+          <div *ngIf="error && error.errors.password" class="text-danger small">
+            <div *ngFor="let password of error.errors.password">
               {{password}}
             </div>
           </div>
@@ -68,8 +68,8 @@
           <div *ngIf="details.get('user').errors?.misMatch" class="text-danger small">
             password confirmation doesn't match password field
           </div>
-          <div *ngIf="errordata && errordata.errors.password_confirmation" class="text-danger small">
-            <div *ngFor="let password_confirmation of errordata.errors.password_confirmation">
+          <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
+            <div *ngFor="let password_confirmation of error.errors.password_confirmation">
               {{password_confirmation}}
             </div>
           </div>

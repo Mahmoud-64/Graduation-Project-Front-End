@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -13,31 +13,31 @@ export class SeekerService {
   constructor(private http: HttpClient) { }
 
 
-  getSeekers(): Observable<Seeker>{
-    return this.http.get<Seeker>(this.seekersUrl);
+  getSeekers(pageParam={}): Observable<Seeker> {
+    return this.http.get<Seeker>(this.seekersUrl, {params: pageParam});
   }
-  getSeeker(seekerId): Observable<Seeker>{
-    return this.http.get<Seeker>(this.seekersUrl+seekerId);
+  getSeeker(seekerId): Observable<Seeker> {
+    return this.http.get<Seeker>(this.seekersUrl + seekerId);
   }
   updateSeeker(seekerId, seeker): Observable<any> {
     console.log(seeker);
 
-    return this.http.put(this.seekersUrl+seekerId, seeker)
-    .pipe(
-      catchError(this.handleError<Seeker[]>('updateSeeker', []))
-    );
+    return this.http.put(this.seekersUrl + seekerId, seeker)
+      .pipe(
+        catchError(this.handleError<Seeker[]>('updateSeeker', []))
+      );
   }
 
   createSeeker(seeker): Observable<any> {
     console.log("create seeker", seeker);
 
     return this.http.post(this.seekersUrl, seeker)
-    .pipe(
-      catchError(this.handleError<Seeker[]>('createSeeker', []))
-    );
+      .pipe(
+        catchError(this.handleError<Seeker[]>('createSeeker', []))
+      );
   }
 
-  downloadCV(seeker_id, cvName){
+  downloadCV(seeker_id, cvName) {
     return this.http.get(`/api/seekers/downloadcv/${seeker_id}/${cvName}`);
   }
 
@@ -46,30 +46,29 @@ export class SeekerService {
     let form = new FormData();
     let token = localStorage.getItem('access_token');
     form.append('cv', selfile, selfile.name);
-    xhr.onload = (e) =>{
+    xhr.onload = (e) => {
       console.log('file uploaded');
     };
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
       console.log('readyState', xhr.readyState);
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           callback(JSON.parse(xhr.response));
         } else {
-          callback({errors: "you must upload file of type pdf"});
+          callback({ errors: "you must upload file of type pdf" });
         }
       }
     }
-    xhr.open('POST', "http://localhost:8000/api/seekers/uploadcv/"+changed_user_id, true);
+    xhr.open('POST', "http://localhost:8000/api/seekers/uploadcv/" + changed_user_id, true);
     xhr.setRequestHeader('Authorization', 'Bearer ' + token);
     xhr.send(form);
   }
 
-  deleteSeeker(seekerId): Observable<Seeker>{
-    return this.http.delete<Seeker>(this.seekersUrl+seekerId);
+  deleteSeeker(seekerId): Observable<Seeker> {
+    return this.http.delete<Seeker>(this.seekersUrl + seekerId);
   }
-  verifyPhone(data)
-  {
-    return this.http.post<any>(this.VerifyPhoneUrl,data)
+  verifyPhone(data) {
+    return this.http.post<any>(this.VerifyPhoneUrl, data)
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
