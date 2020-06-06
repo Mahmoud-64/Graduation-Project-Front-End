@@ -1,0 +1,28 @@
+<!-- <flash-messages></flash-messages> -->
+
+<table class="table text-center bg-white">
+    <thead class="thead-dark">
+        <tr>
+            <th> id</th>
+            <th> application_id</th>
+            <th> employer_name</th>
+            <th> date</th>
+            <th scope="col" colspan="3">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
+            <td>{{ interview.id }}</td>
+            <td>{{ interview.application_id }}</td>
+            <td>{{ interview.emp_name }}</td>
+            <td>{{ interview.date}}</td>
+            <td><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
+            <td><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
+            </td>
+            <!-- <td><button class="btn btn-danger btn-sm" (click)="delete(interview.id)"> delete</button></td> -->
+
+        </tr>
+
+    </tbody>
+</table>
