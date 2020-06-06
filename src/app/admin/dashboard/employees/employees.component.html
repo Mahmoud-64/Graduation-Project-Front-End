@@ -26,3 +26,8 @@
       </tr>
     </tbody>
   </table>
+
+    <div class="col">
+      <button type="button" class="btn btn-light" name="previous" *ngIf="links.prev" (click)="prev()">Previous</button>
+      <button type="button" class="btn btn-light" name="next" *ngIf="links.next" (click)="next()">Next</button>
+    </div>

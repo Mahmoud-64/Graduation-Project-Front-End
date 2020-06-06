@@ -19,7 +19,11 @@ export class EmployeesComponent implements OnInit {
     }]
   }];
   changed=true;
-
+  links = {
+    prev: '',
+    next: '',
+  };
+  page = 1;
   constructor(
     private employeeService: EmployeeService,
     private router: Router) {
@@ -29,11 +33,31 @@ export class EmployeesComponent implements OnInit {
 
 
     ngOnInit(): void {
-      this.employeeService.getEmployees().subscribe(users => {
+      this.getEmployees(this.page);
+    }
+
+    next()
+    {
+      this.page++;
+      this.getEmployees(this.page);
+    }
+
+    prev()
+    {
+      this.page--;
+      this.getEmployees(this.page);
+    }
+
+    getEmployees(page)
+    {
+      this.employeeService.getEmployees({perPage: 6, page: page}).subscribe(users => {
         this.users = users.data;
-        console.log(this.users);
+        this.links = users.links;
+        console.log(users);
       })
     }
+
+
     crudOperation(crudName, id) {
       switch (crudName) {
         case 'new':
