@@ -10,25 +10,44 @@ import { Seeker } from '../../../models/seeker';
 })
 export class SeekersComponent implements OnInit {
   seekers: Array<Seeker>;
-  //  = [{
-  //   id: '',
-  //   name: '',
-  //   email: '',
-  //   role: ''
-  // }];
   changed=true;
-
+  perPage=15;
+  next: number=0;
+  prev: number=0;
+  currentPage: number=2;
   constructor(
     private seekerService: SeekerService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.seekerService.getSeekers().subscribe(seekers => {
+    this.seekerService.getSeekers({perPage:this.perPage}).subscribe(seekers => {
       this.seekers = seekers.data;
-      console.log(this.seekers);
-      
+      this.currentPage = seekers.meta.current_page;
+      let links = seekers.links;
+      this.prev = links.prev?(this.currentPage-1):0;
+      this.next = links.next?(this.currentPage+1):0;
     })
   }
+
+  gotoPrev(){
+    this.seekerService.getSeekers({perPage:this.perPage, page: this.prev}).subscribe(seekers => {
+      this.seekers = seekers.data;
+      this.currentPage = seekers.meta.current_page;
+      let links = seekers.links;
+      this.prev = links.prev?(this.currentPage-1):0;
+      this.next = links.next?(this.currentPage+1):0;
+    })
+  }
+  gotoNext(){
+    this.seekerService.getSeekers({perPage:this.perPage, page: this.next}).subscribe(seekers => {
+      this.seekers = seekers.data;
+      this.currentPage = seekers.meta.current_page;
+      let links = seekers.links;
+      this.prev = links.prev?(this.currentPage-1):0;
+      this.next = links.next?(this.currentPage+1):0;
+    })
+  }
+
   crudOperation(crudName, id) {
     switch (crudName) {
       case 'new':
