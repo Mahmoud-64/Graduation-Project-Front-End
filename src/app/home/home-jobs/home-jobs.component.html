@@ -1,7 +1,7 @@
 <div *ngIf="isDataLoaded" class=" container my-4 ml-auto p-5 pb-0 bg-jobs">
 
 
-    <div *ngIf="jobs.length > 0">
+    <div *ngIf="jobs.length > 0;else notFound">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
                 <h1 class="home-title"><b>Latest available Jobs</b></h1>
