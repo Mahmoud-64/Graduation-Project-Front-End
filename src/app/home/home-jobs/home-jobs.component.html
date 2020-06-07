@@ -1,5 +1,8 @@
 <div *ngIf="isDataLoaded" class=" container my-4 ml-auto p-5 pb-0 bg-jobs">
 
+    <div *ngIf="jobs.length < 1" class="d-flex justify-content-end ml-5">
+        <search></search>
+    </div>
 
     <div *ngIf="jobs.length > 0;else notFound">
         <div class="row justify-content-center">
@@ -39,8 +42,9 @@
                 </ul>
             </nav>
         </div>
+
     </div>
     <ng-template #notFound>
-        <h1 class="alert alert-info"> Sorry there isn't any available job now</h1>
+        <h1 class="alert alert-primary"> Sorry there isn't available job now</h1>
     </ng-template>
 </div>

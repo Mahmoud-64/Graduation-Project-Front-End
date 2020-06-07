@@ -14,8 +14,9 @@
         <div class="px-2 py-1 form-group">
             <label for="employee">employee</label>
             <select class="custom-select form-control" formControlName="emp_id">
+                <option value="">Select Employee</option>
                 <option *ngFor="let emp of employees" [value]="emp.id">
-                    {{emp.name}} </option>
+                    {{emp.user.name}} </option>
             </select>
             <div *ngIf="emp_id.touched && emp_id.invalid">
                 <small class="text-danger" *ngIf="emp_id.errors.required"> choose Employee</small>
@@ -25,6 +26,7 @@
         <div class="px-2 py-1 form-group">
             <label for="level">level</label>
             <select class="custom-select form-control" formControlName="level_id">
+                <option value="">choose Level</option>
                 <option *ngFor="let lev of levels" [value]="lev.id">
                     {{lev.name}} </option>
             </select>

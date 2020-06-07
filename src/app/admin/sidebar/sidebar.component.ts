@@ -15,9 +15,10 @@ export class SidebarComponent implements OnInit {
     console.log("xxxx");
     
   }
-
+  selected = "";
   onClick(data)
   {
+    this.selected=data;
     this.router.navigate([data], {relativeTo: this.route});
   }
 

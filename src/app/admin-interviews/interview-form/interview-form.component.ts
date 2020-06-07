@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { InterviewService } from '../services/interview.service';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'admin-interview-form',
@@ -13,11 +14,12 @@ export class InterviewFormComponent implements OnInit {
   constructor(
     private interviewService: InterviewService,
     private employeeService: EmployeeService,
+    private route: ActivatedRoute,
   ) {}
   current;
   employees = [];
   levels = [];
-  @Input() appId;
+  @Input() appId?;
 
   ngOnInit(): void {
     this.current = new Date();

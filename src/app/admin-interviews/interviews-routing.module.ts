@@ -12,6 +12,7 @@ const routes: Routes = [
     children: [
       { path: 'new', component: InterviewFormComponent },
       { path: ':id', component: SingleInterviewComponent },
+      { path: 'edit/:id', component: InterviewFormComponent },
 
     ],
   },

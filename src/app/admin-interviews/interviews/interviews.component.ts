@@ -10,7 +10,7 @@ import { InterviewService } from '../services/interview.service';
 export class InterviewsComponent implements OnInit {
 
   interviews = [];
-  private filterParams = {
+  filterParams = {
     page: 1,
     perPage: 15,
     orderBy: "",
@@ -42,18 +42,18 @@ export class InterviewsComponent implements OnInit {
       }
     )
   }
-  nextPage() {
-    this.filterParams.page += 1
-    this.ngOnInit();
-    console.log('next ' + this.filterParams.page);
+  // nextPage() {
+  //   this.filterParams.page += 1
+  //   this.ngOnInit();
+  //   console.log('next ' + this.filterParams.page);
 
-  }
+  // }
 
-  prevPage() {
-    this.filterParams.page -= 1
-    this.ngOnInit();
-    console.log('prev ' + this.filterParams.page);
-  }
+  // prevPage() {
+  //   this.filterParams.page -= 1
+  //   this.ngOnInit();
+  //   console.log('prev ' + this.filterParams.page);
+  // }
 
   orderInterviews(element) {
     if (this.filterParams.orderBy == element) {

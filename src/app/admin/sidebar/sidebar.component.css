@@ -3,5 +3,10 @@
 }
 
 li:hover{
-  background-color: rgb(166,169,171);
+  background-color: rgb(237,245,225);
+  border : groove;
+  border-color: rgb(158, 90, 90);
+}
+.selected{
+  background-color: rgb(185, 187, 189);
 }
