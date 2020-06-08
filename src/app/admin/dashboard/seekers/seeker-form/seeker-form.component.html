@@ -1,64 +1,65 @@
-<div *ngIf="error" class="alert alert-danger">
-  {{error.message}}
-</div>
+<div class="container">
+  <div *ngIf="error" class="alert alert-danger">
+    {{error.message}}
+  </div>
 
-<form class="text-center" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
-  <table class="table table-borderless text-center">
-    <tbody>
-      <tr formGroupName="user">
-        <th scope="col">Name</th>
-        <td>
-          <input type="text" class="form-control" name="name" placeholder="name" formControlName="name">
-          <div *ngIf="name.invalid && (name.dirty || name.touched) && !error" class="text-danger small">
-            <div *ngIf="name.errors.required">
-              Name is required.
+  <form class="text-center" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
+    <table class="table table-borderless text-center">
+      <tbody>
+        <tr formGroupName="user">
+          <th scope="col">Name</th>
+          <td>
+            <input type="text" class="form-control" name="name" placeholder="name" formControlName="name">
+            <div *ngIf="name.invalid && (name.dirty || name.touched) && !error" class="text-danger small">
+              <div *ngIf="name.errors.required">
+                Name is required.
+              </div>
             </div>
-          </div>
-          <div *ngIf="error && error.errors.name" class="text-danger small">
-            <div *ngFor="let name of error.errors.name">
-              {{name}}
+            <div *ngIf="error && error.errors.name" class="text-danger small">
+              <div *ngFor="let name of error.errors.name">
+                {{name}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr formGroupName="user">
-        <th scope="col">Email</th>
-        <td>
-          <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
-          <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
-            <div *ngIf="email.errors.required">
-              Email is required.
+          </td>
+        </tr>
+        <tr formGroupName="user">
+          <th scope="col">Email</th>
+          <td>
+            <input type="text" class="form-control" name="email" placeholder="email" formControlName="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched) && !error" class="text-danger small">
+              <div *ngIf="email.errors.required">
+                Email is required.
+              </div>
             </div>
-          </div>
-          <div *ngIf="error && error.errors.email" class="text-danger small">
-            <div *ngFor="let email of error.errors.email">
-              {{email}}
+            <div *ngIf="error && error.errors.email" class="text-danger small">
+              <div *ngFor="let email of error.errors.email">
+                {{email}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr formGroupName="user">
-        <th scope="col">Password</th>
-        <td>
-          <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
-          <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
-            <div *ngIf="password.errors.required">
-              Password is required.
+          </td>
+        </tr>
+        <tr formGroupName="user">
+          <th scope="col">Password</th>
+          <td>
+            <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
             </div>
-          </div>
-          <div *ngIf="error && error.errors.password" class="text-danger small">
-            <div *ngFor="let password of error.errors.password">
-              {{password}}
+            <div *ngIf="error && error.errors.password" class="text-danger small">
+              <div *ngFor="let password of error.errors.password">
+                {{password}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr formGroupName="user">
-        <th scope="col">Password confirmation</th>
-        <td>
-          <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control"
+          </td>
+        </tr>
+        <tr formGroupName="user">
+          <th scope="col">Password confirmation</th>
+          <td>
+            <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control"
             name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
-          <div
+            <div
             *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
             class="text-danger small">
             <div *ngIf="password_confirmation.errors.required">
@@ -126,7 +127,7 @@
         <th scope="col">Years of experience</th>
         <td>
           <input type="number" class="form-control" name="expYears" placeholder="Years of experience"
-            formControlName="expYears">
+          formControlName="expYears">
           <div *ngIf="error && error.errors.expYears" class="text-danger small">
             <div *ngFor="let expYears of error.errors.expYears">
               {{expYears}}
@@ -138,7 +139,7 @@
         <th scope="col">Current Job</th>
         <td>
           <input type="text" class="form-control" name="currentJob" placeholder="Current Job"
-            formControlName="currentJob">
+          formControlName="currentJob">
           <div *ngIf="error && error.errors.currentJob" class="text-danger small">
             <div *ngFor="let currentJob of error.errors.currentJob">
               {{currentJob}}
@@ -150,7 +151,7 @@
         <th scope="col">Current Salary</th>
         <td>
           <input type="number" class="form-control" name="currentSalary" placeholder="Current Salary"
-            formControlName="currentSalary">
+          formControlName="currentSalary">
           <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
             <div *ngFor="let currentSalary of error.errors.currentSalary">
               {{currentSalary}}
@@ -162,7 +163,7 @@
         <th scope="col">Expected Salary</th>
         <td>
           <input type="number" class="form-control" name="expectedSalary" placeholder="Expected Salary"
-            formControlName="expectedSalary">
+          formControlName="expectedSalary">
           <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
             <div *ngFor="let expectedSalary of error.errors.expectedSalary">
               {{expectedSalary}}
@@ -182,7 +183,7 @@
               <div [formGroupName]="i" class="d-flex bd-highlight">
                 <div class="p-2 bd-highlight">
                   <input class="form-control" name="contact" type="text" formControlName="data" class="form-control"
-                    aria-describedby="contactHelp" placeholder="Enter contact" />
+                  aria-describedby="contactHelp" placeholder="Enter contact" />
                 </div>
                 <div class="p-2 bd-highlight">
                   <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
@@ -222,4 +223,6 @@
     </div>
     <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
   </form>
+</div>
+
 </div>
