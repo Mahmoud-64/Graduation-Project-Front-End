@@ -22,11 +22,9 @@ import { ContactTypesFormComponent } from './dashboard/contact-types/contact-typ
 // import { AdminInterviewsModule } from '../admin-interviews/admin-interviews.module';
 
 import { ContactsComponent } from './dashboard/contacts/contacts.component';
-import { ContactItemComponent } from './dashboard/contacts/contact-item/contact-item.component';
 import { ContactFormComponent } from './dashboard/contacts/contact-form/contact-form.component';
 import { InterviewLevelsComponent } from './dashboard/interview-levels/interview-levels.component';
 import { InterviewLevelsFormComponent } from './dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
-import { InterviewLevelsItemComponent } from './dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
 
 import { ShowSeekerComponent } from './dashboard/seekers/show-seeker/show-seeker.component';
 import { SeekerFormComponent } from './dashboard/seekers/seeker-form/seeker-form.component';
@@ -34,6 +32,7 @@ import { ShowEmployeeComponent } from './dashboard/employees/show-employee/show-
 import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-employee.component';
 import { StatusComponent } from './dashboard/admin-apps/status/status.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 
 
 
@@ -43,13 +42,14 @@ import { StatusComponent } from './dashboard/admin-apps/status/status.component'
     SeekersComponent, EmployeesComponent,
     JobsComponent, ApplicationsComponent, SearchComponent, SingleComponent, EditJobComponent,
     ContactTypesComponent, ContactTypesListComponent, ContactTypesItemComponent, ContactTypesFormComponent,
-    ContactsComponent, ContactItemComponent, ContactFormComponent,
-    InterviewLevelsComponent, InterviewLevelsFormComponent, InterviewLevelsItemComponent,
+    ContactsComponent, ContactFormComponent,
+    InterviewLevelsComponent, InterviewLevelsFormComponent,
     ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent, StatusComponent
   ],
 
   imports: [
     CommonModule,
+    NgbModule,
     AdminRoutingModule,
     HomeModule,
     FormsModule,

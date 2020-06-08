@@ -1,34 +1,46 @@
-<a class="btn btn-primary btn-sm text-white" (click)="crudOperation('new','')">New</a>
+<a class="btn btn-primary btn-sm text-white" (click)="open(content, 'new', '')">New</a>
 <div class="container text-center my-1 bg-warning">
   {{error}}
 </div>
 <table class="table text-center bg-white">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col" colspan="3">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let level of levels">
-        <th scope="row">{{level.id}}</th>
-        <td>{{level.name}}</td>
-        <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',level.id)">show</a></td>
-        <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',level.id)">edit</a></td>
-        <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',level.id)">delete</a></td>
-      </tr>
-    </tbody>
-  </table>
-  <div>
-    <nav aria-label="...">
-      <ul class="pagination">
-        <li class="page-item" [class.disabled]="!prev">
-          <span class="page-link" (click)="gotoPrev()">Previous</span>
-        </li>
-        <li class="page-item" [class.disabled]="!next">
-          <span class="page-link" (click)="gotoNext()">Next</span>
-        </li>
-      </ul>
-    </nav>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col" colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let level of levels">
+      <th scope="row">{{level.id}}</th>
+      <td>{{level.name}}</td>
+      <td><a class="btn btn-primary btn-sm text-white" (click)="open(content, 'edit',level.id)">edit</a></td>
+      <td><a class="btn btn-danger btn-sm text-white" (click)="deleteLevel(level.id)">delete</a></td>
+    </tr>
+  </tbody>
+</table>
+<div>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="!prev">
+        <span class="page-link" (click)="gotoPrev()">Previous</span>
+      </li>
+      <li class="page-item" [class.disabled]="!next">
+        <span class="page-link" (click)="gotoNext()">Next</span>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title mb-0" id="modal-basic-title">{{clickType=='new'?'Add':clickType=='edit'?'Edit':''}} Level</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <div class="modal-body">
+    <app-interview-levels-form *ngIf="clickType=='new'" (levelChanged)="levelChanged()"></app-interview-levels-form>
+    <app-interview-levels-form *ngIf="clickType=='edit'" [clickType]="'edit'" [level_id]="id" (levelChanged)="levelChanged()"></app-interview-levels-form>
+  </div>
+</ng-template>

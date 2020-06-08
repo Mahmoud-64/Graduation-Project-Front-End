@@ -16,16 +16,13 @@ import { ContactTypesComponent } from '../dashboard/contact-types/contact-types.
 import { ContactTypesItemComponent } from '../dashboard/contact-types/contact-types-item/contact-types-item.component';
 import { ContactTypesFormComponent } from '../dashboard/contact-types/contact-types-form/contact-types-form.component';
 import { InterviewsComponent } from '../../admin-interviews/interviews/interviews.component';
-import { SingleInterviewComponent } from 'src/app/admin-interviews/single-interview/single-interview.component';
+import { SingleInterviewComponent } from '../../admin-interviews/single-interview/single-interview.component';
 
 
 import { ContactsComponent } from '../dashboard/contacts/contacts.component';
-import { ContactItemComponent } from '../dashboard/contacts/contact-item/contact-item.component';
 import { ContactFormComponent } from '../dashboard/contacts/contact-form/contact-form.component';
 
 import { InterviewLevelsComponent } from '../dashboard/interview-levels/interview-levels.component';
-import { InterviewLevelsItemComponent } from '../dashboard/interview-levels/interview-levels-item/interview-levels-item.component';
-import { InterviewLevelsFormComponent } from '../dashboard/interview-levels/interview-levels-form/interview-levels-form.component';
 
 
 import { ShowSeekerComponent } from '../dashboard/seekers/show-seeker/show-seeker.component';
@@ -33,10 +30,10 @@ import { SeekerFormComponent } from '../dashboard/seekers/seeker-form/seeker-for
 import { ShowEmployeeComponent } from '../dashboard/employees/show-employee/show-employee.component';
 import { FormEmployeeComponent } from '../dashboard/employees/form-employee/form-employee.component';
 import { StatusComponent } from '../dashboard/admin-apps/status/status.component';
-import { InterviewItemComponent } from 'src/app/interview/interview-item/interview-item.component';
-import { InterviewListComponent } from 'src/app/interview/interview-list/interview-list.component';
-import { InterviewFormComponent } from 'src/app/interview/interview-form/interview-form.component';
-import { InterviewEditComponent } from 'src/app/interview/interview-edit/interview-edit.component';
+import { InterviewItemComponent } from '../../interview/interview-item/interview-item.component';
+import { InterviewListComponent } from '../../interview/interview-list/interview-list.component';
+import { InterviewFormComponent } from '../../interview/interview-form/interview-form.component';
+import { InterviewEditComponent } from '../../interview/interview-edit/interview-edit.component';
 
 const routes: Routes = [
   {
@@ -71,12 +68,8 @@ const routes: Routes = [
       { path: 'contacttype/edit/:Id', component: ContactTypesFormComponent },
       { path: 'contact', component: ContactsComponent },
       { path: 'contact/new', component: ContactFormComponent },
-      { path: 'contact/:Id', component: ContactItemComponent },
       { path: 'contact/edit/:Id', component: ContactFormComponent },
       { path: 'levels', component: InterviewLevelsComponent },
-      { path: 'levels/new', component: InterviewLevelsFormComponent },
-      { path: 'levels/:Id', component: InterviewLevelsItemComponent },
-      { path: 'levels/edit/:Id', component: InterviewLevelsFormComponent },
     ],
   },
 ];
