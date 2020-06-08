@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
     providedIn: 'root'
 })
 export class InterviewService {
-    loadedInterview: any[];
+    loadedInterview: any[]=[];
     singleInterview;
     constructor(private http: HttpClient) { }
 

@@ -20,26 +20,18 @@ export class SeekersComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.seekerService.getSeekers({perPage:this.perPage}).subscribe(seekers => {
-      this.seekers = seekers.data;
-      this.currentPage = seekers.meta.current_page;
-      let links = seekers.links;
-      this.prev = links.prev?(this.currentPage-1):0;
-      this.next = links.next?(this.currentPage+1):0;
-    })
+    this.getSeekers({perPage:this.perPage});
   }
 
   gotoPrev(){
-    this.seekerService.getSeekers({perPage:this.perPage, page: this.prev}).subscribe(seekers => {
-      this.seekers = seekers.data;
-      this.currentPage = seekers.meta.current_page;
-      let links = seekers.links;
-      this.prev = links.prev?(this.currentPage-1):0;
-      this.next = links.next?(this.currentPage+1):0;
-    })
+    this.getSeekers({perPage:this.perPage, page: this.prev});
   }
   gotoNext(){
-    this.seekerService.getSeekers({perPage:this.perPage, page: this.next}).subscribe(seekers => {
+    this.getSeekers({perPage:this.perPage, page: this.next});
+  }
+
+  getSeekers(params={}){
+    this.seekerService.getSeekers(params).subscribe(seekers => {
       this.seekers = seekers.data;
       this.currentPage = seekers.meta.current_page;
       let links = seekers.links;
