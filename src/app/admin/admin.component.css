@@ -7,12 +7,12 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
-  overflow-x: hidden;
+  overflow-x: scroll;
   padding: 20px;
 }
 
 .main {
   margin-top: 60px;
   align-content: center;
-  padding: 0px 20px;
+  padding: 0px 10%;
 }
