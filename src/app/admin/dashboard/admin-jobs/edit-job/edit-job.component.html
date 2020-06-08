@@ -2,17 +2,17 @@
     <div class="p-1 text-center" >
         <h1 class="text-primary"><b>{{header}}</b></h1>
     </div>
-    
+
     <div *ngIf="jobServerError && jobServerError.message" class="alert alert-danger" role="alert">
         {{jobServerError.message}}
-    </div> 
+    </div>
     <form [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
         <div class="px-2 py-1 bd-highlight form-group">
             <label for="title">title </label>
             <input type="text" id="title" class="form-control" formControlName="title" name="title">
-            <div *ngIf="title.touched && title.invalid">
-                <small class="text-danger" *ngIf="title.errors.required"> please enter title</small>
-                <small class="text-danger" *ngIf="title.errors.maxlength || title.errors.minlength"> must between 5 and 50 character</small>
+            <div *ngIf="!jobServerError.message &&  title.touched && title.invalid">
+                <small class="text-danger" *ngIf="title.errors.required"> Title is required</small>
+                <small class="text-danger" *ngIf="title.errors.maxlength || title.errors.minlength"> Title must be between 5 to 50 character</small>
             </div>
             <div *ngIf="jobServerError && jobServerError.errors.title">
                 <small class="text-danger"> {{jobServerError.errors.title[0]}}</small>
@@ -24,11 +24,11 @@
             <!-- <input type="text"  name="description" formControlName="description"  class="form-control"  placeholder="description"> -->
             <textarea name="description" formControlName="description" class="form-control" placeholder="description"
                 rows="3"></textarea>
-            <div *ngIf="description.touched && description.invalid">
-                <small class="text-danger" *ngIf="description.errors.required"> please enter years_exp</small>
-                <small class="text-danger" *ngIf="description.errors.maxlength || description.errors.minlength"> 
-                    muust between 10
-                    and 300 character </small>
+            <div *ngIf="!jobServerError.message &&  description.touched && description.invalid">
+                <small class="text-danger" *ngIf="description.errors.required"> description is required</small>
+                <small class="text-danger" *ngIf="description.errors.maxlength || description.errors.minlength">
+                    Description must be more than 10 characters
+                </small>
             </div>
             <div *ngIf="jobServerError && jobServerError.errors.description">
                 <small class="text-danger"> {{jobServerError.errors.description[0]}}</small>
@@ -36,26 +36,24 @@
         </div>
         <div class="px-2 py-1 row">
             <div class="col-6 px-2 py-1 bd-highlight form-group">
-                <label for="seniority">seniority</label>
+                <label for="seniority">seniority level</label>
                 <input type="text" name="seniority" formControlName="seniority" class="form-control"
                     placeholder="seniority">
-                <div *ngIf="seniority.touched && seniority.invalid">
-                    <small class="text-danger" *ngIf="seniority.errors.required"> please enter years_exp</small>
-                    <small class="text-danger" *ngIf="seniority.errors.maxlength || seniority.errors.minlength"> must between 5
-                    and 20 character</small>
+                <div *ngIf="!jobServerError.message && seniority.touched && seniority.invalid">
+                    <small class="text-danger" *ngIf="seniority.errors.required">  seniority level is required</small>
+                    <small class="text-danger" *ngIf="seniority.errors.maxlength || seniority.errors.minlength"> Seniority level must between 5
+                    and 25 character</small>
                 </div>
                 <div *ngIf="jobServerError && jobServerError.errors.seniority">
                     <small class="text-danger"> {{jobServerError.errors.seniority[0]}}</small>
                 </div>
             </div>
             <div class="col-6 px-2 py-1 bd-highlight form-group">
-                <label for="years_exp">years_exp</label>
+                <label for="years_exp">Years of experience</label>
                 <input type="number" class="form-control" formControlName="years_exp" name="years_exp" placeholder="0"
                     min="0">
-                <div *ngIf="years_exp.touched && years_exp.invalid">
-                    <small class="text-danger" *ngIf="years_exp.errors.required"> please enter years_exp</small>
-                    <small class="text-danger" *ngIf="years_exp.errors.max || years_exp.errors.min"> number between 0
-                        and 25 years </small>
+                <div *ngIf="!jobServerError.message && years_exp.touched && years_exp.invalid">
+                    <small class="text-danger" *ngIf="years_exp.errors.required">  Years of experience is required</small>
                 </div>
                 <div *ngIf="jobServerError && jobServerError.errors.years_exp">
                     <small class="text-danger"> {{jobServerError.errors.years_exp[0]}}</small>
@@ -81,9 +79,11 @@
                         </span>
                     </div>
                     <div *ngIf="requirements().controls[i].touched && requirements().controls[i].invalid">
-                        <small class="text-danger"> sorry required and must between 15 and 100 characters</small>
+                      <div *ngIf="requirements().controls[i].errors.required">
+                          <small class="text-danger">Requirements is required.</small>
+                      </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

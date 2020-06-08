@@ -1,11 +1,12 @@
 .btn-color{
-  background-color: #45a29e !important;
+  background-color: rgb(21,65,100);
+  /* background-color: #45a29e !important; */
   color: white;
 }
 .btn-color:hover{
   background-color: white !important;
-  color: #45a29e;
-  border: 1px solid #45a29e;
+  color: rgb(21,65,100);
+  border: 1px solid rgb(21,65,100);
 }
 .btn-verify{
   background-color: #ccc !important;

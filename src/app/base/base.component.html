@@ -1,16 +1,19 @@
+<div class="bgImg">
+  <img src="/assets/images/bg.jpeg" height="100%" width="100%" alt="">
+</div>
 <app-header></app-header>
 <div class="crop" *ngIf="checkPath()">
   <img class="img-fluid w-100" src="assets/images/home.jpg">
 </div>
 
 <div class="color-warning text-center" *ngIf="isEmailSent()">
-  please verify your email, if you didn't recieve any emails click this button
+  please verify your email, if you didn't recieve any emails click this link
   <a class="verigyEmail" (click)="resendEmailVerification()"> send email verification </a>
 </div>
 
 <div class="color-warning text-center" *ngIf="loggedinUser && emailSent && !emailVerified">
   email has been sent, check your inbox
 </div>
-<div class="container-fluid">
-  <router-outlet></router-outlet>
+<div class="container-fluid p-0">
+    <router-outlet></router-outlet>
 </div>
