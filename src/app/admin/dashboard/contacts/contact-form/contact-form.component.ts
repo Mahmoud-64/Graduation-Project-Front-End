@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormBuilder,
@@ -6,6 +6,8 @@ import {
 } from '@angular/forms';
 import { ContactService } from '../../../../profile/contact/service/contact.service';
 import { SeekerService } from '../../../../service/seeker.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
@@ -15,7 +17,10 @@ import { SeekerService } from '../../../../service/seeker.service';
 })
 export class ContactFormComponent implements OnInit {
   error;
-  contact_id;
+  // contact_id;
+  @Input() contact_id;
+  @Input() clickType;
+  @Output() contactChanged = new EventEmitter;
   contactTypes: Array<any> = [];
   seekers: Array<any> = [];
   contact: FormGroup = this.fb.group({
@@ -26,6 +31,9 @@ export class ContactFormComponent implements OnInit {
     contact_types_id: [''],
     contact_type: ['']
   });
+  private _success = new Subject<string>();
+  successMessage = '';
+
 
   constructor(private fb: FormBuilder,
     private router: Router,
@@ -34,14 +42,18 @@ export class ContactFormComponent implements OnInit {
     private seekerService: SeekerService) { }
 
   ngOnInit(): void {
-    if (this.router.url.includes('edit')) {
-      this.route.paramMap.subscribe(params => {
-        this.contact_id = +params.get('Id');
-      });
+    if (this.contact_id) {
+      // this.route.paramMap.subscribe(params => {
+      //   this.contact_id = +params.get('Id');
+      // });
 
       this.contactService.getContact(this.contact_id).subscribe(contact => {
         this.contact.patchValue(contact);
       });
+      this._success.subscribe(message => this.successMessage = message);
+      this._success.pipe(
+        debounceTime(3000)
+      ).subscribe(() => this.successMessage = '');
     }
     this.contactService.getContactTypes().subscribe(contact => {
       this.contactTypes = contact['data'];
@@ -51,17 +63,30 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  public changeSuccessMessage() {
+    if (this.clickType == 'edit') {
+      this._success.next(`Edited successfully.`);
+    } else {
+      this._success.next(`Added successfully.`);
+    }
+  }
+
+
   submitContact() {
     console.log(this.contact.value);
-    if (this.router.url.includes('edit')) {
+    if (this.contact_id) {
       this.contactService.editContact(this.contact_id, this.contact.value)
         .subscribe(result => {
           console.log(result);
+          this.contactChanged.emit();
+          this.changeSuccessMessage();
         })
     } else {
       this.contactService.addNewContact(this.contact.value)
         .subscribe(result => {
           console.log(result);
+          this.contactChanged.emit();
+          this.changeSuccessMessage();
         },
         err=>{
           console.log("error",err.errors);

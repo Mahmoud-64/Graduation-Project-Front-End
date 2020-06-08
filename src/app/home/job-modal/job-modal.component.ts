@@ -15,6 +15,7 @@ export class JobModalComponent implements OnInit {
   logged: Boolean;
   canApply: Boolean = true;
   applyError;
+  userRole = 0;
 
   constructor(
     public activeModal:NgbActiveModal,
@@ -24,7 +25,8 @@ export class JobModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logged=this.userService.loggedIn()
+    this.logged=this.userService.loggedIn();
+    this.userRole = this.logged? this.userService.getUserRole() : 0;
     this.canApply = true;
     this.applyError = '';
   }

@@ -3,15 +3,26 @@
         overflow: hidden;
     }
 
-    .crop img {
-        height: 380px;
-    }
+.crop img {
+    position: absolute;
+    height: 380px;
+}
 
-    .verigyEmail{
-        cursor: pointer;
-        color: blue;
-    }
-    .color-warning{
-        background-color: black;
-        color: white;
-    }
+.verigyEmail{
+    cursor: pointer;
+    color: rgb(21,65,100);
+}
+.color-warning{
+    background-color: yellow;
+    color: black;
+}
+
+
+.bgImg {
+  position: fixed;
+  top: 0px;
+  bottom:0px;
+  right:0px;
+  opacity:0.3;
+  z-index: -1;
+}

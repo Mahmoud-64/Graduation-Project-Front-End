@@ -1,12 +1,12 @@
-
 <form [formGroup]="contactType" (ngSubmit)="submitContactType()">
-            <div class="p-2 bd-highlight">
-                <input name="type" type="text" formControlName="type" class="form-control" id="exampleInputcontactType1"
-                    aria-describedby="contactTypeHelp" placeholder="Enter contactType" value="{{type}}" />
-                    <div *ngIf="error && error.type" class="text-danger">
-                        {{error.type}}
-                    </div>
-            </div>
+    <div class="p-2 bd-highlight">
+        <input name="type" type="text" formControlName="type" class="form-control" id="exampleInputcontactType1"
+            aria-describedby="contactTypeHelp" placeholder="Enter contactType" value="{{type}}" />
+        <div *ngIf="error && error.type" class="text-danger">
+            {{error.type}}
+        </div>
+    </div>
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
 
     <div class="container text-center">
         <button class="btn btn-primary">Submit Contact Type</button>

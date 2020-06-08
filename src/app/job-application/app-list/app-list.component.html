@@ -1,12 +1,13 @@
-<cdk-virtual-scroll-viewport class=" mb-4 mx-0 border rounded"  style="height: 500px;" itemSize="90">
-
 <div *ngIf="applications.length > 0;else notFound">
-    <app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]"
-        [applicationData]="application"></app-item>
+    <cdk-virtual-scroll-viewport class=" mb-4 mx-0 border rounded" style="height: 500px;" itemSize="90">
+        <app-item *ngFor="let application of applications" [routerLink]="['/applications', application.id]"
+            [applicationData]="application"></app-item>
+    </cdk-virtual-scroll-viewport>
 </div>
+
+
 
 
 <ng-template #notFound>
     <h3 class="alert alert-danger">Sorry you dont have any application yet</h3>
 </ng-template>
-</cdk-virtual-scroll-viewport>
