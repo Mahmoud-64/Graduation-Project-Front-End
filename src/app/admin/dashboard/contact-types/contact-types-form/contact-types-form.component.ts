@@ -34,10 +34,6 @@ export class ContactTypesFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.contact_type_id) {
-      // this.route.paramMap.subscribe(params => {
-      //   this.contact_type_id = +params.get('Id');
-      // });
-
       this.contactService.getContactType(this.contact_type_id).subscribe(contactType => {
         this.contactType.patchValue(contactType['data']);
       });

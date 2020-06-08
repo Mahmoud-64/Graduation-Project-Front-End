@@ -33,6 +33,10 @@ export class ApplicationService {
     return this.http.get<any>(this.getAllStatusUrl);
   }
 
+  getStatus(id){
+    return this.http.get<any>(this.getAllStatusUrl+`/${id}`);
+  }
+
   updateAppStatus(appId,statusId)
   {
     return this.http.put<any>(this.getSingleapplicationUrl+appId,{
