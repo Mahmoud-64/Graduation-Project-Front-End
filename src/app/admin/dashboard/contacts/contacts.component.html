@@ -26,3 +26,16 @@
       </tr>
     </tbody>
   </table>
+
+  <div>
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="!prev">
+          <span class="page-link" (click)="gotoPrev()">Previous</span>
+        </li>
+        <li class="page-item" [class.disabled]="!next">
+          <span class="page-link" (click)="gotoNext()">Next</span>
+        </li>
+      </ul>
+    </nav>
+  </div>

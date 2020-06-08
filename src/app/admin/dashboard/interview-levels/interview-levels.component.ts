@@ -10,14 +10,33 @@ import { LevelsService } from '../../../service/levels.service';
 export class InterviewLevelsComponent implements OnInit {
   levels;
   error;
+
+  perPage=15;
+  next: number=0;
+  prev: number=0;
+  currentPage: number=0;
   constructor(private router: Router,
     private levelsService: LevelsService) { }
 
   ngOnInit(): void {
-    this.levelsService.getLevels().subscribe(result => {
-      this.levels = result["data"];
-      console.log(this.levels);
-    });
+    this.getContacts({perPage:this.perPage});
+  }
+
+  gotoPrev(){
+    this.getContacts({perPage:this.perPage, page: this.prev});
+  }
+  gotoNext(){
+    this.getContacts({perPage:this.perPage, page: this.next});
+  }
+
+  getContacts(params={}){
+    this.levelsService.getLevels(params).subscribe(levels => {
+      this.levels = levels['data'];
+      this.currentPage = levels['meta'].current_page;
+      let links = levels['links'];
+      this.prev = links.prev?(this.currentPage-1):0;
+      this.next = links.next?(this.currentPage+1):0;
+    })
   }
 
   crudOperation(crudName, id) {

@@ -10,14 +10,43 @@ import { ContactService } from '../../../../profile/contact/service/contact.serv
 export class ContactTypesListComponent implements OnInit {
   contactTypes;
   error;
+
+  perPage=15;
+  next: number=0;
+  prev: number=0;
+  currentPage: number=0;
   constructor(private contactService: ContactService,
     private router: Router) { }
 
+  // ngOnInit(): void {
+  //   this.contactService.getContactTypes().subscribe(contactTypes => {
+  //     this.contactTypes = contactTypes['data'];
+  //   })
+  // }
+
   ngOnInit(): void {
-    this.contactService.getContactTypes().subscribe(contactTypes => {
+    this.getContactTypes({perPage:this.perPage});
+  }
+
+  gotoPrev(){
+    this.getContactTypes({perPage:this.perPage, page: this.prev});
+  }
+  gotoNext(){
+    this.getContactTypes({perPage:this.perPage, page: this.next});
+  }
+
+  getContactTypes(params={}){
+    this.contactService.getContactTypes(params).subscribe(contactTypes => {
+      console.log(contactTypes);
+      
       this.contactTypes = contactTypes['data'];
+      this.currentPage = contactTypes['meta'].current_page;
+      let links = contactTypes['links'];
+      this.prev = links.prev?(this.currentPage-1):0;
+      this.next = links.next?(this.currentPage+1):0;
     })
   }
+
   crudOperation(crudName, id) {
     switch (crudName) {
       case 'new':
