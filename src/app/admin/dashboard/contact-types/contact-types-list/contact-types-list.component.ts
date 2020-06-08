@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from '../../../../profile/contact/service/contact.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-contact-types-list',
@@ -11,12 +12,13 @@ export class ContactTypesListComponent implements OnInit {
   contactTypes;
   error;
 
-  perPage=15;
-  next: number=0;
-  prev: number=0;
-  currentPage: number=0;
+  perPage = 15;
+  next: number = 0;
+  prev: number = 0;
+  currentPage: number = 0;
   constructor(private contactService: ContactService,
-    private router: Router) { }
+    private router: Router,
+    private modalService: NgbModal) { }
 
   // ngOnInit(): void {
   //   this.contactService.getContactTypes().subscribe(contactTypes => {
@@ -25,52 +27,65 @@ export class ContactTypesListComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.getContactTypes({perPage:this.perPage});
+    this.getContactTypes({ perPage: this.perPage });
   }
 
-  gotoPrev(){
-    this.getContactTypes({perPage:this.perPage, page: this.prev});
+  gotoPrev() {
+    this.getContactTypes({ perPage: this.perPage, page: this.prev });
   }
-  gotoNext(){
-    this.getContactTypes({perPage:this.perPage, page: this.next});
+  gotoNext() {
+    this.getContactTypes({ perPage: this.perPage, page: this.next });
   }
 
-  getContactTypes(params={}){
+  getContactTypes(params = {}) {
     this.contactService.getContactTypes(params).subscribe(contactTypes => {
       console.log(contactTypes);
-      
+
       this.contactTypes = contactTypes['data'];
       this.currentPage = contactTypes['meta'].current_page;
       let links = contactTypes['links'];
-      this.prev = links.prev?(this.currentPage-1):0;
-      this.next = links.next?(this.currentPage+1):0;
+      this.prev = links.prev ? (this.currentPage - 1) : 0;
+      this.next = links.next ? (this.currentPage + 1) : 0;
     })
   }
 
-  crudOperation(crudName, id) {
-    switch (crudName) {
-      case 'new':
-        console.log('new', '');
-        this.router.navigateByUrl(`/admin/contacttype/new`);
-        break;
-      case 'show':
-        console.log('show', id);
-        this.router.navigateByUrl(`/admin/contacttype/${id}`);
-        break;
-      case 'edit':
-        console.log('edit');
-        this.router.navigateByUrl(`/admin/contacttype/edit/${id}`);
-        break;
-      case 'delete':
-        console.log('delete');
-        this.contactService.deleteContactType(id).subscribe(result => {
-          this.error = result['data'];
-          this.contactService.getContactTypes().subscribe(contactTypes => {
-            this.contactTypes = contactTypes['data'];
-          })
-        });
-        break;
+
+  contactTypeChanged() {
+    this.getContactTypes();
+  }
+
+  id = '';
+  clickType = '';
+  closeResult = '';
+  open(content, clickType, id = '') {
+    this.id = id;
+    console.log("id", this.id);
+    this.clickType = clickType;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
+  }
+
+  deleteContactType(id) {
+    console.log('delete');
+    this.contactService.deleteContactType(id).subscribe(result => {
+      this.error = result['data'];
+      this.contactService.getContactTypes().subscribe(contactTypes => {
+        this.contactTypes = contactTypes['data'];
+      })
+    });
   }
 
 }
