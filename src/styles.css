@@ -3,7 +3,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .allBody{
-  background-color: #edf5e1;
+  background-color: rgb(182, 182, 182);
 }
 .pre{
     white-space: pre-wrap;
