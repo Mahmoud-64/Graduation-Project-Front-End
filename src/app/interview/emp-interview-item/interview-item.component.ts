@@ -3,7 +3,7 @@ import { InterviewService } from '../interview.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-interview-item',
+  selector: 'interview-item',
   templateUrl: './interview-item.component.html',
   styleUrls: ['./interview-item.component.css'],
   providers: [InterviewService]

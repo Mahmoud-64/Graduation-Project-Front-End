@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/application.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { InterviewService } from 'src/app/admin-interviews/services/interview.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-app-details',
@@ -19,17 +21,21 @@ export class AppDetailsComponent implements OnInit {
     },
     "job": { "title": "", "description": "" },
     "status": { "name": "", "description": "" },
-    "interviews":[],
+    "interviews": [],
   };
   isAdmin: boolean = false;
   interviewForm: boolean = false;
-  isDataLoaded:boolean = false;
+  isDataLoaded: boolean = false;
 
   constructor(
     private applicationService: ApplicationService,
-    private userService:UserService,
-    private route: ActivatedRoute
-  ) { }
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private interviewService: InterviewService,
+    private location: Location
+  ) {
+    this.subscribeInterviews();
+  }
 
   ngOnInit(): void {
 
@@ -37,9 +43,9 @@ export class AppDetailsComponent implements OnInit {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
           console.log(result);
-          this.interviewForm= false;
+          this.interviewForm = false;
           this.application = result.data;
-          this.isDataLoaded=true;
+          this.isDataLoaded = true;
         },
         error => {
           console.log(error);
@@ -54,32 +60,42 @@ export class AppDetailsComponent implements OnInit {
     this.applicationService.deleteSingleApplication(this.application.id).subscribe(
       result => {
         console.log(result);
-        this.applicationService.appSubject.next("delete");
+        if (this.isAdmin) {
+          this.location.back();
+        } else {
+          this.applicationService.appSubject.next("delete");
+        } 
       },
       error => {
         console.log(error);
-
       }
     )
   }
 
-  showForm(){
+  showForm() {
     this.interviewForm = !this.interviewForm;
   }
 
-  checkRole(){
+  checkRole() {
     this.userService.hasRole().subscribe(
-      result=>{
+      result => {
         if (result == 1) {
-          this.isAdmin=true;
+          this.isAdmin = true;
         }
         console.log('role', result);
       }
-    );  
+    );
   }
-  jobHover(){
+  jobHover() {
     console.log("hover");
-    
+
+  }
+  subscribeInterviews() {
+    this.interviewService.newInterviewSubject.subscribe(
+      next => {
+        this.ngOnInit();
+      }
+    )
   }
 
 }
