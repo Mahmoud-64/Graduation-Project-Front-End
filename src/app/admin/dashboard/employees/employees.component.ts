@@ -50,7 +50,7 @@ export class EmployeesComponent implements OnInit {
 
     getEmployees(page)
     {
-      this.employeeService.getEmployees({perPage: 6, page: page}).subscribe(users => {
+      this.employeeService.getEmployees({perPage: 15, page: page}).subscribe(users => {
         this.users = users.data;
         this.links = users.links;
         console.log(users);

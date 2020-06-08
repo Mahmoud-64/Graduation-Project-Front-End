@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { InterviewService } from '../services/interview.service';
 import { EmployeeService } from 'src/app/service/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'admin-interview-form',
@@ -15,6 +15,7 @@ export class InterviewFormComponent implements OnInit {
     private interviewService: InterviewService,
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
+    private router: Router
   ) {}
   current;
   employees = [];
@@ -28,6 +29,7 @@ export class InterviewFormComponent implements OnInit {
       result => {
         console.log('employees', result);
         this.employees = result.data
+        
       },
       error => {
         console.log(error);
@@ -71,6 +73,8 @@ export class InterviewFormComponent implements OnInit {
     this.interviewService.addNewInterview(this.newInterviewForm.value).subscribe(
       result => {
         console.log(result);
+        // this.router.navigateByUrl('/admin/applications/' + this.appId);
+        this.interviewService.newInterviewSubject.next('new Interview');
       },
       error => {
         console.log(error);
