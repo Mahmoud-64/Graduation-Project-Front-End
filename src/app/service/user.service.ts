@@ -60,7 +60,9 @@ export class UserService {
         localStorage.setItem('access_token', _token);
         this.hideSpinner();
         this.subject.next(true);
-    }));
+    }),
+    catchError(this.handleError2<User[]>('register', []))
+  );
   }
   logout(){
     this.http.get('/api/LogoutUser');
@@ -131,6 +133,8 @@ export class UserService {
   }
 
   private handleError2<T>(operation = 'operation', result?: T) {
+
+    this.hideSpinner();
     return (error: any): Observable<T> => {
       return throwError(error);
     };
