@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
           this.profileId = this.user['id'];
           this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
           this.isEmployee = this.userService.getUserRole() == Role.employee;
+          this.isSeeker = this.userService.getUserRole() == Role.seeker;
 
           this.loggedIn = true;
         }

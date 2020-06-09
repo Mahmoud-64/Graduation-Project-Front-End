@@ -10,11 +10,11 @@ export class JobsService {
   private getAllJobsUrl = "/api/jobs";
   private getSingleJobUrl = "/api/jobs/";
   private applyToJobUrl = "/api/applications"
-  
+
 
   constructor(private http:HttpClient) { }
 
-  getAllJobs(filterParams){  
+  getAllJobs(filterParams){
     // return this.http.get<any>(this.getAllJobsUrl+'?page='+page);
     return this.http.get<any>(this.getAllJobsUrl ,{
       params: filterParams
@@ -27,7 +27,7 @@ export class JobsService {
 
   updateJob(job,jobId){
     console.log(job);
-    
+
     return this.http.put<any>(this.getSingleJobUrl+jobId,job);
   }
 

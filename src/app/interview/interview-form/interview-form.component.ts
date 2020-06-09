@@ -27,8 +27,8 @@ export class InterviewFormComponent implements OnInit {
   };
 
   constructor(private http: HttpClient, public interviewService: InterviewService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
-  defaultQuestion = 'teacher';
-  genders = ['male', 'female', 'a', 'b'];
+  // defaultQuestion = 'teacher';
+  // genders = ['male', 'female', 'a', 'b'];
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
 
