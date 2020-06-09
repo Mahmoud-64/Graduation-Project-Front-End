@@ -14,10 +14,19 @@ export class UserService {
   public subject;
   public verifyEmailSubject;
   public user_id: Number;
+  public spinner: Boolean = false;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject;
     this.verifyEmailSubject = new Subject;
+  }
+
+  showSpinner(){
+    this.spinner = true;
+  }
+
+  hideSpinner(){
+    this.spinner = false;
   }
 
   getUsers(): Observable<any>{
@@ -35,6 +44,7 @@ export class UserService {
 
   login(user: User): Observable<any>{
     user.device_name="anything";
+    this.showSpinner();
     return this.http.post("/api/login",JSON.stringify(user)).pipe(
       tap(ev => {
         this.user = ev;
@@ -48,6 +58,7 @@ export class UserService {
         }
         const _token = ev.access_token;
         localStorage.setItem('access_token', _token);
+        this.hideSpinner();
         this.subject.next(true);
     }));
   }
