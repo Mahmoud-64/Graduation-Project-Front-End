@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../../../service/employee.service';
 import { Employee } from '../../../models/employee';
+import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-employees',
@@ -26,7 +28,9 @@ export class EmployeesComponent implements OnInit {
   page = 1;
   constructor(
     private employeeService: EmployeeService,
-    private router: Router) {
+    private router: Router,
+    private modalService: NgbModal
+) {
       console.log('employee opened');
 
      }
@@ -86,5 +90,17 @@ export class EmployeesComponent implements OnInit {
           break;
       }
     }
+  confirmDelete(data) {
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.data = "the user " + data.name;
+    modalRef.result.then(
+      result => {
+        this.crudOperation('delete',data.id);
+      },
+      rejected => {
+        console.log("rejected");
+      }
+    )
+  }
 
 }

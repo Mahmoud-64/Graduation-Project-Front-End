@@ -3,16 +3,17 @@
     <div class="form-group">
         <label for="seeker_review">seeker_review</label>
         <textarea type="text" class="form-control" id="seeker_review" [placeholder]="single.seeker_review" ngModel
-            name="seeker_review"></textarea>
+            name="seeker_review" required></textarea>
     </div>
 
     <div class="form-group">
         <label for="company_review">company_review</label>
         <textarea type="text" class="form-control" id="company_review" [placeholder]="single.company_review" ngModel
-            name="company_review"></textarea>
+            name="company_review" required></textarea>
     </div>
 
     <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
         Save
     </button>
 </form>
+<flash-messages></flash-messages>

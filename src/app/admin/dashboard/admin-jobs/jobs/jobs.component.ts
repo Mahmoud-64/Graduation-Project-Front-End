@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from 'src/app/home/services/jobs.service';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmModalComponent } from 'src/app/admin/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-jobs',
@@ -20,7 +22,8 @@ export class JobsComponent implements OnInit {
   lastPage: number;
   constructor(
     private jobsService: JobsService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +49,7 @@ export class JobsComponent implements OnInit {
   }
 
   deleteJob(jobId) {
+
     this.jobsService.deleteJob(jobId).subscribe(
       result => {
         console.log(result);
@@ -62,7 +66,7 @@ export class JobsComponent implements OnInit {
     } else {
       this.filterParams.available = 1
     }
-    this.filterParams.page=1;
+    this.filterParams.page = 1;
     this.ngOnInit();
   }
 
@@ -90,6 +94,18 @@ export class JobsComponent implements OnInit {
     this.filterParams.page -= 1
     this.ngOnInit();
     console.log('prev ' + this.filterParams.page);
+  }
+  confirmDelete(data) {
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.data = "the job " + data.title;
+    modalRef.result.then(
+      result => {
+        this.deleteJob(data.id);
+      },
+      rejected => {
+        console.log("rejected");
+      }
+    )
   }
 
 }

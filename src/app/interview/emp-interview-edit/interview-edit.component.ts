@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InterviewService } from '../interview.service';
-import { Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute, Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+
 
 @Component({
   selector: 'app-interview-edit',
@@ -18,7 +20,7 @@ export class EmpInterviewEditComponent implements OnInit {
   id = 0;
 
 
-  constructor(private http: HttpClient, public interviewService: InterviewService, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, public interviewService: InterviewService, private route: ActivatedRoute, private router: Router, private _flashMessagesServicee: FlashMessagesService) { }
   defaultQuestion = 'teacher';
   genders = ['male', 'female', 'a', 'b'];
   onCreatePost(postData: { title: string; content: string }) {
@@ -30,9 +32,16 @@ export class EmpInterviewEditComponent implements OnInit {
         postData,
         // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
       )
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
+      .subscribe(
+        responseData => {
+          console.log(responseData);
+          this._flashMessagesServicee.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
+          // this.router.navigate(["/admin/interviews"]);
+          setTimeout(() => {
+            this.router.navigate(["/emprev"]);
+          }, 2000);
+        }
+      );
   }
   ngOnInit() {
 

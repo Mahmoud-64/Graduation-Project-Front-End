@@ -21,6 +21,7 @@
         </div>
         <h1 class="text-center text-title"><strong>{{job.title}}</strong></h1>
         <div class="p-4 mt-2 mx-2 bg-white rounded details">
+
             <h3 class="mb-0"><strong>Description</strong></h3>
             <div class=" pl-3 pt-1">
                 <p class="pre">{{job.description}}</p>
@@ -29,7 +30,7 @@
             <p><strong>Seniority Level : </strong>{{job.seniority}}</p>
         </div>
         <div *ngIf="job.requirements.length > 0" class="p-4 mt-2 mx-2 bg-white rounded details">
-            <h3 ><strong>Requirements</strong></h3>
+            <h3><strong>Requirements</strong></h3>
             <ul>
                 <li *ngFor="let req of job.requirements"> {{req.name}}</li>
             </ul>
