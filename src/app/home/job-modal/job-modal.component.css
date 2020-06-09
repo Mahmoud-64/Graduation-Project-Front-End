@@ -2,6 +2,7 @@
 .bg-color{
     /* background-color:rgb(56,103,130); */
     background-image: url("/assets/images/bg_job.jpeg") !important;
+    background-repeat: round;
 }
 .text-title{
     /* color: #ffe400; */
