@@ -1,31 +1,38 @@
 <app-search (appEvent)="updateAppTable($event)"></app-search>
-<table class="table bg-white text-center">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">job</th>
+<div *ngIf="applications.length > 0;else notFound">
+    <table class="table bg-white text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">job</th>
 
-            <th scope="col">Seeker</th>
-            <th scope="col">Years Exp</th>
-            <th scope="col">Status</th>
-            <th scope="col" colspan="2">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let application of applications; index as i">
-            <th class="align-middle" scope="row">{{application.id}}</th>
-            <td class="align-middle">{{application.job.title}}</td>
-            <td class="align-middle">{{application.seeker.user.name}}</td>
-            <td class="align-middle">{{application.seeker.expYears}}</td>
-            <td class="align-middle">
-                <div>
-                  <select class="custom-select form-control" [formControl]="statuses.controls[i]">
-                    <option  *ngFor="let status of allStatus"  [value]="status.id">{{status.name}} </option>
-                  </select>
-                </div>
-            </td>
-            <td class="align-middle"><a class="btn btn-success btn-sm text-white" [routerLink]="['/admin/applications/',application.id]" >show</a></td>
-            <td class="align-middle"><a class="btn btn-danger btn-sm text-white" (click)="deleteApplication(application.id, i)">delete</a></td>
-        </tr>
-    </tbody>
-</table>
+                <th scope="col">Seeker</th>
+                <th scope="col">Years Exp</th>
+                <th scope="col">Status</th>
+                <th scope="col" colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let application of applications; index as i">
+                <th class="align-middle" scope="row">{{application.id}}</th>
+                <td class="align-middle">{{application.job.title}}</td>
+                <td class="align-middle">{{application.seeker.user.name}}</td>
+                <td class="align-middle">{{application.seeker.expYears}}</td>
+                <td class="align-middle">
+                    <div>
+                        <select class="custom-select form-control" [formControl]="statuses.controls[i]">
+                            <option *ngFor="let status of allStatus" [value]="status.id">{{status.name}} </option>
+                        </select>
+                    </div>
+                </td>
+                <td class="align-middle"><a class="btn btn-success btn-sm text-white"
+                        [routerLink]="['/admin/applications/',application.id]">show</a></td>
+                <td class="align-middle"><a class="btn btn-danger btn-sm text-white"
+                        (click)="deleteApplication(application.id, i)">delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #notFound>
+    <h1 class="alert alert-primary"> Sorry there isn't any Application</h1>
+</ng-template>

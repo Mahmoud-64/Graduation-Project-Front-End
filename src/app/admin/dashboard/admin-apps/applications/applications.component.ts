@@ -14,6 +14,7 @@ export class ApplicationsComponent implements OnInit {
   filterParams = {
     jobId: "",
   }
+  
   statuses = new FormArray([]);
   @Input() job;
 
