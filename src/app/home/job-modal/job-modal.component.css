@@ -1,6 +1,19 @@
 .bg-color{
-    background-color:rgb(56,103,130);
+    /* background-color:rgb(56,103,130); */
+    background-image: url("/assets/images/bg_job.jpeg") !important;
 }
 .text-title{
-    color: #ffe400;
+    /* color: #ffe400; */
+    color: rgb(255, 255, 255);
+    font-family: sans-serif;
+}
+
+.btn-color:hover{
+    background-color: #31708e !important;
+    color: white !important;
+}
+.btn-color{
+    background-color: white !important;
+    color: #31708e !important;
+    border: 1px solid #31708e;
 }

@@ -3,6 +3,12 @@
     border-style: inset;
     border-width: 3px;
 }
+.card-img{
+    opacity: 0.2 !important;
+}
+/* .bg-job-img{
+    background-image: url("/assets/images/bg_job.jpg") !important;
+} */
 
 .h-item{
     color:#31708e !important;
