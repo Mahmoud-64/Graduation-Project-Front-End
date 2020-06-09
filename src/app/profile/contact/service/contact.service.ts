@@ -14,8 +14,8 @@ export class ContactService {
     this.contactTypes = new Subject;
   }
 
-  getContactTypes() {
-    return this.http.get('/api/contacttype');
+  getContactTypes(pageParam={}) {
+    return this.http.get('/api/contacttype', {params: pageParam});
   }
 
   getContactType(id){
@@ -49,11 +49,9 @@ export class ContactService {
     return this.http.post(`/api/contact`, contact);
   }
 
-  getContacts() {
+  getContacts(pageParam={}) {
     this.user_id = this.userService.user_id;
-    console.log(this.user_id);
-
-    return this.http.get(`/api/contact?current_user=${this.user_id}`);
+    return this.http.get(`/api/contact?current_user=${this.user_id}`, {params: pageParam});
   }
 
   getContact(id) {

@@ -1,5 +1,5 @@
 <div class="text-right mr-5">
-  <a class="btn btn-info mt-2 btn-sm text-white" (click)="crudOperation('new','')">New</a>
+  <a class="btn btn-info mt-2 btn-sm text-white" (click)="open(content, 'new','')">New</a>
 </div>
 <div class="container text-center my-1 bg-warning">
   {{error}}
@@ -9,16 +9,42 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
-      <th scope="col" colspan="3">Actions</th>
+      <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let contactType of contactTypes">
       <th scope="row">{{contactType.id}}</th>
       <td>{{contactType.type}}</td>
-      <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',contactType.id)">show</a></td>
-      <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',contactType.id)">edit</a></td>
-      <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',contactType.id)">delete</a></td>
+      <td><a class="btn btn-primary btn-sm text-white" (click)="open(content, 'edit',contactType.id)">edit</a></td>
+      <td><a class="btn btn-danger btn-sm text-white" (click)="deleteContactType(contactType.id)">delete</a></td>
     </tr>
   </tbody>
 </table>
+
+
+<div>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="!prev">
+        <span class="page-link" (click)="gotoPrev()">Previous</span>
+      </li>
+      <li class="page-item" [class.disabled]="!next">
+        <span class="page-link" (click)="gotoNext()">Next</span>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title mb-0" id="modal-basic-title">{{clickType=='new'?'Add':clickType=='edit'?'Edit':''}} Contact</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-contact-types-form *ngIf="clickType=='new'" (contactTypeChanged)="contactTypeChanged()"></app-contact-types-form>
+    <app-contact-types-form *ngIf="clickType=='edit'" [clickType]="'edit'" [contact_type_id]="id" (contactTypeChanged)="contactTypeChanged()"></app-contact-types-form>
+  </div>
+</ng-template>
