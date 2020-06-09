@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SeekerService } from '../../../service/seeker.service';
 import { Seeker } from '../../../models/seeker';
+import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-seekers',
@@ -17,7 +19,9 @@ export class SeekersComponent implements OnInit {
   currentPage: number=0;
   constructor(
     private seekerService: SeekerService,
-    private router: Router) { }
+    private router: Router,
+    private modalService: NgbModal
+) { }
 
   ngOnInit(): void {
     this.getSeekers({perPage:this.perPage});
@@ -67,5 +71,19 @@ export class SeekersComponent implements OnInit {
         break;
     }
   }
+
+  confirmDelete(data) {
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.data = "the user " + data.name;
+    modalRef.result.then(
+      result => {
+        this.crudOperation('delete', data.id);
+      },
+      rejected => {
+        console.log("rejected");
+      }
+    )
+  }
+
 
 }

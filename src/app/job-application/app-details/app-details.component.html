@@ -18,25 +18,31 @@
                 <td>Seeker</td>
                 <td>{{application.seeker.user.name}}</td>
             </tr>
-            <tr >
-                <td><h2>Job</h2></td>
+            <tr>
                 <td>
-                    <button type="button" class="btn  mr-2" placement="left"
-                        [ngbPopover]="application.job.description" [popoverTitle]="application.job.title">
+                    <h2>Job</h2>
+                </td>
+                <td>
+                    <button type="button" class="btn  mr-2" placement="left" #p="ngbPopover" (mouseenter)="p.open()"
+                        (mouseleave)="p.close()" [ngbPopover]="application.job.description"
+                        [popoverTitle]="application.job.title">
                         {{application.job.title}}
                     </button>
                 </td>
             </tr>
             <tr>
-                <td><h2>Status</h2></td>
                 <td>
-                    <button type="button" class="btn  mr-2" placement="left"
-                        [ngbPopover]="application.status.description" [popoverTitle]="application.status.name">
+                    <h2>Status</h2>
+                </td>
+                <td>
+                    <button type="button" class="btn  mr-2" placement="left" #p2="ngbPopover" (mouseenter)="p2.open()"
+                        (mouseleave)="p2.close()" [ngbPopover]="application.status.description"
+                        [popoverTitle]="application.status.name">
                         {{application.status.name}}
                     </button>
                 </td>
             </tr>
-            
+
         </tbody>
     </table>
     <div class="row">
@@ -48,5 +54,3 @@
         </div>
     </div>
 </div>
-
-

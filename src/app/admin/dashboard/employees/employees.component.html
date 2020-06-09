@@ -22,7 +22,7 @@
         <td>{{user.branch}}</td>
         <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',user.user.id)">show</a></td>
         <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',user.user.id)">edit</a></td>
-        <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',user.user.id)">delete</a></td>
+        <td><a class="btn btn-danger btn-sm text-white" (click)="confirmDelete(user.user)">delete</a></td>
       </tr>
     </tbody>
   </table>

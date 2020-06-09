@@ -29,7 +29,7 @@
       <td>{{seeker.expectedSalary}}</td>
       <td><a class="btn btn-success btn-sm text-white" (click)="crudOperation('show',seeker.user.id)">show</a></td>
       <td><a class="btn btn-primary btn-sm text-white" (click)="crudOperation('edit',seeker.user.id)">edit</a></td>
-      <td><a class="btn btn-danger btn-sm text-white" (click)="crudOperation('delete',seeker.user.id)">delete</a></td>
+      <td><a class="btn btn-danger btn-sm text-white" (click)="confirmDelete(seeker.user)">delete</a></td>
     </tr>
   </tbody>
 </table>

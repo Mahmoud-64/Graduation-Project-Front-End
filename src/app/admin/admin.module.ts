@@ -32,7 +32,8 @@ import { FormEmployeeComponent } from './dashboard/employees/form-employee/form-
 import { StatusComponent } from './dashboard/admin-apps/status/status.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StatusFormComponent } from './dashboard/admin-apps/status/status-form/status-form.component' ;
+import { StatusFormComponent } from './dashboard/admin-apps/status/status-form/status-form.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component' ;
 
 
 
@@ -44,7 +45,7 @@ import { StatusFormComponent } from './dashboard/admin-apps/status/status-form/s
     ContactTypesComponent, ContactTypesListComponent, ContactTypesFormComponent,
     ContactsComponent, ContactFormComponent,
     InterviewLevelsComponent, InterviewLevelsFormComponent,
-    ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent, StatusComponent, StatusFormComponent
+    ShowSeekerComponent, SeekerFormComponent, ShowEmployeeComponent, FormEmployeeComponent, StatusComponent, StatusFormComponent, ConfirmModalComponent
   ],
 
   imports: [

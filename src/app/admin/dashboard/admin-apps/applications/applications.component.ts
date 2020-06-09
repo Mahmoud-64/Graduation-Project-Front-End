@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationService } from 'src/app/job-application/services/application.service';
 import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmModalComponent } from 'src/app/admin/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'admin-applications',
@@ -20,6 +22,8 @@ export class ApplicationsComponent implements OnInit {
 
   constructor(
     private applicationService: ApplicationService,
+    private modalService: NgbModal
+
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +78,7 @@ export class ApplicationsComponent implements OnInit {
     }
 
 
-  deleteApplication(appId, statusIndex) {
+  deleteApplication(appId) {
     this.applicationService.deleteSingleApplication(appId).subscribe(
       result => {
         this.ngOnInit();
@@ -87,6 +91,19 @@ export class ApplicationsComponent implements OnInit {
 
   updateAppTable(event){
     this.applications = event;
+  }
+
+  confirmDelete(data) {
+    const modalRef = this.modalService.open(ConfirmModalComponent);
+    modalRef.componentInstance.data = "the Application " ;
+    modalRef.result.then(
+      result => {
+        this.deleteApplication(data.id);
+      },
+      rejected => {
+        console.log("rejected");
+      }
+    )
   }
 
 }
