@@ -19,8 +19,6 @@ export class AppListComponent implements OnInit {
   ngOnInit(): void {
     this.applicationService.getAllApplications().subscribe(
       result => {
-        console.log("success");
-        console.log(result.data);
         this.applications = result.data;
         if (result.data.length > 0) {
           this.renderFirstApp(result.data);
@@ -52,7 +50,6 @@ export class AppListComponent implements OnInit {
   renderFirstApp(apps) {
     this.firstElementId = apps[0].id;
     this.router.navigateByUrl('/applications/' + this.firstElementId);
-    console.log('first id ' + this.firstElementId);
   }
 
 

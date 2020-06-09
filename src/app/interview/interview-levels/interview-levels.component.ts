@@ -52,8 +52,6 @@ export class InterviewLevelsComponent implements OnInit {
   }
 
   showInterview(interview) {
-    console.log("interview", interview);
-    
     this.newInterview = this.interviews[interview.selectedIndex];
     this.loadInterview = !this.loadInterview;
   }

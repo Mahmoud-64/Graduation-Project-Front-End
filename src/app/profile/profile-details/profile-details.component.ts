@@ -55,7 +55,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
         this.role = seeker.data.user.role;
-        console.log("roooooole", this.role);
         this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });
   }
@@ -72,10 +71,7 @@ export class ProfileDetailsComponent implements OnInit {
   }
 
   downloadFile() {
-    console.log(this.seeker);
-
     this.seekerService.downloadCV(this.seeker.user.id, this.seeker.cv).subscribe(res => {
-      console.log(res);
     })
   }
 

@@ -61,7 +61,7 @@ export class UserService {
   updateUser(userId, user: User): Observable<any> {
     return this.http.put("api/users/"+userId, user)
     .pipe(
-      tap(()=>console.log(userId, user))
+      tap()
       ,catchError(this.handleError2<User[]>('updateUser', []))
     );
   }
@@ -104,7 +104,6 @@ export class UserService {
   hasRole(): Observable<Number>
   {
     return this.getLoggedInUser().pipe(map(user=>{
-      console.log("check logged in ", this.loggedIn() , user);
       if(this.loggedIn() && user)
       {
         if (user.role == "super-admin") return (Role.superadmin);

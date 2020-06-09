@@ -1,4 +1,4 @@
-<div class="mx-2 my-5 w-75">
+<div class="mx-5">
   <mat-horizontal-stepper class="bg-color p-3" labelPosition="bottom" (selectionChange)="showInterview($event)">
     <mat-step *ngFor="let interview of interviews" [label]="interview.level_name">
       <!-- <button (click)="myInterviews()" class="btn btn-primary">{{interview.level_name}}</button> -->

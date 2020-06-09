@@ -44,7 +44,6 @@ export class AppDetailsComponent implements OnInit {
     this.route.params.subscribe(routParams => {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
-          console.log(result);
           this.interviewForm = false;
           this.application = result.data;
           this.isDataLoaded = true;
@@ -84,7 +83,6 @@ export class AppDetailsComponent implements OnInit {
         if (result == 1) {
           this.isAdmin = true;
         }
-        console.log('role', result);
       }
     );
   }
