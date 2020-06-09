@@ -10,8 +10,8 @@ export class LevelsService {
 
   constructor(private http: HttpClient) { }
 
-  getLevels(){
-    return this.http.get('/api/levels');
+  getLevels(pageParam={}){
+    return this.http.get('/api/levels', {params: pageParam});
   }
 
   getLevel(id){

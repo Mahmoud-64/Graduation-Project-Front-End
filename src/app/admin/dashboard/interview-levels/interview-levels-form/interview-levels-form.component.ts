@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LevelsService } from '../../../../service/levels.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import {
   FormBuilder,
   FormGroup,
@@ -12,12 +14,16 @@ import {
   styleUrls: ['./interview-levels-form.component.css']
 })
 export class InterviewLevelsFormComponent implements OnInit {
+  @Input() level_id;
+  @Input() clickType;
+  @Output() levelChanged = new EventEmitter;
   error;
-  level_id;
   level: FormGroup = this.fb.group({
     id: [''],
     name: [''],
   });
+  private _success = new Subject<string>();
+  successMessage = '';
 
   constructor(
     private router: Router,
@@ -26,39 +32,48 @@ export class InterviewLevelsFormComponent implements OnInit {
     private fb: FormBuilder, ) { }
 
   ngOnInit(): void {
-    if (this.router.url.includes('edit')) {
-      this.route.paramMap.subscribe(params => {
-        this.level_id = +params.get('Id');
-        console.log("level id", this.level_id);
-      });
+    if (this.level_id) {
       this.levelsService.getLevel(this.level_id).subscribe(level => {
         this.level.patchValue(level['data']);
         console.log("level", level);
       })
     }
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(3000)
+    ).subscribe(() => this.successMessage = '');
   }
 
+  public changeSuccessMessage() {
+    if (this.clickType == 'edit') {
+      this._success.next(`Edited successfully.`);
+    } else {
+      this._success.next(`Added successfully.`);
+    }
+  }
 
   submitLevel() {
     console.log(this.level.value);
-    if (this.router.url.includes('edit')) {
+    if (this.clickType == 'edit') {
       this.levelsService.updateLevel(this.level_id, this.level.value)
         .subscribe(result => {
-          console.log(result);
+          this.error = '';
+          this.levelChanged.emit();
+          this.changeSuccessMessage();
         },
-        err=>{
-          console.log("error",err.errors);
-          this.error = err.errors;
-        })
+          err => {
+            this.error = err.errors;
+          })
     } else {
       this.levelsService.addLevel(this.level.value)
         .subscribe(result => {
-          console.log(result);
+          this.error = '';
+          this.levelChanged.emit();
+          this.changeSuccessMessage();
         },
-        err=>{
-          console.log("error",err.errors);
-          this.error = err.errors;
-        })
+          err => {
+            this.error = err.errors;
+          })
     }
   }
 

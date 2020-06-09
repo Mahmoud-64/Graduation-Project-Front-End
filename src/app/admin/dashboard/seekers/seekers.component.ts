@@ -14,7 +14,7 @@ export class SeekersComponent implements OnInit {
   perPage=15;
   next: number=0;
   prev: number=0;
-  currentPage: number=2;
+  currentPage: number=0;
   constructor(
     private seekerService: SeekerService,
     private router: Router) { }

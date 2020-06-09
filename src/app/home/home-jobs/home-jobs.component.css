@@ -1,19 +1,7 @@
 .item:hover{
-    /* background: rgb(0,115,177) !important;
-    color: white !important; */
-    font-family: "Times New Roman", Times, serif;
     cursor: pointer;
     border-style: inset;
-    border-width: 2px;
-}
-
-.item{
-    background:white !important;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 20px;
-    border-style: solid;
-    border-color: #31708e;
-    border-width: 1px;
+    border-width: 3px;
 }
 
 .h-item{
@@ -21,14 +9,14 @@
 }
 
 .home-title{
-    color: #ffe400;
+    color: #000000;
 }
 
 .bg-jobs{
     border-radius: 5px;
     /* background: #05386b; */
     background: rgb(216,228,240);
-background: radial-gradient(circle, rgba(216,228,240,1) 50%, rgba(5,56,107,1) 100%);
+    background: radial-gradient(circle, rgba(216,228,240,1) 50%, rgba(5,56,107,1) 100%);
 }
 
 /* .page-link{

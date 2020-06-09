@@ -1,4 +1,4 @@
-<form [formGroup]="level" (ngSubmit)="submitLevel()">
+<form class="w-75 mx-auto" [formGroup]="level" (ngSubmit)="submitLevel()">
     <div>
         <div class="my-3">
             <label>Name</label>
@@ -9,6 +9,7 @@
                 </div>
         </div>
     </div>
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
 <div class="container text-center">
     <button class="btn btn-primary">submit level</button>
 </div>

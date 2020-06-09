@@ -1,0 +1,20 @@
+<div class="w-75 mx-auto my-3" [formGroup]="statusesForm">
+    <div class="my-2">
+        <label>Name</label>
+        <input formControlName="name" class="form-control" type="text">
+        <div *ngIf="name.touched && name.invalid">
+            <small class="text-danger"> sorry required and between 3 and 15</small>
+        </div>
+    </div>
+    <div class="my-2">
+        <label>Description</label>
+        <input formControlName="description" class="form-control" type="text">
+        <div *ngIf="description.touched && description.invalid">
+            <small class="text-danger"> sorry required and between 15 and 100</small>
+        </div>
+    </div>
+    <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+
+    <button [disabled]="statusesForm.invalid" class="btn btn-primary btn-sm mt-2 text-white"
+        (click)="submitStatus()">Update</button>
+</div>

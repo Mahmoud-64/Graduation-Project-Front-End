@@ -3,11 +3,20 @@ import { JobsService } from '../services/jobs.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobModalComponent } from '../job-modal/job-modal.component';
+import {trigger, style, animate, transition} from '@angular/animations';
 
 @Component({
   selector: 'home-jobs',
   templateUrl: './home-jobs.component.html',
-  styleUrls: ['./home-jobs.component.css']
+  styleUrls: ['./home-jobs.component.css'],
+  animations: [
+    trigger('fade', [
+      transition('void => *', [
+        style({ opacity: 0, transform: 'translateY(40px)' }),
+        animate(2000, style({opacity: 1, transform: 'translateY(0px)'}))
+      ])
+    ])
+  ]
 })
 export class HomeJobsComponent implements OnInit {
 

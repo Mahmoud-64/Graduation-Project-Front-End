@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { JobsService } from 'src/app/home/services/jobs.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'admin-edit-job',
@@ -35,6 +35,7 @@ export class EditJobComponent implements OnInit {
     private fB: FormBuilder,
     private jobService: JobsService,
     private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -66,18 +67,16 @@ export class EditJobComponent implements OnInit {
     ]),
     description: new FormControl('', [
       Validators.required,
-      Validators.maxLength(300),
       Validators.minLength(10),
     ]),
     seniority: new FormControl('', [
       Validators.required,
-      Validators.maxLength(20),
+      Validators.maxLength(25),
       Validators.minLength(4),
     ]),
     years_exp: new FormControl('', [
       Validators.required,
       Validators.min(0),
-      Validators.max(25),
     ]),
     available: new FormControl('', [
 
@@ -90,9 +89,7 @@ export class EditJobComponent implements OnInit {
     let controls = <FormArray>this.newJobForm.controls.requirements;
     for (const require of this.job.requirements) {
       controls.push(this.fB.control(require.name, [
-        Validators.required,
-        Validators.maxLength(50),
-        Validators.minLength(5)
+        Validators.required
       ]))
     }
 
@@ -100,9 +97,7 @@ export class EditJobComponent implements OnInit {
   newRequire() {
     return this.fB.control('',
       [
-        Validators.required,
-        Validators.maxLength(50),
-        Validators.minLength(5)
+        Validators.required
       ]
     );
   }
@@ -116,17 +111,27 @@ export class EditJobComponent implements OnInit {
 
   onSubmit() {
     console.log(this.newJobForm.value);
+    this.jobServerError = {
+      message: "",
+      errors: {
+        "title": [],
+        "description": [],
+        "seniority": [],
+        "years_exp": [],
+      }
+    };
     if (this.isDataLoaded) {
       this.updateJob();
     } else {
       this.storeJob();
     }
-    
+
   }
   updateJob(){
     this.jobService.updateJob(this.newJobForm.value, this.job.id).subscribe(
       result => {
         console.log(result);
+        this.router.navigate(['/admin/jobs']);
       },
       error => {
         this.jobServerError = error;
@@ -139,6 +144,7 @@ export class EditJobComponent implements OnInit {
     this.jobService.addNewJob(this.newJobForm.value).subscribe(
       result => {
         console.log(result);
+        this.router.navigate(['/admin/jobs']);
       },
       error => {
         this.jobServerError = error;

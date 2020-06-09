@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,6 @@ export class InterviewService {
   getInterview(interview) {
     return this.http.get<any>(this.getsingeInterviewUrl+ interview)
   }
+  newInterviewSubject = new Subject<any>();
 
 }

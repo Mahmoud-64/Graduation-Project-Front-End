@@ -25,6 +25,9 @@ export class AppListComponent implements OnInit {
         if (result.data.length > 0) {
           this.renderFirstApp(result.data);
         }
+        else{
+          this.router.navigateByUrl('/applications')
+        }
       },
       error => {
         console.log("error");
