@@ -5,3 +5,7 @@
   .mat-form-field {
     margin-top: 16px;
   }
+
+  .bg-color{
+    background: transparent;
+  }

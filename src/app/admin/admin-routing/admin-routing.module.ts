@@ -9,6 +9,8 @@ import { JobDetailsComponent } from '../../home/job-details/job-details.componen
 import { NewJobComponent } from '../../home/new-job/new-job.component';
 import { ApplicationsComponent } from '../dashboard/admin-apps/applications/applications.component';
 import { AppDetailsComponent } from '../../job-application/app-details/app-details.component';
+import { InterviewLevelsComponent as InterviewLevels } from '../../interview/interview-levels/interview-levels.component';
+
 import { SingleComponent } from '../dashboard/admin-jobs/single/single.component';
 import { EditJobComponent } from '../dashboard/admin-jobs/edit-job/edit-job.component';
 
@@ -52,6 +54,7 @@ const routes: Routes = [
       { path: 'jobs/:id', component: SingleComponent },
       { path: 'jobs/edit/:id', component: EditJobComponent },
       { path: 'applications', component: ApplicationsComponent },
+      { path: 'applications/:id/interviews', component: InterviewLevels },
       { path: 'applications/:id', component: AppDetailsComponent },
       { path: 'statuses', component: StatusComponent },
       { path: 'interviews', component: InterviewsComponent },

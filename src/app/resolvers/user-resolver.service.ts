@@ -13,7 +13,6 @@ export class UserResolverService implements Resolve<any>  {
       if(!this.userService.loggedIn()){
         return false;
       }
-      console.log("resolver");
 
       return this.userService.getUser() ? this.userService.getUser() : this.userService.getLoggedInUser();
     }

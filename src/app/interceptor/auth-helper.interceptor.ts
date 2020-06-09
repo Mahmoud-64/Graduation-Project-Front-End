@@ -17,8 +17,6 @@ export class AuthHelperInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const _token = localStorage.getItem('access_token');
-    console.log("url=", request.url);
-    
     if (_token) {
       // const urlsWithoutToken=[
       //   "/api/jobs",

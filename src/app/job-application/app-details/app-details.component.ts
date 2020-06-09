@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/application.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { InterviewService } from 'src/app/admin-interviews/services/interview.service';
 import { Location } from '@angular/common';
@@ -19,7 +19,8 @@ export class AppDetailsComponent implements OnInit {
         'name': ""
       }
     },
-    "job": { "title": "", "description": "" },
+    "job": { "title": "", "description": "", "requirements":"",
+     "seniority":"", "years_exp":"" },
     "status": { "name": "", "description": "" },
     "interviews": [],
   };
@@ -31,6 +32,7 @@ export class AppDetailsComponent implements OnInit {
     private applicationService: ApplicationService,
     private userService: UserService,
     private route: ActivatedRoute,
+    private router: Router,
     private interviewService: InterviewService,
     private location: Location
   ) {
@@ -96,6 +98,10 @@ export class AppDetailsComponent implements OnInit {
         this.ngOnInit();
       }
     )
+  }
+
+  showInterviews(){
+    this.router.navigate(['interviews'], {relativeTo: this.route})
   }
 
 }

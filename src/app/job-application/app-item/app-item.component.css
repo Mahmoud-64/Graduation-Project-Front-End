@@ -1,4 +1,10 @@
 .item:hover{
     cursor: pointer;
     border-style: groove;
+    background-color: rgb(21,65,100) !important;
+    color: white !important;
+    opacity: 0.7;
+}
+.item:hover .text-muted{
+    color: white !important;
 }

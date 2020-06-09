@@ -1,10 +1,11 @@
-<div class="m-3 p-3 bg-light item" (mouseenter)="p.open()" (mouseleave)="p.close()">
-    <p class="text-center"><b>{{application.job.title}}</b></p>
-    <span><b>Status</b></span>
+<div class="p-3 text-center bg-light border item">
+    <!-- <div class="p-3 bg-light border item" (mouseenter)="p.open()" (mouseleave)="p.close()"> -->
+    <p><b>{{application.job.title}}</b></p>
+    <!-- <span><b>Status</b></span>
     <button type="button" class="btn  mr-2" placement="top-left"  #p="ngbPopover"
         [ngbPopover]="application.status.description">
         {{application.status.name}}
-    </button>
-    <hr>
-    <p><b>Last Updated</b> : {{application.date | date}}</p>
+    </button> -->
+    <!-- <hr> -->
+    <p class="text-muted"><small><b>Last Updated</b> : {{application.date | date}}</small></p>
 </div>

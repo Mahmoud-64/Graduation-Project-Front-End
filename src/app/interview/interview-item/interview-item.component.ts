@@ -13,8 +13,8 @@ export class InterviewItemComponent implements OnInit {
   single: any = {};
   id = 0;
   @Input() newInterview?;
-  constructor(public interviewService: InterviewService, private route: ActivatedRoute) { 
-   
+  constructor(public interviewService: InterviewService, private route: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
@@ -35,19 +35,18 @@ export class InterviewItemComponent implements OnInit {
             // console.log(this.singleInterview['data']);
 
             // return this.singleInterview;
-            console.log(this.single);
 
           }
           )
         });
     }
-    
-    
+
+
     // this.single = this.interviewService.fetchSingleInterview(4);
     // this.single = this.interviewService.singleInterview;
 
 
   }
-  
+
 
 }

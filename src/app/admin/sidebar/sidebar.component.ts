@@ -12,8 +12,6 @@ export class SidebarComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log("xxxx");
-    
   }
   selected = "";
   onClick(data)

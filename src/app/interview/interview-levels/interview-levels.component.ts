@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InterviewService } from '../interview.service';
 import { ActivatedRoute } from '@angular/router';
+import { ApplicationService } from '../../job-application/services/application.service';
 
 
 @Component({
@@ -14,18 +15,18 @@ export class InterviewLevelsComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  @Input() interviews = [];
+  interviews = [];
   loadInterview: boolean = false;
   newInterview;
 
   renderInterview: boolean = false;
 
   constructor(private _formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private applicationService: ApplicationService
   ) { }
 
   ngOnInit() {
-    this.renderInterview = false;
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -33,12 +34,26 @@ export class InterviewLevelsComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    this.renderFirstInterview();
+    this.route.params.subscribe(param => {
+      this.route.params.subscribe(routParams => {
+        this.applicationService.getSingleApplication(routParams.id).subscribe(
+          result => {
+            this.interviews = result.data['interviews'];
+            this.renderFirstInterview();
+            this.renderInterview = true;
+          },
+          error => {
+            console.log(error);
 
-
+          }
+        )
+      })
+    })
   }
 
   showInterview(interview) {
+    console.log("interview", interview);
+    
     this.newInterview = this.interviews[interview.selectedIndex];
     this.loadInterview = !this.loadInterview;
   }
@@ -48,7 +63,7 @@ export class InterviewLevelsComponent implements OnInit {
     }
   }
 
-  myInterviews() {
-    this.renderInterview = !this.renderInterview;
-  }
+  // myInterviews() {
+  //   this.renderInterview = !this.renderInterview;
+  // }
 }
