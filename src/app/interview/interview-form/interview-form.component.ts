@@ -3,15 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { InterviewService } from '../interview.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ApplicationService } from 'src/app/job-application/services/application.service';
+import { LevelsService } from 'src/app/service/levels.service';
+import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
   selector: 'app-interview-form',
   templateUrl: './interview-form.component.html',
   styleUrls: ['./interview-form.component.css'],
-  providers: [InterviewService]
+  providers: [InterviewService, ApplicationService, LevelsService, EmployeeService]
 })
 export class InterviewFormComponent implements OnInit {
-  // arr: any[]=[];
   apps: any;
   levels: any;
   employees: any;
@@ -26,68 +28,40 @@ export class InterviewFormComponent implements OnInit {
       ]
   };
 
-  constructor(private http: HttpClient, public interviewService: InterviewService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
-  // defaultQuestion = 'teacher';
-  // genders = ['male', 'female', 'a', 'b'];
+  constructor(private http: HttpClient, public interviewService: InterviewService, public applicationService: ApplicationService, public levelsService: LevelsService, public employeeService: EmployeeService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
   onCreatePost(postData: { title: string; content: string }) {
-    // Send Http request
 
-    this.http
-      .post(
-        'http://localhost:8000/api/interview',
-        postData,
-        // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
-      )
+    this.interviewService.addInterview(postData)
       .subscribe(responseData => {
         console.log(responseData);
         this._flashMessagesService.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
-        // this.router.navigate(["/admin/interviews"]);
         setTimeout(() => {
           this.router.navigate(["/admin/interviews"]);
         }, 2000);
       }, error => {
         this.error = error;
-        // console.log(this.error.errors.application_id);
         this._flashMessagesService.show('error', { cssClass: 'alert-danger', timeout: 1000 });
       });
   }
   ngOnInit() {
     this.interviewService.fetchInterview();
-    // console.log(this.interviewService.fetchInterview());
-    // this.arr = this.interviewService.loadedInterview[0]
-    //############################
-    this.http
-      .get(
-        '/api/applications/'
-      )
 
+    this.applicationService.getAllApplications()
       .subscribe(applications => {
         this.apps = applications;
         console.log(this.apps);
-
       });
 
-
-    this.http
-      .get(
-        '/api/levels/'
-      )
-
+    this.levelsService.getLevels()
       .subscribe(l => {
         this.levels = l;
         console.log(this.levels);
-
       });
 
-    this.http
-      .get(
-        '/api/employees/'
-      )
-
+    this.employeeService.getEmployees()
       .subscribe(emp => {
         this.employees = emp;
         console.log(this.employees);
-
       });
 
 
