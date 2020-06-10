@@ -34,7 +34,7 @@
         <select class="form-control" ngModel name="emp_id" id="emp_id">
             <option [value]="" hidden selected>{{single.emp_name}}</option>
             <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
-                {{(employee.name)}}</option>
+                {{(employee.user.name)}}</option>
         </select>
         <p class="interviewErrorMessages" *ngIf="error.errors.emp_id">{{error.errors.emp_id}}</p>
     </div>

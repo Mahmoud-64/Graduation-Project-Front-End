@@ -82,35 +82,7 @@ const routes: Routes = [
       { path: 'emprev/details/:id', component: EmpInterviewItemComponent },
       { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
 
-      // {
-      //   path: 'interview', component: InterviewComponent,
-      //   children: [
-      //     {
-      //       path: 'add',
-      //       component: InterviewFormComponent
-      //     },
-      //     {
-      //       path: 'edit/:id',
-      //       component: InterviewEditComponent
-      //     },
-      //     {
-      //       path: 'show/:id',
-      //       component: InterviewItemComponent
-      //     },
-      //     {
-      //       path: 'list',
-      //       component: InterviewListComponent
-      //     },
-      //     {
-      //       path: 'details',
-      //       component: InterviewDetailsComponent
-      //     },
-      //     {
-      //       path: 'levels',
-      //       component: InterviewLevelsComponent
-      //     }
-      //   ]
-      // },
+
       { path: 'error404', component: Handel404Component },
       { path: 'error500', component: Handel500Component },
       { path: 'error403', component: Handel403Component },
