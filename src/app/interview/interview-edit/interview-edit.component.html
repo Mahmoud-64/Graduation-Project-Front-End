@@ -33,6 +33,7 @@
         <label for="emp_id">employee</label>
         <select class="form-control" ngModel name="emp_id" id="emp_id">
             <option [value]="" hidden selected>{{single.emp_name}}</option>
+            <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
             <option *ngFor="let employee of this.employees" [value]="employee.emp_id">
                 {{(employee.user.name)}}</option>
         </select>

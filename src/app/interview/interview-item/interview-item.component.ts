@@ -31,6 +31,8 @@ export class InterviewItemComponent implements OnInit {
             // this.loadedInterview = interviews;
             // console.log(interview['data']);
             this.single = interview['data']
+            // console.log(this.single);
+
             // this.singleInterview = interview;
             // console.log(this.singleInterview['data']);
 
