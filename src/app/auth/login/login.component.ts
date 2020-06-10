@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.router.navigateByUrl('/');
       }
-      console.log(users);
     },
       err => {
         this.userError = "Email or Password is Incorrect"

@@ -33,12 +33,9 @@ export class ContactFormComponent implements OnInit {
   
 
   submitContact() {
-    console.log(this.contact.value);
-    
     this.contactService.addContact(this.contact.value)
       .subscribe(result => {
         // this.contactTypes=contact['data'];
-        console.log(result);
       });
   }
 

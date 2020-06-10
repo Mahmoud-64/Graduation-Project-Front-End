@@ -43,7 +43,6 @@ export class PersonalFormComponent implements OnInit, OnChanges {
     },
     err=>{
         this.error = err;
-        console.log("error=", this.error);
     });
 
 
