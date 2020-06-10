@@ -20,7 +20,6 @@ export class SeekerService {
     return this.http.get<Seeker>(this.seekersUrl + seekerId);
   }
   updateSeeker(seekerId, seeker): Observable<any> {
-    console.log(seeker);
 
     return this.http.put(this.seekersUrl + seekerId, seeker)
       .pipe(
@@ -29,8 +28,6 @@ export class SeekerService {
   }
 
   createSeeker(seeker): Observable<any> {
-    console.log("create seeker", seeker);
-
     return this.http.post(this.seekersUrl, seeker)
       .pipe(
         catchError(this.handleError<Seeker[]>('createSeeker', []))
@@ -47,10 +44,9 @@ export class SeekerService {
     let token = localStorage.getItem('access_token');
     form.append('cv', selfile, selfile.name);
     xhr.onload = (e) => {
-      console.log('file uploaded');
+      
     };
     xhr.onreadystatechange = function () {
-      console.log('readyState', xhr.readyState);
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           callback(JSON.parse(xhr.response));

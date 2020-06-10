@@ -47,24 +47,18 @@ export class SeekersComponent implements OnInit {
   crudOperation(crudName, id) {
     switch (crudName) {
       case 'new':
-        console.log('new', this.router.url);
         this.router.navigateByUrl(`/admin/seeker/new`);
         break;
       case 'show':
-        console.log('show', id, this.router.url);
         this.router.navigateByUrl(`/admin/seeker/show/${id}`);
         break;
       case 'edit':
-        console.log('edit');
         this.router.navigateByUrl(`/admin/seeker/edit/${id}`);
         break;
       case 'delete':
-        console.log('delete');
         this.seekerService.deleteSeeker(id).subscribe(result=>{
-          console.log(result);
           this.seekerService.getSeekers().subscribe(seekers => {
             this.seekers = seekers.data;
-            console.log(this.seekers);
           })
         });
 

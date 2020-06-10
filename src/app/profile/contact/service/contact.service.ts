@@ -40,7 +40,6 @@ export class ContactService {
       contacts: contact,
       seeker_id: this.user_id,
     };
-    console.log(addContact);
 
     return this.http.post(`/api/contact`, addContact);
   }
