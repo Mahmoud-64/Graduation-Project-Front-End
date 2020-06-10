@@ -73,23 +73,19 @@ export class ContactFormComponent implements OnInit {
 
 
   submitContact() {
-    console.log(this.contact.value);
     if (this.contact_id) {
       this.contactService.editContact(this.contact_id, this.contact.value)
         .subscribe(result => {
-          console.log(result);
           this.contactChanged.emit();
           this.changeSuccessMessage();
         })
     } else {
       this.contactService.addNewContact(this.contact.value)
         .subscribe(result => {
-          console.log(result);
           this.contactChanged.emit();
           this.changeSuccessMessage();
         },
         err=>{
-          console.log("error",err.errors);
           this.error = err.errors;
         })
     }

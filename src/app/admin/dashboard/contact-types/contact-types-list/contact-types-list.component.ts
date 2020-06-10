@@ -39,8 +39,6 @@ export class ContactTypesListComponent implements OnInit {
 
   getContactTypes(params = {}) {
     this.contactService.getContactTypes(params).subscribe(contactTypes => {
-      console.log(contactTypes);
-
       this.contactTypes = contactTypes['data'];
       this.currentPage = contactTypes['meta'].current_page;
       let links = contactTypes['links'];
@@ -59,7 +57,6 @@ export class ContactTypesListComponent implements OnInit {
   closeResult = '';
   open(content, clickType, id = '') {
     this.id = id;
-    console.log("id", this.id);
     this.clickType = clickType;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -79,7 +76,6 @@ export class ContactTypesListComponent implements OnInit {
   }
 
   deleteContactType(id) {
-    console.log('delete');
     this.contactService.deleteContactType(id).subscribe(result => {
       this.error = result['data'];
       this.contactService.getContactTypes().subscribe(contactTypes => {

@@ -24,8 +24,6 @@ export class ProfileFormComponent implements OnInit {
   onClickSubmit(formData)
   {
     let user_id = this.userService.user_id;
-    console.log(formData);
-    console.log(user_id);
     this.userService.updateUser(user_id, formData)
     .subscribe((data) => console.log(data));
 

@@ -59,15 +59,10 @@ export class SeekerFormComponent implements OnInit {
     this.editRoute = this.router.url.includes('edit');
     if (this.editRoute)
     {
-      console.log("edit=", this.router.url.includes('edit'));
-
         this.route.paramMap.subscribe(params => {
           this.user_id=params.get('id');
           this.getSeeker(params.get('id')).subscribe((data)=>{
             this.user = data.data;
-            // this.user.password = "";
-            // console.log("user", this.user, this.user.id);
-
             this.details ? this.details.patchValue(data.data) : null;
             this.contacts.clear();
             for (let contact in this.user.contacts) {
@@ -105,11 +100,9 @@ export class SeekerFormComponent implements OnInit {
         this.userService.updateUser(this.user_id, this.details.get('user').value)
         .subscribe((data) => {
           this.errordata = "";
-          console.log("data", data);
         },
         err=>{
             this.errordata = err;
-            console.log("error=", this.errordata);
         });
         if (!this.error && !this.errordata) {
           this.router.navigateByUrl(`/admin/seeker/show/${this.user_id}`);
@@ -117,13 +110,10 @@ export class SeekerFormComponent implements OnInit {
     }
     else
     {
-      console.log("on submit", this.details.value);
-
       this.seekerService.createSeeker(this.details.value)
         .subscribe(result => {
           this.user = result.data;
           this.error = "";
-          console.log("return====", this.user);
           // this.router.navigateByUrl(`/admin/seeker/show/${result.data.user.id}`);
         },
           err => {

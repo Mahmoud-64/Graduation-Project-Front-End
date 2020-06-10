@@ -9,7 +9,7 @@
         <label for="application_id">application_id</label>
         <select class="form-control" ngModel name="application_id" id="application_id">
             <option [value]="" hidden selected>{{single.application_id}}</option>
-            <option *ngFor="let app of this.apps.data" [value]="app.id">
+            <option *ngFor="let app of this.apps" [value]="app.id">
                 {{(app.id)}}</option>
         </select>
         <p class="interviewErrorMessages" *ngIf="error.errors.application_id">{{error.errors.application_id}}</p>
@@ -33,7 +33,11 @@
         <label for="emp_id">employee</label>
         <select class="form-control" ngModel name="emp_id" id="emp_id">
             <option [value]="" hidden selected>{{single.emp_name}}</option>
+<<<<<<< HEAD
             <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
+=======
+            <option *ngFor="let employee of this.employees" [value]="employee.emp_id">
+>>>>>>> d315d9dba84bb1df0c98f244105dbcecd4b079da
                 {{(employee.user.name)}}</option>
         </select>
         <p class="interviewErrorMessages" *ngIf="error.errors.emp_id">{{error.errors.emp_id}}</p>
@@ -59,7 +63,7 @@
         <label for="leve_id">leve_id</label>
         <select class="form-control" ngModel name="level_id" id="leve_id">
             <option [value]="" hidden selected>{{single.level_name}}</option>
-            <option *ngFor="let level of this.levels.data" [value]="level.id">
+            <option *ngFor="let level of this.levels" [value]="level.id">
                 {{(level.name)}}</option>
         </select>
         <p class="interviewErrorMessages" *ngIf="error.errors.level_id">{{error.errors.level_id}}</p>

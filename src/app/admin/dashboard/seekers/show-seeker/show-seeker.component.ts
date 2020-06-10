@@ -45,7 +45,6 @@ export class ShowSeekerComponent implements OnInit {
     this.seekerService.getSeeker(user_id).subscribe(user => {
       this.seeker = user.data;
       this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
-      console.log("show seeker", this.seeker);
     });
   }
 

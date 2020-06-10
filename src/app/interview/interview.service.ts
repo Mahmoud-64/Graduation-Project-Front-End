@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
     providedIn: 'root'
 })
 export class InterviewService {
-    loadedInterview: any[]=[];
+    loadedInterview: any[] = [];
     singleInterview;
     constructor(private http: HttpClient) { }
 
@@ -46,6 +46,13 @@ export class InterviewService {
 
     }
 
-    
+    public updateInterview(id, postData){
+        return this.http
+      .put(
+        'http://localhost:8000/api/interview/' + id,
+        postData,
+        // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
+      );
+    }
 
 }

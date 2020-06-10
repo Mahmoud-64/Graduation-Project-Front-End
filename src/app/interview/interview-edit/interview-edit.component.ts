@@ -36,12 +36,7 @@ export class InterviewEditComponent implements OnInit {
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
 
-    this.http
-      .put(
-        'http://localhost:8000/api/interview/' + this.id,
-        postData,
-        // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
-      )
+    this.interviewService.updateInterview(this.id, postData)
       .subscribe(
         responseData => {
           console.log(responseData);
@@ -83,7 +78,7 @@ export class InterviewEditComponent implements OnInit {
       )
 
       .subscribe(applications => {
-        this.apps = applications;
+        this.apps = applications['data'];
         console.log(this.apps);
 
       });
@@ -95,7 +90,7 @@ export class InterviewEditComponent implements OnInit {
       )
 
       .subscribe(l => {
-        this.levels = l;
+        this.levels = l['data'];
         console.log(this.levels);
 
       });
@@ -106,7 +101,7 @@ export class InterviewEditComponent implements OnInit {
       )
 
       .subscribe(emp => {
-        this.employees = emp;
+        this.employees = emp['data'];
         console.log(this.employees);
 
       });

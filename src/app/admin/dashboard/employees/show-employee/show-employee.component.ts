@@ -33,7 +33,6 @@ export class ShowEmployeeComponent implements OnInit {
   {
     this.employeeService.getEmployee(user_id).subscribe(user => {
       this.user = user.data;
-      console.log("show user", this.user);
     });
   }
 

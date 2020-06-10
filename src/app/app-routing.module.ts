@@ -78,7 +78,14 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent },
       { path: 'resetpassword', component: ResetPasswordComponent },
 
-      { path: 'emprev', component: EmpInterviewListComponent },
+      {
+        path: 'emprev',
+        canActivate: [AuthGuard],
+        data: {
+          role: Role.employee,
+        },
+        component: EmpInterviewListComponent
+      },
       { path: 'emprev/details/:id', component: EmpInterviewItemComponent },
       { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
 
