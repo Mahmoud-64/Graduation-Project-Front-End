@@ -23,9 +23,13 @@ export class AuthGuard implements CanActivate, CanLoad {
     }
 
     return this.userService.getLoggedInUser().pipe(map(data => {
-      const role = route.data.role as Role;
       let userRole = this.userService.getUserRole();
-      if (role != userRole) {
+      const roleEmp = userRole==route.data.roleEmp as Role;
+      const roleSek = userRole==route.data.roleSek as Role;
+      const roleAdmin = userRole==route.data.roleAdmin as Role;
+      console.log("roles=", roleEmp, roleSek, userRole);
+      
+      if (!roleEmp && !roleSek && !roleAdmin) {
         this.router.navigateByUrl('/error403');
         return false;
       }
@@ -35,7 +39,8 @@ export class AuthGuard implements CanActivate, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-
+      console.log("load");
+      
     if (!this.userService.loggedIn()) {
       this.router.navigateByUrl('/');
       return false;

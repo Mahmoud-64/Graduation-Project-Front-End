@@ -70,6 +70,11 @@ const routes: Routes = [
       {
         path: 'profile',
         canActivate: [AuthGuard],
+        data: {
+          roleSek: Role.seeker,
+          roleEmp: Role.employee,
+          roleAdmin: Role.superadmin,
+        },
         loadChildren: () =>
           import('./profile/profile.module').then((m) => m.ProfileModule),
       },
@@ -82,7 +87,7 @@ const routes: Routes = [
         path: 'emprev',
         canActivate: [AuthGuard],
         data: {
-          role: Role.employee,
+          roleEmp: Role.employee,
         },
         component: EmpInterviewListComponent
       },
@@ -90,7 +95,7 @@ const routes: Routes = [
         path: 'emprev/details/:id',
         canActivate: [AuthGuard],
         data: {
-          role: Role.employee,
+          roleEmp: Role.employee,
         }, component: EmpInterviewItemComponent
       },
       { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
