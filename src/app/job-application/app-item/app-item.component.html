@@ -1,4 +1,4 @@
-<div class="p-3 text-center bg-light border item">
+<div class="p-3 m-1 text-center bg-light border item">
     <!-- <div class="p-3 bg-light border item" (mouseenter)="p.open()" (mouseleave)="p.close()"> -->
     <p><b>{{application.job.title}}</b></p>
     <!-- <span><b>Status</b></span>
@@ -7,5 +7,6 @@
         {{application.status.name}}
     </button> -->
     <!-- <hr> -->
+    <p class="text-muted "><small><b>Status</b> : </small><small class="status">{{application.status.name}}</small></p>
     <p class="text-muted"><small><b>Last Updated</b> : {{application.date | date}}</small></p>
 </div>
