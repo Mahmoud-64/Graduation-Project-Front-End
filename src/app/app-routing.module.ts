@@ -95,7 +95,7 @@ const routes: Routes = [
         path: 'emprev/details/:id',
         canActivate: [AuthGuard],
         data: {
-          role: Role.employee,
+          roleEmp: Role.employee,
         }, component: EmpInterviewItemComponent
       },
       { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
