@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       if (this.userService.getUserRole() == Role.superadmin) {
         this.router.navigateByUrl('/admin');
       }
-      if (this.userService.getUserRole() == Role.employee) {
+      else if (this.userService.getUserRole() == Role.employee) {
         this.router.navigateByUrl('/emprev');
       } else {
         this.router.navigateByUrl('/');
