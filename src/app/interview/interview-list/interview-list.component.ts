@@ -16,11 +16,7 @@ export class InterviewListComponent implements OnInit {
 
   delete(id: number) {
     console.log(id);
-    this.http
-      .delete(
-        'http://localhost:8000/api/interview/' + id
-      )
-
+    this.interviewService.deleteInterview(id)
       .subscribe(posts => {
         console.log('deleted');
         this.ngOnInit()

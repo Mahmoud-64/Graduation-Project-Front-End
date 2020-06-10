@@ -54,27 +54,22 @@ export class ContactTypesFormComponent implements OnInit {
   }
 
   submitContactType() {
-    console.log(this.contactType.value);
     if (this.contact_type_id) {
       this.contactService.editContactType(this.contact_type_id, this.contactType.value)
         .subscribe(result => {
-          console.log(result);
           this.contactTypeChanged.emit();
           this.changeSuccessMessage();
         },
           err => {
-            console.log("error", err.errors);
             this.error = err.errors;
           })
     } else {
       this.contactService.addContactType(this.contactType.value)
         .subscribe(result => {
-          console.log(result);
           this.contactTypeChanged.emit();
           this.changeSuccessMessage();
         },
           err => {
-            console.log("error", err.errors);
             this.error = err.errors;
           })
     }

@@ -21,22 +21,14 @@ export class EmpInterviewEditComponent implements OnInit {
 
 
   constructor(private http: HttpClient, public interviewService: InterviewService, private route: ActivatedRoute, private router: Router, private _flashMessagesServicee: FlashMessagesService) { }
-  defaultQuestion = 'teacher';
-  genders = ['male', 'female', 'a', 'b'];
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
 
-    this.http
-      .put(
-        'http://localhost:8000/api/interview/' + this.id,
-        postData,
-        // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
-      )
+    this.interviewService.updateInterview(this.id, postData)
       .subscribe(
         responseData => {
           console.log(responseData);
           this._flashMessagesServicee.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
-          // this.router.navigate(["/admin/interviews"]);
           setTimeout(() => {
             this.router.navigate(["/emprev"]);
           }, 2000);

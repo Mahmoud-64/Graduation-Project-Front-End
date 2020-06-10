@@ -30,10 +30,7 @@ export class EmployeesComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router,
     private modalService: NgbModal
-) {
-      console.log('employee opened');
-
-     }
+) { }
 
 
     ngOnInit(): void {
@@ -57,7 +54,6 @@ export class EmployeesComponent implements OnInit {
       this.employeeService.getEmployees({perPage: 15, page: page}).subscribe(users => {
         this.users = users.data;
         this.links = users.links;
-        console.log(users);
       })
     }
 
@@ -65,25 +61,19 @@ export class EmployeesComponent implements OnInit {
     crudOperation(crudName, id) {
       switch (crudName) {
         case 'new':
-          console.log('new', id, this.router.url);
           this.router.navigateByUrl(`/admin/employee/new`);
           break;
         case 'show':
-          console.log('show', id, this.router.url);
           this.router.navigateByUrl(`/admin/employee/show/${id}`);
           break;
         case 'edit':
-          console.log('edit');
           this.router.navigateByUrl(`/admin/employee/edit/${id}`);
           break;
         case 'delete':
-          console.log('delete');
           this.employeeService.deleteEmployee(id).subscribe(result=>{
-            console.log(result);
             this.error = result['data'];
             this.employeeService.getEmployees().subscribe(users => {
               this.users = users.data;
-              console.log(this.users);
             })
           });
 

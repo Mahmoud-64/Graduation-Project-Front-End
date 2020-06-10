@@ -40,11 +40,7 @@ export class FormEmployeeComponent implements OnInit {
       });
 
       this.employeeService.getEmployee(this.employee_id).subscribe(employee => {
-        console.log("employeeee", employee['data']);
-
         this.employee.patchValue(employee['data']);
-        console.log(this.employee.value);
-
       });
     }
   }
@@ -63,22 +59,18 @@ export class FormEmployeeComponent implements OnInit {
       this.employeeService.updateEmployee(this.employee_id, employeeData)
         .subscribe(result => {
         this.error = '';
-          console.log(result);
           this.router.navigateByUrl(`/admin/employee/show/${this.employee_id}`);
         },
           err => {
             this.error = err.errors;
           })
     } else {
-      console.log(employeeData);
       this.employeeService.addEmployee(employeeData)
         .subscribe(result => {
         this.error = '';
         this.router.navigateByUrl(`/admin/employee/show/${result.data.user.id}`);
-          console.log(result);
         },
           err => {
-            console.log("error", err.errors);
             this.error = err.errors;
           })
     }

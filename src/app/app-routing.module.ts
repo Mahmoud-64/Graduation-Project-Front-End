@@ -70,6 +70,11 @@ const routes: Routes = [
       {
         path: 'profile',
         canActivate: [AuthGuard],
+        data: {
+          roleSek: Role.seeker,
+          roleEmp: Role.employee,
+          roleAdmin: Role.superadmin,
+        },
         loadChildren: () =>
           import('./profile/profile.module').then((m) => m.ProfileModule),
       },
@@ -78,39 +83,24 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent },
       { path: 'resetpassword', component: ResetPasswordComponent },
 
-      { path: 'emprev', component: EmpInterviewListComponent },
-      { path: 'emprev/details/:id', component: EmpInterviewItemComponent },
+      {
+        path: 'emprev',
+        canActivate: [AuthGuard],
+        data: {
+          roleEmp: Role.employee,
+        },
+        component: EmpInterviewListComponent
+      },
+      {
+        path: 'emprev/details/:id',
+        canActivate: [AuthGuard],
+        data: {
+          roleEmp: Role.employee,
+        }, component: EmpInterviewItemComponent
+      },
       { path: 'emprev/review/:id', component: EmpInterviewEditComponent },
 
-      // {
-      //   path: 'interview', component: InterviewComponent,
-      //   children: [
-      //     {
-      //       path: 'add',
-      //       component: InterviewFormComponent
-      //     },
-      //     {
-      //       path: 'edit/:id',
-      //       component: InterviewEditComponent
-      //     },
-      //     {
-      //       path: 'show/:id',
-      //       component: InterviewItemComponent
-      //     },
-      //     {
-      //       path: 'list',
-      //       component: InterviewListComponent
-      //     },
-      //     {
-      //       path: 'details',
-      //       component: InterviewDetailsComponent
-      //     },
-      //     {
-      //       path: 'levels',
-      //       component: InterviewLevelsComponent
-      //     }
-      //   ]
-      // },
+
       { path: 'error404', component: Handel404Component },
       { path: 'error500', component: Handel500Component },
       { path: 'error403', component: Handel403Component },

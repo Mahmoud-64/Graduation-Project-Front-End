@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
       this.user = users;
       if (this.userService.getUserRole() == Role.superadmin) {
         this.router.navigateByUrl('/admin');
+      }
+      else if (this.userService.getUserRole() == Role.employee) {
+        this.router.navigateByUrl('/emprev');
       } else {
         this.router.navigateByUrl('/');
       }
-      console.log(users);
     },
       err => {
         this.userError = "Email or Password is Incorrect"
