@@ -4,14 +4,14 @@
     </div>
     <div class="d-flex justify-content-between">
         <div>
-            <button type="button" class="btn" placement="left" [ngbPopover]="application.job.description"
-                [popoverTitle]="application.job.title">
-                Status: {{application.job.title}}
+            <button type="button" class="btn  mr-2" placement="left" #p2="ngbPopover" (mouseenter)="p2.open()"
+                (mouseleave)="p2.close()" [ngbPopover]="application.status.description"
+                [popoverTitle]="application.status.name">
+                <strong>Status: </strong> {{application.status.name}}
             </button>
         </div>
         <div>
-            <button type="button" class="btn btn-danger" 
-                (click)="showInterviews()"
+            <button type="button" class="btn btn-danger" (click)="showInterviews()"
                 *ngIf="application.interviews && application.interviews.length >0">
                 Interviews
             </button>
@@ -95,4 +95,3 @@
 <!-- <div class=" rounded mx-3 my-1 p-3" *ngIf="application.interviews && application.interviews.length >0">
     <app-interview-levels [interviews]="application.interviews"></app-interview-levels>
 </div> -->
-
