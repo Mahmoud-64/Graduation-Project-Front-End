@@ -33,11 +33,8 @@
         <label for="emp_id">employee</label>
         <select class="form-control" ngModel name="emp_id" id="emp_id">
             <option [value]="" hidden selected>{{single.emp_name}}</option>
-<<<<<<< HEAD
             <option *ngFor="let employee of this.employees.data" [value]="employee.emp_id">
-=======
             <option *ngFor="let employee of this.employees" [value]="employee.emp_id">
->>>>>>> d315d9dba84bb1df0c98f244105dbcecd4b079da
                 {{(employee.user.name)}}</option>
         </select>
         <p class="interviewErrorMessages" *ngIf="error.errors.emp_id">{{error.errors.emp_id}}</p>
