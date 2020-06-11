@@ -31,7 +31,8 @@ export class AppDetailsComponent implements OnInit {
   interviewForm: boolean = false;
   isDataLoaded: boolean = false;
   public isCollapsed = false;
-
+  showJob;
+  interviews = [];
   constructor(
     private applicationService: ApplicationService,
     private userService: UserService,
@@ -44,7 +45,6 @@ export class AppDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.params.subscribe(routParams => {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
@@ -52,21 +52,20 @@ export class AppDetailsComponent implements OnInit {
           this.application = result.data;
           this.isDataLoaded = true;
           this.checkRole();
+          this.isCollapsed = false;
         },
         error => {
           console.log(error);
 
-        }
-      )
+        })
     })
     this.checkRole();
-    
+
   }
 
   deleteApplication() {
     this.applicationService.deleteSingleApplication(this.application.id).subscribe(
       result => {
-        console.log(result);
         if (this.isAdmin) {
           this.location.back();
         } else {
@@ -90,15 +89,12 @@ export class AppDetailsComponent implements OnInit {
           this.isAdmin = true;
         } else if (result == 3) {
           this.isSeeker = true;
-          this.showJob=true;
+          this.showJob = true;
         }
       }
     );
   }
-  jobHover() {
-    console.log("hover");
 
-  }
   subscribeInterviews() {
     this.interviewService.newInterviewSubject.subscribe(
       next => {
@@ -109,19 +105,14 @@ export class AppDetailsComponent implements OnInit {
 
   showInterviews() {
     if (!this.isSeeker) {
-      this.router.navigate(['interviews'], { relativeTo: this.route })
+      console.log("not seeker");
+      
+      this.router.navigate(['interviews'], { relativeTo: this.route });
     } else {
       this.isCollapsed = !this.isCollapsed;
-      this.showJob=!this.showJob;
+      this.showJob = !this.showJob;
     }
   }
-  showedInterview;
-  showJob;
-  clickedInterview;
-  viewInterview(i) {
-    this.showedInterview = this.application.interviews[i];
-    this.interviewService.changeInterviewData.next(this.showedInterview);
-    this.clickedInterview = i;
-  }
+  
 
 }
