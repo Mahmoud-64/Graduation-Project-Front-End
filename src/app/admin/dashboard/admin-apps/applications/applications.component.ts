@@ -51,6 +51,8 @@ export class ApplicationsComponent implements OnInit {
                   })
               }
            })
+          //  console.log(this.statuses.value);
+           
           flag = 1;
         }
         if (flag==1)

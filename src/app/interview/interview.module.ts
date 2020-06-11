@@ -5,10 +5,8 @@ import { InterviewItemComponent } from './interview-item/interview-item.componen
 import { InterviewDetailsComponent } from './interview-details/interview-details.component';
 import { InterviewFormComponent } from './interview-form/interview-form.component';
 import { InterviewComponent } from './interview.component';
-// import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { InterviewLevelsComponent } from './interview-levels/interview-levels.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material/stepper';
 import { InterviewEditComponent } from './interview-edit/interview-edit.component';
 import { RouterModule } from '@angular/router';
@@ -34,10 +32,8 @@ import { EmpInterviewEditComponent } from './emp-interview-edit/interview-edit.c
   ],
   imports: [
     CommonModule,
-    // AppRoutingModule,
     RouterModule,
     FormsModule,
-    // BrowserAnimationsModule,
     MatStepperModule,
     InterviewsRoutingModule2,
     FlashMessagesModule.forRoot(),

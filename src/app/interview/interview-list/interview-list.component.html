@@ -1,15 +1,14 @@
 <div class="text-right mr-5">
     <button routerLink="./new" class="btn btn-info my-2 btn-sm text-white"> New </button>
 </div>
-<!-- <flash-messages></flash-messages> -->
-
 <table class="table text-center bg-white">
     <thead class="thead-dark">
         <tr>
-            <th> id</th>
-            <th> application_id</th>
-            <th> employer_name</th>
-            <th> date</th>
+            <th> ID</th>
+            <th> Application ID</th>
+            <th> Employee Name</th>
+            <th>Seeker Name</th>
+            <th> Date</th>
             <th scope="col" colspan="3">Actions</th>
         </tr>
     </thead>
@@ -18,6 +17,7 @@
             <td>{{ interview.id }}</td>
             <td>{{ interview.application_id }}</td>
             <td>{{ interview.emp_name }}</td>
+            <td>{{interview.seeker}}</td>
             <td>{{ interview.date}}</td>
             <td><button routerLink="./{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
             <td><button routerLink="./edit/{{ interview.id }}" class="btn btn-success btn-sm"> edit </button>

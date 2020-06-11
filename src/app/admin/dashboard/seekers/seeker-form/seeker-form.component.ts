@@ -20,7 +20,7 @@ export class SeekerFormComponent implements OnInit {
   user={
     contacts: []
   };
-    error: any;
+    error: any='';
     errordata: any;
     cvError: any;
     user_id;
@@ -110,11 +110,28 @@ export class SeekerFormComponent implements OnInit {
     }
     else
     {
-      this.seekerService.createSeeker(this.details.value)
+      console.log("on submit", this.details.value);
+      let seekerData = {
+          name: this.details.value.user.name,
+          email: this.details.value.user.email,
+          password: this.details.value.user.password,
+          password_confirmation: this.details.value.user.password_confirmation,
+          phone: this.details.value.phone,
+          address: this.details.value.address,
+          city: this.details.value.city,
+          seniority: this.details.value.seniority,
+          expYears: this.details.value.expYears,
+          currentJob: this.details.value.currentJob,
+          currentSalary: this.details.value.currentSalary,
+          expectedSalary: this.details.value.expectedSalary,
+          contacts: this.details.value.contacts,
+        };
+
+      this.seekerService.createSeeker(seekerData)
         .subscribe(result => {
           this.user = result.data;
-          this.error = "";
-          // this.router.navigateByUrl(`/admin/seeker/show/${result.data.user.id}`);
+          this.error = '';
+          this.router.navigateByUrl(`/admin/seeker/show/${result.data.user.id}`);
         },
           err => {
             this.error = err;
