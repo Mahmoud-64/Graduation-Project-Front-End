@@ -1,10 +1,10 @@
-<div class="mx-5">
-  <mat-horizontal-stepper class="bg-color p-3" labelPosition="bottom" (selectionChange)="showInterview($event)">
+<div class="mx-md-5 mx-0">
+  <mat-horizontal-stepper class="bg-color p-md-3 p-0" labelPosition="bottom" (selectionChange)="showInterview($event)">
     <mat-step *ngFor="let interview of interviews" [label]="interview.level_name">
 
       <!-- show or hide interview -->
 
-      <div *ngIf="renderInterview" class="pt-2 ">
+      <div *ngIf="renderInterview" class="pt-md-2 p-0">
         <div *ngIf="loadInterview;else anotherInterview" class=" ">
           <app-interview-item [newInterview]="newInterview"></app-interview-item>
         </div>

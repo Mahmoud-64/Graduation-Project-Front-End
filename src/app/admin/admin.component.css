@@ -8,11 +8,11 @@
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
   overflow-x: scroll;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .main {
   margin-top: 60px;
   align-content: center;
-  padding: 0px 10%;
+  /* padding: 0px 10%; */
 }
