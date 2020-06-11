@@ -15,52 +15,22 @@ import { Role } from 'src/app/models/role.enum';
 export class EmpInterviewItemComponent implements OnInit {
   single: any = {};
   id = 0;
-  // isEmployee: Boolean;
 
   @Input() newInterview?;
-  constructor(public interviewService: InterviewService, public userService: UserService, private route: ActivatedRoute) {
-
-  }
-
+  constructor(public interviewService: InterviewService, public userService: UserService, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    if (11) {
-      // console.log(this.userService.getUserRole());
-      // this.isEmployee = this.userService.getUserRole() == Role.employee;
+    if (this.newInterview) {
+      this.single = this.newInterview;
+    } else {
+      this.route.params
+        .subscribe((params: Params) => {
+          this.id = params['id'];
+          this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
+            this.single = interview['data']
 
-      // console.log(this.isEmployee);
-
-
-      if (this.newInterview) {
-        this.single = this.newInterview;
-      } else {
-        this.route.params
-          .subscribe((params: Params) => {
-            this.id = params['id'];
-            // console.log(this.id);
-
-            this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
-              // this.isFetching = false;
-              // this.loadedInterview = interviews;
-              // console.log(interview['data']);
-              this.single = interview['data']
-              // this.singleInterview = interview;
-              // console.log(this.singleInterview['data']);
-
-              // return this.singleInterview;
-              // console.log(this.single);
-
-            }
-            )
-          });
-      }
-
-
-      // this.single = this.interviewService.fetchSingleInterview(4);
-      // this.single = this.interviewService.singleInterview;
-
-
+          })
+        });
     }
-    else { this.single = {}; }
   }
 
 }

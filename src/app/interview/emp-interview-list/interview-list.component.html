@@ -1,28 +1,25 @@
-<!-- <flash-messages></flash-messages> -->
-
-<table class="table text-center bg-white">
+<div class="container d-flex justify-content-center textMargin">
+  <table class="table text-center bg-white w-75">
     <thead class="thead-dark">
-        <tr>
-            <th> ID</th>
-            <th> Application ID</th>
-            <th> Seeker Name</th>
-            <th> Date</th>
-            <th scope="col" colspan="3">Actions</th>
+      <tr>
+        <th> ID</th>
+        <th> Application ID</th>
+        <th> Seeker Name</th>
+        <th> Date</th>
+        <th scope="col" colspan="3">Actions</th>
 
-        </tr>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
-            <td>{{ interview.id }}</td>
-            <td>{{ interview.application_id }}</td>
-            <td>{{ interview.seeker}}</td>
-            <td>{{ interview.date}}</td>
-            <td><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
-            <td><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
-            </td>
-            <!-- <td><button class="btn btn-danger btn-sm" (click)="delete(interview.id)"> delete</button></td> -->
-
-        </tr>
-
+      <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
+        <td>{{ interview.id }}</td>
+        <td>{{ interview.application_id }}</td>
+        <td>{{ interview.seeker}}</td>
+        <td>{{ interview.date}}</td>
+        <td><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
+        <td><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>

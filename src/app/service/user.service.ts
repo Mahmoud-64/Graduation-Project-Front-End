@@ -33,6 +33,10 @@ export class UserService {
     return this.http.get("/api/users");
   }
 
+  getOneUser(userId): Observable<any> {
+    return this.http.get(`/api/users/${userId}`);
+  }
+
   register(user: User): Observable<any> {
     return this.http.post("/api/register", user).pipe(
       tap(data => {
