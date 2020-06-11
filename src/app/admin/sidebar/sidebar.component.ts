@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
     // on init only
     this.route.firstChild.url.subscribe(
       url => {
-        console.log('url', url);
         this.selected = url[0].path
       }
     )

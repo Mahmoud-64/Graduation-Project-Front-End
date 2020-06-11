@@ -5,8 +5,6 @@ import { AdminComponent } from '../admin.component';
 import { SeekersComponent } from '../dashboard/seekers/seekers.component';
 import { EmployeesComponent } from '../dashboard/employees/employees.component';
 import { JobsComponent } from '../dashboard/admin-jobs/jobs/jobs.component';
-import { JobDetailsComponent } from '../../home/job-details/job-details.component';
-import { NewJobComponent } from '../../home/new-job/new-job.component';
 import { ApplicationsComponent } from '../dashboard/admin-apps/applications/applications.component';
 import { AppDetailsComponent } from '../../job-application/app-details/app-details.component';
 import { InterviewLevelsComponent as InterviewLevels } from '../../interview/interview-levels/interview-levels.component';

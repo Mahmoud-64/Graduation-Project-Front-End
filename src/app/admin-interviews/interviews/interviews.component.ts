@@ -24,10 +24,8 @@ export class InterviewsComponent implements OnInit {
     this.interviewService.getAllInterviews(this.filterParams).subscribe(
       result => {
         this.interviews = result.data;
-        console.log(result.data);
       },
       error => {
-        console.log(error);
 
       }
     )
@@ -37,7 +35,6 @@ export class InterviewsComponent implements OnInit {
   {
     this.interviewService.deleteInterview(interviewId).subscribe(
       result=>{
-        console.log(result);
         this.ngOnInit()  
       }
     )
@@ -45,14 +42,12 @@ export class InterviewsComponent implements OnInit {
   // nextPage() {
   //   this.filterParams.page += 1
   //   this.ngOnInit();
-  //   console.log('next ' + this.filterParams.page);
 
   // }
 
   // prevPage() {
   //   this.filterParams.page -= 1
   //   this.ngOnInit();
-  //   console.log('prev ' + this.filterParams.page);
   // }
 
   orderInterviews(element) {
@@ -63,7 +58,6 @@ export class InterviewsComponent implements OnInit {
     } else {
       this.filterParams.orderBy = element;
     }
-    console.log(this.filterParams);
     this.filterParams.page = 1;
     this.ngOnInit()
   }

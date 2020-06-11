@@ -110,7 +110,6 @@ export class SeekerFormComponent implements OnInit {
     }
     else
     {
-      console.log("on submit", this.details.value);
       let seekerData = {
           name: this.details.value.user.name,
           email: this.details.value.user.email,

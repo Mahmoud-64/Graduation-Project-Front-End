@@ -28,7 +28,6 @@ export class InterviewItemComponent implements OnInit {
       if (this.userRole == 3) {
         this.interview.changeInterviewData.subscribe(interview => {
           this.single = interview;
-          console.log(interview);
         })
       }
     }

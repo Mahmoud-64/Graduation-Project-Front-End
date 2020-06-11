@@ -19,19 +19,15 @@ export class SingleInterviewComponent implements OnInit {
     this.route.params.subscribe(routParams => {
       this.interviewSerrvice.getInterview(routParams.id).subscribe(
         result => {
-          console.log(result);
           this.interview=result.data;
-
         },
         error => {
-          console.log(error);
 
         }
       )
     })
   }
-  deleteInterview(interview){
-    
+  deleteInterview(interview){    
   }
 
 }

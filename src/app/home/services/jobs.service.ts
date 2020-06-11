@@ -15,7 +15,6 @@ export class JobsService {
   constructor(private http:HttpClient) { }
 
   getAllJobs(filterParams){
-    // return this.http.get<any>(this.getAllJobsUrl+'?page='+page);
     return this.http.get<any>(this.getAllJobsUrl ,{
       params: filterParams
     });
@@ -26,7 +25,6 @@ export class JobsService {
   }
 
   updateJob(job,jobId){
-    console.log(job);
 
     return this.http.put<any>(this.getSingleJobUrl+jobId,job);
   }

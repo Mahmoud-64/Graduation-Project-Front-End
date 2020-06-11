@@ -45,8 +45,6 @@ export class InterviewLevelsComponent implements OnInit {
               this.renderInterview = true;
             },
             error => {
-              console.log(error);
-
             })
         })
       })

@@ -61,10 +61,8 @@ export class BaseComponent implements OnInit {
     this.verifyemailService.resendEmailVerification().subscribe(
       (data) => {
         this.emailSent = true;
-        console.log("resend email success", data);
       },
       (err) => {
-        console.log("resend email error", err);
       }
     );
   }

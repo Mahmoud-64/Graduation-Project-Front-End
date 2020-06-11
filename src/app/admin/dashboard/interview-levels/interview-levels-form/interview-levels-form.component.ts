@@ -35,7 +35,6 @@ export class InterviewLevelsFormComponent implements OnInit {
     if (this.level_id) {
       this.levelsService.getLevel(this.level_id).subscribe(level => {
         this.level.patchValue(level['data']);
-        console.log("level", level);
       })
     }
     this._success.subscribe(message => this.successMessage = message);
@@ -53,7 +52,6 @@ export class InterviewLevelsFormComponent implements OnInit {
   }
 
   submitLevel() {
-    console.log(this.level.value);
     if (this.clickType == 'edit') {
       this.levelsService.updateLevel(this.level_id, this.level.value)
         .subscribe(result => {
