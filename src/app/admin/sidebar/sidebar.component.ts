@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ChildActivationEnd, NavigationEnd, ActivationStart } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,15 +9,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class SidebarComponent implements OnInit {
   constructor(
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute) {
 
-  ngOnInit(): void {
   }
   selected = "";
-  onClick(data)
-  {
-    this.selected=data;
-    this.router.navigate([data], {relativeTo: this.route});
+  ngOnInit(): void {
+    // on init only
+    this.route.firstChild.url.subscribe(
+      url => {
+        console.log('url', url);
+        this.selected = url[0].path
+      }
+    )
+    //  after each change
+    this.router.events.subscribe((val) => {
+      if (val instanceof ActivationStart) {
+        this.selected = val.snapshot.routeConfig.path;
+      }
+    });
+    
   }
 
 }
