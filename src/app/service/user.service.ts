@@ -33,17 +33,6 @@ export class UserService {
     return this.http.get("/api/users");
   }
 
-<<<<<<< HEAD
-  register(user: User): Observable<any> {
-    return this.http.post("/api/register", user).pipe(
-      tap(data => {
-        this.verifyEmailSubject.next(data['verify_email']);
-      }),
-      catchError(this.handleError2<User[]>('register', []))
-    );
-  }
-
-=======
   getOneUser(userId): Observable<any> {
     return this.http.get(`/api/users/${userId}`);
   }
@@ -57,7 +46,6 @@ export class UserService {
     );
   }
 
->>>>>>> 406ee8f1df9cf956ad95a65804a4cec10ae7d268
   login(user: User): Observable<any> {
     user.device_name = "anything";
     this.showSpinner();
