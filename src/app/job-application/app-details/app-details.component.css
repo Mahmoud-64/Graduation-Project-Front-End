@@ -1,0 +1,9 @@
+.bg-color-enabled{
+    opacity: 1 !important;
+}
+.bg-yellow{
+    opacity: 0.5 !important;
+}
+.bg-warning:hover{
+    opacity: 1 !important;
+}
