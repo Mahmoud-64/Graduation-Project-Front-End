@@ -15,7 +15,7 @@ export class InterviewLevelsComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  interviews = [];
+  @Input() interviews = [];
   loadInterview: boolean = false;
   newInterview;
 
@@ -23,7 +23,8 @@ export class InterviewLevelsComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private interviewService: InterviewService,
   ) { }
 
   ngOnInit() {
@@ -33,22 +34,26 @@ export class InterviewLevelsComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    
+    if (!this.interviews.length) {
+      this.route.params.subscribe(param => {
+        this.route.params.subscribe(routParams => {
+          this.applicationService.getSingleApplication(routParams.id).subscribe(
+            result => {
+              this.interviews = result.data['interviews'];
+              this.renderFirstInterview();
+              this.renderInterview = true;
+            },
+            error => {
+              console.log(error);
 
-    this.route.params.subscribe(param => {
-      this.route.params.subscribe(routParams => {
-        this.applicationService.getSingleApplication(routParams.id).subscribe(
-          result => {
-            this.interviews = result.data['interviews'];
-            this.renderFirstInterview();
-            this.renderInterview = true;
-          },
-          error => {
-            console.log(error);
-
-          }
-        )
+            })
+        })
       })
-    })
+    } else {
+      this.renderFirstInterview();
+      this.renderInterview = true;
+    }
   }
 
   showInterview(interview) {
@@ -61,7 +66,4 @@ export class InterviewLevelsComponent implements OnInit {
     }
   }
 
-  // myInterviews() {
-  //   this.renderInterview = !this.renderInterview;
-  // }
 }
