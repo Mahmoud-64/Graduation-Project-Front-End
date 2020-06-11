@@ -1,15 +1,14 @@
-<!-- <p>interview-item works!</p> -->
-<!-- <p>{{single.seeker_review}}</p> -->
-<!-- <a [routerLink]="['../5']">aaaaaaa</a> -->
 
-<div class="border">
+<div class="container d-flex justify-content-center mt-5 p-4">
+  <div class="border">
     <ul class="list-group">
-        <li class="list-group-item"><strong class="m-3">Application ID: </strong> {{single.application_id}}</li>
-        <li class="list-group-item"><strong class="m-3">Employee Name : </strong> {{single.emp_name}}</li>
-        <li class="list-group-item"><strong class="m-3">Level : </strong> {{single.level_name}}</li>
-        <li class="list-group-item"><strong class="m-3">Date : </strong> {{single.date}}</li>
-        <li class="list-group-item"><strong class="m-3">Seeker Review : </strong> {{single.seeker_review}}</li>
-        <li class="list-group-item"><strong class="m-3">Company Review : </strong> {{single.company_review}}</li>
-        <li class="list-group-item"><strong class="m-3">Zoom Link : </strong> {{single.zoom}}</li>
+      <li class="list-group-item"><strong class="m-3">Application ID: </strong> {{single.application_id}}</li>
+      <li class="list-group-item"><strong class="m-3">Seeker Name : </strong> <a href="#" routerLink="/profile/{{single.seeker_id}}">{{single.seeker}}</a></li>
+      <li class="list-group-item"><strong class="m-3">Level : </strong> {{single.level_name}}</li>
+      <li class="list-group-item"><strong class="m-3">Date : </strong> {{single.date}}</li>
+      <li class="list-group-item"><strong class="m-3">Seeker Review : </strong> {{single.seeker_review}}</li>
+      <li class="list-group-item"><strong class="m-3">Company Review : </strong> {{single.company_review}}</li>
+      <li class="list-group-item"><strong class="m-3">Zoom Link : </strong> <a href="{{single.zoom}}">{{single.zoom}}</a></li>
     </ul>
+  </div>
 </div>

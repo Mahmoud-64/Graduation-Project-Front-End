@@ -41,7 +41,12 @@ export class ProfileComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.role = this.userService.getUser().role;
+    this.route.params.subscribe((params)=>{
+      this.userService.getOneUser(params.profileId).subscribe((data)=>{
+        this.role = data["data"]["role"];
+      })
+
+    })
   }
 
 

@@ -41,7 +41,7 @@ export class EmpInterviewItemComponent implements OnInit {
             this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
               // this.isFetching = false;
               // this.loadedInterview = interviews;
-              // console.log(interview['data']);
+              console.log(interview['data']);
               this.single = interview['data']
               // this.singleInterview = interview;
               // console.log(this.singleInterview['data']);

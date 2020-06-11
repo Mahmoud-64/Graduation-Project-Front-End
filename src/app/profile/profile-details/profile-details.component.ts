@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
+import { UserService } from '../../service/user.service';
 import { Seeker } from '../../models/seeker';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
@@ -39,11 +40,13 @@ export class ProfileDetailsComponent implements OnInit {
   isCollapsed2 = false;
   constructor(
     private seekerService: SeekerService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.role = this.userService.getUserRole();
     this.route.paramMap.subscribe(params => {
       this.getSeeker(+params.get('profileId'));
     });
@@ -54,7 +57,6 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
-        this.role = seeker.data.user.role;
         this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });
   }
