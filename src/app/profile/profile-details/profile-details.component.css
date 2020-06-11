@@ -38,7 +38,7 @@
 
 .user-image {
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   margin-top: -50px;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .follow {
-  margin-top: 70px;
+  /* margin-top: 70px; */
 }
 
 .user-detail-row {
