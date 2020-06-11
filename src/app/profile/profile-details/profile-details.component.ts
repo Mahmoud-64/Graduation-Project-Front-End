@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
 import { UserService } from '../../service/user.service';
 import { Seeker } from '../../models/seeker';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
