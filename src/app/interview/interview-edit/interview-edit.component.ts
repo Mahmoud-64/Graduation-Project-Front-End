@@ -16,9 +16,9 @@ import { EmployeeService } from 'src/app/service/employee.service';
 })
 export class InterviewEditComponent implements OnInit {
   // arr: any[]=[];
-  apps: any;
-  levels: any;
-  employees: any;
+  apps: any = { data: [] };
+  levels: any = { data: [] };
+  employees: any = { data: [] };
   single: any = {};
   id = 0;
   error: any = {
@@ -66,21 +66,21 @@ export class InterviewEditComponent implements OnInit {
     this.interviewService.fetchInterview();
     this.applicationService.getAllApplications()
       .subscribe(applications => {
-        this.apps = applications['data'];
+        this.apps = applications;
         console.log(this.apps);
 
       });
 
     this.levelsService.getLevels()
       .subscribe(l => {
-        this.levels = l['data'];
+        this.levels = l;
         console.log(this.levels);
 
       });
 
     this.employeeService.getEmployees()
       .subscribe(emp => {
-        this.employees = emp['data'];
+        this.employees = emp;
         console.log(this.employees);
 
       });

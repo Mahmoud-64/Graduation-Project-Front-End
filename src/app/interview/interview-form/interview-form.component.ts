@@ -14,9 +14,10 @@ import { EmployeeService } from 'src/app/service/employee.service';
   providers: [InterviewService, ApplicationService, LevelsService, EmployeeService]
 })
 export class InterviewFormComponent implements OnInit {
-  apps: any;
-  levels: any;
-  employees: any;
+  // arr: any[]=[];
+  apps: any = { data: [] };
+  levels: any = { data: [] };
+  employees: any = { data: [] };
   error: any = {
     errors:
       [
