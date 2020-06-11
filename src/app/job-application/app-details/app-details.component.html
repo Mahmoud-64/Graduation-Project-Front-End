@@ -12,27 +12,29 @@
         </div>
         <div>
             <button type="button" class="btn btn-danger" (click)="showInterviews()"
-                *ngIf="application.interviews && application.interviews.length >0"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                *ngIf="application.interviews" [attr.aria-expanded]="!isCollapsed"
+                aria-controls="collapseExample">
                 {{showJob?'Job Details':'Interviews'}}
             </button>
         </div>
     </div>
 
-    <div id="collapseExample" class="my-4" *ngIf="isSeeker" [ngbCollapse]="isCollapsed">
+    <div id="collapseExample" class="my-4" *ngIf="isSeeker && application.interviews.length" [ngbCollapse]="isCollapsed">
         <div class="card" *ngIf="application.interviews">
-          <div class="">
-            <nav class="navbar navbar-expand-lg d-flex justify-content-around">
-                <div class="nav-item" *ngFor="let interview of application.interviews; index as i">
-                  <button class="rounded-circle p-3 bg-warning" [class.bg-yellow]="i!=clickedInterview" [class.bg-color-enabled]="i==clickedInterview" (click)="viewInterview(i)">{{interview.level_name}}</button>
-                </div>
-              </nav>
-          </div>
+            <div class="">
+                <nav class="navbar navbar-expand-lg d-flex justify-content-around">
+                    <div class="nav-item" *ngFor="let interview of application.interviews; index as i">
+                        <button class="rounded-circle p-3 bg-warning" [class.bg-yellow]="i!=clickedInterview"
+                            [class.bg-color-enabled]="i==clickedInterview"
+                            (click)="viewInterview(i)">{{interview.level_name}}</button>
+                    </div>
+                </nav>
+            </div>
         </div>
         <div *ngIf="showedInterview">
             <app-interview-item [newInterview]="showedInterview"></app-interview-item>
         </div>
-      </div>
+    </div>
 
     <div class="my-2 p-1" *ngIf="!showJob">
         <h1 class="text-center text-title"><strong>{{application.job.title}}</strong></h1>
