@@ -14,9 +14,9 @@ import { EmployeeService } from 'src/app/service/employee.service';
   providers: [InterviewService, ApplicationService, LevelsService, EmployeeService]
 })
 export class InterviewFormComponent implements OnInit {
-  apps: any;
-  levels: any;
-  employees: any;
+  apps: any = { data: [] };
+  levels: any = { data: [] };
+  employees: any = { data: [] };
   error: any = {
     errors:
       [
@@ -28,12 +28,19 @@ export class InterviewFormComponent implements OnInit {
       ]
   };
 
-  constructor(private http: HttpClient, public interviewService: InterviewService, public applicationService: ApplicationService, public levelsService: LevelsService, public employeeService: EmployeeService, private router: Router, private _flashMessagesService: FlashMessagesService) { }
+  constructor(
+    private http: HttpClient,
+    public interviewService: InterviewService,
+    public applicationService: ApplicationService,
+    public levelsService: LevelsService,
+    public employeeService: EmployeeService,
+    private router: Router,
+    private _flashMessagesService: FlashMessagesService
+  ) { }
   onCreatePost(postData: { title: string; content: string }) {
 
     this.interviewService.addInterview(postData)
       .subscribe(responseData => {
-        console.log(responseData);
         this._flashMessagesService.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
         setTimeout(() => {
           this.router.navigate(["/admin/interviews"]);
@@ -49,19 +56,16 @@ export class InterviewFormComponent implements OnInit {
     this.applicationService.getAllApplications()
       .subscribe(applications => {
         this.apps = applications;
-        console.log(this.apps);
       });
 
     this.levelsService.getLevels()
       .subscribe(l => {
         this.levels = l;
-        console.log(this.levels);
       });
 
     this.employeeService.getEmployees()
       .subscribe(emp => {
         this.employees = emp;
-        console.log(this.employees);
       });
 
 

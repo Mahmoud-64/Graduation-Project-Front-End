@@ -13,7 +13,6 @@ export class InterviewService {
 
 
     public fetchInterview() {
-        // this.isFetching = true;
         this.http
             .get(
                 'http://localhost:8000/api/interviews'
@@ -30,7 +29,6 @@ export class InterviewService {
                 })
             )
             .subscribe(interviews => {
-                // this.isFetching = false;
                 this.loadedInterview = interviews;
                 // console.log(typeof (this.loadedInterview));
 
@@ -38,7 +36,6 @@ export class InterviewService {
     }
 
     public fetchSingleInterview(id) {
-        // this.isFetching = true;
         return this.http
             .get(
                 'http://localhost:8000/api/interview/' + id
@@ -51,7 +48,6 @@ export class InterviewService {
             .put(
                 'http://localhost:8000/api/interview/' + id,
                 postData,
-                // { headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'true' }) }
             );
     }
 
