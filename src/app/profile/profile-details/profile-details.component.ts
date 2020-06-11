@@ -59,7 +59,6 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
-        this.role = seeker.data.user.role;
         seeker.data.user.image ? this.profileImage = seeker.data.user.image : null;
         this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });

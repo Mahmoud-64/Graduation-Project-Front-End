@@ -18,15 +18,17 @@
     color: transparent;
     top: 50%;
     left: 45%;
+    width: 230px;
+    height: 250px;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
     background-color: transparent
 }
 
 .user-image:hover .btn-change {
+    border: 0px;
     color: #000;
-    border: #000 !important;
+    font-weight: bold;
 }
