@@ -5,6 +5,7 @@ import { SeekerService } from '../../service/seeker.service';
 import { Seeker } from '../../models/seeker';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-profile-details',
@@ -32,6 +33,7 @@ export class ProfileDetailsComponent implements OnInit {
       cv: "",
       isVerified: 0
     };
+  profileImage= "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
   contacts: [];
   url = '';
   role;
@@ -55,6 +57,7 @@ export class ProfileDetailsComponent implements OnInit {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
         this.role = seeker.data.user.role;
+        seeker.data.user.image ? this.profileImage = seeker.data.user.image : null;
         this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });
   }
@@ -78,6 +81,18 @@ export class ProfileDetailsComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
+  }
+
+  updatePhoto(){
+    const modalRef = this.modalService.open(ImageModalComponent);
+    modalRef.componentInstance.photo = this.profileImage;
+    modalRef.result.then(
+      result => {
+        this.ngOnInit();
+      },
+      rejected => {
+      }
+    )
   }
 
 }

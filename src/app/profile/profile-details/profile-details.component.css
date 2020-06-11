@@ -1,160 +1,187 @@
-.btn-color{
-  background-color: rgb(21,65,100);
+.btn-color {
+  background-color: rgb(21, 65, 100);
   /* background-color: #45a29e !important; */
   color: white;
 }
-.btn-color:hover{
+
+.btn-color:hover {
   background-color: white !important;
-  color: rgb(21,65,100);
-  border: 1px solid rgb(21,65,100);
+  color: rgb(21, 65, 100);
+  border: 1px solid rgb(21, 65, 100);
 }
-.btn-verify{
+
+.btn-verify {
   background-color: #ccc !important;
   color: black;
 }
-.btn-verify:hover{
+
+.btn-verify:hover {
   background-color: white !important;
   color: black;
   border: 1px solid #ccc;
 }
-.border{
-  border-bottom:1px solid #F1F1F1;
-  margin-bottom:10px;
+
+.border {
+  border-bottom: 1px solid #F1F1F1;
+  margin-bottom: 10px;
 }
-.image-section{
+
+.image-section {
   padding: 0px;
 }
-.image-section img{
+
+.image-section img {
   width: 100%;
-  height:250px;
+  height: 250px;
   position: relative;
 }
-.user-image{
+
+.user-image {
+  cursor: pointer;
   position: absolute;
-  margin-top:-50px;
+  margin-top: -50px;
 }
-.user-left-part{
+
+.user-left-part {
   margin: 0px;
 }
-.user-image img{
-  width:100px;
-  height:100px;
+
+.user-image img {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
 }
-.user-profil-part{
-  padding-bottom:30px;
-  background-color:#FAFAFA;
+
+.user-profil-part {
+  padding-bottom: 30px;
+  background-color: #FAFAFA;
 }
-.follow{
-  margin-top:70px;
+
+.follow {
+  margin-top: 70px;
 }
-.user-detail-row{
-  margin:0px;
+
+.user-detail-row {
+  margin: 0px;
 }
-.user-detail-section2 p{
-  font-size:12px;
+
+.user-detail-section2 p {
+  font-size: 12px;
   padding: 0px;
   margin: 0px;
 }
-.user-detail-section2{
-  margin-top:10px;
+
+.user-detail-section2 {
+  margin-top: 10px;
 }
-.user-detail-section2 span{
-  color:#7CBBC3;
+
+.user-detail-section2 span {
+  color: #7CBBC3;
   font-size: 20px;
 }
-.user-detail-section2 small{
-  font-size:12px;
-  color:#D3A86A;
+
+.user-detail-section2 small {
+  font-size: 12px;
+  color: #D3A86A;
 }
-.profile-right-section{
+
+.profile-right-section {
   padding: 20px 0px 10px 15px;
   background-color: #FFFFFF;
 }
-.profile-right-section-row{
+
+.profile-right-section-row {
   margin: 0px;
 }
-.profile-header-section1 h1{
+
+.profile-header-section1 h1 {
   font-size: 25px;
   margin: 0px;
 }
-.profile-header-section1 h5{
+
+.profile-header-section1 h5 {
   color: #0062cc;
 }
-.req-btn{
-  height:30px;
-  font-size:12px;
-}
-.profile-tag{
-  padding: 10px;
-  border:1px solid #F6F6F6;
-}
-.profile-tag p{
+
+.req-btn {
+  height: 30px;
   font-size: 12px;
-  color:black;
 }
-.profile-tag i{
-  color:#ADADAD;
+
+.profile-tag {
+  padding: 10px;
+  border: 1px solid #F6F6F6;
+}
+
+.profile-tag p {
+  font-size: 12px;
+  color: black;
+}
+
+.profile-tag i {
+  color: #ADADAD;
   font-size: 20px;
 }
-.image-right-part{
+
+.image-right-part {
   background-color: #FCFCFC;
   margin: 0px;
   padding: 5px;
 }
-.img-main-rightPart{
+
+.img-main-rightPart {
   background-color: #FCFCFC;
   margin-top: auto;
 }
-.image-right-detail{
+
+.image-right-detail {
   padding: 0px;
 }
-.image-right-detail p{
+
+.image-right-detail p {
   font-size: 12px;
 }
-.image-right-detail a:hover{
+
+.image-right-detail a:hover {
   text-decoration: none;
 }
-.image-right img{
+
+.image-right img {
   width: 100%;
 }
-.image-right-detail-section2{
+
+.image-right-detail-section2 {
   margin: 0px;
 }
-.image-right-detail-section2 p{
-  color:#38ACDF;
-  margin:0px;
-}
-.image-right-detail-section2 span{
-  color:#7F7F7F;
+
+.image-right-detail-section2 p {
+  color: #38ACDF;
+  margin: 0px;
 }
 
-.nav-link{
+.image-right-detail-section2 span {
+  color: #7F7F7F;
+}
+
+.nav-link {
   font-size: 1.2em;
 }
 
+.media {
+  /*box-shadow:0px 0px 4px -2px #000;*/
+  margin: 20px 0;
+  padding: 30px;
+}
 
+.dp {
+  border: 10px solid #eee;
+  transition: all 0.2s ease-in-out;
+}
 
-
-
-
-
-
-.media
- {
-     /*box-shadow:0px 0px 4px -2px #000;*/
-     margin: 20px 0;
-     padding:30px;
- }
- .dp
- {
-     border:10px solid #eee;
-     transition: all 0.2s ease-in-out;
- }
- .dp:hover
- {
-     border:2px solid #eee;
-     transform:rotate(360deg);
-     -ms-transform:rotate(360deg);
-     -webkit-transform:rotate(360deg);
-     /*-webkit-font-smoothing:antialiased;*/
- }
+.dp:hover {
+  border: 2px solid #eee;
+  transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  /*-webkit-font-smoothing:antialiased;*/
+}

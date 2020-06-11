@@ -16,9 +16,10 @@ import { MobileModalComponent } from './mobile-modal/mobile-modal.component';
 import { AuthModule } from "../auth/auth.module";
 import { RouterModule } from '@angular/router';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 @NgModule({
-  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent, MobileModalComponent, EmployeeProfileComponent],
+  declarations: [ProfileDetailsComponent, ProfileFormComponent, ProfileComponent, PersonalFormComponent, DetailsFormComponent, ContactItemComponent, ContactListComponent, ContactFormComponent, MobileModalComponent, EmployeeProfileComponent, ImageModalComponent],
   imports: [
     CommonModule,
     AuthModule,
