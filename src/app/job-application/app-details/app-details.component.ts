@@ -51,6 +51,7 @@ export class AppDetailsComponent implements OnInit {
           this.interviewForm = false;
           this.application = result.data;
           this.isDataLoaded = true;
+          this.checkRole();
         },
         error => {
           console.log(error);
@@ -59,6 +60,7 @@ export class AppDetailsComponent implements OnInit {
       )
     })
     this.checkRole();
+    
   }
 
   deleteApplication() {
