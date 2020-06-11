@@ -32,7 +32,7 @@ export class InterviewService {
             .subscribe(interviews => {
                 // this.isFetching = false;
                 this.loadedInterview = interviews;
-                console.log(typeof (this.loadedInterview));
+                // console.log(typeof (this.loadedInterview));
 
             });
     }

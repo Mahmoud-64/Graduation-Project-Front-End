@@ -46,6 +46,7 @@ export class BaseComponent implements OnInit {
     return !(this.image.url.includes('admin')
       || this.image.url.includes('login')
       || this.image.url.includes('signup')
+      || this.image.url.includes('emprev')
     );
   }
 

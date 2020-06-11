@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
-  selector: 'app-interview-edit',
+  selector: 'review-edit',
   templateUrl: './interview-edit.component.html',
   styleUrls: ['./interview-edit.component.css'],
   providers: [InterviewService]
@@ -27,7 +27,7 @@ export class EmpInterviewEditComponent implements OnInit {
     this.interviewService.updateInterview(this.id, postData)
       .subscribe(
         responseData => {
-          console.log(responseData);
+          // console.log(responseData);
           this._flashMessagesServicee.show('Record saved successfully', { cssClass: 'alert-success', timeout: 2000 });
           setTimeout(() => {
             this.router.navigate(["/emprev"]);
@@ -40,11 +40,11 @@ export class EmpInterviewEditComponent implements OnInit {
     this.route.params
       .subscribe((params: Params) => {
         this.id = params['id'];
-        console.log(this.id);
+        // console.log(this.id);
 
         this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
           this.single = interview['data']
-          console.log(this.single);
+          // console.log(this.single);
 
         }
         )

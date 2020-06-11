@@ -1,6 +1,6 @@
 
-<div class="container d-flex justify-content-center mt-5 p-4">
-  <div class="border">
+<div class="container d-flex justify-content-center textMargin">
+  <div>
     <ul class="list-group">
       <li class="list-group-item"><strong class="m-3">Application ID: </strong> {{single.application_id}}</li>
       <li class="list-group-item"><strong class="m-3">Seeker Name : </strong> <a href="#" routerLink="/profile/{{single.seeker_id}}">{{single.seeker}}</a></li>
@@ -10,5 +10,11 @@
       <li class="list-group-item"><strong class="m-3">Company Review : </strong> {{single.company_review}}</li>
       <li class="list-group-item"><strong class="m-3">Zoom Link : </strong> <a href="{{single.zoom}}">{{single.zoom}}</a></li>
     </ul>
+    <a class="btn btn-info" href="#review" role="tab" data-toggle="tab">Add Review</a>
+    <div role="tabpanel" class="tab-pane fade" id="review">
+      <div class="">
+        <review-edit></review-edit>
+      </div>
+    </div>
   </div>
 </div>
