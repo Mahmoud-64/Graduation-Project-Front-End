@@ -7,5 +7,8 @@
         <li class="list-group-item"><strong class="m-3">Seeker Review : </strong> {{single.seeker_review}}</li>
         <li class="list-group-item"><strong class="m-3">Company Review : </strong> {{single.company_review}}</li>
         <li class="list-group-item"><strong class="m-3">Zoom Link : </strong> {{single.zoom}}</li>
+        <li class="list-group-item">
+            <td><button routerLink="/emprev/review/{{ single.id }}" class="btn btn-success btn-sm"> Add Review </button>
+        </li>
     </ul>
 </div>

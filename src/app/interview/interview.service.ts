@@ -35,6 +35,13 @@ export class InterviewService {
             });
     }
 
+    public fetchEmployeeInterview() {
+        return this.http
+            .get(
+                'http://localhost:8000/api/interviews'
+            );
+    }
+
     public fetchSingleInterview(id) {
         return this.http
             .get(
