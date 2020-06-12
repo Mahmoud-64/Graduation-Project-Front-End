@@ -14,7 +14,7 @@
                 <search></search>
             </div>
             <div *ngFor="let job of jobs" class="col-lg-4 col-md-6 col-12 my-3 mx-0" (click)="openModal(job)">
-                <div class="card item"  @fade>
+                <div class="card item" @fade>
                     <img src="/assets/images/bg_card.jpg" class="card-img" alt="job backgoround">
                   <div class="card-img-overlay">
                     <h3 class="card-title"><strong>{{job.title}}</strong></h3>
