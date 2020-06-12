@@ -63,7 +63,7 @@ export class InterviewFormComponent implements OnInit {
         this.levels = l;
       });
 
-    this.employeeService.getEmployees()
+    this.employeeService.getEmployees({ perPage: 50, page: 1 })
       .subscribe(emp => {
         this.employees = emp;
       });
