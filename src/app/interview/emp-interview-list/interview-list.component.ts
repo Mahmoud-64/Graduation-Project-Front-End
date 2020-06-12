@@ -67,6 +67,7 @@ export class EmpInterviewListComponent implements OnInit {
   dateArray: any = [];
   dataa: any = [];
   dataObject: any = {};
+  viewSwitch: boolean = true;
 
   ngOnInit() {
     this.interviewService.fetchInterview();
@@ -210,6 +211,12 @@ export class EmpInterviewListComponent implements OnInit {
   showInterviews() {
     this.flag = !this.flag;
     return this.flag;
+  }
+
+  toggleView() {
+    this.viewSwitch = !this.viewSwitch;
+    console.log(this.viewSwitch);
+
   }
 }
 
