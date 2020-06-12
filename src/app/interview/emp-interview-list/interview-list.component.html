@@ -15,7 +15,7 @@
 </div>
 
 <div class="container d-flex justify-content-center">
-    <table class="table text-center bg-white w-75">
+    <table class="table text-center table-light w-75">
       <thead class="thead-dark">
         <tr>
           <th> ID</th>
@@ -31,7 +31,9 @@
           <td  *ngIf="!flag && interviewDate[i]">{{ interview.id }}
           </td>
           <td *ngIf="!flag && interviewDate[i]">{{ interview.application_id }}</td>
-          <td *ngIf="!flag && interviewDate[i]">{{ interview.seeker}}</td>
+          <td *ngIf="!flag && interviewDate[i]">
+            <a href="#" routerLink="/profile/{{interview.seeker_id}}">{{interview.seeker}}</a>
+          </td>
           <td *ngIf="!flag && interviewDate[i]">{{ interview.date}}</td>
           <td *ngIf="!flag && interviewDate[i]"><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
           <td *ngIf="!flag && interviewDate[i]"><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
@@ -39,7 +41,9 @@
           <td *ngIf="flag && !interviewDate[i]">{{ interview.id }}
           </td>
           <td *ngIf="flag && !interviewDate[i]">{{ interview.application_id }}</td>
-          <td *ngIf="flag && !interviewDate[i]">{{ interview.seeker}}</td>
+          <td *ngIf="flag && !interviewDate[i]">
+            <a href="#" routerLink="/profile/{{interview.seeker_id}}">{{interview.seeker}}</a>
+          </td>
           <td *ngIf="flag && !interviewDate[i]">{{ interview.date}}</td>
           <td *ngIf="flag && !interviewDate[i]"><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
           <td *ngIf="flag && !interviewDate[i]"><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
