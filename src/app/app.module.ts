@@ -19,6 +19,13 @@ import { BaseComponent } from './base/base.component';
 import { HomeModule } from './home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +50,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     JobApplicationModule,
     AuthModule,
     InterviewModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHelperInterceptor, multi: true }
