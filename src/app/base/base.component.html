@@ -30,7 +30,7 @@
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </a>
-        <a routerLink="/profile/{{profileId}}" mat-button>
+        <a routerLink="/profile/{{profileId}}" *ngIf="loggedIn===true"  mat-button>
           <mat-icon>account_box</mat-icon>
           My Account
         </a>
@@ -60,37 +60,37 @@
 
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav [ngClass]="{navAdmin:isSuperadmin===true, navSeeker:isSuperadmin!=true}" #sidenav>
-      <mat-nav-list class="bg-transparent">
+      <mat-nav-list class="bg-white">
 
-        <a (click)="sidenav.toggle()" class="bg-transparent" class="bg-transparent" routerLink="/" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" class="bg-white" routerLink="/" mat-list-item>
           <mat-icon>home</mat-icon>
           Home
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/admin" *ngIf="loggedIn===true&&isSuperadmin===true" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/admin" *ngIf="loggedIn===true&&isSuperadmin===true" mat-list-item>
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/profile/{{profileId}}" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/profile/{{profileId}}" mat-list-item>
           <mat-icon>account_box</mat-icon>
           My Account
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/applications" *ngIf="loggedIn===true&&isSeeker" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/applications" *ngIf="loggedIn===true&&isSeeker" mat-list-item>
           <!-- <mat-icon>application</mat-icon> -->
           Applications
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/emprev" *ngIf="loggedIn===true&&isEmployee===true" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/emprev" *ngIf="loggedIn===true&&isEmployee===true" mat-list-item>
           <mat-icon>notifications</mat-icon>
           Interviews
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/logout" *ngIf="loggedIn===true" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/logout" *ngIf="loggedIn===true" mat-list-item>
           <mat-icon>logout</mat-icon>
           Log Out
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/login" *ngIf="loggedIn===false" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/login" *ngIf="loggedIn===false" mat-list-item>
           <mat-icon>login</mat-icon>
           Log In
         </a>
-        <a (click)="sidenav.toggle()" class="bg-transparent" routerLink="/signup" *ngIf="loggedIn===false" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/signup" *ngIf="loggedIn===false" mat-list-item>
           <!-- <mat-icon>signup</mat-icon> -->
           Register
         </a>
