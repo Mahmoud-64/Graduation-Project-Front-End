@@ -33,14 +33,14 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userService.login(this.user.value).subscribe(users => {
       this.user = users;
-      if (this.userService.getUserRole() == Role.superadmin) {
-        this.router.navigateByUrl('/admin');
-      }
-      else if (this.userService.getUserRole() == Role.employee) {
-        this.router.navigateByUrl('/emprev');
-      } else {
+      // if (this.userService.getUserRole() == Role.superadmin) {
+      //   this.router.navigateByUrl('/admin');
+      // }
+      // else if (this.userService.getUserRole() == Role.employee) {
+      //   this.router.navigateByUrl('/emprev');
+      // } else {
         this.router.navigateByUrl('/');
-      }
+      // }
     },
       err => {
         this.userError = "Email or Password is Incorrect"

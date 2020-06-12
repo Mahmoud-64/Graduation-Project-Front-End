@@ -26,10 +26,10 @@ export class ShowSeekerComponent implements OnInit {
     currentSalary: 0,
     expectedSalary: 0,
     cv: "",
+    cv_download: "",
     contacts: [],
     isVerified: 0,
   };
-  url;
   profileImage = "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
 
   constructor(
@@ -47,7 +47,6 @@ export class ShowSeekerComponent implements OnInit {
     this.seekerService.getSeeker(user_id).subscribe(user => {
       this.seeker = user.data;
       user.data.user.image ? this.profileImage = user.data.user.image : null;
-      this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
     });
   }
 

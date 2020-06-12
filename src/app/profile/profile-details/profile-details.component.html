@@ -118,7 +118,7 @@
                 <tr>
                   <th scope="col">CV</th>
                   <td *ngIf="seeker.cv">
-                    <a [href]="url" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
+                    <a [href]="seeker.cv_download" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
                     <!-- <button class="btn btn-primary" (click)="downloadFile()">{{this.seeker.cv}}</button> -->
                   </td>
                 </tr>

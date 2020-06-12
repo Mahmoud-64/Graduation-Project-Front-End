@@ -23,7 +23,7 @@
     <li class="list-group-item"><strong class="m-3">Current Salary : </strong> {{seeker.currentSalary}}</li>
     <li class="list-group-item"><strong class="m-3">Expected Salary : </strong> {{seeker.expectedSalary}}</li>
     <li class="list-group-item"><strong class="m-3">CV : </strong>
-      <a [href]="url" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
+      <a *ngIf="seeker.cv" [href]="seeker.cv_download" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
     </li>
     <li class="list-group-item"><strong class="m-3">contacts : </strong>
       <div *ngFor="let contact of seeker.contacts" class="ml-5">

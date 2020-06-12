@@ -15,6 +15,7 @@ export class InterviewItemComponent implements OnInit {
   single: any = {};
   id = 0;
   userRole;
+  url=null;
   @Input() newInterview?;
   constructor(
     public interviewService: InterviewService,
@@ -30,6 +31,7 @@ export class InterviewItemComponent implements OnInit {
           this.single = interview;
         })
       }
+      this.url=this.single['emp_image'];
     }
     else {
       this.route.params
@@ -37,6 +39,7 @@ export class InterviewItemComponent implements OnInit {
           this.id = params['id'];
           this.interviewService.fetchSingleInterview(this.id).subscribe(interview => {
             this.single = interview['data']
+            this.url=this.single['emp_image'];
           })
         });
     }
