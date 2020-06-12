@@ -18,12 +18,12 @@
 
 .sidenav {
   height: 100%;
-  width: 160px;
+  /* width: 160px; */
   position: fixed;
   z-index: 1;
   top: 59px;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
   overflow-x: hidden;
   padding-top: 0px;
 }

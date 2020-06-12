@@ -24,7 +24,7 @@ export class InterviewFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.current = new Date();
-    this.employeeService.getEmployees().subscribe(
+    this.employeeService.getEmployees({ perPage: 30, page: 1 }).subscribe(
       result => {
         this.employees = result.data
         
