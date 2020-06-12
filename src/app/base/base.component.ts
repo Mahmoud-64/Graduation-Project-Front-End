@@ -15,6 +15,7 @@ export class BaseComponent implements OnInit {
   emailVerified: Boolean = false;
   loggedinUser: Boolean = false;
   emailSent: Boolean = false;
+  emailSentValue: Boolean = false;
   constructor(
     public userService: UserService,
     private router: Router,
@@ -37,6 +38,7 @@ export class BaseComponent implements OnInit {
       next: (val) => {
         setTimeout(() => {
           this.loggedinUser = val;
+          this.emailSentValue = this.isEmailSent();
         });
       }
     });
@@ -61,10 +63,8 @@ export class BaseComponent implements OnInit {
     this.verifyemailService.resendEmailVerification().subscribe(
       (data) => {
         this.emailSent = true;
-        console.log("resend email success", data);
       },
       (err) => {
-        console.log("resend email error", err);
       }
     );
   }

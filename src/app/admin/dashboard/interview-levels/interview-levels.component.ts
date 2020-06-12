@@ -60,7 +60,6 @@ export class InterviewLevelsComponent implements OnInit {
   closeResult = '';
   open(content, clickType, id = '') {
     this.id = id;
-    console.log("id", this.id);
     this.clickType = clickType;
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

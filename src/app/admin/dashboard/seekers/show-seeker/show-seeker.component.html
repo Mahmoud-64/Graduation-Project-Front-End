@@ -1,4 +1,11 @@
+<div class="d-flex justify-content-center p-2  ">
+  <div class="col-lg-2 col-md-4 user-image col-sm-6 col-xs-8  text-center">
+    <img [src]="profileImage" class="photo rounded-circle">
+  </div>
+</div>
 <div class="border">
+  
+  
   <ul class="list-group">
     <li class="list-group-item"><strong class="m-3">Name : </strong> {{seeker.user.name}}</li>
     <li class="list-group-item"><strong class="m-3">Email : </strong> {{seeker.user.email}}</li>
@@ -16,7 +23,7 @@
     <li class="list-group-item"><strong class="m-3">Current Salary : </strong> {{seeker.currentSalary}}</li>
     <li class="list-group-item"><strong class="m-3">Expected Salary : </strong> {{seeker.expectedSalary}}</li>
     <li class="list-group-item"><strong class="m-3">CV : </strong>
-      <a [href]="url" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
+      <a *ngIf="seeker.cv" [href]="seeker.cv_download" target="_blank" rel="noopener noreferrer">{{seeker.cv}}</a>
     </li>
     <li class="list-group-item"><strong class="m-3">contacts : </strong>
       <div *ngFor="let contact of seeker.contacts" class="ml-5">

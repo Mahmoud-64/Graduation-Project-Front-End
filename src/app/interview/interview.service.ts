@@ -30,8 +30,6 @@ export class InterviewService {
             )
             .subscribe(interviews => {
                 this.loadedInterview = interviews;
-                // console.log(typeof (this.loadedInterview));
-
             });
     }
 

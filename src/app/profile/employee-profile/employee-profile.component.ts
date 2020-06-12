@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../service/employee.service';
 import { Employee } from '../../models/employee';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-employee-profile',
@@ -21,9 +22,11 @@ export class EmployeeProfileComponent implements OnInit {
       branch: "",
     };
   role;
+  profileImage = "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
   constructor(
     private employeeService: EmployeeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
@@ -36,7 +39,20 @@ export class EmployeeProfileComponent implements OnInit {
     this.employeeService.getEmployee(employeeId)
       .subscribe(employee => {
         this.employee = employee.data;
+        employee.data.user.image ? this.profileImage = employee.data.user.image : null;
       });
+  }
+
+  updatePhoto() {
+    const modalRef = this.modalService.open(ImageModalComponent);
+    modalRef.componentInstance.photo = this.profileImage;
+    modalRef.result.then(
+      result => {
+        this.ngOnInit();
+      },
+      rejected => {
+      }
+    )
   }
 
 

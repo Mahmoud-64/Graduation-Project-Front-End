@@ -39,7 +39,6 @@ export class StatusFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.status_id) {
       this.applicationService.getStatus(this.status_id).subscribe(status => {
-        console.log("status",status);
         this.statusesForm.patchValue(status['data'])
       })
     }
@@ -58,21 +57,17 @@ export class StatusFormComponent implements OnInit {
   }
 
   submitStatus() {
-    console.log(this.statusesForm.value)
     if (this.status_id) {
       this.applicationService.updateStatus(this.status_id, this.statusesForm.value).subscribe(
         result => {
-          console.log(result);
           this.changeSuccessMessage();
           this.statusChanged.emit();
         },
         error => {
-          console.log(error);
           this.error = error.error
         })
     } else {
       this.applicationService.addNewStatus(this.statusesForm.value).subscribe(status => {
-        console.log(status);
         this.changeSuccessMessage();
         this.statusChanged.emit();
       })

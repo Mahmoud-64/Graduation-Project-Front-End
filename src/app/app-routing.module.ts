@@ -5,12 +5,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-import { JobItemComponent } from './home/job-item/job-item.component'
-import { InterviewFormComponent } from './interview/interview-form/interview-form.component';
-import { InterviewComponent } from './interview/interview.component';
-import { InterviewItemComponent } from './interview/interview-item/interview-item.component';
-import { InterviewListComponent } from './interview/interview-list/interview-list.component';
-import { InterviewDetailsComponent } from './interview/interview-details/interview-details.component';
 import { Handel404Component } from './fallback/handel404/handel404.component';
 import { Handel500Component } from './fallback/handel500/handel500.component';
 import { Handel403Component } from './fallback/handel403/handel403.component';
@@ -19,8 +13,6 @@ import { UserService } from './service/user.service';
 import { UserResolverService } from './resolvers/user-resolver.service';
 import { Role } from './models/role.enum';
 import { BaseComponent } from './base/base.component';
-import { InterviewLevelsComponent } from './interview/interview-levels/interview-levels.component';
-import { InterviewEditComponent } from './interview/interview-edit/interview-edit.component';
 import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
 import { EmpInterviewListComponent } from './interview/emp-interview-list/interview-list.component';
 import { EmpInterviewItemComponent } from './interview/emp-interview-item/interview-item.component';
@@ -28,11 +20,7 @@ import { EmpInterviewEditComponent } from './interview/emp-interview-edit/interv
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'jobs',
-  //   pathMatch: 'full'
-  // },
+
   {
     path: '',
     component: BaseComponent,
@@ -62,11 +50,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./job-application/job-application.module').then((m) => m.JobApplicationModule),
       },
-      // {
-      //   path: 'admin-interviews',
-      //   loadChildren: () =>
-      //     import('./interview/interview.module').then((m) => m.InterviewModule),
-      // },
       {
         path: 'profile',
         canActivate: [AuthGuard],

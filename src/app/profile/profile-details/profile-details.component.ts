@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
 import { UserService } from '../../service/user.service';
 import { Seeker } from '../../models/seeker';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
@@ -36,7 +36,6 @@ export class ProfileDetailsComponent implements OnInit {
     };
   profileImage= "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
   contacts: [];
-  url = '';
   role;
   isCollapsed = true;
   isCollapsed2 = false;
@@ -60,7 +59,6 @@ export class ProfileDetailsComponent implements OnInit {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
         seeker.data.user.image ? this.profileImage = seeker.data.user.image : null;
-        this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
       });
   }
 

@@ -88,7 +88,6 @@ export class EmployeesComponent implements OnInit {
         this.crudOperation('delete',data.id);
       },
       rejected => {
-        console.log("rejected");
       }
     )
   }

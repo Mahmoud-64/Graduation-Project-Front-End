@@ -30,20 +30,16 @@ export class JobsComponent implements OnInit {
     this.jobsService.getAllJobs(this.filterParams).subscribe(
       result => {
         this.jobs = result.data;
-        console.log(result.data);
         this.filterParams.page = result.meta.current_page;
         this.lastPage = result.meta.last_page;
 
       },
       error => {
-        console.log(error);
-
       }
     );
   }
 
   showJob(jobId) {
-    console.log(jobId);
     this.router.navigateByUrl('/admin/jobs/' + jobId);
 
   }
@@ -52,11 +48,9 @@ export class JobsComponent implements OnInit {
 
     this.jobsService.deleteJob(jobId).subscribe(
       result => {
-        console.log(result);
         this.ngOnInit();
       },
       error => {
-        console.log(error);
       }
     )
   }
@@ -78,7 +72,6 @@ export class JobsComponent implements OnInit {
     } else {
       this.filterParams.orderBy = element;
     }
-    console.log(this.filterParams);
     this.filterParams.page = 1;
     this.ngOnInit()
   }
@@ -86,14 +79,12 @@ export class JobsComponent implements OnInit {
   nextPage() {
     this.filterParams.page += 1
     this.ngOnInit();
-    console.log('next ' + this.filterParams.page);
 
   }
 
   prevPage() {
     this.filterParams.page -= 1
     this.ngOnInit();
-    console.log('prev ' + this.filterParams.page);
   }
   confirmDelete(data) {
     const modalRef = this.modalService.open(ConfirmModalComponent);
@@ -103,7 +94,6 @@ export class JobsComponent implements OnInit {
         this.deleteJob(data.id);
       },
       rejected => {
-        console.log("rejected");
       }
     )
   }

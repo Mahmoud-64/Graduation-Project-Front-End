@@ -40,10 +40,7 @@ export class SearchComponent implements OnInit {
         minYears: ""
       })
     }
-    console.log("submit",this.searchForm.value);
-    this.jobService.jobSubject.next(this.searchForm.value);
-    // this.jobService.jobSubject.complete();
-    
+    this.jobService.jobSubject.next(this.searchForm.value);   
   }
 
 }

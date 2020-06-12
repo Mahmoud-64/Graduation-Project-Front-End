@@ -1,11 +1,9 @@
-
-
 <div class="bgImg">
   <img src="/assets/images/bg.jpeg" height="100%" width="100%" alt="">
 </div>
 <app-header></app-header>
 
-<div  *ngIf="userService.spinner; else notloaded">
+<div *ngIf="userService.spinner; else notloaded">
   <div class="center">
     <img class="" src="assets/images/loading.gif">
   </div>
@@ -16,8 +14,8 @@
     <img class="img-fluid w-100" src="assets/images/home.jpg">
   </div>
 
-  <div class="color-warning text-center" *ngIf="isEmailSent()">
-    please verify your email, if you didn't recieve any emails click this link
+  <div class="color-warning text-center" *ngIf="emailSentValue">
+    verify your email, if you didn't recieve any emails click this link
     <a class="verigyEmail" (click)="resendEmailVerification()"> send email verification </a>
   </div>
 
