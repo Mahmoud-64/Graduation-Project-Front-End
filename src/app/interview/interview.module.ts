@@ -15,6 +15,12 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { EmpInterviewListComponent } from './emp-interview-list/interview-list.component';
 import { EmpInterviewItemComponent } from './emp-interview-item/interview-item.component';
 import { EmpInterviewEditComponent } from './emp-interview-edit/interview-edit.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+
+
 
 
 @NgModule({
@@ -36,6 +42,11 @@ import { EmpInterviewEditComponent } from './emp-interview-edit/interview-edit.c
     FormsModule,
     MatStepperModule,
     InterviewsRoutingModule2,
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     FlashMessagesModule.forRoot(),
 
 
