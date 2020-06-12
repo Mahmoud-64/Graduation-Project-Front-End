@@ -41,7 +41,8 @@
         <tr formGroupName="user">
           <th scope="col">Password</th>
           <td>
-            <input type="password" class="form-control" name="password" placeholder="password" formControlName="password">
+            <input type="password" class="form-control" name="password" placeholder="password"
+              formControlName="password">
             <div *ngIf="password.invalid && (password.dirty || password.touched) && !error" class="text-danger small">
               <div *ngIf="password.errors.required">
                 Password is required.
@@ -58,171 +59,170 @@
           <th scope="col">Password confirmation</th>
           <td>
             <input [class.is-invalid]="details.errors?.misMatch" type="password" class="form-control"
-            name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
+              name="password_confirmation" placeholder="password_confirmation" formControlName="password_confirmation">
             <div
-            *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
-            class="text-danger small">
-            <div *ngIf="password_confirmation.errors.required">
-              Password confirmation is required.
+              *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched) && !error"
+              class="text-danger small">
+              <div *ngIf="password_confirmation.errors.required">
+                Password confirmation is required.
+              </div>
             </div>
-          </div>
-          <div *ngIf="details.get('user').errors?.misMatch" class="text-danger small">
-            password confirmation doesn't match password field
-          </div>
-          <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
-            <div *ngFor="let password_confirmation of error.errors.password_confirmation">
-              {{password_confirmation}}
+            <div *ngIf="details.get('user').errors?.misMatch" class="text-danger small">
+              password confirmation doesn't match password field
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Phone</th>
-        <td>
-          <input type="text" class="form-control" name="phone" placeholder="phone" formControlName="phone">
-          <div *ngIf="phone.invalid && (phone.dirty || phone.touched) && !error" class="text-danger small">
-            <div *ngIf="phone.errors.required">
-              Phone is required.
+            <div *ngIf="error && error.errors.password_confirmation" class="text-danger small">
+              <div *ngFor="let password_confirmation of error.errors.password_confirmation">
+                {{password_confirmation}}
+              </div>
             </div>
-          </div>
-          <div *ngIf="error && error.errors.phone" class="text-danger small">
-            <div *ngFor="let phone of error.errors.phone">
-              {{phone}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Phone</th>
+          <td>
+            <input type="text" class="form-control" name="phone" placeholder="phone" formControlName="phone">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched) && !error" class="text-danger small">
+              <div *ngIf="phone.errors.required">
+                Phone is required.
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Address</th>
-        <td>
-          <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
-          <div *ngIf="error && error.errors.address" class="text-danger small">
-            *{{error.errors.address}}
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">City</th>
-        <td>
-          <input type="text" class="form-control" name="city" placeholder="city" formControlName="city" required>
-          <div *ngIf="error && error.errors.city" class="text-danger small">
-            <div *ngFor="let city of error.errors.city">
-              {{city}}
+            <div *ngIf="error && error.errors.phone" class="text-danger small">
+              <div *ngFor="let phone of error.errors.phone">
+                {{phone}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Seniority</th>
-        <td>
-          <input type="text" class="form-control" name="seniority" placeholder="seniority" formControlName="seniority">
-          <div *ngIf="error && error.errors.seniority" class="text-danger small">
-            <div *ngFor="let seniority of error.errors.seniority">
-              {{seniority}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Address</th>
+          <td>
+            <input type="text" class="form-control" name="address" placeholder="address" formControlName="address">
+            <div *ngIf="error && error.errors.address" class="text-danger small">
+              *{{error.errors.address}}
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Years of experience</th>
-        <td>
-          <input type="number" class="form-control" name="expYears" placeholder="Years of experience"
-          formControlName="expYears">
-          <div *ngIf="error && error.errors.expYears" class="text-danger small">
-            <div *ngFor="let expYears of error.errors.expYears">
-              {{expYears}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">City</th>
+          <td>
+            <input type="text" class="form-control" name="city" placeholder="city" formControlName="city" required>
+            <div *ngIf="error && error.errors.city" class="text-danger small">
+              <div *ngFor="let city of error.errors.city">
+                {{city}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Current Job</th>
-        <td>
-          <input type="text" class="form-control" name="currentJob" placeholder="Current Job"
-          formControlName="currentJob">
-          <div *ngIf="error && error.errors.currentJob" class="text-danger small">
-            <div *ngFor="let currentJob of error.errors.currentJob">
-              {{currentJob}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Seniority</th>
+          <td>
+            <input type="text" class="form-control" name="seniority" placeholder="seniority"
+              formControlName="seniority">
+            <div *ngIf="error && error.errors.seniority" class="text-danger small">
+              <div *ngFor="let seniority of error.errors.seniority">
+                {{seniority}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Current Salary</th>
-        <td>
-          <input type="number" class="form-control" name="currentSalary" placeholder="Current Salary"
-          formControlName="currentSalary">
-          <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
-            <div *ngFor="let currentSalary of error.errors.currentSalary">
-              {{currentSalary}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Years of experience</th>
+          <td>
+            <input type="number" class="form-control" name="expYears" placeholder="Years of experience"
+              formControlName="expYears">
+            <div *ngIf="error && error.errors.expYears" class="text-danger small">
+              <div *ngFor="let expYears of error.errors.expYears">
+                {{expYears}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="col">Expected Salary</th>
-        <td>
-          <input type="number" class="form-control" name="expectedSalary" placeholder="Expected Salary"
-          formControlName="expectedSalary">
-          <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
-            <div *ngFor="let expectedSalary of error.errors.expectedSalary">
-              {{expectedSalary}}
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Current Job</th>
+          <td>
+            <input type="text" class="form-control" name="currentJob" placeholder="Current Job"
+              formControlName="currentJob">
+            <div *ngIf="error && error.errors.currentJob" class="text-danger small">
+              <div *ngFor="let currentJob of error.errors.currentJob">
+                {{currentJob}}
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th>Other Contacts
-          <span class="addContact" (click)="addContact()">
-            <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
-          </span>
-        </th>
-        <td>
-          <div formArrayName="contacts">
-            <div *ngFor="let contact of contacts.controls; index as i">
-              <div [formGroupName]="i" class="d-flex bd-highlight">
-                <div class="p-2 bd-highlight">
-                  <input class="form-control" name="contact" type="text" formControlName="data" class="form-control"
-                  aria-describedby="contactHelp" placeholder="Enter contact" />
-                </div>
-                <div class="p-2 bd-highlight">
-                  <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
-                    <option value=''>please select</option>
-                    <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
-                      {{contactType.type}}
-                    </option>
-                  </select>
-                </div>
-                <div class="p-2 bd-highlight">
-                  <span class="addContact" (click)="removeContact(i)">
-                    <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
-                  </span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Current Salary</th>
+          <td>
+            <input type="number" class="form-control" name="currentSalary" placeholder="Current Salary"
+              formControlName="currentSalary">
+            <div *ngIf="error && error.errors.currentSalary" class="text-danger small">
+              <div *ngFor="let currentSalary of error.errors.currentSalary">
+                {{currentSalary}}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Expected Salary</th>
+          <td>
+            <input type="number" class="form-control" name="expectedSalary" placeholder="Expected Salary"
+              formControlName="expectedSalary">
+            <div *ngIf="error && error.errors.expectedSalary" class="text-danger small">
+              <div *ngFor="let expectedSalary of error.errors.expectedSalary">
+                {{expectedSalary}}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>Other Contacts
+            <span class="addContact" (click)="addContact()">
+              <img src="https://img.icons8.com/material-sharp/20/000000/add.png" />
+            </span>
+          </th>
+          <td>
+            <div formArrayName="contacts">
+              <div *ngFor="let contact of contacts.controls; index as i">
+                <div [formGroupName]="i" class="d-flex bd-highlight">
+                  <div class="p-2 bd-highlight">
+                    <input class="form-control" name="contact" type="text" formControlName="data" class="form-control"
+                      aria-describedby="contactHelp" placeholder="Enter contact" />
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <select class="form-control" name="contact_types_id" formControlName="contact_types_id">
+                      <option value=''>please select</option>
+                      <option *ngFor="let contactType of contactTypes" value="{{contactType.id}}">
+                        {{contactType.type}}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <span class="addContact" (click)="removeContact(i)">
+                      <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <input class="btn btn-success" type="submit" value="Edit" *ngIf="editRoute">
-  <input class="btn btn-success" type="submit" value="Add" *ngIf="!editRoute">
-</form>
-
-<div class="m-4">
-  <form class="text-center" [formGroup]="details" (ngSubmit)="uploadCV()">
-    <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
-    <div *ngIf="cvError" class="text-danger small">
-      {{cvError}}
-    </div>
-    <div *ngIf="error && error.errors.cv" class="text-danger small">
-      <div *ngFor="let cv of error.errors.cv">
-        {{cv}}
-      </div>
-    </div>
-    <input class="btn btn-warning text-white small" type="submit" value="Upload CV">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input class="btn btn-success" type="submit" value="Edit" *ngIf="editRoute">
+    <input class="btn btn-success" type="submit" value="Add" *ngIf="!editRoute">
   </form>
-</div>
 
+  <div class="mt-3 d-flex justify-content-center">
+    <form class="text-center bg-white w-50 m-2 p-5 border" [formGroup]="details" (ngSubmit)="uploadCV()">
+      <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
+      <div *ngIf="cvError" class="text-danger small">
+        {{cvError}}
+      </div>
+      <div *ngIf="error && error.errors.cv" class="text-danger small">
+        <div *ngFor="let cv of error.errors.cv">
+          {{cv}}
+        </div>
+      </div>
+      <input class="btn btn-color small" type="submit" value="Upload CV">
+    </form>
+  </div>
 </div>
