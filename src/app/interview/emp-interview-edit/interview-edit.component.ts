@@ -6,7 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
-  selector: 'app-interview-edit',
+  selector: 'review-edit',
   templateUrl: './interview-edit.component.html',
   styleUrls: ['./interview-edit.component.css'],
   providers: [InterviewService]

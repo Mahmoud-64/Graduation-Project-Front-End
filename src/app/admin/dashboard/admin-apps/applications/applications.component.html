@@ -21,7 +21,7 @@
                 <td class="align-middle">
                     <div>
                         <select class="custom-select form-control" [formControl]="statuses.controls[i]">
-                            <option *ngFor="let status of allStatus" [value]="status.id">{{status.name}} </option>
+                            <option *ngFor="let status of allStatus" [disabled]="status.id<=statuses.value[i]" [value]="status.id">{{status.name}}</option>
                         </select>
                     </div>
                 </td>

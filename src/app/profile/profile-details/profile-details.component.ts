@@ -2,9 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SeekerService } from '../../service/seeker.service';
+import { UserService } from '../../service/user.service';
 import { Seeker } from '../../models/seeker';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MobileModalComponent } from '../mobile-modal/mobile-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @Component({
   selector: 'app-profile-details',
@@ -32,18 +34,20 @@ export class ProfileDetailsComponent implements OnInit {
       cv: "",
       isVerified: 0
     };
+  profileImage= "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
   contacts: [];
-  url = '';
   role;
   isCollapsed = true;
   isCollapsed2 = false;
   constructor(
     private seekerService: SeekerService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.role = this.userService.getUserRole();
     this.route.paramMap.subscribe(params => {
       this.getSeeker(+params.get('profileId'));
     });
@@ -54,8 +58,7 @@ export class ProfileDetailsComponent implements OnInit {
       .subscribe(seeker => {
         this.seeker = seeker.data;
         this.contacts = seeker.data.contacts;
-        this.role = seeker.data.user.role;
-        this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
+        seeker.data.user.image ? this.profileImage = seeker.data.user.image : null;
       });
   }
 
@@ -78,6 +81,18 @@ export class ProfileDetailsComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
+  }
+
+  updatePhoto(){
+    const modalRef = this.modalService.open(ImageModalComponent);
+    modalRef.componentInstance.photo = this.profileImage;
+    modalRef.result.then(
+      result => {
+        this.ngOnInit();
+      },
+      rejected => {
+      }
+    )
   }
 
 }

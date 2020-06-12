@@ -29,12 +29,10 @@ export class SingleComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       this.jobService.getSingleJob(routeParams.id).subscribe(
         result => {
-          console.log(result);
           this.job = result.data;   
           this.isDataLoaded=true;
         },
         error => {
-          console.log(error);
         }
       )
     });

@@ -15,7 +15,6 @@ import {
   isSameMonth,
   addHours,
 } from 'date-fns';
-import { Subject } from 'rxjs';
 import add from 'date-fns/add';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -25,6 +24,7 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { Router } from '@angular/router';
+import { Observable, Subject, pipe, of, throwError } from 'rxjs';
 
 const colors: any = {
   red: {
@@ -48,13 +48,21 @@ const colors: any = {
   providers: [InterviewService]
 })
 export class EmpInterviewListComponent implements OnInit {
-
+  interviews;
+  interviewDate = [];
+  public now: Date = new Date();
+  flag = true;
   constructor(
     private modal: NgbModal,
     public interviewService: InterviewService,
+
     private _flashMessagesService: FlashMessagesService,
     public router: Router
-  ) { }
+  ) {
+    setInterval(() => {
+      this.now = new Date();
+    }, 3000);
+  }
   // ngOnInit() {
   //   this.interviewService.fetchInterview();
   //   console.log(this.interviewService.fetchInterview());   dataa: any;
@@ -66,6 +74,12 @@ export class EmpInterviewListComponent implements OnInit {
 
   ngOnInit() {
     this.interviewService.fetchInterview();
+
+    this.interviewService.getInterviews().subscribe((data) => {
+      this.interviews = data["data"];
+      this.interviewDate = this.interviews.map(interview => this.now > new Date(interview["date"]));
+    });
+
     this.interviewService.fetchEmployeeInterview()
       .subscribe(res => {
         this.dataa = res;
@@ -234,9 +248,12 @@ export class EmpInterviewListComponent implements OnInit {
   }
 
   // }
+
+  showInterviews() {
+    this.flag = !this.flag;
+    return this.flag;
+  }
 }
-
-
 
 
 

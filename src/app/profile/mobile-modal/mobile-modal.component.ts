@@ -37,17 +37,12 @@ export class MobileModalComponent implements OnInit {
   onSubmit() {
     this.data.phone = this.seeker_phone;
     this.data.verifyToken = this.VerifyPhoneForm.value.code;
-    console.log(this.data);
     this.seekerService.verifyPhone(this.data).subscribe(
       result => {
-        console.log('success');
-        console.log(result);
         this.activeModal.close();
       },
       error => {
-        console.log(error);
         this.verifyError = error.error;
-        console.log(this.verifyError);
       }
     )
   }

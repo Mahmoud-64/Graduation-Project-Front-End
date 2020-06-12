@@ -33,6 +33,10 @@ export class UserService {
     return this.http.get("/api/users");
   }
 
+  getOneUser(userId): Observable<any> {
+    return this.http.get(`/api/users/${userId}`);
+  }
+
   register(user: User): Observable<any> {
     return this.http.post("/api/register", user).pipe(
       tap(data => {
@@ -131,5 +135,21 @@ export class UserService {
       return throwError(error);
     };
   }
+
+  uploadProfilePhoto(photo) {
+    let xhr = new XMLHttpRequest;
+    let token = localStorage.getItem('access_token');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+        } else {
+        }
+      }
+    }
+    xhr.open('POST', "http://localhost:8000/api/uploadprofielephoto", true);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    xhr.send(photo);
+  }
+
 
 }

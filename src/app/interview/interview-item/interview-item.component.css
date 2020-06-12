@@ -1,3 +1,15 @@
 .text{
     word-break: break-all
 }
+
+  .user-left-part{
+    margin: 0px;
+  }
+  .user-image img{
+    width:100px;
+    height:100px;
+  }
+
+  .bg-color{
+    background-image: url("/assets/images/bg-prof.jpg") !important;
+  }

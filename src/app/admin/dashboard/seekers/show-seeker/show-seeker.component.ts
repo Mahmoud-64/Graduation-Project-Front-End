@@ -8,12 +8,14 @@ import { SeekerService } from '../../../../service/seeker.service';
   styleUrls: ['./show-seeker.component.css']
 })
 export class ShowSeekerComponent implements OnInit {
-  seeker={
-    user: {id: "",
-    name: "",
-    email: "",
-    password: "",
-    verify_email: ""},
+  seeker = {
+    user: {
+      id: "",
+      name: "",
+      email: "",
+      password: "",
+      verify_email: ""
+    },
     phone: "",
     contact: "",
     address: "",
@@ -24,27 +26,27 @@ export class ShowSeekerComponent implements OnInit {
     currentSalary: 0,
     expectedSalary: 0,
     cv: "",
+    cv_download: "",
     contacts: [],
-    isVerified:0,
+    isVerified: 0,
   };
-  url;
+  profileImage = "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
 
   constructor(
     private seekerService: SeekerService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params)=>{
+    this.route.paramMap.subscribe((params) => {
       this.getSeeker(params.get('id'));
     });
   }
 
-  getSeeker(user_id)
-  {
+  getSeeker(user_id) {
     this.seekerService.getSeeker(user_id).subscribe(user => {
       this.seeker = user.data;
-      this.url = `/api/seekers/downloadcv/${this.seeker.user.id}/${this.seeker.cv}`;
+      user.data.user.image ? this.profileImage = user.data.user.image : null;
     });
   }
 

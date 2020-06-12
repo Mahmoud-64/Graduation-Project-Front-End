@@ -24,25 +24,20 @@ export class InterviewFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.current = new Date();
-    console.log(this.current);
     this.employeeService.getEmployees().subscribe(
       result => {
-        console.log('employees', result);
         this.employees = result.data
         
       },
       error => {
-        console.log(error);
 
       }
     );
     this.interviewService.getAllLevels().subscribe(
       result => {
-        console.log('levels', result);
         this.levels = result.data;
       },
       error => {
-        console.log(error);
       }
     )
     this.pushDate();
@@ -69,15 +64,11 @@ export class InterviewFormComponent implements OnInit {
 
   onSubmit() {
     this.changeDateFormate()
-    console.log(this.newInterviewForm.value);
     this.interviewService.addNewInterview(this.newInterviewForm.value).subscribe(
       result => {
-        console.log(result);
-        // this.router.navigateByUrl('/admin/applications/' + this.appId);
         this.interviewService.newInterviewSubject.next('new Interview');
       },
       error => {
-        console.log(error);
       }
     )
   }
@@ -93,7 +84,6 @@ export class InterviewFormComponent implements OnInit {
   changeDateFormate(){
     let d = new Date(this.newInterviewForm.value.date);
     let newDate = d.toISOString().slice(0, 19).replace('T', ' ');
-    console.log('new', newDate);
     this.newInterviewForm.patchValue({
       date: newDate,
     })

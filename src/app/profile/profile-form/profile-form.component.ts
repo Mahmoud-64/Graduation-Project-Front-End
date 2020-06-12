@@ -26,7 +26,6 @@ export class ProfileFormComponent implements OnInit {
     let user_id = this.userService.user_id;
     this.userService.updateUser(user_id, formData)
     .subscribe((data) => console.log(data));
-
   }
 
 }

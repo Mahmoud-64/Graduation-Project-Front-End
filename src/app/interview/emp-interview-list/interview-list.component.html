@@ -1,4 +1,7 @@
 <br>
+<br>
+<br>
+<br>
 <div class="row text-center">
     <div class="col-md-4">
         <div class="btn-group">
@@ -49,33 +52,67 @@
     </mwl-calendar-day-view>
 </div>
 
-
-<br>
-<br>
 <hr>
-<br>
-<br>
 
-<table class="table text-center bg-white">
-    <thead class="thead-dark">
-        <tr>
-            <th> ID</th>
-            <th> Application ID</th>
-            <th> Seeker Name</th>
-            <th> Date</th>
-            <th scope="col" colspan="3">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let interview of this.interviewService.loadedInterview[0]">
-            <td>{{ interview.id }}</td>
-            <td>{{ interview.application_id }}</td>
-            <td>{{ interview.seeker}}</td>
-            <td>{{ interview.date}}</td>
-            <td><button routerLink="./details/{{ interview.id }}" class="btn btn-primary btn-sm"> Details</button></td>
-            <td><button routerLink="./review/{{ interview.id }}" class="btn btn-success btn-sm"> Add Review </button>
-            </td>
-        </tr>
+<!-- <table class="table text-center bg-white">
+    <thead class="thead-dark"> -->
+<div class="container d-flex justify-content-end textMargin">
+    <div class="" *ngIf="flag==true">
+        <button type="button" class="btn btn-danger" name="button" (click)="showInterviews()">show old
+            interviews</button>
+    </div>
+    <div class="" *ngIf="flag==false">
+        <button type="button" class="btn btn-danger text-right" name="button" (click)="showInterviews()">show pending
+            interviews</button>
+    </div>
+</div>
 
-    </tbody>
-</table>
+<div class="text-center" *ngIf="flag==false">
+    <h1>Old interviews</h1>
+</div>
+<div class="text-center" *ngIf="flag==true">
+    <h1>pending interviews</h1>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <table class="table text-center table-light w-75">
+        <thead class="thead-dark">
+            <tr>
+                <th> ID</th>
+                <th> Application ID</th>
+                <th> Seeker Name</th>
+                <th> Date</th>
+                <th scope="col" colspan="3">Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let interview of interviews; index as i">
+                <td *ngIf="!flag && interviewDate[i]">{{ interview.id }}
+                </td>
+                <td *ngIf="!flag && interviewDate[i]">{{ interview.application_id }}</td>
+                <td *ngIf="!flag && interviewDate[i]">
+                    <a href="#" routerLink="/profile/{{interview.seeker_id}}">{{interview.seeker}}</a>
+                </td>
+                <td *ngIf="!flag && interviewDate[i]">{{ interview.date}}</td>
+                <td *ngIf="!flag && interviewDate[i]"><button routerLink="./details/{{ interview.id }}"
+                        class="btn btn-primary btn-sm"> Details</button></td>
+                <td *ngIf="!flag && interviewDate[i]"><button routerLink="./review/{{ interview.id }}"
+                        class="btn btn-success btn-sm"> Add Review </button>
+                </td>
+                <td *ngIf="flag && !interviewDate[i]">{{ interview.id }}
+                </td>
+                <td *ngIf="flag && !interviewDate[i]">{{ interview.application_id }}</td>
+                <td *ngIf="flag && !interviewDate[i]">
+                    <a href="#" routerLink="/profile/{{interview.seeker_id}}">{{interview.seeker}}</a>
+                </td>
+                <td *ngIf="flag && !interviewDate[i]">{{ interview.date}}</td>
+                <td *ngIf="flag && !interviewDate[i]"><button routerLink="./details/{{ interview.id }}"
+                        class="btn btn-primary btn-sm"> Details</button></td>
+                <td *ngIf="flag && !interviewDate[i]"><button routerLink="./review/{{ interview.id }}"
+                        class="btn btn-success btn-sm"> Add Review </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/application.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from 'src/app/service/user.service';
-import { InterviewService } from 'src/app/admin-interviews/services/interview.service';
+import { UserService } from '../../service/user.service';
+import { InterviewService } from '../../admin-interviews/services/interview.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -19,15 +19,20 @@ export class AppDetailsComponent implements OnInit {
         'name': ""
       }
     },
-    "job": { "title": "", "description": "", "requirements":"",
-     "seniority":"", "years_exp":"" },
+    "job": {
+      "title": "", "description": "", "requirements": "",
+      "seniority": "", "years_exp": ""
+    },
     "status": { "name": "", "description": "" },
     "interviews": [],
   };
   isAdmin: boolean = false;
+  isSeeker: boolean = false;
   interviewForm: boolean = false;
   isDataLoaded: boolean = false;
-
+  public isCollapsed = false;
+  showJob;
+  interviews = [];
   constructor(
     private applicationService: ApplicationService,
     private userService: UserService,
@@ -40,35 +45,32 @@ export class AppDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.route.params.subscribe(routParams => {
       this.applicationService.getSingleApplication(routParams.id).subscribe(
         result => {
           this.interviewForm = false;
           this.application = result.data;
           this.isDataLoaded = true;
+          this.checkRole();
+          this.isCollapsed = false;
         },
         error => {
-          console.log(error);
-
-        }
-      )
+        })
     })
     this.checkRole();
+
   }
 
   deleteApplication() {
     this.applicationService.deleteSingleApplication(this.application.id).subscribe(
       result => {
-        console.log(result);
         if (this.isAdmin) {
           this.location.back();
         } else {
           this.applicationService.appSubject.next("delete");
-        } 
+        }
       },
       error => {
-        console.log(error);
       }
     )
   }
@@ -82,14 +84,14 @@ export class AppDetailsComponent implements OnInit {
       result => {
         if (result == 1) {
           this.isAdmin = true;
+        } else if (result == 3) {
+          this.isSeeker = true;
+          this.showJob = true;
         }
       }
     );
   }
-  jobHover() {
-    console.log("hover");
 
-  }
   subscribeInterviews() {
     this.interviewService.newInterviewSubject.subscribe(
       next => {
@@ -98,8 +100,14 @@ export class AppDetailsComponent implements OnInit {
     )
   }
 
-  showInterviews(){
-    this.router.navigate(['interviews'], {relativeTo: this.route})
+  showInterviews() {
+    if (!this.isSeeker) {      
+      this.router.navigate(['interviews'], { relativeTo: this.route });
+    } else {
+      this.isCollapsed = !this.isCollapsed;
+      this.showJob = !this.showJob;
+    }
   }
+  
 
 }

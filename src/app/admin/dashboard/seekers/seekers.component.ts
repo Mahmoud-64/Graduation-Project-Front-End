@@ -74,7 +74,6 @@ export class SeekersComponent implements OnInit {
         this.crudOperation('delete', data.id);
       },
       rejected => {
-        console.log("rejected");
       }
     )
   }

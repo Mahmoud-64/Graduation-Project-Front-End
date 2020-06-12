@@ -1,19 +1,23 @@
-<form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+<div class="container textMargin">
+  <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+    <li class="list-group-item"><strong class="m-3">Seeker Review : </strong>
+      <div class="form-group">
+        <textarea type="text" class="form-control" id="seeker_review" placeholder="Seeker Review" ngModel
+        name="seeker_review" required></textarea>
+      </div>
+    </li>
+    <li class="list-group-item"><strong class="m-3">Company Review : </strong>
+      <div class="form-group">
+        <textarea type="text" class="form-control" id="company_review" placeholder="Company Review" ngModel
+        name="company_review" required></textarea>
+      </div>
+    </li>
 
-    <div class="form-group">
-        <label for="seeker_review">seeker_review</label>
-        <textarea type="text" class="form-control" id="seeker_review" [placeholder]="single.seeker_review" ngModel
-            name="seeker_review" required></textarea>
-    </div>
 
-    <div class="form-group">
-        <label for="company_review">company_review</label>
-        <textarea type="text" class="form-control" id="company_review" [placeholder]="single.company_review" ngModel
-            name="company_review" required></textarea>
-    </div>
 
     <button class="btn btn-primary" type="submit" [disabled]="!postForm.valid">
-        Save
+      Save
     </button>
-</form>
-<flash-messages></flash-messages>
+  </form>
+  <flash-messages></flash-messages>
+</div>

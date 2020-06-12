@@ -32,22 +32,17 @@ export class JobModalComponent implements OnInit {
   }
 
   applyJob() {
-    console.log(this.job.id);
     if (this.logged) {
       this.jobService.applyJob(this.job.id).subscribe(
         result => {
-          console.log(result);
           this.activeModal.close();
           this.router.navigateByUrl('/applications/' + result.data.id)
         },
         error => {
-          console.log(error);
           this.applyError = error;
           this.canApply = false;
         }
       )
-      console.log("aftersend");
-
     } else {
       this.activeModal.close();
       this.router.navigateByUrl('/login');

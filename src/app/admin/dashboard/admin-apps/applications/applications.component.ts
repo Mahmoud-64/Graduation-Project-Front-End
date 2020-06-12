@@ -44,13 +44,12 @@ export class ApplicationsComponent implements OnInit {
               {
                 this.applicationService.updateAppStatus(appId, status).subscribe(
                   result => {
-                    console.log("updated==", result);
                   },
                   error => {
-                    console.log(error);
                   })
               }
            })
+           
           flag = 1;
         }
         if (flag==1)
@@ -59,7 +58,6 @@ export class ApplicationsComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
       }
     );
     this.applicationService.getAllStatus().subscribe(
@@ -67,7 +65,6 @@ export class ApplicationsComponent implements OnInit {
         this.allStatus = result.data;
       },
       error => {
-        console.log(error);
       })
 
 
@@ -84,7 +81,6 @@ export class ApplicationsComponent implements OnInit {
         this.ngOnInit();
       },
       error => {
-        console.log(error);
       });
   }
 
@@ -101,7 +97,6 @@ export class ApplicationsComponent implements OnInit {
         this.deleteApplication(data.id);
       },
       rejected => {
-        console.log("rejected");
       }
     )
   }

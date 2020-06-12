@@ -30,8 +30,6 @@ export class InterviewService {
             )
             .subscribe(interviews => {
                 this.loadedInterview = interviews;
-                console.log(typeof (this.loadedInterview));
-
             });
     }
 
@@ -42,6 +40,10 @@ export class InterviewService {
             );
     }
 
+
+    public getInterviews() {
+        return this.http.get('http://localhost:8000/api/interviews');
+    }
     public fetchSingleInterview(id) {
         return this.http
             .get(
