@@ -43,6 +43,7 @@ export class BaseComponent implements OnInit {
         this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
         this.isEmployee = this.userService.getUserRole() == Role.employee;
         this.isSeeker = this.userService.getUserRole() == Role.seeker;
+
         this.loggedIn = true;
       }
     });
@@ -54,7 +55,9 @@ export class BaseComponent implements OnInit {
           this.emailSentValue = this.isEmailSent();
         });
         if (val === false) {
-          this.loggedIn = false;
+          setTimeout(() => {
+            this.loggedIn = false;
+          });
         }
         else {
           this.user = this.userService.getUser().data;
