@@ -1,9 +1,9 @@
 <br>
 <br>
-<br>
+
 <br>
 <div class="clendarContainer" *ngIf="viewSwitch==true">
-    <div> <button class="btn btn-danger ml-3" (click)="toggleView()">table view</button></div>
+    <div> <button class="btn btn-outline-dark ml-3" (click)="toggleView()">table view</button></div><br>
     <div class="row text-center">
         <div class="col-md-4">
             <div class="btn-group">
@@ -40,7 +40,6 @@
             </div>
         </div>
     </div>
-    <br />
     <div [ngSwitch]="view">
         <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
             [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
@@ -62,7 +61,7 @@
     <thead class="thead-dark"> -->
 
 <div class="tableContainer" *ngIf="viewSwitch==false">
-    <div> <button class="btn btn-danger ml-3" (click)="toggleView()">calendar view</button></div>
+    <div> <button class="btn btn-outline-dark ml-3" (click)="toggleView()">calendar view</button></div>
 
     <div class="container d-flex justify-content-end textMargin">
         <div class="" *ngIf="flag==true">
