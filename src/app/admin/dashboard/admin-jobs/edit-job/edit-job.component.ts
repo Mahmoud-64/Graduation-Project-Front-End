@@ -43,7 +43,6 @@ export class EditJobComponent implements OnInit {
       if (routeParams.id) {
         this.jobService.getSingleJob(routeParams.id).subscribe(
           result => {
-            console.log(result);
             this.job = result.data;
             this.isDataLoaded = true;
             this.header="Update Job"
@@ -51,7 +50,6 @@ export class EditJobComponent implements OnInit {
             this.pushData();
           },
           error => {
-            console.log(error);
           }
         )
       }
@@ -110,7 +108,6 @@ export class EditJobComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.newJobForm.value);
     this.jobServerError = {
       message: "",
       errors: {
@@ -130,12 +127,10 @@ export class EditJobComponent implements OnInit {
   updateJob(){
     this.jobService.updateJob(this.newJobForm.value, this.job.id).subscribe(
       result => {
-        console.log(result);
         this.router.navigate(['/admin/jobs']);
       },
       error => {
         this.jobServerError = error;
-        console.log(this.jobServerError);
       }
     )
   }
@@ -143,12 +138,10 @@ export class EditJobComponent implements OnInit {
   storeJob(){
     this.jobService.addNewJob(this.newJobForm.value).subscribe(
       result => {
-        console.log(result);
         this.router.navigate(['/admin/jobs']);
       },
       error => {
         this.jobServerError = error;
-        console.log(this.jobServerError);
       }
     )
   }

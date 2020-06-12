@@ -17,6 +17,7 @@ export class ShowEmployeeComponent implements OnInit {
     position: "",
     branch: "",
   };
+  profileImage = "https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
 
   constructor(
     private employeeService: EmployeeService,
@@ -33,6 +34,8 @@ export class ShowEmployeeComponent implements OnInit {
   {
     this.employeeService.getEmployee(user_id).subscribe(user => {
       this.user = user.data;
+      user.data.user.image ? this.profileImage = user.data.user.image : null;
+
     });
   }
 

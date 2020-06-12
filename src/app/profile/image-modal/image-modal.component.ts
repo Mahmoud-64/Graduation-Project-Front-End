@@ -35,7 +35,6 @@ export class ImageModalComponent implements OnInit {
   }
   
   uploadPhoto() {
-    console.log(this.photoForm.get('photo').value);
     var formData: FormData = new FormData();
     formData.append('photo', this.photoForm.get('photo').value);
     this.userService.uploadProfilePhoto(formData);

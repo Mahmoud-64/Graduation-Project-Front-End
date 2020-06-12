@@ -55,8 +55,6 @@ export class AppDetailsComponent implements OnInit {
           this.isCollapsed = false;
         },
         error => {
-          console.log(error);
-
         })
     })
     this.checkRole();
@@ -73,7 +71,6 @@ export class AppDetailsComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
       }
     )
   }
@@ -104,9 +101,7 @@ export class AppDetailsComponent implements OnInit {
   }
 
   showInterviews() {
-    if (!this.isSeeker) {
-      console.log("not seeker");
-      
+    if (!this.isSeeker) {      
       this.router.navigate(['interviews'], { relativeTo: this.route });
     } else {
       this.isCollapsed = !this.isCollapsed;

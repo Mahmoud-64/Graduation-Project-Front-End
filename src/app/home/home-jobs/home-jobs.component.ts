@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { JobsService } from '../services/jobs.service';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JobModalComponent } from '../job-modal/job-modal.component';
 import {trigger, style, animate, transition} from '@angular/animations';
@@ -32,7 +31,6 @@ export class HomeJobsComponent implements OnInit {
 
   constructor(
     private jobService: JobsService,
-    private router: Router,
     private modalService: NgbModal
   ) {
     this.subscribeJobSubject();
@@ -47,7 +45,6 @@ export class HomeJobsComponent implements OnInit {
         this.lastPage = result.meta.last_page;
       },
       error => {
-        console.log(error);
       }
     )
   }
@@ -55,10 +52,8 @@ export class HomeJobsComponent implements OnInit {
     this.jobService.jobSubject.subscribe(
       next => {
         this.filterParams.page = 1;
-        console.log("subject hit", next);
         this.filterParams = { ...this.filterParams, ...next };
 
-        console.log('after merg', this.filterParams);
         this.ngOnInit();
 
       }
@@ -67,14 +62,12 @@ export class HomeJobsComponent implements OnInit {
   nextPage() {
     this.filterParams.page += 1
     this.ngOnInit();
-    console.log('next ' + this.filterParams.page);
 
   }
 
   prevPage() {
     this.filterParams.page -= 1
     this.ngOnInit();
-    console.log('prev ' + this.filterParams.page);
   }
 
   openModal(job){

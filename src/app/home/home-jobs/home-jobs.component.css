@@ -6,9 +6,6 @@
 .card-img{
     opacity: 0.2 !important;
 }
-/* .bg-job-img{
-    background-image: url("/assets/images/bg_job.jpg") !important;
-} */
 
 .h-item{
     color:#31708e !important;
@@ -20,7 +17,6 @@
 
 .bg-jobs{
     border-radius: 5px;
-    /* background: #05386b; */
     background: rgb(216,228,240);
     background: radial-gradient(circle, rgba(216,228,240,1) 50%, rgba(5,56,107,1) 100%);
 }
