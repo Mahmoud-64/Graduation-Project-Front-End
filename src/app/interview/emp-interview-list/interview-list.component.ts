@@ -43,7 +43,6 @@ const colors: any = {
 @Component({
   selector: 'app-interview-list',
   templateUrl: './interview-list.component.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./interview-list.component.css'],
   providers: [InterviewService]
 })
@@ -63,14 +62,11 @@ export class EmpInterviewListComponent implements OnInit {
       this.now = new Date();
     }, 3000);
   }
-  // ngOnInit() {
-  //   this.interviewService.fetchInterview();
-  //   console.log(this.interviewService.fetchInterview());   dataa: any;
+
 
   dateArray: any = [];
   dataa: any = [];
   dataObject: any = {};
-  arr: any = [5];
 
   ngOnInit() {
     this.interviewService.fetchInterview();
@@ -83,19 +79,16 @@ export class EmpInterviewListComponent implements OnInit {
     this.interviewService.fetchEmployeeInterview()
       .subscribe(res => {
         this.dataa = res;
-        // console.log(this.dataa);
-        // this.arr[0] = 6;
-        // console.log("inside subscribe");
         this.dataa.data.forEach(element => {
           this.dataObject =
           {
-            start: startOfDay(new Date(element.date)),
-            end: startOfDay(new Date(element.date)),
+            start: new Date(element.date),
+            end: addHours(new Date(element.date), 1),
             title: 'interview added with ID' + element.id,
             id: element.id,
             color: colors.red,
             actions: this.actions,
-            allDay: true,
+            allDay: false,
             resizable: {
               beforeStart: true,
               afterEnd: true,
@@ -103,48 +96,15 @@ export class EmpInterviewListComponent implements OnInit {
             draggable: true,
           }
           this.dateArray.push(this.dataObject);
-          // console.log(this.dateArray);
         });
-        console.log(this.dateArray);
         this.events = this.dateArray;
       });
-    // setTimeout(function () { console.log(this.arr); }, 2000);
-    // console.log(this.arr);
-    // console.log("outside subscribe");
-
-
-    console.log(this.dateArray);
-
-    // for (let singleData of this.dataa) {
-    //     this.dataObject =
-    //     {
-    //         start: startOfDay(add(new Date(singleData.date), { months: -1 })),
-    //         end: startOfDay(add(new Date(singleData.date), { months: -1 })),
-    //         title: 'A 3 day event',
-    //         color: colors.red,
-    //         actions: this.actions,
-    //         allDay: true,
-    //         resizable: {
-    //             beforeStart: true,
-    //             afterEnd: true,
-    //         },
-    //         draggable: true,
-    //     }
-    //     this.dateArray.push("1");
-    //     console.log('3');
-    // }
 
   }
-  // ngOnChange() {
-  //     console.log(this.arr);
 
-  // }
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
 
   modalData: {
@@ -211,8 +171,6 @@ export class EmpInterviewListComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    // this.modalData = { event, action };
-    // this.modal.open(this.modalContent, { size: 'lg' });
     console.log(event.id);
     this.router.navigate(["/emprev/details", event.id]);
 
