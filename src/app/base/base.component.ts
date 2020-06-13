@@ -26,6 +26,7 @@ export class BaseComponent implements OnInit {
   loggedinUser: Boolean = false;
   emailSent: Boolean = false;
   emailSentValue: Boolean = false;
+  notifications ='';
   constructor(
     public userService: UserService,
     private router: Router,
@@ -81,6 +82,11 @@ export class BaseComponent implements OnInit {
       next: (result) => {
         this.emailVerified = result;
       }
+    });
+
+    this.seekerService.messagesChannel.bind('review-event', (message) => {
+      console.log("message", message);
+      this.notifications = message['message'];
     });
 
   }

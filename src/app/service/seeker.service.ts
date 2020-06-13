@@ -12,7 +12,7 @@ export class SeekerService {
   private seekersUrl = '/api/seekers/';  // URL to web api
   private VerifyPhoneUrl = '/api/checkphone';
   declare pusher: any;
-  messagesChannel;
+  public messagesChannel;
 
   constructor(private http: HttpClient) {
     this.pusher = new Pusher(environment.pusher.key, {
@@ -21,7 +21,6 @@ export class SeekerService {
     this.messagesChannel = this.pusher.subscribe('my-channel');
     this.messagesChannel.bind('review-event', (message) => {
       console.log("message", message);
-      
     });
   }
 
