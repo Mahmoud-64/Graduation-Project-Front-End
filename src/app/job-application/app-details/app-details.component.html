@@ -1,3 +1,12 @@
+<!-- interview form -->
+<div *ngIf="interviewForm">
+    <div class="p-2 bd-highlight text-center">
+        <span class="addContact" (click)="showForm()">
+            <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
+        </span>
+    </div>
+    <admin-interview-form [appId]="application.id"></admin-interview-form>
+</div>
 <div class="mx-3 my-1 px-3 rounded">
     <div *ngIf="isAdmin" class="btn">
         <strong>Seeker Name:</strong> {{application.seeker.user.name}}
@@ -52,12 +61,3 @@
 
 </div>
 
-<!-- interview form -->
-<div *ngIf="interviewForm">
-    <div class="p-2 bd-highlight text-center">
-        <span class="addContact" (click)="showForm()">
-            <img src="https://img.icons8.com/metro/20/000000/close-window.png" />
-        </span>
-    </div>
-    <admin-interview-form [appId]="application.id"></admin-interview-form>
-</div>

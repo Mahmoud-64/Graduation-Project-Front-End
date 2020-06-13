@@ -1,9 +1,167 @@
-<div class="bgImg">
+<!-- <div class="bgImg">
   <img src="/assets/images/bg.jpeg" height="100%" width="100%" alt="">
-</div>
-<app-header></app-header>
+</div> -->
 
-<div *ngIf="userService.spinner; else notloaded">
+
+
+
+
+<!-- ********************************************************************* -->
+<!-- <app-header></app-header> -->
+
+
+
+<div>
+  <mat-toolbar>
+    <mat-toolbar-row class="fixed-top" [ngClass]="{navAdmin:isSuperadmin===true, navSeeker:isSuperadmin!=true}">
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="py-2" routerLink="/" fxShow="true" fxHide.lt-md="true"><img src="assets/images/logo2.png" width="40"
+          height="40"></a>
+
+      <div fxShow="true" fxHide.lt-md="true" class="ml-auto mr-2">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <div ngbDropdown class="d-inline-block">
+          <a class="btn" id="dropdownBasic1" ngbDropdownToggle>
+            <mat-icon>notifications</mat-icon>
+            notifications
+          </a>
+          <div class="p-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <p class="mb-0 border" ngbDropdownItem>hhhhhhhhh</p>
+            <p class="mb-0 border" ngbDropdownItem>hhhhhhhhh</p>
+          </div>
+        </div>
+        <a routerLink="/" mat-button>
+          <mat-icon>home</mat-icon>
+          Home
+        </a>
+        <a routerLink="/admin" *ngIf="loggedIn===true&&isSuperadmin===true" mat-button>
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a routerLink="/profile/{{profileId}}" *ngIf="loggedIn===true" mat-button>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+        <a routerLink="/applications" *ngIf="loggedIn===true&&isSeeker" mat-button>
+          <!-- <mat-icon>application</mat-icon> -->
+          Applications
+        </a>
+        <a routerLink="/emprev" *ngIf="loggedIn===true&&isEmployee===true" mat-button>
+          <mat-icon>notifications</mat-icon>
+          Interviews
+        </a>
+        <a routerLink="/logout" *ngIf="loggedIn===true" mat-button>
+          <mat-icon>logout</mat-icon>
+          Log Out
+        </a>
+        <a routerLink="/login" *ngIf="loggedIn===false" mat-button>
+          <mat-icon>login</mat-icon>
+          Log In
+        </a>
+        <a routerLink="/signup" *ngIf="loggedIn===false" mat-button>
+          <!-- <mat-icon>signup</mat-icon> -->
+          Register
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav [ngClass]="{bgSideAdmin:isSuperadmin===true, bgSideSeeker:isSuperadmin!=true}" #sidenav>
+      <mat-nav-list>
+
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/" mat-list-item>
+          <mat-icon>home</mat-icon>
+          Home
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/admin" *ngIf="loggedIn===true&&isSuperadmin===true"
+          mat-list-item>
+          <mat-icon>dashboard</mat-icon>
+          Dashboard
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/profile/{{profileId}}" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/applications" *ngIf="loggedIn===true&&isSeeker"
+          mat-list-item>
+          <!-- <mat-icon>application</mat-icon> -->
+          Applications
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/emprev" *ngIf="loggedIn===true&&isEmployee===true"
+          mat-list-item>
+          <mat-icon>notifications</mat-icon>
+          Interviews
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/logout" *ngIf="loggedIn===true" mat-list-item>
+          <mat-icon>logout</mat-icon>
+          Log Out
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/login" *ngIf="loggedIn===false" mat-list-item>
+          <mat-icon>login</mat-icon>
+          Log In
+        </a>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/signup" *ngIf="loggedIn===false" mat-list-item>
+          <!-- <mat-icon>signup</mat-icon> -->
+          Register
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <div class="" *ngIf="checkPath()">
+        <div class="crop">
+          <img class="img-fluid" width="100%" src="assets/images/home.jpg">
+        </div>
+      </div>
+
+      <div class="container-fluid p-0">
+        <div class="">
+          <img src="/assets/images/bg.jpeg" class="bgImg" alt="">
+        </div>
+        <div *ngIf="userService.spinner; else notloaded">
+          <div class="center">
+            <img class="" src="assets/images/loading.gif">
+          </div>
+        </div>
+
+        <ng-template #notloaded>
+
+          <div class="color-warning text-center" *ngIf="emailSentValue">
+            verify your email, if you didn't recieve any emails click this link
+            <a class="verigyEmail" (click)="resendEmailVerification()"> send email verification </a>
+          </div>
+
+          <div class="color-warning text-center" *ngIf="loggedinUser && emailSent && !emailVerified">
+            email has been sent, check your inbox
+          </div>
+          <div class="container-fluid p-0">
+            <router-outlet></router-outlet>
+          </div>
+        </ng-template>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<!-- ********************************************************************* -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="userService.spinner; else notloaded">
   <div class="center">
     <img class="" src="assets/images/loading.gif">
   </div>
@@ -25,4 +183,4 @@
   <div class="container-fluid p-0">
     <router-outlet></router-outlet>
   </div>
-</ng-template>
+</ng-template> -->

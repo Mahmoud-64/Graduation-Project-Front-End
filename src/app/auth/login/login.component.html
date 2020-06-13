@@ -1,28 +1,36 @@
-<div class="container w-50 login">
-    <div class="bg-warning text-center" *ngIf="verify_email">
-        please verify your email
-    </div>
-    <div class="bg-white border rounded p-5 m-5">
-        <h2 class="text-center"><strong>Sign In</strong></h2>
+<div class="container">
+  <div class="bg-warning text-center" *ngIf="verify_email">
+      please verify your email
+  </div>
+
+  <section class="login-inner">
+    <div class="login-middle">
+      <div class="login-details">
         <form [formGroup]="user" (ngSubmit)="onSubmit()">
-            <div *ngIf="userError" class="text-danger text-center">
-                {{userError}}
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" placeholder="Enter email" />
+          <h2>Log In</h2>
+          <div *ngIf="userError" class="text-danger text-center">
+            {{userError}}
+          </div>
+          <label>
+            <input  name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Email address"/>
+          </label>
+          <label>
+            <input name="password" type="password" formControlName="password" class="form-control"
+                id="exampleInputPassword1" placeholder="Password"/>
+          </label>
+          <label>
+            <input name="rememberMe" type="checkbox" formControlName="rememberMe"/><span>Remember me</span>
+          </label>
+          <div class="btn-sub">
+            <button  type="submit" class="btn btn-outline-danger">Log In</button>
+            <span>
+              <a href="#">Forget your password?</a>
+            </span>
+          </div>
 
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input name="password" type="password" formControlName="password" class="form-control"
-                    id="exampleInputPassword1" placeholder="Password" />
-
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-color">Submit</button>
-            </div>
         </form>
+      </div>
     </div>
+  </section>
 </div>

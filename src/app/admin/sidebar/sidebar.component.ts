@@ -15,18 +15,18 @@ export class SidebarComponent implements OnInit {
   selected = "";
   ngOnInit(): void {
     // on init only
-    this.route.firstChild.url.subscribe(
-      url => {
-        this.selected = url[0].path
-      }
-    )
+    // this.route.firstChild.url.subscribe(
+    //   url => {
+    //     this.selected = url[0].path
+    //   }
+    // )
     //  after each change
     this.router.events.subscribe((val) => {
       if (val instanceof ActivationStart) {
         this.selected = val.snapshot.routeConfig.path;
       }
     });
-    
+
   }
 
 }
