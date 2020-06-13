@@ -1,11 +1,14 @@
-<div class="container w-50 register">
-    <div class=" bg-white border rounded p-5 m-5">
-        <h2 class="text-center"><strong>Sign Up</strong></h2>
+
+<div class="container">
+  <section class="login-inner">
+    <div class="login-middle">
+      <div class="login-details">
+          <h2 class="text-center"><strong>Sign Up</strong></h2>
         <form [formGroup]="user" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="exampleInputEmail1">username</label>
                 <input name="name" type="text" formControlName="name" class="form-control" id="exampleInputname1"
-                    aria-describedby="nameHelp" placeholder="Enter name">
+                     placeholder="Enter name">
                 <div *ngIf="!userError.name && name.invalid && (name.dirty || name.touched)" class="text-danger">
                     <div *ngIf="name.errors.required">
                         *username is required.
@@ -71,5 +74,7 @@
                 <button type="submit" class="btn btn-color">Submit</button>
             </div>
         </form>
+      </div>
     </div>
+  </section>
 </div>
