@@ -1,34 +1,42 @@
  .crop {
-        height: 380px;
-        overflow: hidden;
-    }
+   height: 380px;
+   overflow: hidden;
+ }
 
-.crop img {
-    position: absolute;
-    height: 380px;
-}
+ .crop img {
+   position: absolute;
+   height: 380px;
+ }
 
-.verigyEmail{
-    cursor: pointer;
-    color: rgb(21,65,100);
-}
-.color-warning{
-    background-color: yellow;
-    color: black;
-}
+ .verigyEmail {
+   cursor: pointer;
+   color: rgb(21, 65, 100);
+ }
 
+ .color-warning {
+   background-color: yellow;
+   color: black;
+ }
 
-.bgImg {
-  position: fixed;
-  top: 0px;
-  bottom:0px;
-  right:0px;
-  opacity:0.3;
-  z-index: -1;
-}
+ .bgImg {
+   position: fixed;
+   top: 0;
+   left: 0;
+   min-width: 100%;
+   min-height: 100%;
+   /* Set rules to fill background */
+   /* min-height: 100%;
+   min-width: 1024px; */
+   /* Set up proportionate scaling */
+   /* width: 100%;
+   height: auto;
+   bottom: 0px;
+   right: 0px; */
+   opacity: 0.3;
+   z-index: -1;
+ }
 
-.center
-{
-  margin-top: 20%;
-  margin-left: 44%;
-}
+ .center {
+   margin-top: 20%;
+   margin-left: 44%;
+ }

@@ -1,7 +1,13 @@
 a {
   /* cursor: pointer; */
-  padding: 18px ;
+  display: block;
+  padding: 13% 20px !important;
   text-decoration: none;
+  background: white;
+  border: solid;
+  border-width: 1px;
+  border-left: 0;
+  border-color: rgb(233, 227, 227);
   color: black;
   font-weight: 450;
 }
@@ -9,6 +15,7 @@ a {
 .selected {
   background-color: rgb(127, 127, 126);
   color: white;
+  border-color: rgb(214, 206, 206);
 }
 
 a:hover {
