@@ -51,6 +51,7 @@ export class UserService {
   login(user: User): Observable<any> {
     user.device_name = "anything";
     this.showSpinner();
+    let rememberMe = user["rememberMe"];
     return this.http.post("/api/login", JSON.stringify(user)).pipe(
       tap(ev => {
         this.user = ev;
@@ -61,7 +62,12 @@ export class UserService {
           this.verifyEmailSubject.next(true);
         }
         const _token = ev['access_token'];
-        localStorage.setItem('access_token', _token);
+        if (!rememberMe) {
+          sessionStorage.setItem('access_token', _token);
+        }
+        else{
+          localStorage.setItem('access_token', _token);
+        }
         this.hideSpinner();
         this.subject.next(true);
       }),
@@ -72,6 +78,7 @@ export class UserService {
     this.loginCache = false;
     this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
+    sessionStorage.removeItem('access_token');
     this.user = null;
     this.subject.next(false);
   }
@@ -85,7 +92,7 @@ export class UserService {
   }
 
   loggedIn() {
-    if (localStorage.getItem('access_token')) {
+    if (localStorage.getItem('access_token')||sessionStorage.getItem('access_token')) {
       return true;
     }
     return false;

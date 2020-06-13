@@ -16,7 +16,8 @@ export class AuthHelperInterceptor implements HttpInterceptor {
   constructor(private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const _token = localStorage.getItem('access_token');
+    let _token = localStorage.getItem('access_token')?localStorage.getItem('access_token'):sessionStorage.getItem('access_token');;
+
     if (_token) {
 
       if (_token && !(request.url.search('/jobs') !== -1 && request.method === "GET")) {

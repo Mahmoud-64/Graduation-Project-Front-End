@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   user = this.fb.group({
     email: [''],
-    password: ['']
+    password: [''],
+    rememberMe: ['']
   })
   userError = '';
   verify_email: Boolean = false;
