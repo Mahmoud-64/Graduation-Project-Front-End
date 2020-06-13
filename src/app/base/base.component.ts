@@ -11,6 +11,15 @@ import { Role } from '../models/role.enum';
   styleUrls: ['./base.component.css']
 })
 export class BaseComponent implements OnInit {
+  title = 'Graduation-Project-Front-End';
+  loggedIn = false;
+  userName: String;
+  user;
+  profileId: String;
+  isSuperadmin: Boolean;
+  isEmployee: Boolean;
+  isSeeker: Boolean;
+
   image;
   emailVerified: Boolean = false;
   loggedinUser: Boolean = false;
@@ -19,11 +28,49 @@ export class BaseComponent implements OnInit {
   constructor(
     public userService: UserService,
     private router: Router,
-    private verifyemailService: VerifyemailService
+    private verifyemailService: VerifyemailService,
+    private activatedRoute: ActivatedRoute
   ) {
 
   }
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe((data: { authUser: any }) => {
+      this.user = data.authUser;
+      if (this.user) {
+        this.userService.verifyEmailSubject.next(this.user['verify_email']);
+        this.userName = this.user['name'];
+        this.profileId = this.user['id'];
+        this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+        this.isEmployee = this.userService.getUserRole() == Role.employee;
+        this.isSeeker = this.userService.getUserRole() == Role.seeker;
+
+        this.loggedIn = true;
+      }
+    });
+
+    this.userService.subject.subscribe({
+      next: (val) => {
+        setTimeout(() => {
+          this.loggedinUser = val;
+          this.emailSentValue = this.isEmailSent();
+        });
+        if (val === false) {
+          setTimeout(() => {
+            this.loggedIn = false;
+          });
+        }
+        else {
+          this.user = this.userService.getUser().data;
+          this.userName = this.user['name'];
+          this.profileId = this.user['id'];
+          this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
+          this.isEmployee = this.userService.getUserRole() == Role.employee;
+          this.isSeeker = this.userService.getUserRole() == Role.seeker;
+
+          this.loggedIn = true;
+        }
+      }
+    });
 
     this.image = this.router;
     this.loggedinUser = this.userService.getUser() ? true : false;
@@ -34,14 +81,6 @@ export class BaseComponent implements OnInit {
       }
     });
 
-    this.userService.subject.subscribe({
-      next: (val) => {
-        setTimeout(() => {
-          this.loggedinUser = val;
-          this.emailSentValue = this.isEmailSent();
-        });
-      }
-    });
   }
 
   checkPath() {
