@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,19 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class SeekerService {
   private seekersUrl = '/api/seekers/';  // URL to web api
   private VerifyPhoneUrl = '/api/checkphone';
-  constructor(private http: HttpClient) { }
+  declare pusher: any;
+  messagesChannel;
+
+  constructor(private http: HttpClient) {
+    this.pusher = new Pusher(environment.pusher.key, {
+      cluster: 'eu'
+    });
+    this.messagesChannel = this.pusher.subscribe('my-channel');
+    this.messagesChannel.bind('review-event', (message) => {
+      console.log("message", message);
+      
+    });
+  }
 
 
   getSeekers(pageParam={}): Observable<Seeker> {
@@ -71,6 +84,10 @@ export class SeekerService {
     return (error: any): Observable<T> => {
       return throwError(error);
     };
+  }
+
+  public getNotification(){
+    return this.http.get(`/api/notifications`);
   }
 
 }
