@@ -59,10 +59,10 @@
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav [ngClass]="{navAdmin:isSuperadmin===true, navSeeker:isSuperadmin!=true}" #sidenav>
-      <mat-nav-list class="bg-white">
+    <mat-sidenav [ngClass]="{bgSideAdmin:isSuperadmin===true, bgSideSeeker:isSuperadmin!=true}" #sidenav>
+      <mat-nav-list>
 
-        <a (click)="sidenav.toggle()" class="bg-white" class="bg-white" routerLink="/" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/" mat-list-item>
           <mat-icon>home</mat-icon>
           Home
         </a>
@@ -98,14 +98,15 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content  fxFlexFill>
-
-      <div class="crop" *ngIf="checkPath()">
-        <img class="img-fluid w-100" src="assets/images/home.jpg">
+      <div class="" *ngIf="checkPath()">
+        <div class="crop">
+          <img class="img-fluid" width="100%"  src="assets/images/home.jpg">
+        </div>
       </div>
 
       <div class="container-fluid p-0">
         <div class="bgImg">
-          <img src="/assets/images/bg.jpeg" alt="">
+          <img src="/assets/images/bg.jpeg" height="100%" width="100%" alt="">
         </div>
         <div *ngIf="userService.spinner; else notloaded">
           <div class="center">

@@ -20,7 +20,17 @@
 .bg-white
 {
   color: white !important;
-  z-index: 3 !important;
+  background: transparent !important;
+}
+
+.bgSideAdmin
+{
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+.bgSideSeeker
+{
+  background: rgba(21,65,100, 0.5) !important;
 }
 
 .bgImg {
@@ -43,7 +53,7 @@
 
 .navAdmin
 {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5) !important;
   width: 100%;
 }
 .navAdmin .nav-item .nav-link {
@@ -63,7 +73,7 @@
 
 .navSeeker
 {
-  background: rgba(21,65,100, 0.5);
+  background: rgba(21,65,100, 0.5) !important;
   width: 100%;
 }
 
