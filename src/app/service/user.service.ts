@@ -16,6 +16,8 @@ export class UserService {
   public user_id: Number;
   public spinner: Boolean = false;
 
+  loginCache = false;
+
   constructor(private http: HttpClient) {
     this.subject = new Subject;
     this.verifyEmailSubject = new Subject;
@@ -67,6 +69,7 @@ export class UserService {
     );
   }
   logout() {
+    this.loginCache = false;
     this.http.get('/api/LogoutUser');
     localStorage.removeItem('access_token');
     this.user = null;
@@ -89,10 +92,15 @@ export class UserService {
   }
 
   getLoggedInUser(): Observable<any> {
+    if (this.loginCache) {
+      this.user = this.loginCache;
+      return of(this.loginCache);
+    }
     return this.http.get('/api/LoggedInUser').pipe(map(val => {
       if (val["data"]) {
         this.user = val["data"];
         this.user_id = val["data"]['id'];
+        this.loginCache = val["data"];
         return val["data"];
       }
       return false;
