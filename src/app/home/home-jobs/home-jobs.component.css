@@ -1,34 +1,43 @@
-.item:hover{
+.item:hover {
     cursor: pointer;
     border-style: inset;
     border-width: 3px;
 }
-.card-img{
+
+.card-img {
     opacity: 0.2 !important;
+    height: 100% !important;
 }
 
-.h-item{
-    color:#31708e !important;
+
+.card {
+    height: 267px;
 }
 
-.home-title{
+.h-item {
+    color: #31708e !important;
+}
+
+.home-title {
     color: #000000;
 }
 
-.bg-jobs{
+.bg-jobs {
     border-radius: 5px;
-    background: rgb(216,228,240);
-    background: radial-gradient(circle, rgba(216,228,240,1) 50%, rgba(5,56,107,1) 100%);
+    background: rgb(216, 228, 240);
+    background: radial-gradient(circle, rgba(216, 228, 240, 1) 50%, rgba(5, 56, 107, 1) 100%);
 }
 
 /* .page-link{
     color: #31708e !important;
 } */
-.page-link:hover{
+
+.page-link:hover {
     background-color: #31708e !important;
     color: white !important;
 }
-.page-link{
+
+.page-link {
     background-color: white !important;
     color: #31708e !important;
     border: 1px solid #31708e;

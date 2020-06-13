@@ -30,6 +30,7 @@
    position: fixed;
    top: 0;
    left: 0;
+   padding-top: 64px;
    min-width: 100%;
    min-height: 100%;
    opacity: 0.3;
