@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import Pusher from 'pusher-js';
 
 @Injectable({
   providedIn: 'root'

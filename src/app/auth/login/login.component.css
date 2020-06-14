@@ -1,28 +1,95 @@
-.btn-color{
-    background-color: #45a29e !important;
-    color: white;
+.btn-color {
+  background-color: #45a29e !important;
+  color: white;
+}
+
+.btn-color:hover {
+  background-color: white !important;
+  color: #45a29e;
+  border: 1px solid #45a29e;
+}
+
+.login-middle {
+  vertical-align: middle;
+  display: table-cell;
+  height: 100vh;
+}
+
+.login-details label {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+input:focus, input:hover {
+  outline: none;
+}
+
+.login-details input[type="email"], .login-details input[type="password"] {
+  width: 100%;
+  padding-left: 10px;
+  background: #f4f4f4;
+  height: 40px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  font-weight: 300;
+}
+
+.login-details h2 {
+  font-size: 25px;
+  margin: 0;
+  padding-bottom: 30px;
+}
+
+.login-details span {
+  margin-left: 15px;
+  vertical-align: top;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.login-details {
+  max-width: 666px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 35px;
+  border-radius: 7px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+}
+
+.login-inner {
+  height: 100%;
+  display: table;
+  width: 100%;
+}
+
+@media (max-width:767px) {
+  /*KK*/
+  .login-middle {
+    display: block;
+    height: auto;
+    padding: 15px;
   }
-  .btn-color:hover{
-    background-color: white !important;
-    color: #45a29e;
-    border: 1px solid #45a29e;
+  .dark-header header {
+    position: relative;
   }
-
-
-  .login-middle {vertical-align: middle;display: table-cell;height: 100vh;}
-  .login-details label {width: 100%;margin-bottom: 20px;}
-  input:focus, input:hover{outline: none;}
-  .login-details input[type="text"], .login-details input[type="password"] {width: 100%;padding-left: 10px;background: #f4f4f4;height: 40px;border: 1px solid #d5d5d5;border-radius: 5px;font-weight: 600;}
-  .login-details h2 {font-size: 25px;margin: 0;padding-bottom: 30px;}
-  .login-details span {margin-left: 15px;vertical-align: top;font-weight: 400;font-size: 14px;}
-
-  .login-details {max-width: 666px;margin: 0 auto;background: #fff;padding: 35px;border-radius: 7px; box-shadow: 0 0 7px rgba(0,0,0,0.1);}
-  .login-inner {height: 100%;display: table;width: 100%;}
-  @media (max-width:767px) {
-/*KK*/
-.login-middle {display: block;height: auto;padding: 15px;}
-.dark-header header {position: relative;}
-.btn-grps .pink-btn {height: 35px;display: inline-block;line-height: 35px;margin-left: 15px;max-width: 200px;display: block;text-align: center;margin:0px auto 13px}
-.btn-grps {float: left !Important;width: 100%;}
-.btn-sub span {text-align: left;display: block;margin-left: 0;margin-top: 15px;}
+  .btn-grps .pink-btn {
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    margin-left: 15px;
+    max-width: 200px;
+    display: block;
+    text-align: center;
+    margin: 0px auto 13px
+  }
+  .btn-grps {
+    float: left !Important;
+    width: 100%;
+  }
+  .btn-sub span {
+    text-align: left;
+    display: block;
+    margin-left: 0;
+    margin-top: 15px;
+  }
 }

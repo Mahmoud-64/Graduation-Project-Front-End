@@ -81,11 +81,13 @@ export class EmpInterviewListComponent implements OnInit {
       .subscribe(res => {
         this.dataa = res;
         this.dataa.data.forEach(element => {
+          console.log(element);
+          
           this.dataObject =
           {
             start: new Date(element.date),
             end: addHours(new Date(element.date), 1),
-            title: 'interview added with ID' + element.id,
+            title: 'interview added with Seeker ' + element.seeker,
             id: element.id,
             color: colors.red,
             actions: this.actions,

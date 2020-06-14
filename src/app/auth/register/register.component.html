@@ -6,7 +6,7 @@
           <h2 class="text-center"><strong>Sign Up</strong></h2>
         <form [formGroup]="user" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="exampleInputEmail1">username</label>
+                <label for="exampleInputEmail1"><b>username</b></label>
                 <input name="name" type="text" formControlName="name" class="form-control" id="exampleInputname1"
                      placeholder="Enter name">
                 <div *ngIf="!userError.name && name.invalid && (name.dirty || name.touched)" class="text-danger">
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
+                <label for="exampleInputEmail1"><b>Email address</b></label>
                 <input name="email" type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
                     aria-describedby="emailHelp" placeholder="Enter email" />
                 <div *ngIf="!userError.email && email.invalid && (email.dirty || email.touched)" class="text-danger">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1"><b>Password</b></label>
                 <input name="password" type="password" formControlName="password" class="form-control"
                     id="exampleInputPassword1" placeholder="Password" />
                 <div *ngIf="!userError.password && password.invalid && (password.dirty || password.touched)"
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputPasswordConfirmation1">Password Confirmation</label>
+                <label for="exampleInputPasswordConfirmation1"><b>Password Confirmation</b></label>
                 <input [class.is-invalid]="user.errors?.misMatch" name="password_confirmation" type="password"
                     formControlName="password_confirmation" class="form-control" id="exampleInputPasswordConfirmation1"
                     placeholder="Password Confirmation" />
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="exampleInputContact">Contact</label>
+                <label for="exampleInputContact"><b>Contact</b></label>
                 <input name="phone" type="text" formControlName="phone" class="form-control" id="exampleInputContact"
                     placeholder="Contact" />
                 <div *ngIf="!userError.phone && phone.invalid && (phone.dirty || phone.touched)" class="text-danger">
