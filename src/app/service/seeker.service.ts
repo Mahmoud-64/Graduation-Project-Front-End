@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Seeker } from '../models/seeker';
+import { UserService } from './user.service';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-
+import Pusher from "../../../node_modules/pusher-js";
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +15,12 @@ export class SeekerService {
   declare pusher: any;
   public messagesChannel;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private userService: UserService) {
     this.pusher = new Pusher(environment.pusher.key, {
       cluster: 'eu'
     });
-    this.messagesChannel = this.pusher.subscribe('my-channel');
+    this.messagesChannel = this.pusher.subscribe('my-channel.'+this.userService.loginCache['id']);
     this.messagesChannel.bind('review-event', (message) => {
       console.log("message", message);
     });
@@ -56,7 +58,7 @@ export class SeekerService {
     let token = localStorage.getItem('access_token');
     form.append('cv', selfile, selfile.name);
     xhr.onload = (e) => {
-      
+
     };
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
