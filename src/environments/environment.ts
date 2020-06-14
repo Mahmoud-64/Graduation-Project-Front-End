@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   pusher: {
-    key: '4e0be8d88fdab0dcf047',
+    key: 'b150de4efc5087c7762c',
   }
 };
 
