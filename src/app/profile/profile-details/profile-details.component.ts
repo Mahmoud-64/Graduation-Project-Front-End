@@ -51,10 +51,10 @@ export class ProfileDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.getSeeker(+params.get('profileId'));
     });
-    this.seekerService.getNotification().subscribe(result=>{
-      console.log("result", result);
+    // this.seekerService.getNotification().subscribe(result=>{
+    //   console.log("result", result);
       
-    })
+    // })
   }
 
   getSeeker(seekerId): void {

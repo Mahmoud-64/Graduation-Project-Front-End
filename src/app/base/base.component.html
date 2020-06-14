@@ -26,9 +26,10 @@
           <a class="btn" id="dropdownBasic1" ngbDropdownToggle>
             <mat-icon>notifications</mat-icon>
             notifications
+            <span class="badge">{{count}}</span>
           </a>
           <div class="p-0" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <p class="mb-0 border" ngbDropdownItem>{{notifications}}</p>
+            <p class="mb-0 border" *ngFor="let notif of notifications" ngbDropdownItem>{{notif}}</p>
           </div>
         </div>
         <a routerLink="/" mat-button>

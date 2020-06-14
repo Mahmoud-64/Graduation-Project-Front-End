@@ -26,7 +26,7 @@ export class BaseComponent implements OnInit {
   loggedinUser: Boolean = false;
   emailSent: Boolean = false;
   emailSentValue: Boolean = false;
-  notifications ='';
+  notifications =[];
   constructor(
     public userService: UserService,
     private router: Router,
@@ -86,11 +86,12 @@ export class BaseComponent implements OnInit {
 
     this.seekerService.messagesChannel.bind('review-event', (message) => {
       console.log("message", message);
-      this.notifications = message['message'];
+      this.notifications.push(message['message']);
+      this.count++;
     });
 
   }
-
+  count=0;
   checkPath() {
     return !(this.image.url.includes('admin')
       || this.image.url.includes('login')
