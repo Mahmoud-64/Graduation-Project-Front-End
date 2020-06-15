@@ -39,6 +39,7 @@ export class ProfileDetailsComponent implements OnInit {
   role;
   isCollapsed = true;
   isCollapsed2 = false;
+  successAlert = false;
   constructor(
     private seekerService: SeekerService,
     private userService: UserService,
@@ -85,6 +86,18 @@ export class ProfileDetailsComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(MobileModalComponent);
     modalRef.componentInstance.seeker_phone = this.seeker.phone;
+    modalRef.result.then(
+      result => {
+
+        this.ngOnInit();
+        this.successAlert=true;
+        setTimeout(() => {
+          this.successAlert = false;
+        }, 3000);
+      },
+      rejected => {
+      }
+    )
   }
 
   updatePhoto(){

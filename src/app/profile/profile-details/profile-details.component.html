@@ -1,3 +1,4 @@
+
 <div class="row user-left-part">
   <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
     <div class="row ">
@@ -31,6 +32,9 @@
     <div class="row profile-right-section-row">
       <div class="col-md-12 profile-header">
         <div class="container">
+          <div class="alert alert-success" *ngIf="successAlert" role="alert">
+            Conratulation your phone is verified
+          </div>
           <h1>{{seeker.user.name}}</h1>
           <h5>{{seeker.currentJob}}</h5>
         </div>

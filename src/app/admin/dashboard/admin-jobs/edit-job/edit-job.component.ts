@@ -108,6 +108,8 @@ export class EditJobComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.newJobForm.value);
+    
     this.jobServerError = {
       message: "",
       errors: {

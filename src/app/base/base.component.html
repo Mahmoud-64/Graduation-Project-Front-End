@@ -27,7 +27,7 @@
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </a>
-        <a routerLink="/profile/{{profileId}}" *ngIf="loggedIn===true" mat-button>
+        <a routerLink="/profile/{{profileId}}" *ngIf="loggedIn===true &&! isSuperadmin " mat-button>
           <mat-icon>account_box</mat-icon>
           My Account
         </a>
@@ -68,7 +68,7 @@
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </a>
-        <a (click)="sidenav.toggle()" class="bg-white" routerLink="/profile/{{profileId}}" mat-list-item>
+        <a (click)="sidenav.toggle()" class="bg-white" *ngIf="loggedIn===true &&! isSuperadmin " routerLink="/profile/{{profileId}}" mat-list-item>
           <mat-icon>account_box</mat-icon>
           My Account
         </a>
