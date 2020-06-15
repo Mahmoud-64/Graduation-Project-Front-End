@@ -47,7 +47,7 @@ export class BaseComponent implements OnInit {
         this.isEmployee = this.userService.getUserRole() == Role.employee;
         this.isSeeker = this.userService.getUserRole() == Role.seeker;
         this.loggedIn = true;
-        this.emailSentValue = this.isEmailSent();
+        this.emailSentValue = !this.user['verify_email'] && this.isSeeker;
       }
     });
 
@@ -81,6 +81,9 @@ export class BaseComponent implements OnInit {
     this.userService.verifyEmailSubject.subscribe({
       next: (result) => {
         this.emailVerified = result;
+        this.emailSentValue = this.isEmailSent();
+        console.log("verify");
+
       }
     });
 

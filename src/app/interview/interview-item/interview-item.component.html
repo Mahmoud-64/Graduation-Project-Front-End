@@ -23,7 +23,7 @@
                 <div *ngIf="single.seeker_review" class="d-flex justify-content-center my-2">
                     <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.seeker_review}}</textarea>
                 </div>
-                <div *ngIf="single.company_review" class="d-flex justify-content-center mt-2 mb-3">
+                <div *ngIf="single.company_review && userRole != 3" class="d-flex justify-content-center mt-2 mb-3">
                     <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.company_review}}</textarea>
                 </div>
             </div>
