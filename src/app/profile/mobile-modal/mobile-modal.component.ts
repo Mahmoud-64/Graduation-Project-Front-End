@@ -39,7 +39,7 @@ export class MobileModalComponent implements OnInit {
     this.data.verifyToken = this.VerifyPhoneForm.value.code;
     this.seekerService.verifyPhone(this.data).subscribe(
       result => {
-        this.activeModal.close();
+        this.activeModal.close(true);
       },
       error => {
         this.verifyError = error.error;
