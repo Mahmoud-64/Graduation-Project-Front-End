@@ -17,6 +17,7 @@ export class UserService {
   public spinner: Boolean = false;
 
   loginCache = false;
+  public _token = null;
 
   constructor(private http: HttpClient) {
     this.subject = new Subject;
@@ -62,10 +63,11 @@ export class UserService {
           this.verifyEmailSubject.next(true);
         }
         const _token = ev['access_token'];
+        this._token = _token;
         if (!rememberMe) {
           sessionStorage.setItem('access_token', _token);
         }
-        else{
+        else {
           localStorage.setItem('access_token', _token);
         }
         this.hideSpinner();
@@ -92,7 +94,7 @@ export class UserService {
   }
 
   loggedIn() {
-    if (localStorage.getItem('access_token')||sessionStorage.getItem('access_token')) {
+    if (localStorage.getItem('access_token') || sessionStorage.getItem('access_token')) {
       return true;
     }
     return false;
@@ -101,6 +103,7 @@ export class UserService {
   getLoggedInUser(): Observable<any> {
     if (this.loginCache) {
       this.user = this.loginCache;
+      this._token = this.getToken();
       return of(this.loginCache);
     }
     return this.http.get('/api/LoggedInUser').pipe(map(val => {
@@ -108,6 +111,7 @@ export class UserService {
         this.user = val["data"];
         this.user_id = val["data"]['id'];
         this.loginCache = val["data"];
+        this._token = this.getToken();
         return val["data"];
       }
       return false;
@@ -153,7 +157,8 @@ export class UserService {
 
   uploadProfilePhoto(photo) {
     let xhr = new XMLHttpRequest;
-    let token = localStorage.getItem('access_token');
+    let token = this._token;
+    // let token = localStorage.getItem('access_token');
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -166,5 +171,13 @@ export class UserService {
     xhr.send(photo);
   }
 
+  getToken() {
+    if (sessionStorage.getItem('access_token')) {
+      return sessionStorage.getItem('access_token')
+    } else if (localStorage.getItem('access_token')) {
+      return localStorage.getItem('access_token')
+    }
+    return null;
+  }
 
 }
