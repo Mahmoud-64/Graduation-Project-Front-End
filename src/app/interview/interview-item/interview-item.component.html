@@ -20,12 +20,22 @@
             <div class="col-md-12 col-sm-12 col-xs-12 p-2 rounded text-center">
                 <p class="text-danger">{{single.date}}</p>
                 <p><a href="{{single.zoom}}">{{single.zoom}}</a></p>
-                <div *ngIf="single.seeker_review" class="d-flex justify-content-center my-2">
-                    <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.seeker_review}}</textarea>
+                <div class="  text-center">
+                    <div class="  d-flex justify-content-center rounded  ">
+                        <div *ngIf="single.seeker_review" class="bg-white  w-75 rounded m-2 p-1 ">
+                            <!-- <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.seeker_review}}</textarea> -->
+                            <p class="  " style="font-weight: 450;">{{single.seeker_review}}</p>
+                        </div>
+                    </div>
+                    <div class="  d-flex justify-content-center rounded  ">
+                        <div *ngIf="single.company_review" class="bg-white w-75 rounded m-2 p-1 ">
+                            <!-- <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.company_review}}</textarea> -->
+                            <p class=" " style="font-weight: 450;">{{single.company_review}} </p>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div *ngIf="single.company_review" class="d-flex justify-content-center mt-2 mb-3">
-                    <textarea class="form-control w-75 bg-white" rows="2" disabled>{{single.company_review}}</textarea>
-                </div>
+                
             </div>
             <!-- </div> -->
         </div>

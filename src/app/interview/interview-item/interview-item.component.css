@@ -1,15 +1,19 @@
-.text{
-    word-break: break-all
+.text {
+  word-break: break-all
 }
 
-  .user-left-part{
-    margin: 0px;
-  }
-  .user-image img{
-    width:100px;
-    height:100px;
-  }
+.user-left-part {
+  margin: 0px;
+}
 
-  .bg-color{
-    background-image: url("/assets/images/bg-prof.jpg") !important;
-  }
+.user-image img {
+  width: 100px;
+  height: 100px;
+}
+
+.bg-color {
+  background-image: url("/assets/images/bg-prof.jpg") !important;
+  /* background-size: 100%; */
+  background-size: 100% 100%;
+  /* min-height: 100%; */ 
+}
