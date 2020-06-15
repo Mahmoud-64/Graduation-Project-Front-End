@@ -21,8 +21,7 @@ export class SeekerService {
       cluster: 'eu'
     });
     this.messagesChannel = this.pusher.subscribe('my-channel.'+this.userService.loginCache['id']);
-    this.messagesChannel.bind('review-event', (message) => {
-      console.log("message", message);
+    this.messagesChannel.bind('review-event', (message) => {  
     });
   }
 
@@ -55,7 +54,8 @@ export class SeekerService {
   updateCv(selfile, changed_user_id, callback?) {
     let xhr = new XMLHttpRequest();
     let form = new FormData();
-    let token = localStorage.getItem('access_token');
+    let token = this.userService._token;
+    // let token = localStorage.getItem('access_token');
     form.append('cv', selfile, selfile.name);
     xhr.onload = (e) => {
 

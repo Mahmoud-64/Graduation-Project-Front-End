@@ -46,8 +46,8 @@ export class BaseComponent implements OnInit {
         this.isSuperadmin = this.userService.getUserRole() == Role.superadmin;
         this.isEmployee = this.userService.getUserRole() == Role.employee;
         this.isSeeker = this.userService.getUserRole() == Role.seeker;
-
         this.loggedIn = true;
+        this.emailSentValue = this.isEmailSent();
       }
     });
 
@@ -85,7 +85,6 @@ export class BaseComponent implements OnInit {
     });
 
     this.seekerService.messagesChannel.bind('review-event', (message) => {
-      console.log("message", message);
       this.notifications.push(message['message']);
       this.count++;
     });
