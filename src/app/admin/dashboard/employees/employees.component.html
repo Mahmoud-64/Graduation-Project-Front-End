@@ -27,7 +27,20 @@
     </tbody>
   </table>
 
-    <div class="col">
+    <!-- <div class="col">
       <button type="button" class="btn btn-light" name="previous" *ngIf="links.prev" (click)="prev()">Previous</button>
       <button type="button" class="btn btn-light" name="next" *ngIf="links.next" (click)="next()">Next</button>
+    </div> -->
+
+    <div>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="!links.prev">
+            <span class="page-link" (click)="prev()">Previous</span>
+          </li>
+          <li class="page-item" [class.disabled]="!links.next">
+            <span class="page-link" (click)="next()">Next</span>
+          </li>
+        </ul>
+      </nav>
     </div>

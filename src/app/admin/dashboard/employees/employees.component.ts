@@ -51,7 +51,7 @@ export class EmployeesComponent implements OnInit {
 
     getEmployees(page)
     {
-      this.employeeService.getEmployees({perPage: 15, page: page}).subscribe(users => {
+      this.employeeService.getEmployees({perPage: 11, page: page}).subscribe(users => {
         this.users = users.data;
         this.links = users.links;
       })
@@ -72,7 +72,7 @@ export class EmployeesComponent implements OnInit {
         case 'delete':
           this.employeeService.deleteEmployee(id).subscribe(result=>{
             this.error = result['data'];
-            this.employeeService.getEmployees().subscribe(users => {
+            this.employeeService.getEmployees(this.page).subscribe(users => {
               this.users = users.data;
             })
           });

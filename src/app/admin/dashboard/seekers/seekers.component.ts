@@ -57,7 +57,7 @@ export class SeekersComponent implements OnInit {
         break;
       case 'delete':
         this.seekerService.deleteSeeker(id).subscribe(result=>{
-          this.seekerService.getSeekers().subscribe(seekers => {
+          this.seekerService.getSeekers({perPage:this.perPage, page: this.currentPage}).subscribe(seekers => {
             this.seekers = seekers.data;
           })
         });
