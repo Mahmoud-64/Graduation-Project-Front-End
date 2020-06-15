@@ -8,9 +8,15 @@
    height: 380px;
  }
 
- .verigyEmail {
+  .verigyEmail {
+    cursor: pointer;
+    color: rgb(21, 65, 100);
+    background: white;
+  }
+ .verigyEmail:hover {
    cursor: pointer;
    color: rgb(21, 65, 100);
+   background: white;
  }
 
  .bg-white {
