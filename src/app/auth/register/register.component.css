@@ -1,12 +1,13 @@
-.btn-color {
-  background-color: #45a29e !important;
-  color: white;
-}
 
-.btn-color:hover {
-  background-color: white !important;
-  color: #45a29e;
-  border: 1px solid #45a29e;
+.btn-color:hover{
+    background-color: #31708e !important;
+    color: white !important;
+}
+.btn-color{
+    background-color: white !important;
+    color: #31708e !important;
+    border: 1px solid #31708e;
+
 }
 
 .login-middle {

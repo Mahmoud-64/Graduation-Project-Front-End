@@ -24,7 +24,7 @@
                     aria-describedby="emailHelp" placeholder="Enter email" />
                 <div *ngIf="!userError.email && email.invalid && (email.dirty || email.touched)" class="text-danger">
                     <div *ngIf="email.errors.email">
-                        * and must match xxx@xxx.com.
+                        * email must match xxx@xxx.com.
                     </div>
                 </div>
                 <div *ngIf="userError.email" class="text-danger">

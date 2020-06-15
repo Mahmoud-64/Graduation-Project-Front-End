@@ -34,5 +34,8 @@
     <div *ngIf="canApply && userRole!=0 && userRole!=1" class=" text-center">
         <button (click)="applyJob()" class="btn btn-color">Apply to job</button>
     </div>
+    <div *ngIf="userRole==0" class=" text-center">
+        <button routerLink="/login" (click)="activeModal.close('Close click')" class="btn btn-color">Login to apply</button>
+    </div>
     <button type="button" class="btn btn-color" (click)="activeModal.close('Close click')">Close</button>
 </div>
