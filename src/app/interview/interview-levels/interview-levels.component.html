@@ -1,4 +1,4 @@
-<div class="mx-lg-5 mx-0">
+<div class="mx-lg-5 mx-0" *ngIf="interviews.length; else noInterviews">
   <mat-horizontal-stepper class="bg-color p-md-3 p-0" labelPosition="bottom" (selectionChange)="showInterview($event)">
     <mat-step *ngFor="let interview of interviews" [label]="interview.level_name">
 
@@ -18,3 +18,8 @@
     </mat-step>
   </mat-horizontal-stepper>
 </div>
+<ng-template #noInterviews>
+  <h3 class="mx-auto alert alert-info w-50 text-center">
+    There's no assigned interviews yet.
+  </h3>
+</ng-template>

@@ -106,7 +106,7 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     }
     this.cvError = "";
   }
-
+  successAlert=false;
   uploadCV() {
     if (this.selfile) {
       this.seekerService.updateCv(this.selfile, this.user_id, (result) => {
@@ -116,6 +116,10 @@ export class DetailsFormComponent implements OnInit, OnChanges {
         else {
           this.seeker = result["data"];
           this.formEvent.emit(this.seeker);
+          this.successAlert=true;
+          setTimeout(()=>{
+            this.successAlert=false;
+          }, 2000);
         }
       });
     }
@@ -124,7 +128,7 @@ export class DetailsFormComponent implements OnInit, OnChanges {
     }
   }
   ////////////////////////// // //////////////////////////
-
+  successUpdate=false;
   ////////////////////////// edit form ////////////////////
   onClickSubmit(formData) {
     this.seekerService.updateSeeker(this.user_id, this.details.value)
@@ -132,6 +136,10 @@ export class DetailsFormComponent implements OnInit, OnChanges {
         this.seeker = result.data;
         this.error = "";
         this.formEvent.emit(this.seeker);
+        this.successUpdate=true;
+        setTimeout(()=>{
+          this.successUpdate=false;
+        }, 4000);
       },
         err => {
           this.error = err;

@@ -27,11 +27,17 @@
         </div>
     </div>
 
-    <div id="collapseExample" class="my-4" *ngIf="isSeeker && application.interviews.length"
+    <div id="collapseExample" class="my-4" *ngIf="isSeeker && application.interviews.length; else noInterviews"
         [ngbCollapse]="isCollapsed">
         <app-interview-levels [interviews]="application.interviews"></app-interview-levels>
     </div>
 
+    <ng-template #noInterviews >
+        <div *ngIf="showJob" class="alert alert-info m-md-4 m-1">
+            There's no interviews assigned yet.
+        </div>
+    </ng-template>
+    
     <div class="my-2 p-1" *ngIf="!showJob">
         <h1 class="text-center text-title"><strong>{{application.job.title}}</strong></h1>
         <div class="p-4 mt-2 mx-2 bg-white rounded details">

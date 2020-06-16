@@ -3,6 +3,9 @@
 </div>
 
 <form class="text-center bg-light m-2 p-2 border" [formGroup]="details" (ngSubmit)="onClickSubmit(details.value)">
+  <div class="alert alert-success w-50 mx-auto" *ngIf="successUpdate" role="alert">
+    updated successfully
+  </div>
   <table class="table table-borderless text-center">
     <tbody>
       <tr>
@@ -140,6 +143,9 @@
 
 <!-- <div class="m-5"> -->
   <form class="text-center bg-light m-2 p-5 border" [formGroup]="details" (ngSubmit)="uploadCV()">
+    <div class="alert alert-success w-50 mx-auto" *ngIf="successAlert" role="alert">
+      uploaded successfully
+    </div>
     <input type="file" name="cv" #fileupload placeholder="CV" (change)="onFileSelected($event)">
     <div *ngIf="cvError" class="text-danger small">
       {{cvError}}

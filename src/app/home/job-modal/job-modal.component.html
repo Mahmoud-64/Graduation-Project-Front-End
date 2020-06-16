@@ -31,7 +31,7 @@
 </div>
 
 <div class="modal-footer">
-    <div *ngIf="canApply && userRole!=0 && userRole!=1" class=" text-center">
+    <div *ngIf="canApply && userRole==3 " class=" text-center">
         <button (click)="applyJob()" class="btn btn-color">Apply to job</button>
     </div>
     <div *ngIf="userRole==0" class=" text-center">
